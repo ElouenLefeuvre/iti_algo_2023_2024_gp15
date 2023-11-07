@@ -1,0 +1,145 @@
+\documentclass{article}
+\usepackage{algorithme}
+
+\begin{document}
+
+\section{TAD Code Binaire}
+\begin{tad}
+     \tadNom{Code Binaire}
+        
+     \tadDependances{TableDeCodage, Caractere }
+     \begin{tadOperations}{obtenirCodeBinaire}
+        \tadOperation{obtenirCodeBinaire}{\tadDeuxParams{TableDeCodage}{Caractere}}{\tadParam{CodeBinaire}}
+        \tadOperationAvecPreconditions{estBinaire}{\tadParam{CodeBinaire}}{\tadParam{Booléen}}
+     \end{tadOperations}
+      \begin{tadSemantiques}{}
+            obtenirCodeBinaire : Obtient grâce à la table de codage le code binaire d'un caractère 
+    estBinaire : Permet de vérifier que le code est bien binaire
+         
+      \end{tadSemantiques}
+    \begin{tadPreconditions}{obtenirFilsGauche(A)}
+            \tadPrecondition{estBinaire(code)}{non estVide(code)}
+        \end{tadPreconditions}
+
+\end{tad}   
+
+
+\section{TAD Octet}
+\begin{tad}
+\tadNom{Octet}
+\tadDependances{Chaine de caracteres, Code Binaire, Booleen}
+\begin{tadOperations}{estOctet}
+    \tadOperation{estOctet}{\tadParam{Octet}}{\tadParam{Booleen}}
+    \tadOperation{encoder}{\tadDeuxParams{Octet}{Code Binaire}}{\tadParam{ Chaine de caracteres}}
+    \tadOperation{decoder}{\tadDeuxParams{Chaine de caracteres}{Code Binaire}}{\tadParam{Octet}}
+    \tadOperation{obtenirOctet}{\tadParam{Chaine de caracteres}}{\tadParam{Octet}}
+\end{tadOperations}
+    
+\end{tad}
+    
+\section{TAD Statistiques}
+\begin{tad}
+\tadNom{Statistiques}
+\tadDependances{Caractère, Chaine de caracteres, Naturel}
+\begin{tadOperations}{statistiques}
+\tadOperation{statistiques}{\tadDeuxParams{Caractère}{Code Naturel}}{\tadParam{ Statistiques}}
+\tadOperation{obtenirOccurences}{\tadParam{Chaine de caracteres}}{\tadParam{Statistiques}}
+\end{tadOperations}
+\begin{tadSemantiques}{}
+     statistiques : créer une statistique à partir d'un caractère et de son nombre d'occurences. \newline
+     {obtenirOccurences} : Renvoie le nombre d'occurences d'un caractère et le stock dans la statistique    \newline
+\end{tadSemantiques}
+
+                          
+\end{tad}
+
+
+
+\section{TAD ArbreHuffman}
+
+    \begin{tad}
+        \tadNom{Arbre Huffman}
+        
+        \tadDependances{statistiques}
+        
+        \begin{tadOperations}{obtenirFilsGauche}
+        
+            \tadOperation{arbrehuffman}{Statistiques}{\tadParam{Arbre Huffman}}
+            
+            \tadOperationAvecPreconditions{fusionner}{\tadDeuxParams{Arbre Huffman}{Arbre Huffman}}{\tadParam{Arbre Huffman}}
+
+            \tadOperation{obtenirOccurence}{\tadParam{Arbre Huffman}}{\tadParam{\entier}}
+
+            \tadOperationAvecPreconditions{obtenirOctet}{\tadParam{Arbre Huffman}}{\tadParam{Octet}}
+
+            \tadOperationAvecPreconditions{obtenirFilsGauche}{\tadParam{Arbre Huffman}}{\tadParam{Arbre Huffman}}
+
+            \tadOperationAvecPreconditions{obtenirFilsDroite}{\tadParam{Arbre Huffman}}{\tadParam{Arbre Huffman}}
+
+            \tadOperation{estUneFeuille}{\tadParam{Arbre Huffman}}{\tadParam{\booleen}}
+
+            \tadOperation{estVide}{\tadParam{Arbre Huffman}}{\tadParam{\booleen}}
+        \end{tadOperations}
+        
+        \begin{tadSemantiques}{}
+        
+            
+            
+        \end{tadSemantiques}
+        
+        \begin{tadPreconditions}{obtenirFilsGauche(A)}
+            \tadPrecondition{fusionner(A)}{estVide(A)}
+            \tadPrecondition{obtenirOctet(A)}{estUneFeuille(A)}
+            \tadPrecondition{obtenirFilsGauche(A)}{non estUneFeuille(A)}
+            \tadPrecondition{obtenirFilsDroit(A)}{non estUneFeuille(A)}
+        \end{tadPreconditions}
+           
+        \end{tad}
+
+    
+
+
+\section{FileDePriorité}
+\begin{tad}
+
+\tadNom{FileDePriorité} 
+
+\tadDependances{ArbreHuffman, File} 
+
+\begin{tadOperations}{fileDePriorité}
+\tadOperation{fileDePriorité}{\tadDeuxParams{ArbreHuffman}{File}}{\tadParam{FileDePriorité}}
+\tadOperation{formationNouvelArbrePondéré}{\tadParam{FileDePriorité}}{\tadParam{FileDePriorité}}
+\end{tadOperations}
+
+\begin{tadSemantiques}{}
+    fileDePriorité : Permet de créer une file de priorité à patir d'arbres de Huffman et d'une liste \newline
+    formationNouvelArbrePondéré : Permet de formet un nouvel arbre de Huffman à partir de 2 arbres \newline
+\end{tadSemantiques}
+    
+\begin{tadPreconditions}
+    formationNouvelArbrePondéré : non estVide(defiler(defiler(fdp)))\newline
+\end{tadPreconditions}
+
+\end{tad}
+\section{TAD TableDeCodage}
+
+\begin{tad}
+\tadNom{TableDeCodage}
+\tadDependances{ArbreHuffmann}
+
+\begin{tadOperations}{obtenirTableDeCodage}
+    \tadOperation{obtenirTableDeCodage}{\tadParam{ArbreHuffmann}}{\tadParam{TableDeCodage}}
+\end{tadOperations}
+
+\begin{tadSemantiques}{}
+    obtenirTableDeCodage : Renvoie la table de codage grâce à un arbre de Huffmann \newline
+\end{tadSemantiques}
+    
+\begin{tadPreconditions}{}
+    obtenirTableDeCodage : non estVide(arbrebinaire)
+\end{tadPreconditions}
+\end{tad}
+\end{document}
+
+
+
