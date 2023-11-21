@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{algorithme}
+\usepackage{pseudocode}
 
 
 \begin{document}
@@ -12,10 +12,14 @@
 
 \motclefFonction{ creerStatistique}{(c : \motclefCaractere, e : \motclefEntier) : Statistiques}
 
+\motclefFonction{ creerFileDePriorite{(fic :  FichierTexte) : FileDePriorite}
+
 \motclefFonction{ obtenirCaracteres}{(fic : FichierTexte) : \motclefTableau de \motclefCaractere}
 
 \motclefFonction{ obtenirOccurences}{(c : \motclefCaractere) : \motclefEntier}
 
 \motclefFonction{ insererArbre}{( file : FileDePriorite, arbre : ArbreBinaire) : FileDePriorite}
+
+\motclefFonction{ creerArbre}{(stats : Statistiques) : ArbreBinaire}
 
 \end{document}
