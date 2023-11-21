@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{pseudocode}
+
+\begin{document}
+\section{TAD Arbre Huffman}
+\begin{algorithme}
+\signatureFonction{arbreHuffman}
+	{stat : statistiques}{Arbre Huffman}
+	{}
+\end{algorithme}
+
+\begin{algorithme}
+\signatureFonction{fusionner}
+	{arbre1, arbre2 : Arbre Huffman}{Arbre Huffman}
+	{non estVide(arbre1) ou non estVide(arbre2)}
+\end{algorithme}
+
+\begin{algorithme}
+\signatureFonction{obtenirOccurence}
+	{arbre : Arbre Huffman}{\entier}
+	{}
+\end{algorithme}
+
+\begin{algorithme}
+\signatureFonction{estFeuille}
+	{arbre : Arbre Huffman}{\booleen}
+	{}
+\end{algorithme}
+
+\begin{algorithme}
+\signatureFonction{estVide}
+	{arbre: Arbre Huffman}{\booleen}
+	{}
+\end{algorithme}
+
+\begin{algorithme}
+\signatureFonction{obtenirOctet}
+	{arbre: Arbre Huffman}{Octet}
+	{estFeuille(arbre)}
+\end{algorithme}
+
+\begin{algorithme}
+\signatureFonction{obtenirFilsGauche}
+	{arbre : Arbre Huffman}{Arbre Huffman}
+	{non estFeuille(arbre)}
+\end{algorithme}
+
+\begin{algorithme}
+\signatureFonction{obtenirFilsDroit}
+	{arbre : Arbre Huffman}{Arbre Huffman}
+	{non estFeuille(arbre)}
+\end{algorithme}
+			
+\end{document}
+
