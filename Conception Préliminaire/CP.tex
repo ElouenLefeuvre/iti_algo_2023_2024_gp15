@@ -12,11 +12,25 @@
 
 \motclefFonction{ creerStatistique}{(c : \motclefCaractere, e : \motclefEntier) : Statistiques}
 
-\motclefFonction{ creerFileDePriorite{(fic :  FichierTexte) : FileDePriorite}
+\motclefFonction{ creerFileDePriorite}{(fic :  FichierTexte) : FileDePriorite}
 
 \motclefFonction{ obtenirCaracteres}{(fic : FichierTexte) : \motclefTableau de \motclefCaractere}
 
 \motclefFonction{ obtenirOccurences}{(c : \motclefCaractere) : \motclefEntier}
+
+\motclefFonction{ insererArbre}{( file : FileDePriorite, arbre : ArbreBinaire) : FileDePriorite}
+
+\motclefFonction{ creerArbre}{(stats : Statistiques) : ArbreBinaire}
+
+\section{decompression}
+
+\motclefFonction{ decompresser}{(fic : FichierHuffman, arbreHuffman:ArbreHuffman) : FichierTexte}
+
+\motclefFonction{ creerArbreHuffman}{(file : FileDePriorité) : ArbreHuffman}
+
+\motclefFonction{ creerFileDePriorite}{(fic :  FichierTexte) : FileDePriorite}
+
+\motclefFonction{ obtenirStatistiques}{(fic :  FichierHuffman) : \motclefTableau de Statistiques}
 
 \motclefFonction{ insererArbre}{( file : FileDePriorite, arbre : ArbreBinaire) : FileDePriorite}
 
