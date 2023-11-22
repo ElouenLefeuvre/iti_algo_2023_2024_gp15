@@ -4,15 +4,25 @@
 
 \begin{document}
 \section{TAD Octet}
-\signatureFonction{ estOctet}{(o : Octet) : \booleen}
 
+\begin{algorithme}
+\signatureFonction{ estOctet}{(o : Octet)}{\booleen}
+{}
+\end{algorithme}
 
-\signatureFonction{ encoder}{(o : Octet, code : CodeBinaire) : \chaine}
+\begin{algorithme}
+\signatureFonction{ encoder}{(o : Octet, code : CodeBinaire)}{\chaine}
+{}
+\end{algorithme}
 
+\begin{algorithme}
+\signatureFonction{ decoder:}{(chaine : \chaine, code : CodeBinaire)}{Octet}
+{}
+\end{algorithme}
 
-\signatureFonction{ decoder:}{(chaine : \chaine, code : CodeBinaire) : Statistiques}
-
-
-\signatureFonction{ obtenirOctet:}{(chaine : \chaine) : Octet}
+\begin{algorithme}
+\signatureFonction{ obtenirOctet:}{(chaine : \chaine)}{Octet}
+{}
+\end{algorithme}
 
 \end{document}
