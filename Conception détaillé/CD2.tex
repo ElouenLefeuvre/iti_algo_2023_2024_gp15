@@ -1,0 +1,109 @@
+\documentclass{article}
+\usepackage{pseudocode}
+
+\begin{document}
+
+\section{Décompression}
+
+\begin{algorithme}
+    \signatureFonction{ decompresser}{fic : FichierHuffman}{FichierTexte}\newLine
+    {}
+début
+    file = creerFiledePriorite(fic)
+    arbre = creerArbreHuffman(file)
+    ouvrir(fic)
+    tant que non (eof(fic)):
+        ouvrir(fic)
+        temp = arbre
+        tant que non estUneFeuille(temp)    
+            digit = read(fic, car)
+            if digit ==0
+                temp = obtenirFilsGauche(arbre)
+            sinon 
+                temp = obtenirFilsDroit(arbre)
+            finsi
+        fintantque
+        fermer(fic)
+        ouvrir(fictexte)
+        ecrire(fictexte, obtenirCaractere(temp))  
+        fermer(fictexte)  
+    fintantque
+fin
+
+
+
+\end{algorithme}
+
+\section{obtenirStatistiques}
+\begin{algorithme}
+    \signatureFonction{ obtenirStatistiques}{fic :  FichierHuffman}{\motclefTableau de Statistiques}\newLine
+    {}
+début
+    ouvrir(fic)
+    tant que str!="/":
+        lire(fic,car)
+        lire(fic, int)
+        tab[i]=statistiques(car,int)
+    fintantque
+fin
+\end{algorithme}
+
+\section{creerArbreHuffman}
+
+\begin{algorithme}
+    \signatureFonction{ creerArbreHuffman}{file : FileDePriorité}{ArbreHuffmanHuffman}\newLine
+    {}
+début
+    res=file
+    tant que FileDePriorité.longueur(res)!=1 faire 
+        FileDePriorité.formationNouvelArbrePondere(res)
+    fin tantque
+    retourner res
+fin
+\end{algorithme}
+
+\section{obtenirCaracteres}
+
+\begin{algorithme}
+    \signatureFonction{ obtenirCaracteres}{fic : FichierTexte}{Ensemble de \caractere}\newLine
+    {}
+début
+    ens = ensemble()
+    ouvrir(fic)
+    tant que non eof(fic) faire
+        lire(fic, car)
+        if not estPresent(ens, car)
+            ajouter(ens,car)
+        finsi
+    fintantque
+    retourner ens
+fin
+\end{algorithme}
+
+
+\section{obtenirOccurences}
+\begin{algorithme}
+    \signatureFonction{ obtenirOccurences}{c : \caractere}{\naturel}\newLine
+    {}
+début
+    retourner Statistiques.obtenirOccurence(car)
+fin
+\end{algorithme}
+
+\section{insererArbre}
+
+\begin{algorithme}
+    \signatureFonction{ insererArbre}{file : FileDePriorite, arbre : ArbreBinaire}{FileDePriorite}\newLine
+    {}
+début
+    retourner FileDePriorité.filedepriorite(arbre,file)
+\end{algorithme}
+
+\section{creerArbre}
+\begin{algorithme}
+    \signatureFonction{ creerArbre}{stats : Statistiques}{ArbreBinaire}\newLine
+    {}
+retourner arbre(stats)
+\end{algorithme}
+
+\end{document}
