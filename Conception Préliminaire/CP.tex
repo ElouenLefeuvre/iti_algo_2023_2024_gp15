@@ -4,36 +4,82 @@
 
 \begin{document}
 \section{Compression}
-\motclefFonction{ compresser}{(fic : FichierTexte) : FichierHuffman}
 
-\motclefFonction{ creerArbreHuffman}{(file : FileDePriorité) : ArbreHuffman} \newLine
+\begin{algorithme}
+    \signatureFonction{ compresser}{fic : FichierTexte}{FichierHuffman}\newLine
+    {}
+\end{algorithme}
 
-\motclefFonction{ creerTableDeCodage}{(arbre : ArbreHuffman) : TableDeCodage}\newLine
+\begin{algorithme}
+    \signatureFonction{ creerArbreHuffman}{file : FileDePriorité}{ArbreHuffmanHuffman}\newLine
+    {}
+\end{algorithme}
 
-\motclefFonction{ creerStatistique}{(c : \motclefCaractere, e : \motclefEntier) : Statistiques}\newLine
+\begin{algorithme}
+    \signatureFonction{ creerTableDeCodage}{arbre : ArbreHuffman}{TableDeCodage}\newLine
+    {}
+\end{algorithme}
 
-\motclefFonction{ creerFileDePriorite}{(fic :  FichierTexte) : FileDePriorite}\newLine
+\begin{algorithme}
+    \signatureFonction{ creerStatistique}{c : \caractere, e : \naturel}{Statistiques}\newLine
+    {}
+\end{algorithme}
 
-\motclefFonction{ obtenirCaracteres}{(fic : FichierTexte) : \motclefTableau de \motclefCaractere}\newLine
+\begin{algorithme}
+    \signatureFonction{ creerFileDePriorite}{fic :  FichierTexte}{FileDePriorite}\newLine
+    {}
+\end{algorithme}
 
-\motclefFonction{ obtenirOccurences}{(c : \motclefCaractere) : \motclefEntier}\newLine
+\begin{algorithme}
+    \signatureFonction{ obtenirCaracteres}{fic : FichierTexte}{\motclefTableau de \caractere}\newLine
+    {}
+\end{algorithme}
 
-\motclefFonction{ insererArbre}{( file : FileDePriorite, arbre : ArbreBinaire) : FileDePriorite}\newLine
+\begin{algorithme}
+    \signatureFonction{ obtenirOccurences}{c : \caractere}{\naturel}\newLine
+    {}
+\end{algorithme}
 
-\motclefFonction{ creerArbre}{(stats : Statistiques) : ArbreBinaire}\newLine
+\begin{algorithme}
+    \signatureFonction{ insererArbre}{file : FileDePriorite, arbre : ArbreBinaire}{FileDePriorite}\newLine
+    {}
+\end{algorithme}
 
-\section{decompression}
+\begin{algorithme}
+    \signatureFonction{ creerArbre}{stats : Statistiques}{ArbreBinaire}\newLine
+    {}
+\end{algorithme}
 
-\motclefFonction{ decompresser}{(fic : FichierHuffman, arbreHuffman:ArbreHuffman) : FichierTexte}\newLine
+\section{Décompression}
 
-\motclefFonction{ creerArbreHuffman}{(file : FileDePriorité) : ArbreHuffman}\newLine
+\begin{algorithme}
+    \signatureFonction{ decompresser}{fic : FichierHuffman}{FichierTexte}\newLine
+    {}
+\end{algorithme}
 
-\motclefFonction{ creerFileDePriorite}{(fic :  FichierTexte) : FileDePriorite}\newLine
+\begin{algorithme}
+    \signatureFonction{ creerArbreHuffman}{file : FileDePriorité}{ArbreHuffmanHuffman}\newLine
+    {}
+\end{algorithme}
 
-\motclefFonction{ obtenirStatistiques}{(fic :  FichierHuffman) : \motclefTableau de Statistiques}\newLine
+\begin{algorithme}
+    \signatureFonction{ creerFileDePriorite}{fic :  FichierTexte}{FileDePriorite}\newLine
+    {}
+\end{algorithme}
 
-\motclefFonction{ insererArbre}{( file : FileDePriorite, arbre : ArbreBinaire) : FileDePriorite}\newLine
+\begin{algorithme}
+    \signatureFonction{ obtenirStatistiques}{fic :  FichierHuffman}{\motclefTableau de Statistiques}\newLine
+    {}
+\end{algorithme}
 
-\motclefFonction{ creerArbre}{(stats : Statistiques) : ArbreBinaire}
+\begin{algorithme}
+    \signatureFonction{ insererArbre}{file : FileDePriorite, arbre : ArbreBinaire}{FileDePriorite}\newLine
+    {}
+\end{algorithme}
+
+\begin{algorithme}
+    \signatureFonction{ creerArbre}{stats : Statistiques}{ArbreBinaire}\newLine
+    {}
+\end{algorithme}
 
 \end{document}
