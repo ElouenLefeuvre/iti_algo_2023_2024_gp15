@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{pseudocode}
+
+\begin{document}
+
+\section{compression}
+
+\begin{algorithme}
+    \fonction{compresser}{fic : FichierTexte}{FichierHuffman}
+    {}
+    {file : FileDePriorite; table : TableDeCodage;  arbreHuffman : ArbreHuffman}
+    {\affecter{file}{creerFileDePriorite(fic)}
+    \affecter{arbreHuffman}{creerArbreHuffman(file)}
+    \affecter{table}{creerTableDeCodage(arbreHuffman)}}
+    %Suite à faire en fonction de la table de codage (soit dictionnaire ou tableau de structures)
+\end{algorithme}
+
+\section{creerFileDePriorite}
+\begin{algorithme}
+    \fonction{ creerFileDePriorite}{fic :  FichierHuffman}{FileDePriorite}
+    {}
+    {file : FileDePriorite; ensC : Ensemble de \caractere; ensS : Ensemble de Statistiques}
+    {\affecter{ensC}{obtenirCaracteres(fic)}
+    \affecter{ensS}{creerStatistique(ensC)}
+    \affecter{file}{filedePriorite()}
+    \affecter{arbre}{creerArbre()}
+    \pourChaque{Stats}{ensS}
+    {insererArbre(file, creerArbre(stats))}
+    
+    \tantQue{non(File.estVide(defiler(file)))}  %Ou faire avec longueur >1 de FileDePrio
+        {formationNouvelArbrePondere(file)}
+    \retourner(file)}
+\end{algorithme}
+
+\section{creerTableDeCodage}
+
+\begin{algorithme}
+    \fonction{ creerTableDeCodage}{arbre : ArbreHuffman}{TableDeCodage}{}{}
+    {\retourner{obtenirTableDeCodage(arbre)}}
+\end{algorithme}
+
+\section{creerStatistique}
+
+\begin{algorithme}
+    \fonction{ creerStatistique}{ensC : Ensemble de \caractere}{Ensemble de Statistiques}
+    {}
+    {ensStats : Ensemble de Statistiques, nbOcc : \naturel}   				
+    {\pourChaque{car}{ensC}
+        {\affecter{nbOcc}{Statistiques.obtenirOccurence(car)}
+        Ensemble.ajouter(ensStats,nbOcc)}
+    \retourner{ensStats}}
+        
+\end{algorithme}
+
+\end{document}
