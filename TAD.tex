@@ -11,17 +11,22 @@
         \tadOperation{obtenirCodeBinaire}{}{\tadParams{CodeBinaire}}
         \tadOperation{estVide}{\tadParams{CodeBinaire}}{\tadParams{\booleen}}
         \tadOperationAvecPreconditions{ajouterBit}{\tadParams{CodeBinaire, \naturel, Bit}}{\tadParams{CodeBinaire}}
-        \tadOperationAvecPreconditions{supprimerBit}{\tadParams{CodeBinaire, Bit}}{\tadParams{CodeBinaire}}
+        \tadOperationAvecPreconditions{supprimerBit}{\tadParams{CodeBinaire, \naturel}}{\tadParams{CodeBinaire}}
         \tadOperationAvecPreconditions{obtenirIemeBit}{\tadParams{CodeBinaire,\naturelNonNul}}{\tadParams{Bit}}
         \tadOperation{longueur}{\tadParams{CodeBinaire}}{\tadParams{\naturel}}
      \end{tadOperations}
-      \begin{tadSemantiques}{}
-            obtenirCodeBinaire : Obtient grâce à la table de codage le code binaire d'un caractère 
-    estBinaire : Permet de vérifier que le code est bien binaire
-         
-      \end{tadSemantiques}
+     \begin{tadSemantiques}{obtenirCodeBinaire}
+        \tadSemantiques{obtenirCodeBinaire}{Permet d'obtenir un code binaire vide}
+        \tadSemantiques{estVide}{Cherche si un code binaire est vide ou non}
+        \tadSemantiques{ajouterBit}{Ajoute un bit à une position dans le code binaire}
+        \tadSemantiques{supprimerBit}{Supprime un bit à une position dans le code binaire}
+        \tadSemantiques{obtenirIemeBit}{Donne le ième bit d'un code binaire}
+        \tadSemantiques{longueur}{Donne la longueur du code binaire}
+    \end{tadSemantiques}
     \begin{tadPreconditions}{obtenirFilsGauche(A)}
-            \tadPrecondition{estBinaire(code)}{non estVide(code)}
+            \tadPrecondition{ajouterBit(code, n, b)}{n > 0 et n <= longueur(code) + 1 }
+            \tadPrecondition{supprimerBit(code, n)}{n > 0 et n <= longueur(code) }
+            \tadPrecondition{obtenirIemeBit(code, n)}{n > 0 et n <= longueur(code) }
         \end{tadPreconditions}
 
 \end{tad}   
@@ -39,7 +44,14 @@
     \tadOperationAvecPreconditions{decoder}{\tadDeuxParams{Chaine de caracteres}{Code Binaire}}{\tadParams{Octet}}
     \tadOperationAvecPreconditions{obtenirOctet}{\tadParams{Chaine de caracteres}}{\tadParams{Octet}}
 \end{tadOperations}
-    
+\begin{tadSemantiques}{obtenirCodeBinaire}
+    \tadSemantiques{creerOctet}{Permet d'obtenir un octet vide}
+\tadSemantiques{ajouter}{Ajoute un bit dans l'octet}
+    \tadSemantiques{supprimer}{Supprime un bit dans l'octet}
+    \tadSemantiques{encoder}{Transforme un octet et un code binaire en une chaine de caractère}
+    \tadSemantiques{decoder}{Transforme une chaine de caractère et un code binaire en octet}
+    \tadSemantiques{obtenirOctet}{Donne l'octet correspondant à une chaine de caractere}
+\end{tadSemantiques}
 \end{tad}
     
 \section{TAD Statistiques}
