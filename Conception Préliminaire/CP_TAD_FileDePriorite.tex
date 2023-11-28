@@ -6,11 +6,32 @@
 \section{TAD FileDePriorite}
 
 \begin{algorithme}
-\signatureFonction{ filedePriorite}{arbre : ArbreHuffmann, file : File}{FileDePriorite}
+\signatureFonction{ filedePriorite}{}{FileDePriorite}
 {}
 \end{algorithme}
+
 \begin{algorithme}
-\signatureProcedure{ formationNouvelArbrePondere}{file : FileDePriorite}{FileDePriorite}
+    \signatureFonction{estVide}{file : FileDePriorite }{Booleen}
+    {}
+\end{algorithme}
+
+\begin{algorithme}
+    \signatureFonction{enfiler}{arbreH : ArbreHuffman, file : FileDePriorite }{FileDePriorite}
+    {}
+\end{algorithme}
+
+\begin{algorithme}
+        \signatureFonction{defiler}{file : FileDePriorite }{FileDePriorite}
+        {non(estVide(file))}
+\end{algorithme}
+
+\begin{algorithme}
+    \signatureFonction{obtenirElement}{file : FileDePriorite }{ArbreHuffmann}
+    {non(estVide(file))}
+\end{algorithme}
+
+\begin{algorithme}
+\signatureProcedure{ nouvelleFile}{file : FileDePriorite}{FileDePriorite}
 {non estVide(defiler(defiler(fdp)))}
 \end{algorithme}
 
