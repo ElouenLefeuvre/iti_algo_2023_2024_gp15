@@ -107,12 +107,12 @@
 
 \tadNom{FileDePriorité} 
 
-\tadDependances{Booleen, } 
+\tadDependances{Booleen} 
 
-\begin{tadOperations}{fileDePriorité}
-\tadOperation{fileDePriorité}{}{\tadParams{FileDePriorité}}
-\tadOperation{enfiler}{\tadDeuxParams{FileDePriorite}{Element}}{\tadParams{FileDePriorité}}
-\tadOperation{defiler}{\tadParam{FileDePriorité}}{\tadParams{FileDePriorité}}
+\begin{tadOperations}{fileDePriorite}
+\tadOperation{fileDePriorite}{}{\tadParams{FileDePriorite}}
+\tadOperation{enfiler}{\tadDeuxParams{FileDePriorite}{Element}}{\tadParams{FileDePriorite}}
+\tadOperation{defiler}{\tadParam{FileDePriorite}}{\tadParams{FileDePriorite}}
 \tadOperation{longueur}{\tadParams{FiledePriorite}}{\tadParams{\naturel}}
 \tadOperation{nouvelleFile}{\tadParams{FiledePriorite}}{\tadParams{FiledePriorite}}
 \tadOperation{estVide}{\tadParams{FileDePriorite}}{\tadParams{\booleen}}
@@ -145,7 +145,7 @@
     obtenirTableDeCodage : Renvoie la table de codage grâce à un arbre de Huffmann \newline
 \end{tadSemantiques}
     
-\begin{tadPreconditions}{}
+\begin{tadPreconditions}{obtenirTableDeCodage}
     obtenirTableDeCodage : non estVide(arbrebinaire)
 \end{tadPreconditions}
 \end{tad}
