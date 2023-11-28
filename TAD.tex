@@ -4,29 +4,29 @@
 
 \section{TAD Code Binaire}
 \begin{tad}
-     \tadNom{Code Binaire}
+\tadNom{Code Binaire}
         
-     \tadDependances{TableDeCodage, Caractere, Bit}
-     \begin{tadOperations}{obtenirCodeBinaire}
+\tadDependances{TableDeCodage, Caractere, Bit}
+\begin{tadOperations}{obtenirCodeBinaire}
         \tadOperation{obtenirCodeBinaire}{}{\tadParams{CodeBinaire}}
         \tadOperation{estVide}{\tadParams{CodeBinaire}}{\tadParams{\booleen}}
         \tadOperationAvecPreconditions{ajouterBit}{\tadParams{CodeBinaire, \naturel, Bit}}{\tadParams{CodeBinaire}}
         \tadOperationAvecPreconditions{supprimerBit}{\tadParams{CodeBinaire, \naturel}}{\tadParams{CodeBinaire}}
         \tadOperationAvecPreconditions{obtenirIemeBit}{\tadParams{CodeBinaire,\naturelNonNul}}{\tadParams{Bit}}
         \tadOperation{longueur}{\tadParams{CodeBinaire}}{\tadParams{\naturel}}
-     \end{tadOperations}
-     \begin{tadSemantiques}{obtenirCodeBinaire}
-        \tadSemantiques{obtenirCodeBinaire}{Permet d'obtenir un code binaire vide}
-        \tadSemantiques{estVide}{Cherche si un code binaire est vide ou non}
-        \tadSemantiques{ajouterBit}{Ajoute un bit à une position dans le code binaire}
-        \tadSemantiques{supprimerBit}{Supprime un bit à une position dans le code binaire}
-        \tadSemantiques{obtenirIemeBit}{Donne le ième bit d'un code binaire}
-        \tadSemantiques{longueur}{Donne la longueur du code binaire}
-    \end{tadSemantiques}
-    \begin{tadPreconditions}{obtenirFilsGauche(A)}
-            \tadPrecondition{ajouterBit(code, n, b)}{n > 0 et n <= longueur(code) + 1 }
-            \tadPrecondition{supprimerBit(code, n)}{n > 0 et n <= longueur(code) }
-            \tadPrecondition{obtenirIemeBit(code, n)}{n > 0 et n <= longueur(code) }
+\end{tadOperations}
+\begin{tadSemantiques}{obtenirCodeBinaire}
+        \tadSemantique{obtenirCodeBinaire}{Permet d'obtenir un code binaire vide}
+        \tadSemantique{estVide}{Cherche si un code binaire est vide ou non}
+        \tadSemantique{ajouterBit}{Ajoute un bit à une position dans le code binaire}
+        \tadSemantique{supprimerBit}{Supprime un bit à une position dans le code binaire}
+        \tadSemantique{obtenirIemeBit}{Donne le ième bit d'un code binaire}
+        \tadSemantique{longueur}{Donne la longueur du code binaire}
+\end{tadSemantiques}
+    \begin{tadPreconditions}{obtenirIemeBit(code, n)}
+            \tadPrecondition{ajouterBit(code, n, b)}{n $>$ 0 et n $\leq$ longueur(code) + 1 }
+            \tadPrecondition{supprimerBit(code, n)}{n $>$ 0 et n $\leq$ longueur(code) }
+            \tadPrecondition{obtenirIemeBit(code, n)}{n $>$ 0 et n $\leq$ longueur(code) }
         \end{tadPreconditions}
 
 \end{tad}   
@@ -45,13 +45,18 @@
     \tadOperationAvecPreconditions{obtenirOctet}{\tadParams{Chaine de caracteres}}{\tadParams{Octet}}
 \end{tadOperations}
 \begin{tadSemantiques}{obtenirCodeBinaire}
-    \tadSemantiques{creerOctet}{Permet d'obtenir un octet vide}
-\tadSemantiques{ajouter}{Ajoute un bit dans l'octet}
-    \tadSemantiques{supprimer}{Supprime un bit dans l'octet}
-    \tadSemantiques{encoder}{Transforme un octet et un code binaire en une chaine de caractère}
-    \tadSemantiques{decoder}{Transforme une chaine de caractère et un code binaire en octet}
-    \tadSemantiques{obtenirOctet}{Donne l'octet correspondant à une chaine de caractere}
+    \tadSemantique{creerOctet}{Permet d'obtenir un octet vide}
+    \tadSemantique{ajouter}{Ajoute un bit dans l'octet}
+    \tadSemantique{supprimer}{Supprime un bit dans l'octet}
+    \tadSemantique{encoder}{Transforme un octet et un code binaire en une chaine de caractère}
+    \tadSemantique{decoder}{Transforme une chaine de caractère et un code binaire en octet}
+    \tadSemantique{obtenirOctet}{Donne l'octet correspondant à une chaine de caractere}
 \end{tadSemantiques}
+\begin{tadPreconditions}{decoder(code, chaine)}
+            \tadPrecondition{encoder(o, code)}{non estVide(code)}
+            \tadPrecondition{decoder(code, chaine)}{non estVide(code)}
+            \tadPrecondition{obtenirOctet(chaine)}{longueur(chaine) $>$ 0}
+\end{tadPreconditions}
 \end{tad}
     
 \section{TAD Statistiques}
@@ -66,9 +71,9 @@
 \tadOperation{obtenirCaractere}{\tadParams{Statistiques}}{\tadParams{\caractere}}
 \end{tadOperations}
 \begin{tadSemantiques}{}
-    \tadSemantiques{statistiques}{Créer une statistique à partir d'un caractère et d'un naturel}\newline
-    \tadSemantiques{obtenirOccurences}{Permet d'obtenir le nombre d'occurences d'une statistique}\newline
-    \tadSemantiques{obtenirCaractere}{Permet d'obtenir le caractère d'une statistique}\newline
+    \tadSemantique{statistiques}{Créer une statistique à partir d'un caractère et d'un naturel}\newline
+    \tadSemantique{obtenirOccurences}{Permet d'obtenir le nombre d'occurences d'une statistique}\newline
+    \tadSemantique{obtenirCaractere}{Permet d'obtenir le caractère d'une statistique}\newline
 \end{tadSemantiques}
 
                           
@@ -87,7 +92,7 @@
         
             \tadOperation{arbrehuffman}{Statistiques}{\tadParams{Arbre Huffman}}
             
-            \tadOperationAvecPreconditions{fusionner}{\tadDeuxParams{Arbre Huffman}{Arbre Huffman}}{\tadParam{Arbre Huffman}}
+            \tadOperationAvecPreconditions{fusionner}{\tadDeuxParams{Arbre Huffman}{Arbre Huffman}}{\tadParams{Arbre Huffman}}
 
             \tadOperation{obtenirPonderation}{\tadParams{Arbre Huffman}}{\tadParams{\naturel}}
 
@@ -105,15 +110,15 @@
         \end{tadOperations}
         
         \begin{tadSemantiques}{}
-            \tadSemantiques{arbrehuffman}{Crée un arbre de huffman à partir d'une statistique}
-            \tadSemantiques{fusionner}{Fusionne deux arbres entre eux}
-            \tadSemantiques{obtenirPonderation}{Permet d'obtenir la ponderation d'un arbre de huffman}
-            \tadSemantiques{fixerFilsDroit}{Affecte la valeur au fils droit de l'arbre}
-            \tadSemantiques{fixerFilsGauche}{Affecte la valeur au fils gauche de l'arbre}
-            \tadSemantiques{obtenirFilsGauche}{Permet d'obtenir le fils gauche d'un arbre de huffman}
-            \tadSemantiques{obtenirFilsDroit}{Permet d'obtenir le fils droit d'un arbre de huffman}
-            \tadSemantiques{estFeuille}{Verifie si l'arbre de huffman est une feuille}
-            \tadSemantiques{estVide}{Verifie si l'arbre est vide, si son champ caractère est vide}
+            \tadSemantique{arbrehuffman}{Crée un arbre de huffman à partir d'une statistique}
+            \tadSemantique{fusionner}{Fusionne deux arbres entre eux}
+            \tadSemantique{obtenirPonderation}{Permet d'obtenir la ponderation d'un arbre de huffman}
+            \tadSemantique{fixerFilsDroit}{Affecte la valeur au fils droit de l'arbre}
+            \tadSemantique{fixerFilsGauche}{Affecte la valeur au fils gauche de l'arbre}
+            \tadSemantique{obtenirFilsGauche}{Permet d'obtenir le fils gauche d'un arbre de huffman}
+            \tadSemantique{obtenirFilsDroit}{Permet d'obtenir le fils droit d'un arbre de huffman}
+            \tadSemantique{estFeuille}{Verifie si l'arbre de huffman est une feuille}
+            \tadSemantique{estVide}{Verifie si l'arbre est vide, si son champ caractère est vide}
             
         \end{tadSemantiques}
         
@@ -140,7 +145,7 @@
 \begin{tadOperations}{fileDePriorite}
 \tadOperation{fileDePriorite}{}{\tadParams{FileDePriorite}}
 \tadOperation{enfiler}{\tadDeuxParams{FileDePriorite}{Element}}{\tadParams{FileDePriorite}}
-\tadOperation{defiler}{\tadParam{FileDePriorite}}{\tadParams{FileDePriorite}}
+\tadOperation{defiler}{\tadParams{FileDePriorite}}{\tadParams{FileDePriorite}}
 \tadOperation{longueur}{\tadParams{FiledePriorite}}{\tadParams{\naturel}}
 \tadOperation{nouvelleFile}{\tadParams{FiledePriorite}}{\tadParams{FiledePriorite}}
 \tadOperation{estVide}{\tadParams{FileDePriorite}}{\tadParams{\booleen}}
@@ -149,19 +154,16 @@
 \end{tadOperations}
 
 \begin{tadSemantiques}{fileDePriorite}
-    \tadSemantiques{filedePriorite}{Créer une file de priotité vide}
-    \tadSemantiques{enfiler}{Enfile un élément en fin de file}
-    \tadSemantiques{defiler}{Défile le dernier élément de la file}
-    \tadSemantiques{longueur}{Calcule la longueur de la file}
-    \tadSemantiques{nouvelleFile}{Créer la nouvelle file de priorité à partir de l'actuelle}
-    \tadSemantiques{estVide}{Cherche si la file de priotité est vide ou non}
-    \tadSemantiques{estPresent}{Cherche si un élément donné est présent dans la file ou non}
-    \tadSemantiques{obtenirElement}{Donne le dernier élément de la file}
+    \tadSemantique{filedePriorite}{Créer une file de priotité vide}
+    \tadSemantique{enfiler}{Enfile un élément en fin de file}
+    \tadSemantique{defiler}{Défile le dernier élément de la file}
+    \tadSemantique{longueur}{Calcule la longueur de la file}
+    \tadSemantique{nouvelleFile}{Créer la nouvelle file de priorité à partir de l'actuelle}
+    \tadSemantique{estVide}{Cherche si la file de priotité est vide ou non}
+    \tadSemantique{estPresent}{Cherche si un élément donné est présent dans la file ou non}
+    \tadSemantique{obtenirElement}{Donne le dernier élément de la file}
 \end{tadSemantiques}
     
-\begin{tadPreconditions}
-    formationNouvelArbrePondéré : non estVide(defiler(defiler(fdp)))\newline
-\end{tadPreconditions}
 
 \end{tad}
 
@@ -182,15 +184,15 @@
 \end{tadOperations}
 
 \begin{tadSemantiques}{obtenirTableDeCodage}
-    \tadSemantiques{obtenirTableDeCodage}{Renvoie la table de codage grâce à un arbre de Huffman}\newline
-    \tadSemantiques{obtenirCode}{Permet d'obtenir le code binaire d'un caractère grâce à la TableDeCodage}\newline
-    \tadSemantiques{obtenirCarac}{Permet d'obtenir le caractere d'un code binaire grâce à la TableDeCodage}\newline
-    \tadSemantiques{ajouter}{Permet d'ajouter une nouveeau caractère avec son code binaire dans la TableDeCodage}\newline
-    \tadSemantiques{retirer}{Permet de supprimer un caractère de la TableDeCodage}\newline
-    \tadSemantiques{estPresent}{Permet de savoir si un caractère est présent dans la TableDeCodage}\newline
+    \tadSemantique{obtenirTableDeCodage}{Renvoie la table de codage grâce à un arbre de Huffman}\newline
+    \tadSemantique{obtenirCode}{Permet d'obtenir le code binaire d'un caractère grâce à la TableDeCodage}\newline
+    \tadSemantique{obtenirCarac}{Permet d'obtenir le caractere d'un code binaire grâce à la TableDeCodage}\newline
+    \tadSemantique{ajouter}{Permet d'ajouter une nouveeau caractère avec son code binaire dans la TableDeCodage}\newline
+    \tadSemantique{retirer}{Permet de supprimer un caractère de la TableDeCodage}\newline
+    \tadSemantique{estPresent}{Permet de savoir si un caractère est présent dans la TableDeCodage}\newline
 \end{tadSemantiques}
     
-\begin{tadPreconditions}
+\begin{tadPreconditions}{obtenirTableDeCodage(A)}
     \tadPrecondition{obtenirTableDeCodage(A)}{non estVide(A)}
     \tadPrecondition{obtenirCode(t,car)}{estPresent(t,car)}
 \end{tadPreconditions}
