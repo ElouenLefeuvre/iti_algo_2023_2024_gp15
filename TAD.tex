@@ -6,7 +6,7 @@
 \begin{tad}
      \tadNom{Code Binaire}
         
-     \tadDependances{TableDeCodage, Caractere }
+     \tadDependances{TableDeCodage, Caractere, Bit}
      \begin{tadOperations}{obtenirCodeBinaire}
         \tadOperation{obtenirCodeBinaire}{}{\tadParams{CodeBinaire}}
         \tadOperation{estVide}{\tadParams{CodeBinaire}}{\tadParams{\booleen}}
@@ -30,7 +30,7 @@
 \section{TAD Octet}
 \begin{tad}
 \tadNom{Octet}
-\tadDependances{Chaine de caracteres, Code Binaire, Booleen}
+\tadDependances{Chaine de caracteres, Code Binaire, Booleen, Bit}
 \begin{tadOperations}{ObtenirOctet}
     \tadOperation{creerOctet}{}{\tadParams{Octet}}
     \tadOperation{ajouter}{\tadDeuxParams{Octet}{Bit}}{\tadParams{Octet}}
