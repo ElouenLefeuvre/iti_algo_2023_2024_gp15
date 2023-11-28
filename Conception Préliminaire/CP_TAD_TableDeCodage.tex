@@ -3,10 +3,30 @@
 
 \begin{document}
 \section{TAD TableDeCodage}
+
 \begin{algorithme}
 \signatureFonction{obtenirTableDeCodage}
 	{a : ArbreHuffmann}{TableDeCodage}
 	{non estVide(arbrebinaire)}
 \end{algorithme}
 
+\begin{algorithme}
+	\signatureFonction{obtenirCode}
+		{tab : TableDeCodage, car : \caractere}{CodeBinaire}
+		{}
+\end{algorithme}
+
+\begin{algorithme}
+	\signatureFonction{obtenirCarac}
+		{tab : TableDeCodage, code : CodeBinaire}{\caractere}
+		{}
+\end{algorithme}
+
+\begin{algorithme}
+	\signatureFonction{ajouter}
+		{tab : TableDeCodage, code : CodeBinaire, car : \caractere}{TableDeCodage}
+		{}
+\end{algorithme}
+
 \end{document}
+
