@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{algorithme}
+\usepackage{pseudocode}
 
 \begin{document}
 
@@ -7,19 +7,23 @@
 \begin{tad}
      \tadNom{Code Binaire}
         
-     \tadDependances{TableDeCodage, Caractere }
+     \tadDependances{TableDeCodage, Caractere, Booléen }
      \begin{tadOperations}{obtenirCodeBinaire}
-        \tadOperation{obtenirCodeBinaire}{\tadDeuxParams{TableDeCodage}{Caractere}}{\tadParam{CodeBinaire}}
-        \tadOperationAvecPreconditions{estBinaire}{\tadParam{CodeBinaire}}{\tadParam{Booléen}}
+        \tadOperation{codeBinaire}{}{\tadParams{CodeBinare}}
+        \tadOperation{obtenirCodeBinaire}{\tadDeuxParams{TableDeCodage}{Caractere}}{\tadParams{CodeBinaire}}
+        \tadOperationAvecPreconditions{estBinaire}{\tadParams{CodeBinaire}}{\tadParams{Booléen}}
      \end{tadOperations}
       \begin{tadSemantiques}{}
-            obtenirCodeBinaire : Obtient grâce à la table de codage le code binaire d'un caractère 
-    estBinaire : Permet de vérifier que le code est bien binaire
+            \tadSemantique{obtenirCodeBinaire}{obtient grâce à la table de codage le code binaire d'un caractère.}
+    \tadSemantique{estBinaire}{Permet de vérifier que le code est bien binaire.}
          
       \end{tadSemantiques}
-    \begin{tadPreconditions}{obtenirFilsGauche(A)}
-            \tadPrecondition{estBinaire(code)}{non estVide(code)}
-        \end{tadPreconditions}
+    \begin{tadAxiomes}
+        \tadAxiome{estBinaire(obtenirCodeBinaire(TableDeCodage))}
+    \end{tadAxiomes}
+    \begin{tadPreconditions}{estBinaire(code)}
+        \tadPrecondition{estBinaire(code)}{non estVide(code)}
+    \end{tadPreconditions}
 
 \end{tad}   
 
@@ -29,12 +33,23 @@
 \tadNom{Octet}
 \tadDependances{Chaine de caracteres, Code Binaire, Booleen}
 \begin{tadOperations}{estOctet}
-    \tadOperation{estOctet}{\tadParam{Octet}}{\tadParam{Booleen}}
-    \tadOperation{encoder}{\tadDeuxParams{Octet}{Code Binaire}}{\tadParam{ Chaine de caracteres}}
-    \tadOperation{decoder}{\tadDeuxParams{Chaine de caracteres}{Code Binaire}}{\tadParam{Octet}}
-    \tadOperation{obtenirOctet}{\tadParam{Chaine de caracteres}}{\tadParam{Octet}}
+    \tadOperation{estOctet}{\tadParams{Octet}}{\tadParams{Booleen}}
+    \tadOperation{encoder}{\tadDeuxParams{Octet}{Code Binaire}}{\tadParams{ Chaine de caracteres}}
+    \tadOperation{decoder}{\tadDeuxParams{Chaine de caracteres}{Code Binaire}}{\tadParams{Octet}}
+    \tadOperation{obtenirOctet}{\tadParams{Chaine de caracteres}}{\tadParams{Octet}}
 \end{tadOperations}
-    
+\begin{tadSemantiques}{}
+    \tadSemantique{estOctet}{vérifie si l'élément est bien un octet.}
+    \tadSemantique{encoder}{donne la chaîne de caractères associée à un Octet et un Code Binaire.}
+    \tadSemantique{decoder}{donne l'octet associé à la Chaîne de caractères et un Code Binaire.}
+    \tadSemantique{obtenirOctet}{donne l'octet associé à une Chaîne de caractères.}
+         
+\end{tadSemantiques}
+\begin{tadAxiomes}
+        \tadAxiome{estOctet(obtenirOctet(CDC))}
+        \tadAxiome{estOctet(decoder(CDC,CodeBinaire))}
+        \tadAxiome{decoder(encoder(Octet,CodeBinaire)) = Octet}
+\end{tadAxiomes}
 \end{tad}
     
 \section{TAD Statistiques}
@@ -42,8 +57,8 @@
 \tadNom{Statistiques}
 \tadDependances{Caractère, Chaine de caracteres, Naturel}
 \begin{tadOperations}{statistiques}
-\tadOperation{statistiques}{\tadDeuxParams{Caractère}{Naturel}}{\tadParam{ Statistiques}}
-\tadOperation{obtenirOccurences}{\tadParam{Chaine de caracteres}}{\tadParam{Statistiques}}
+\tadOperation{statistiques}{\tadParams{Octet}{\tadParams{ Statistiques}}
+\tadOperation{obtenirOccurences}{\tadParams{Chaine de caracteres}}{\tadParam{Statistiques}}
 \end{tadOperations}
 \begin{tadSemantiques}{}
      statistiques : créer une statistique à partir d'un caractère et de son nombre d'occurences. \newline
@@ -130,6 +145,7 @@
 
 \begin{tadOperations}{obtenirTableDeCodage}
     \tadOperation{obtenirTableDeCodage}{\tadParam{ArbreHuffmann}}{\tadParam{TableDeCodage}}
+    \tadOperation{}{}{}
 \end{tadOperations}
 
 \begin{tadSemantiques}{}
@@ -141,6 +157,3 @@
 \end{tadPreconditions}
 \end{tad}
 \end{document}
-
-
-
