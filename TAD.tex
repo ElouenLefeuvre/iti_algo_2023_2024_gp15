@@ -8,8 +8,12 @@
         
      \tadDependances{TableDeCodage, Caractere }
      \begin{tadOperations}{obtenirCodeBinaire}
-        \tadOperation{obtenirCodeBinaire}{\tadDeuxParams{TableDeCodage}{Caractere}}{\tadParam{CodeBinaire}}
-        \tadOperationAvecPreconditions{estBinaire}{\tadParam{CodeBinaire}}{\tadParam{Booléen}}
+        \tadOperation{obtenirCodeBinaire}{}{\tadParams{CodeBinaire}}
+        \tadOperation{estVide}{\tadParams{CodeBinaire}}{\tadParams{\booleen}}
+        \tadOperationAvecPreconditions{ajouterBit}{\tadParams{CodeBinaire, \naturel, Bit}}{\tadParams{CodeBinaire}}
+        \tadOperationAvecPreconditions{supprimerBit}{\tadParams{CodeBinaire, Bit}}{\tadParams{CodeBinaire}}
+        \tadOperationAvecPreconditions{obtenirIemeBit}{\tadParams{CodeBinaire,\naturelNonNul}}{\tadParams{Bit}}
+        \tadOperation{longueur}{\tadParams{CodeBinaire}}{\tadParams{\naturel}}
      \end{tadOperations}
       \begin{tadSemantiques}{}
             obtenirCodeBinaire : Obtient grâce à la table de codage le code binaire d'un caractère 
@@ -27,7 +31,7 @@
 \begin{tad}
 \tadNom{Octet}
 \tadDependances{Chaine de caracteres, Code Binaire, Booleen}
-\begin{tadOperations}{estOctet}
+\begin{tadOperations}{ObtenirOctet}
     \tadOperation{creerOctet}{}{\tadParams{Octet}}
     \tadOperation{ajouter}{\tadDeuxParams{Octet}{Bit}}{\tadParams{Octet}}
     \tadOperationAvecPreconditions{supprimer}{\tadDeuxParams{Octet}{Bit}}{\tadParams{Octet}}
