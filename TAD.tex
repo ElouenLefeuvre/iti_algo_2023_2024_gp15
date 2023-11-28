@@ -123,9 +123,15 @@
 \tadOperation{obtenirElement}{\tadParams{FileDePriorite}}{\tadParams{Element}}
 \end{tadOperations}
 
-\begin{tadSemantiques}{}
-    fileDePriorité : Permet de créer une file de priorité à patir d'arbres de Huffman et d'une liste \newline
-    formationNouvelArbrePondéré : Permet de formet un nouvel arbre de Huffman à partir de 2 arbres \newline
+\begin{tadSemantiques}{fileDePriorite}
+    \tadSemantiques{filedePriorite}{Créer une file de priotité vide}
+    \tadSemantiques{enfiler}{Enfile un élément en fin de file}
+    \tadSemantiques{defiler}{Défile le dernier élément de la file}
+    \tadSemantiques{longueur}{Calcule la longueur de la file}
+    \tadSemantiques{nouvelleFile}{Créer la nouvelle file de priorité à partir de l'actuelle}
+    \tadSemantiques{estVide}{Cherche si la file de priotité est vide ou non}
+    \tadSemantiques{estPresent}{Cherche si un élément donné est présent dans la file ou non}
+    \tadSemantiques{obtenirElement}{Donne le dernier élément de la file}
 \end{tadSemantiques}
     
 \begin{tadPreconditions}
