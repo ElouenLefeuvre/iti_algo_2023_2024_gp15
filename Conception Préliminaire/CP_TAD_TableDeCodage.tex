@@ -6,14 +6,14 @@
 
 \begin{algorithme}
 \signatureFonction{obtenirTableDeCodage}
-	{a : ArbreHuffmann}{TableDeCodage}
-	{non estVide(arbrebinaire)}
+	{a : ArbreHuffman}{TableDeCodage}
+	{non estVide(a)}
 \end{algorithme}
 
 \begin{algorithme}
 	\signatureFonction{obtenirCode}
 		{tab : TableDeCodage, car : \caractere}{CodeBinaire}
-		{}
+		{estPresent(tab,car)}
 \end{algorithme}
 
 \begin{algorithme}
@@ -23,8 +23,20 @@
 \end{algorithme}
 
 \begin{algorithme}
-	\signatureFonction{ajouter}
-		{tab : TableDeCodage, code : CodeBinaire, car : \caractere}{TableDeCodage}
+	\signatureProcedure{ajouter}
+		{\paramEntreeSortie tab : TableDeCodage, \paramEntree car : \caractere, code : CodeBinaire}
+		{}
+\end{algorithme}
+
+\begin{algorithme}
+	\signatureProcedure{retirer}
+		{\paramEntreeSortie tab : TableDeCodage, \paramEntree car : \caractere}
+		{}
+\end{algorithme}
+
+\begin{algorithme}
+	\signatureFonction{estPresent}
+		{tab : TableDeCodage, car : \caractere}{\booleen}
 		{}
 \end{algorithme}
 

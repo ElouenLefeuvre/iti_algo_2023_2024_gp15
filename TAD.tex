@@ -47,13 +47,14 @@
 
 \begin{tadOperations}{statistiques}
 
-\tadOperation{statistiques}{\tadDeuxParams{{\caractere}{\naturel}}}{\tadParams{ Statistiques}}
+\tadOperation{statistiques}{\tadDeuxParams{\caractere}{\naturel}}{\tadParams{ Statistiques}}
 \tadOperation{obtenirOccurences}{\tadParams{Statistiques}}{\tadParams{\naturel}}
 \tadOperation{obtenirCaractere}{\tadParams{Statistiques}}{\tadParams{\caractere}}
 \end{tadOperations}
 \begin{tadSemantiques}{}
-     statistiques : créer une statistique à partir d'un caractère et de son nombre d'occurences. \newline
-     {obtenirOccurences} : Renvoie le nombre d'occurences d'un caractère et le stock dans la statistique    \newline
+    \tadSemantiques{statistiques}{Créer une statistique à partir d'un caractère et d'un naturel}\newline
+    \tadSemantiques{obtenirOccurences}{Permet d'obtenir le nombre d'occurences d'une statistique}\newline
+    \tadSemantiques{obtenirCaractere}{Permet d'obtenir le caractère d'une statistique}\newline
 \end{tadSemantiques}
 
                           
@@ -142,6 +143,7 @@
 \end{tadPreconditions}
 
 \end{tad}
+
 \section{TAD TableDeCodage}
 
 \begin{tad}
@@ -149,16 +151,27 @@
 \tadDependances{ArbreHuffmann}
 
 \begin{tadOperations}{obtenirTableDeCodage}
-    \tadOperation{obtenirTableDeCodage}{\tadParams{ArbreHuffmann}}{\tadParams{TableDeCodage}}
-\tadOperation{}{}{}
+    \tadOperation{obtenirTableDeCodage}{\tadParams{ArbreHuffman}}{\tadParams{TableDeCodage}}
+    \tadOperationAvecPreconditions{obtenirCode}{\tadDeuxParams{TableDeCodage}{\caractere}}{\tadParams{CodeBinaire}}
+    \tadOperation{obtenirCarac}{\tadDeuxParams{TableDeCodage}{CodeBinaire}}{\tadParams{\caractere}}
+    \tadOperation{ajouter}{\tadDeuxParams{\tadDeuxParams{TableDeCodage}{caractere}}{CodeBinaire}}{\tadParams{TableDeCodage}}
+    \tadOperation{retirer}{\tadDeuxParams{TableDeCodage}{\caractere}}{\tadParams{TableDeCodage}}
+    \tadOperation{estPresent}{\tadDeuxParams{TableDeCodage}{\caractere}}{\tadParams{\booleen}}
+
 \end{tadOperations}
 
-\begin{tadSemantiques}{}
-    obtenirTableDeCodage : Renvoie la table de codage grâce à un arbre de Huffmann \newline
+\begin{tadSemantiques}{obtenirTableDeCodage}
+    \tadSemantiques{obtenirTableDeCodage}{Renvoie la table de codage grâce à un arbre de Huffman}\newline
+    \tadSemantiques{obtenirCode}{Permet d'obtenir le code binaire d'un caractère grâce à la TableDeCodage}\newline
+    \tadSemantiques{obtenirCarac}{Permet d'obtenir le caractere d'un code binaire grâce à la TableDeCodage}\newline
+    \tadSemantiques{ajouter}{Permet d'ajouter une nouveeau caractère avec son code binaire dans la TableDeCodage}\newline
+    \tadSemantiques{retirer}{Permet de supprimer un caractère de la TableDeCodage}\newline
+    \tadSemantiques{estPresent}{Permet de savoir si un caractère est présent dans la TableDeCodage}\newline
 \end{tadSemantiques}
     
-\begin{tadPreconditions}{obtenirTableDeCodage}
-    obtenirTableDeCodage : non estVide(arbrebinaire)
+\begin{tadPreconditions}
+    \tadPrecondition{obtenirTableDeCodage(A)}{non estVide(A)}
+    \tadPrecondition{obtenirCode(t,car)}{estPresent(t,car)}
 \end{tadPreconditions}
 \end{tad}
 \end{document}
