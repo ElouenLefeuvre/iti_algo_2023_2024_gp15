@@ -44,9 +44,12 @@
 \begin{tad}
 \tadNom{Statistiques}
 \tadDependances{Caractère, Chaine de caracteres, Naturel}
+
 \begin{tadOperations}{statistiques}
-\tadOperation{statistiques}{\tadParams{Octet}{\tadParams{ Statistiques}}
-\tadOperation{obtenirOccurences}{\tadParams{Chaine de caracteres}}{\tadParams{Statistiques}}
+
+\tadOperation{statistiques}{\tadDeuxParams{{\caractere}{\naturel}}}{\tadParams{ Statistiques}}
+\tadOperation{obtenirOccurences}{\tadParams{Statistiques}}{\tadParams{\naturel}}
+\tadOperation{obtenirCaractere}{\tadParams{Statistiques}}{\tadParams{\caractere}}
 \end{tadOperations}
 \begin{tadSemantiques}{}
      statistiques : créer une statistique à partir d'un caractère et de son nombre d'occurences. \newline
@@ -65,7 +68,7 @@
         
         \tadDependances{statistiques}
         
-        \begin{tadOperations}
+        \begin{tadOperations}{obtenirPonderation}
         
             \tadOperation{arbrehuffman}{Statistiques}{\tadParams{Arbre Huffman}}
             
@@ -73,13 +76,13 @@
 
             \tadOperation{obtenirPonderation}{\tadParams{Arbre Huffman}}{\tadParams{\naturel}}
 
-            \tadOperationAvecPreconditions{fixerFilsDroit}{\tadDeuxParams{\paramEntree{arbred : ArbreHuffman}\paramEntreeSortie{racine : ArbreHuffman}}}
+            \tadOperationAvecPreconditions{fixerFilsDroit}{\tadDeuxParams{\paramEntree{arbred : Arbre Huffman}\paramEntreeSortie{racine : Arbre Huffman}}}
 
-            \tadOperationAvecPreconditions{fixerFilsGauche}{\tadDeuxParams{\paramEntree{arbreg : ArbreHuffman}\paramEntreeSortie{racine : ArbreHuffman}}}
+            \tadOperationAvecPreconditions{fixerFilsGauche}{\tadDeuxParams{\paramEntree{arbreg : Arbre Huffman}\paramEntreeSortie{racine : Arbre Huffman}}}
 
             \tadOperationAvecPreconditions{obtenirFilsGauche}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
 
-            \tadOperationAvecPreconditions{obtenirFilsDroit}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
+            \tadOperationAvecPreconditions{oHbtenirFilsDroit}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
 
             \tadOperation{estFeuille}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
 
@@ -123,9 +126,15 @@
 \tadOperation{obtenirElement}{\tadParams{FileDePriorite}}{\tadParams{Element}}
 \end{tadOperations}
 
-\begin{tadSemantiques}{}
-    fileDePriorité : Permet de créer une file de priorité à patir d'arbres de Huffman et d'une liste \newline
-    formationNouvelArbrePondéré : Permet de formet un nouvel arbre de Huffman à partir de 2 arbres \newline
+\begin{tadSemantiques}{fileDePriorite}
+    \tadSemantiques{filedePriorite}{Créer une file de priotité vide}
+    \tadSemantiques{enfiler}{Enfile un élément en fin de file}
+    \tadSemantiques{defiler}{Défile le dernier élément de la file}
+    \tadSemantiques{longueur}{Calcule la longueur de la file}
+    \tadSemantiques{nouvelleFile}{Créer la nouvelle file de priorité à partir de l'actuelle}
+    \tadSemantiques{estVide}{Cherche si la file de priotité est vide ou non}
+    \tadSemantiques{estPresent}{Cherche si un élément donné est présent dans la file ou non}
+    \tadSemantiques{obtenirElement}{Donne le dernier élément de la file}
 \end{tadSemantiques}
     
 \begin{tadPreconditions}
