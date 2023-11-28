@@ -97,7 +97,7 @@
 
             \tadOperationAvecPreconditions{obtenirFilsGauche}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
 
-            \tadOperationAvecPreconditions{oHbtenirFilsDroit}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
+            \tadOperationAvecPreconditions{obtenirFilsDroit}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
 
             \tadOperation{estFeuille}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
 
@@ -105,8 +105,15 @@
         \end{tadOperations}
         
         \begin{tadSemantiques}{}
-        
-            
+            \tadSemantiques{arbrehuffman}{Crée un arbre de huffman à partir d'une statistique}
+            \tadSemantiques{fusionner}{Fusionne deux arbres entre eux}
+            \tadSemantiques{obtenirPonderation}{Permet d'obtenir la ponderation d'un arbre de huffman}
+            \tadSemantiques{fixerFilsDroit}{Affecte la valeur au fils droit de l'arbre}
+            \tadSemantiques{fixerFilsGauche}{Affecte la valeur au fils gauche de l'arbre}
+            \tadSemantiques{obtenirFilsGauche}{Permet d'obtenir le fils gauche d'un arbre de huffman}
+            \tadSemantiques{obtenirFilsDroit}{Permet d'obtenir le fils droit d'un arbre de huffman}
+            \tadSemantiques{estFeuille}{Verifie si l'arbre de huffman est une feuille}
+            \tadSemantiques{estVide}{Verifie si l'arbre est vide, si son champ caractère est vide}
             
         \end{tadSemantiques}
         
