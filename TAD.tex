@@ -107,13 +107,17 @@
 
 \tadNom{FileDePriorité} 
 
-\tadDependances{ArbreHuffman, File} 
+\tadDependances{Booleen, } 
 
 \begin{tadOperations}{fileDePriorité}
 \tadOperation{fileDePriorité}{}{\tadParams{FileDePriorité}}
 \tadOperation{enfiler}{\tadDeuxParams{FileDePriorite}{Element}}{\tadParams{FileDePriorité}}
 \tadOperation{defiler}{\tadParam{FileDePriorité}}{\tadParams{FileDePriorité}}
-\tadOperation{longueur}{\tadParams{File}}{\tadParams{\naturel}}
+\tadOperation{longueur}{\tadParams{FiledePriorite}}{\tadParams{\naturel}}
+\tadOperation{nouvelleFile}{\tadParams{FiledePriorite}}{\tadParams{FiledePriorite}}
+\tadOperation{estVide}{\tadParams{FileDePriorite}}{\tadParams{\booleen}}
+\tadOperation{estPresent}{\tadDeuxParams{FileDePriorite}{Element}}{\tadParams{\booleen}}
+\tadOperation{obtenirElement}{\tadParams{FileDePriorite}}{\tadParams{Element}}
 \end{tadOperations}
 
 \begin{tadSemantiques}{}
