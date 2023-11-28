@@ -68,15 +68,17 @@
             
             \tadOperationAvecPreconditions{fusionner}{\tadDeuxParams{Arbre Huffman}{Arbre Huffman}}{\tadParam{Arbre Huffman}}
 
-            \tadOperation{obtenirPonderation}{\tadParam{Arbre Huffman}}{\tadParam{\naturel}}
+            \tadOperation{obtenirPonderation}{\tadParams{Arbre Huffman}}{\tadParams{\naturel}}
 
-            \tadOperationAvecPreconditions{obtenirOctet}{\tadParams{Arbre Huffman}}{\tadParams{Octet}}
+            \tadOperationAvecPreconditions{fixerFilsDroit}{\tadDeuxParams{\paramEntree{arbred : ArbreHuffman}\paramEntreeSortie{racine : ArbreHuffman}}}
+
+            \tadOperationAvecPreconditions{fixerFilsGauche}{\tadDeuxParams{\paramEntree{arbreg : ArbreHuffman}\paramEntreeSortie{racine : ArbreHuffman}}}
 
             \tadOperationAvecPreconditions{obtenirFilsGauche}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
 
-            \tadOperationAvecPreconditions{obtenirFilsDroite}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
+            \tadOperationAvecPreconditions{obtenirFilsDroit}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
 
-            \tadOperation{estUneFeuille}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
+            \tadOperation{estFeuille}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
 
             \tadOperation{estVide}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
         \end{tadOperations}
@@ -89,7 +91,8 @@
         
         \begin{tadPreconditions}{obtenirFilsGauche(A)}
             \tadPrecondition{fusionner(A)}{estVide(A)}
-            \tadPrecondition{obtenirOctet(A)}{estUneFeuille(A)}
+            \tadPrecondition{fixerFilsDroit(r,ad)}{non(estVide(r))}
+            \tadPrecondition{fixerFilsGauche(r,ag)}{non(estVide(r))}
             \tadPrecondition{obtenirFilsGauche(A)}{non estUneFeuille(A)}
             \tadPrecondition{obtenirFilsDroit(A)}{non estUneFeuille(A)}
         \end{tadPreconditions}
@@ -135,7 +138,7 @@
 
 \begin{tadOperations}{obtenirTableDeCodage}
     \tadOperation{obtenirTableDeCodage}{\tadParams{ArbreHuffmann}}{\tadParams{TableDeCodage}}
-    \tadOperation{}{}{}
+\tadOperation{}{}{}
 \end{tadOperations}
 
 \begin{tadSemantiques}{}
