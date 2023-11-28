@@ -41,9 +41,12 @@
 \begin{tad}
 \tadNom{Statistiques}
 \tadDependances{Caractère, Chaine de caracteres, Naturel}
+
 \begin{tadOperations}{statistiques}
-\tadOperation{statistiques}{\tadParams{Octet}{\tadParams{ Statistiques}}
-\tadOperation{obtenirOccurences}{\tadParams{Chaine de caracteres}}{\tadParams{Statistiques}}
+
+\tadOperation{statistiques}{\tadDeuxParams{{\caractere}{\naturel}}}{\tadParams{ Statistiques}}
+\tadOperation{obtenirOccurences}{\tadParams{Statistiques}}{\tadParams{\naturel}}
+\tadOperation{obtenirCaractere}{\tadParams{Statistiques}}{\tadParams{\caractere}}
 \end{tadOperations}
 \begin{tadSemantiques}{}
      statistiques : créer une statistique à partir d'un caractère et de son nombre d'occurences. \newline
@@ -62,7 +65,7 @@
         
         \tadDependances{statistiques}
         
-        \begin{tadOperations}
+        \begin{tadOperations}{obtenirPonderation}
         
             \tadOperation{arbrehuffman}{Statistiques}{\tadParams{Arbre Huffman}}
             
@@ -70,13 +73,13 @@
 
             \tadOperation{obtenirPonderation}{\tadParams{Arbre Huffman}}{\tadParams{\naturel}}
 
-            \tadOperationAvecPreconditions{fixerFilsDroit}{\tadDeuxParams{\paramEntree{arbred : ArbreHuffman}\paramEntreeSortie{racine : ArbreHuffman}}}
+            \tadOperationAvecPreconditions{fixerFilsDroit}{\tadDeuxParams{\paramEntree{arbred : Arbre Huffman}\paramEntreeSortie{racine : Arbre Huffman}}}
 
-            \tadOperationAvecPreconditions{fixerFilsGauche}{\tadDeuxParams{\paramEntree{arbreg : ArbreHuffman}\paramEntreeSortie{racine : ArbreHuffman}}}
+            \tadOperationAvecPreconditions{fixerFilsGauche}{\tadDeuxParams{\paramEntree{arbreg : Arbre Huffman}\paramEntreeSortie{racine : Arbre Huffman}}}
 
             \tadOperationAvecPreconditions{obtenirFilsGauche}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
 
-            \tadOperationAvecPreconditions{obtenirFilsDroit}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
+            \tadOperationAvecPreconditions{oHbtenirFilsDroit}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
 
             \tadOperation{estFeuille}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
 
