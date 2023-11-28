@@ -23,7 +23,6 @@
     {\affecter{ensC}{obtenirCaracteres(fic)}
     \affecter{ensS}{creerStatistique(ensC)}
     \affecter{file}{filedePriorite()}
-    \affecter{arbre}{creerArbre()}
     \pourChaque{Stats}{ensS}
     {insererArbre(file, creerArbre(stats))}
     
@@ -47,7 +46,7 @@
     {ensStats : Ensemble de Statistiques, nbOcc : \naturel}   				
     {\pourChaque{car}{ensC}
         {\affecter{nbOcc}{Statistiques.obtenirOccurence(car)}
-        Ensemble.ajouter(ensStats,nbOcc)}
+        Ensemble.ajouter(ensStats,statistique(car, nbOcc))}
     \retourner{ensStats}}
         
 \end{algorithme}
