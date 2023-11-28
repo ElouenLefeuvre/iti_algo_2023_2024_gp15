@@ -58,7 +58,7 @@
 \tadDependances{Caractère, Chaine de caracteres, Naturel}
 \begin{tadOperations}{statistiques}
 \tadOperation{statistiques}{\tadParams{Octet}{\tadParams{ Statistiques}}
-\tadOperation{obtenirOccurences}{\tadParams{Chaine de caracteres}}{\tadParam{Statistiques}}
+\tadOperation{obtenirOccurences}{\tadParams{Chaine de caracteres}}{\tadParams{Statistiques}}
 \end{tadOperations}
 \begin{tadSemantiques}{}
      statistiques : créer une statistique à partir d'un caractère et de son nombre d'occurences. \newline
@@ -79,21 +79,21 @@
         
         \begin{tadOperations}{obtenirFilsGauche}
         
-            \tadOperation{arbrehuffman}{Statistiques}{\tadParam{Arbre Huffman}}
+            \tadOperation{arbrehuffman}{Statistiques}{\tadParams{Arbre Huffman}}
             
             \tadOperationAvecPreconditions{fusionner}{\tadDeuxParams{Arbre Huffman}{Arbre Huffman}}{\tadParam{Arbre Huffman}}
 
-            \tadOperation{obtenirOccurence}{\tadParam{Arbre Huffman}}{\tadParam{\entier}}
+            \tadOperation{obtenirOccurence}{\tadParams{Arbre Huffman}}{\tadParams{\entier}}
 
-            \tadOperationAvecPreconditions{obtenirOctet}{\tadParam{Arbre Huffman}}{\tadParam{Octet}}
+            \tadOperationAvecPreconditions{obtenirOctet}{\tadParams{Arbre Huffman}}{\tadParams{Octet}}
 
-            \tadOperationAvecPreconditions{obtenirFilsGauche}{\tadParam{Arbre Huffman}}{\tadParam{Arbre Huffman}}
+            \tadOperationAvecPreconditions{obtenirFilsGauche}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
 
-            \tadOperationAvecPreconditions{obtenirFilsDroite}{\tadParam{Arbre Huffman}}{\tadParam{Arbre Huffman}}
+            \tadOperationAvecPreconditions{obtenirFilsDroite}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
 
-            \tadOperation{estUneFeuille}{\tadParam{Arbre Huffman}}{\tadParam{\booleen}}
+            \tadOperation{estUneFeuille}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
 
-            \tadOperation{estVide}{\tadParam{Arbre Huffman}}{\tadParam{\booleen}}
+            \tadOperation{estVide}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
         \end{tadOperations}
         
         \begin{tadSemantiques}{}
@@ -122,9 +122,10 @@
 \tadDependances{ArbreHuffman, File} 
 
 \begin{tadOperations}{fileDePriorité}
-\tadOperation{fileDePriorité}{\tadDeuxParams{ArbreHuffman}{File}}{\tadParam{FileDePriorité}}
-\tadOperation{formationNouvelArbrePondéré}{\tadParam{FileDePriorité}}{\tadParam{FileDePriorité}}
-\tadOperation{longueur}{\tadParam{File}}{\tadParam{\naturel}}
+\tadOperation{fileDePriorité}{}{\tadParams{FileDePriorité}}
+\tadOperation{enfiler}{\tadDeuxParams{FileDePriorite}{Element}}{\tadParams{FileDePriorité}}
+\tadOperation{defiler}{\tadParam{FileDePriorité}}{\tadParams{FileDePriorité}}
+\tadOperation{longueur}{\tadParams{File}}{\tadParams{\naturel}}
 \end{tadOperations}
 
 \begin{tadSemantiques}{}
@@ -144,7 +145,7 @@
 \tadDependances{ArbreHuffmann}
 
 \begin{tadOperations}{obtenirTableDeCodage}
-    \tadOperation{obtenirTableDeCodage}{\tadParam{ArbreHuffmann}}{\tadParam{TableDeCodage}}
+    \tadOperation{obtenirTableDeCodage}{\tadParams{ArbreHuffmann}}{\tadParams{TableDeCodage}}
     \tadOperation{}{}{}
 \end{tadOperations}
 
