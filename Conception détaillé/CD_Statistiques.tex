@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{pseudocode}
+
+\begin{document}
+\begin{algorithme}
+\begin{enregistrement}{Statistiques}
+    \champEnregistrement{caractere}{\caractere}
+    \champEnregistrement{occurences}{\naturelNonNul}
+\end{enregistrement}    
+\end{algorithme}
+
+\section{statistique}
+
+\begin{algorithme}
+    \fonction{statistique}{c : \caractere, n : \naturelNonNul}{Statistiques}
+    {}
+    {stat : Statistiques}
+    {\affecter{stat.caracteres}{c}
+    \affecter{stat.occurences}{}
+    \retourner{stat}}
+\end{algorithme}
+
+\section{obtenirOccurences}
+\begin{algorithme}
+    \fonction{obtenirOccurences}{stat : Statistiques}{\naturelNonNul}
+    {}
+    {}
+    {\retourner{stat.occurences}}
+\end{algorithme}
+
+\section{obtenirCaractere}
+
+\begin{algorithme}
+    \fonction{obtenirCaractere}{stat : Statistiques}{\caractere}{}{}
+    {\retourner{stat.caractere}}
+\end{algorithme}
+
+\section{creerStatistique}
+
+
+
+\end{document}
