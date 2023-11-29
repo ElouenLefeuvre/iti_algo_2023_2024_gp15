@@ -37,4 +37,14 @@
     {}
     {\retourner{chaine[i]}}
 \end{algorithme}
+
+\begin{algorithme}
+    \fonction{longueur}{code : CodeBinaire}{\naturel}
+    {}
+    {l : naturel}
+    {\affecter{l}{0}
+    \pourChaque{car}{code}
+    {\affecter{l}{l+1}}
+    \retourner{l}}
+\end{algorithme}
 \end{document}
