@@ -1,0 +1,104 @@
+\documentclass{article}
+\usepackage{pseudocode}
+
+\begin{document}
+
+\begin{algorithme}
+\type{ArbreHuffman}
+    \typePointeur{Racine}
+
+\end{algorithme}
+
+\begin{algorithme}
+\begin{enregistrement}{Racine}
+    \champEnregistrement{filsGauche}{ArbreHuffman}
+    \champEnregistrement{filsDroit}{ArbreHuffman}
+    \champEnregistrement{statistique}{Statistiques}
+\end{enregistrement}
+\end{algorithme}
+
+
+\begin{algorithme}
+
+    \fonction{arbrehuffman}{stat : Statistiques}{ArbreHuffman}{}
+        {arbre : ArbreHuffman}
+        {\affecter{\champ{arbre}{filsGauche}}{NIL}
+        \affecter{\champ{arbre}{filsDroit}}{NIL}
+        \affecter{\champ{arbre}{statistique}}{stat}
+        \retourner{arbre}        
+        }
+\end{algorithme}
+
+\begin{algorithme}
+
+    \fonction{fusionner}{arbre1 , arbre2 : ArbreHuffman}{ArbreHuffman}{non (estVide(arbre1) et estVide(arbre2))}
+        {arbre : ArbreHuffman}
+        {
+            \affecter{arbre}{arbrehuffman()}
+            \affecter{\champ{arbre}{filsGauche}}{arbre1}
+            \affecter{\champ{arbre}{filsDroit}}{arbre2}
+            \affecter{\champ{arbre}\champ{statistique}{caractere}}{NULL}
+            \affecter{\champ{arbre}\champ{statistique}{occurences}}{obtenirOccurences(arbre1) + obtenirOccurences(arbre2)}
+        
+
+        }
+\end{algorithme}
+
+\begin{algorithme}
+    \fonction{obtenirOccurences}{arbre : ArbreHuffman}{\naturel}{}{}
+    {
+        \retourner{\champ{arbre}\champ{statistique}{occurences}}
+
+    }
+\end{algorithme}
+
+\begin{algorithme}
+    \procedure{fixerFilsDroit}{\paramEntreeSortie{arbre : ArbreHuffman} \paramEntree{droit : ArbreHuffman}}{}{}
+        {\affecter{\champ{arbre}{filsDroit}}{droit}
+        }
+
+    
+
+\end{algorithme}
+
+\begin{algorithme}
+    \procedure{fixerFilsGauche}{\paramEntreeSortie{arbre : ArbreHuffman} \paramEntree{gauche : ArbreHuffman}}{}{}
+        {\affecter{\champ{arbre}{filsGauche}}{gauche}
+        }
+
+    
+
+\end{algorithme}
+
+\begin{algorithme}
+    \fonction{estVide}{arbre : ArbreHuffman}{\booleen}{}{}
+    {
+        \retourner{((\champ{arbre}\champ{statistique}{caractere} = NULL) et (\champ{arbre}\champ{statistique}{occurences} = 0))}
+    }
+\end{algorithme}
+
+\begin{algorithme}
+    \fonction{estFeuille}{arbre : ArbreHuffman}{\booleen}{}{}{
+
+    \retourner{(estVide(\champ{arbre}{filsDroit} = NIL) et estVide(\champ{arbre}{filsGauche} = NIL))}
+    }
+\end{algorithme}
+
+
+\begin{algorithme}
+    \fonction{obtenirFilsGauche}{arbre : ArbreHuffman}{non estFeuille(arbre)}{}
+    {
+    \retourner{\champ{arbre}{filsGauche}}
+    }
+
+\end{algorithme}
+
+\begin{algorithme}
+    \fonction{obtenirFilsDroit}{arbre : ArbreHuffman}{non estFeuille(arbre)}{}
+    {
+    \retourner{\champ{arbre}{filsDroit}}
+    }
+
+\end{algorithme}
+
+\end{document}

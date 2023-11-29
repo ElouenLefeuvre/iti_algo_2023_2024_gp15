@@ -8,7 +8,7 @@ struct ArbreDeHuffman
     ArbreDeHuffman* fixerFilsDroit;
 };
 
-ArbreDeHuffman arbreDeHuffman(Statistiques stat);
+ArbreDeHuffman arbreDeHuffman(stat : Statistiques);
 ArbreDeHuffman fusionner(ArbreDeHuffman ah1,ArbreDeHuffman ah2);
 int obtenirPonderation(ArbreDeHuffman ah);
 void* fixerFilsGauche(ArbreDeHuffman ah1,ArbreDeHuffman fg);
