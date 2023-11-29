@@ -5,14 +5,14 @@
 \begin{algorithme}
 \begin{enregistrement}{Statistiques}
     \champEnregistrement{caractere}{\caractere}
-    \champEnregistrement{occurences}{\naturelNonNul}
+    \champEnregistrement{occurences}{\naturel}
 \end{enregistrement}    
 \end{algorithme}
 
 \section{statistique}
 
 \begin{algorithme}
-    \fonction{statistique}{c : \caractere, n : \naturelNonNul}{Statistiques}
+    \fonction{statistique}{c : \caractere, n : \naturel}{Statistiques}
     {}
     {stat : Statistiques}
     {\affecter{stat.caracteres}{c}
@@ -22,7 +22,7 @@
 
 \section{obtenirOccurences}
 \begin{algorithme}
-    \fonction{obtenirOccurences}{stat : Statistiques}{\naturelNonNul}
+    \fonction{obtenirOccurences}{stat : Statistiques}{\naturel}
     {}
     {}
     {\retourner{stat.occurences}}
