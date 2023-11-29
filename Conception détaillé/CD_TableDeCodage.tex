@@ -21,17 +21,10 @@
     \fonction{obtenirTableDeCodage}{a : Arbre Huffman}{TableDeCodage}
     {non estVide(a)}
     {res : TableDeCodage}
-    
-    début
-        res.car < obtenirCaractere(a.statistiques)
-        res.code < obtenirCodeBinaire(res.car)
-        listeSuivante < NIL
-        retourner res
-    fin
-
-    {\affecter{file}{creerFileDePriorite(fic)}
-    \affecter{arbreHuffman}{creerArbreHuffman(file)}
-    \affecter{table}{creerTableDeCodage(arbreHuffman)}}
+    {\affecter{res.car}{obtenirCaractere(a.statistiques)}
+    \affecter{res.code}{obtenirCodeBinaire(res.car)} 
+    \affecter{listeSuivante}{NIL} 
+    \retourner{res}}
 \end{algorithme}
 
 
@@ -40,84 +33,58 @@
     \fonction{obtenirCode}{tab: TableDeCodage, car : \caractere}{CodeBinaire}
     {estPresent(tab,car)}
     {}
-    début
-        si non(estVide(tab)) alors 
-            si tab.car=car alors
-                retourner tab.code
-            sinon
-                retourner obtenirCode(tab.listeSuivante)
-            finsi
-        finsi
-    fin
-    {}
+    {\sialorssinon{non(estVide(tab))}
+        {\sialorssinon{tab.car=car}
+            {\retourner{tab.code}}
+            {\retourner{obtenirCode(tab.listeSuivante)}}}
+        {}}
 \end{algorithme}
 
 \begin{algorithme}
     \fonction{obtenirCarac}{tab: TableDeCodage, code : CodeBinaire}{\caractere}
     {}
     {}
-    début
-        si non(estVide(tab)) alors 
-            si tab.code=code alors
-                retourner tab.car
-            sinon
-                retourner obtenirCode(tab.listeSuivante)
-            finsi
-        finsi
-    fin
-    {}
+    {\sialorssinon{non(estVide(tab))}
+        {\sialorssinon{tab.code=code }
+            {\retourner{tab.car}}
+            {\retourner {obtenirCode(tab.listeSuivante)}}}
+        {}}
+
 \end{algorithme}
 
 \begin{algorithme}
     \procedure{ajouter}{\paramEntreeSortie tab : TableDeCodage, \paramEntree car : \caractere, code : CodeBinaire}
     {}
     {temp : TableDeCodage}
-    début
-        temp < tab
-        allouer(tab)
-        tab.car < car
-        tab.code < code
-        tab.listeSuivante < temp
-    fin
-    {}
+    {\affecter{temp}{tab} 
+    \allouer{tab}
+    \affecter{tab.car}{car} 
+    \affecter{tab.code}{code}
+    \affecter{tab.listeSuivante}{temp}}
 \end{algorithme}
 
 \begin{algorithme}
     \procedure{supprimer}{\paramEntreeSortie tab : TableDeCodage, \paramEntree car : \caractere, code : CodeBinaire}
     {non(estVide(tab))}
-    {temp : TableDeCodage, supprime : \booleen}
-    début
-        si non(estVide(tab.listeSuivante)) alors
-            si temp.car = car alors
-                 temp < temp.listeSuivante
-                 tab.listeSuivante < temp
-            sinon
-                 supprimer(temp.listeSuivante,car,code)
-                 tab.listeSuivante < temp
-            finsi
-        finsi
-    fin
-
-    {}
+    {temp : TableDeCodage}
+    {\sialorssinon{non(estVide(tab.listeSuivante))}
+        {\sialorssinon{temp.car = car}
+            {\affecter{temp}{temp.listeSuivante}
+            \affecter{tab.listeSuivante}{temp}}
+            {supprimer(temp.listeSuivante,car,code)
+            \affecter{tab.listeSuivante}{temp}}}
+        {}}
 \end{algorithme}
 
 \begin{algorithme}
     \fonction{estPresent}{tab : TableDeCodage, car : \caractere}{\booleen}
     {}
     {}
-    début
-        si estVide(tab) alors
-            retouner FAUX
-        finsi
-        si tab.car = car alors
-            retourner VRAI
-        sinon
-            retourner estPresent(tab.listeSuivante,car)
-        finsi
-    fin
-
-    {}
+    {\sialorssinon{estVide(tab)}
+        {\retourner{FAUX}}{}
+    \sialorssinon{tab.car = car}
+        {\retourner{VRAI}}
+        {\retourner{estPresent(tab.listeSuivante,car)}}}
 \end{algorithme}
 
 \end{document}
-aux
