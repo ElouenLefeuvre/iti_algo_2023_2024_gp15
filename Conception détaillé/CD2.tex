@@ -36,74 +36,65 @@ fin
 
 \section{obtenirStatistiques}
 \begin{algorithme}
-    \signatureFonction{ obtenirStatistiques}{fic :  FichierHuffman}{\motclefTableau de Statistiques}\newLine
+    \fonction{obtenirStatistiques}{fic :  FichierHuffman}{Ensemble de Statistiques}
     {}
-début
-    ouvrir(fic)
-    tant que str!="/":
-        lire(fic,car)
-        lire(fic, int)
-        tab[i]=statistiques(car,int)
-    fintantque
-fin
+    {ens : Ensemble de Statistiques}
+    {ouvrir(fic)
+    \tantque{str!="/"}
+        {\lire{fic,car}
+        \lire{fic,int}
+        ajouter(ens,Statistiques.statistique(car,int))}}
 \end{algorithme}
 
 \section{creerArbreHuffman}
 
 \begin{algorithme}
-    \signatureFonction{ creerArbreHuffman}{file : FileDePriorité}{ArbreHuffmanHuffman}\newLine
+    \fonction{creerArbreHuffman}{stats : Statistiques}{Arbre Huffman}
     {}
-début
-    res=file
-    tant que FileDePriorité.longueur(res)!=1 faire 
-        FileDePriorité.formationNouvelArbrePondere(res)
-    fin tantque
-    retourner res
-fin
+    {}
+    {\retourner{ArbreHuffman.arbrehuffman(stats)}}
+
 \end{algorithme}
 
 \section{obtenirCaracteres}
 
 \begin{algorithme}
-    \signatureFonction{ obtenirCaracteres}{fic : FichierTexte}{Ensemble de \caractere}\newLine
+    \fonction{obtenirCaracteres}{fic : FichierTexte}{Ensemble de \caractere}
     {}
-début
-    ens = ensemble()
+    {ens : Ensemble de \caractere}
+    {\affecter(ens,ensemble())
     ouvrir(fic)
-    tant que non eof(fic) faire
-        lire(fic, car)
-        if not estPresent(ens, car)
-            ajouter(ens,car)
-        finsi
-    fintantque
-    retourner ens
-fin
+    \tantque{non(eof(fic))}
+        {\lire(fic,car)
+        \sialorssinon{not(estPresent(ens,car))}
+            {ajouter(ens,car)}{}}
+    \retourner{ens}}
 \end{algorithme}
 
 
 \section{obtenirOccurences}
 \begin{algorithme}
-    \signatureFonction{ obtenirOccurences}{c : \caractere}{\naturel}\newLine
+    \fonction{obtenirOccurences}{c : \caractere}{\naturel}
     {}
-début
-    retourner Statistiques.obtenirOccurence(car)
-fin
+    {}
+    {\retourner{Statistiques.obtenirOccurence(car)}}
 \end{algorithme}
 
 \section{insererArbre}
 
 \begin{algorithme}
-    \signatureFonction{ insererArbre}{file : FileDePriorite, arbre : ArbreBinaire}{FileDePriorite}\newLine
+    \fonction{insererArbre}{file : FileDePriorite, arbre : Arbre Huffman}{FileDePriorite}
     {}
-début
-    retourner FileDePriorité.insererArbre(arbre,file)
+    {}
+    {\retourner{FileDePriorité.enfiler(arbre,file)}}
 \end{algorithme}
 
 \section{creerArbre}
 \begin{algorithme}
-    \signatureFonction{ creerArbre}{stats : Statistiques}{ArbreBinaire}\newLine
+    \fonction{creerArbre}{stats : Statistiques}{Arbre Huffman}
     {}
-retourner arbre(stats)
+    {}
+    {\retourner{Huffman.arbrehuffman(stats)}}
 \end{algorithme}
 
 \end{document}
