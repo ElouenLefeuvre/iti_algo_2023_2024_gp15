@@ -10,24 +10,18 @@
 \begin{tadOperations}{obtenirCodeBinaire}
         \tadOperation{obtenirCodeBinaire}{\tadDeuxParams{Arbre Huffman}{\caractere}}{\tadParams{CodeBinaire}}
         \tadOperationAvecPreconditions{estVide}{\tadParams{CodeBinaire}}{\tadParams{\booleen}}
-        \tadOperationAvecPreconditions{ajouterBit}{\tadParams{CodeBinaire, \naturel, Bit}}{\tadParams{CodeBinaire}}
-        \tadOperationAvecPreconditions{supprimerBit}{\tadParams{CodeBinaire, \naturel}}{\tadParams{CodeBinaire}}
         \tadOperationAvecPreconditions{obtenirIemeBit}{\tadParams{CodeBinaire,\naturelNonNul}}{\tadParams{Bit}}
         \tadOperation{longueur}{\tadParams{CodeBinaire}}{\tadParams{\naturel}}
 \end{tadOperations}
 \begin{tadSemantiques}{obtenirCodeBinaire}
         \tadSemantique{obtenirCodeBinaire}{Permet d'obtenir un code binaire d'un caractère présent dans l'arbre}
         \tadSemantique{estVide}{Cherche si un code binaire est vide ou non}
-        \tadSemantique{ajouterBit}{Ajoute un bit à une position dans le code binaire}
-        \tadSemantique{supprimerBit}{Supprime un bit à une position dans le code binaire}
         \tadSemantique{obtenirIemeBit}{Donne le ième bit d'un code binaire}
         \tadSemantique{longueur}{Donne la longueur du code binaire}
 \end{tadSemantiques}
-    \begin{tadPreconditions}{obtenirIemeBit(code, n)}
+    \begin{tadPreconditions}{obtenirIemeBit(code, i)}
             \tadPrecondition{obtenirCodeBinaire(a, car)}{non(estVide(a))}
-            \tadPrecondition{ajouterBit(code, n, b)}{n $>$ 0 et n $\leq$ longueur(code) + 1 }
-            \tadPrecondition{supprimerBit(code, n)}{n $>$ 0 et n $\leq$ longueur(code) }
-            \tadPrecondition{obtenirIemeBit(code, n)}{n $>$ 0 et n $\leq$ longueur(code) }
+            \tadPrecondition{obtenirIemeBit(code, i)}{n $>$ 0 et n $\leq$ longueur(code) }
         \end{tadPreconditions}
 
 \end{tad}   

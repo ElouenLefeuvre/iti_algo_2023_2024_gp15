@@ -5,38 +5,20 @@
 \section{TAD Code Binaire}
 \begin{algorithme}
 \signatureFonction{obtenirCodeBinaire}
-	{a : Arbre Huffman, car : \caractere}{Code Binaire}
+	{a : Arbre Huffman, car : \caractere}{CodeBinaire}
 	{non(estVide(a))}
 \end{algorithme}
 
 \begin{algorithme}
 \signatureFonction{estVide}
-	{code : Code Binaire}{\booleen}
+	{code : CodeBinaire}{\booleen}
 	{}
 \end{algorithme}
 
 \begin{algorithme}
-	\signatureFonction{estVide}
-		{code : Code Binaire}{\naturel}
-		{}
-	\end{algorithme}
-
-\begin{algorithme}
-	\signatureProcedure{ajouterBit}
-		{\paramEntreeSortie{code : Code Binaire},\paramEntree{ n : \naturel, b : Bit}}
-		{n > 0 et n <= longueur(code) + 1 }
-\end{algorithme}
-
-\begin{algorithme}
-	\signatureProcedure{SupprimerBit}
-		{\paramEntreeSortie{code : Code Binaire},\paramEntree{ n : \naturel}}
-		{n > 0 et n <= longueur(code) }
-\end{algorithme}
-
-\begin{algorithme}
 	\signatureFonction{obtenirIemeBit}
-		{code : Code Binaire, n : \naturelNonNul}{Bit}
-		{n > 0 et n <= longueur(code) }
+		{code : CodeBinaire, i : \naturelNonNul}{Bit}
+		{i > 0 et i <= longueur(code) }
 	\end{algorithme}
 
 \end{document}

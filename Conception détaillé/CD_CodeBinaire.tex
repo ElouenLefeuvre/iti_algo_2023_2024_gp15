@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{pseudocode}
+
+\begin{document}
+
+\type{CodeBinaire}{\chaine}
+
+
+\section{obtenirCodeBinaire}
+
+\begin{algorithme}
+    \fonction{obtenirCodeBinaire}{a : Arbre Huffman, car : \caractere}{CodeBinaire}
+    {non(estVide(a))}
+    {}
+    {\sialorssinon{estFeuille(a)}
+    {\retourner{''}}
+    {\sialorssinon{estPresent(car, obtenirFilsGauche(a))}
+    {\retourner{'0' + obtenirCodeBinaire(obtenirFilsGauche(a),car)}}
+    {\retourner{'1' + obtenirCodeBinaire(obtenirFilsDroit(a),car)}}}}
+\end{algorithme}
+
+
+\section{estVide}
+
+\begin{algorithme}
+    \fonction{estVide}{code : CodeBinaire}{\booleen}
+    {}
+    {}
+    {\retourner{code = ''}}
+\end{algorithme}
+
+\section{obtenirIemeBit}
+
+\begin{algorithme}
+    \fonction{obtenirIemeBit}{code : CodeBinaire, i : \naturelNonNul}{Bit}
+    {i $>$ 0 et i \leq longueur(code)}
+    {}
+    {\retourner{chaine[i]}}
+\end{algorithme}
+\end{document}
