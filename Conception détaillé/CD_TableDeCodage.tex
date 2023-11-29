@@ -84,18 +84,40 @@
 
 \begin{algorithme}
     \procedure{supprimer}{\paramEntreeSortie tab : TableDeCodage, \paramEntree car : \caractere, code : CodeBinaire}
-    {}
-    {}
+    {non(estVide(tab))}
+    {temp : TableDeCodage, supprime : \booleen}
+    début
+        si non(estVide(tab.listeSuivante)) alors
+            si temp.car = car alors
+                 temp < temp.listeSuivante
+                 tab.listeSuivante < temp
+            sinon
+                 supprimer(temp.listeSuivante,car,code)
+                 tab.listeSuivante < temp
+            finsi
+        finsi
+    fin
 
     {}
 \end{algorithme}
 
 \begin{algorithme}
-    \procedure{estPresent}{\paramEntreeSortie tab : TableDeCodage, \paramEntree car : \caractere, code : CodeBinaire}
-    {non(estVide(tab))}
+    \fonction{estPresent}{tab : TableDeCodage, car : \caractere}{\booleen}
     {}
+    {}
+    début
+        si estVide(tab) alors
+            retouner FAUX
+        finsi
+        si tab.car = car alors
+            retourner VRAI
+        sinon
+            retourner estPresent(tab.listeSuivante,car)
+        finsi
+    fin
 
     {}
 \end{algorithme}
 
 \end{document}
+aux
