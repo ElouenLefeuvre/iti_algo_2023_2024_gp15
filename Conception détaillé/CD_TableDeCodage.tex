@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage{pseudocode}
+
+\begin{document}
+
+
+\begin{algorithme}
+\type{TableDeCodage}{\typePointeur{Noeud}}
+\begin{enregistrement}{Noeud}
+    \champEnregistrement{code}{CodeBinaire}
+    \champEnregistrement{car}{\caractere}
+    \champEnregistrement{listeSuivante}{TableDeCodage}
+
+\end{enregistrement}
+\end{algorithme}
+
+
+\section{TableDeCodage}
+
+\begin{algorithme}
+    \fonction{obtenirTableDeCodage}{a : Arbre Huffman}{TableDeCodage}
+    {non estVide(a)}
+    {res : TableDeCodage}
+    
+    début
+        res.car < obtenirCaractere(a.statistiques)
+        res.code < obtenirCodeBinaire(res.car)
+        listeSuivante < NIL
+        retourner res
+    fin
+
+    {\affecter{file}{creerFileDePriorite(fic)}
+    \affecter{arbreHuffman}{creerArbreHuffman(file)}
+    \affecter{table}{creerTableDeCodage(arbreHuffman)}}
+\end{algorithme}
+
+
+
+\begin{algorithme}
+    \fonction{obtenirCode}{tab: TableDeCodage, car : \caractere}{CodeBinaire}
+    {estPresent(tab,car)}
+    {}
+    début
+        si non(estVide(tab)) alors 
+            si tab.car=car alors
+                retourner tab.code
+            sinon
+                retourner obtenirCode(tab.listeSuivante)
+            finsi
+        finsi
+    fin
+    {}
+\end{algorithme}
+
+\begin{algorithme}
+    \fonction{obtenirCarac}{tab: TableDeCodage, code : CodeBinaire}{\caractere}
+    {}
+    {}
+    début
+        si non(estVide(tab)) alors 
+            si tab.code=code alors
+                retourner tab.car
+            sinon
+                retourner obtenirCode(tab.listeSuivante)
+            finsi
+        finsi
+    fin
+    {}
+\end{algorithme}
+
+\begin{algorithme}
+    \procedure{ajouter}{\paramEntreeSortie tab : TableDeCodage, \paramEntree car : \caractere, code : CodeBinaire}
+    {}
+    {temp : TableDeCodage}
+    début
+        temp < tab
+        allouer(tab)
+        tab.car < car
+        tab.code < code
+        tab.listeSuivante < temp
+    fin
+    {}
+\end{algorithme}
+
+\begin{algorithme}
+    \procedure{supprimer}{\paramEntreeSortie tab : TableDeCodage, \paramEntree car : \caractere, code : CodeBinaire}
+    {}
+    {}
+
+    {}
+\end{algorithme}
+
+\begin{algorithme}
+    \procedure{estPresent}{\paramEntreeSortie tab : TableDeCodage, \paramEntree car : \caractere, code : CodeBinaire}
+    {non(estVide(tab))}
+    {}
+
+    {}
+\end{algorithme}
+
+\end{document}
