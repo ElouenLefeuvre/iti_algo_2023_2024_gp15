@@ -33,16 +33,14 @@
 \tadDependances{Chaine de caracteres, Code Binaire, Booleen, Bit}
 \begin{tadOperations}{ObtenirOctet}
     \tadOperation{creerOctet}{}{\tadParams{Octet}}
-    \tadOperation{ajouter}{\tadDeuxParams{Octet}{Bit}}{\tadParams{Octet}}
-    \tadOperation{supprimer}{\tadDeuxParams{Octet}{Bit}}{\tadParams{Octet}}
+    \tadOperation{modifier}{\tadParams{Octet}{\naturel}{Bit}}{\tadParams{Octet}}
     \tadOperationAvecPreconditions{encoder}{\tadDeuxParams{Octet}{Code Binaire}}{\tadParams{ Chaine de caracteres}}
     \tadOperationAvecPreconditions{decoder}{\tadDeuxParams{Chaine de caracteres}{Code Binaire}}{\tadParams{Octet}}
     \tadOperationAvecPreconditions{obtenirOctet}{\tadParams{Chaine de caracteres}}{\tadParams{Octet}}
 \end{tadOperations}
 \begin{tadSemantiques}{obtenirCodeBinaire}
-    \tadSemantique{creerOctet}{Permet d'obtenir un octet vide}
-    \tadSemantique{ajouter}{Ajoute un bit dans l'octet}
-    \tadSemantique{supprimer}{Supprime un bit dans l'octet}
+    \tadSemantique{creerOctet}{Permet d'obtenir un octet avec tous ses bits à 0}
+    \tadSemantique{modifier}{Permet de modifier un bit dans un octet}
     \tadSemantique{encoder}{Transforme un octet et un code binaire en une chaine de caractère}
     \tadSemantique{decoder}{Transforme une chaine de caractère et un code binaire en octet}
     \tadSemantique{obtenirOctet}{Donne l'octet correspondant à une chaine de caractere}
