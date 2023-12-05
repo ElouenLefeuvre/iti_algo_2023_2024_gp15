@@ -63,11 +63,7 @@
 
 \begin{algorithme}
     \procedure{fixerFilsGauche}{\paramEntreeSortie{arbre : ArbreHuffman} \paramEntree{gauche : ArbreHuffman}}{}{}
-        {\affecter{\champ{arbre}{filsGauche}}{gauche}
-        }
-
-    
-
+        {\affecter{\champ{arbre}{filsGauche}}{gauche}}
 \end{algorithme}
 
 \begin{algorithme}
@@ -85,20 +81,25 @@
 \end{algorithme}
 
 
-\begin{algorithme}
-    \fonction{obtenirFilsGauche}{arbre : ArbreHuffman}{non estFeuille(arbre)}{}
-    {
-    \retourner{\champ{arbre}{filsGauche}}
-    }
 
+\begin{algorithme}
+    \fonction{obtenirFilsGauche}{arbre : ArbreHuffman}{ArbreHuffman}{non estFeuille(arbre)}{}
+    {\retourner{\champ{arbre}{filsGauche}}}
 \end{algorithme}
 
+
 \begin{algorithme}
-    \fonction{obtenirFilsDroit}{arbre : ArbreHuffman}{non estFeuille(arbre)}{}
+    \fonction{obtenirFilsDroit}{arbre : ArbreHuffman}{ArbreHuffman}{non estFeuille(arbre)}{}
     {
     \retourner{\champ{arbre}{filsDroit}}
     }
+\end{algorithme}
 
+\begin{algorithme}
+    \fonction{estPresent}{arbre : ArbreHuffman, caractere : \caractere}{\booleen}{}{}{
+        \sialorssinon{obtenirOccurences(arbre).caractere = caractere}
+        {\retourner{Vrai}}
+        {\retourner{estPresent(obtenirFilsDroit(arbre)) ou estPresent(obtenirFilsGauche(arbre))}}}
 \end{algorithme}
 
 \end{document}
