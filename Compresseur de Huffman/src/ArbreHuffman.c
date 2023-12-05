@@ -8,6 +8,7 @@ ArbreHuffman arbrehuffman(Statistiques stat){
     arbre.statistiques=stat;
     fixerfilsGauche(arbre,NULL);
     fixerfilsDroit(arbre,NULL);
+    return arbre;
 }
 
 ArbreHuffman fusionner(ArbreHuffman arbre1,ArbreHuffman arbre2){
@@ -18,6 +19,7 @@ ArbreHuffman fusionner(ArbreHuffman arbre1,ArbreHuffman arbre2){
     result.statistiques= stat;
     fixerfilsGauche(result,arbre1);
     fixerfilsDroit(result,arbre2);
+    return result;
 }
 
 int obtenirPonderation(ArbreHuffman arbre){

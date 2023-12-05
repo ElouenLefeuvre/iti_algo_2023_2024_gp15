@@ -5,7 +5,7 @@
 \begin{algorithme}
 \begin{enregistrement}{Statistiques}
     \champEnregistrement{caractere}{\caractere}
-    \champEnregistrement{occurences}{\naturel}
+    \champEnregistrement{ponderation}{\naturel}
 \end{enregistrement}    
 \end{algorithme}
 
@@ -16,16 +16,16 @@
     {}
     {stat : Statistiques}
     {\affecter{stat.caracteres}{c}
-    \affecter{stat.occurences}{}
+    \affecter{stat.ponderation}{n}
     \retourner{stat}}
 \end{algorithme}
 
-\section{obtenirOccurences}
+\section{obtenirPonderation}
 \begin{algorithme}
-    \fonction{obtenirOccurences}{stat : Statistiques}{\naturel}
+    \fonction{obtenirPonderation}{stat : Statistiques}{\naturel}
     {}
     {}
-    {\retourner{stat.occurences}}
+    {\retourner{stat.ponderation}}
 \end{algorithme}
 
 \section{obtenirCaractere}
@@ -34,8 +34,6 @@
     \fonction{obtenirCaractere}{stat : Statistiques}{\caractere}{}{}
     {\retourner{stat.caractere}}
 \end{algorithme}
-
-\section{creerStatistique}
 
 
 
