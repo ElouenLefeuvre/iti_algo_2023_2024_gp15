@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage{pseudocode}
+
+\begin{document}
+
+\begin{algorithme}
+    \type{ListeChaineeArbre}
+        \typePointeur{Noeud}
+    
+    \end{algorithme}
+    
+    \begin{algorithme}
+    \begin{enregistrement}{Noeud}
+        \champEnregistrement{arbre}{ArbreHuffman}
+        \champEnregistrement{ListeSuivante}{ListeChainee}
+    \end{enregistrement}
+\end{algorithme}
+
+\begin{algorithme}
+        \begin{enregistrement}{FileDePriorite}
+            \champEnregistrement{debut}{ListeChaineeArbre}
+            \champEnregistrement{fin}{ListeChaineeArbre}
+        \end{enregistrement}
+        \end{algorithme}
+
+\begin{algorithme}
+
+    \fonction{fileDePriorite}{a : ArbreHuffman}{FileDePriorite}{}
+        {file:FileDePriorite}
+        {
+        \affecter{\champ{file}\champ{debut}{arbre}}{a}
+        \affecter{\champ{file}\champ{debut}{ListeSuivante}}{NIL}
+        \affecter{\champ{file}{fin}}{NIL}  
+        }
+\end{algorithme}
+
+\begin{algorithme}
+
+    \procedure{enfiler}{\paramEntreeSortie{file : FileDePriorite} \paramEntree{arbre : ArbreHuffman}{}{}
+        {f : FileDePriorite}
+        {
+        \affecter{f}{fileDePriorite(arbre)}
+        \affecter{\champ{f}{elementPrecedent}}{file}      
+        }
+\end{algorithme}
+
+
+
+\begin{algorithme}
+    \procedure{defiler}{\paramEntreeSortie{file : FileDePriorite}}{}{temp : FileDePriorite}
+        {
+        
+        \affecter{temp}{\champ{file}{fin}}
+        \affecter{\champ{file}{fin}}{obtenirListeSuivante(\champ{file}{fin})}      
+        
+        \motclefDesallouer(temp)
+        }
+\end{algorithme}
+
+\begin{algorithme}
+
+    \fonction{fileDePriorite}{a : ArbreHuffman}{FileDePriorite}{}
+        {file:FileDePriorite}
+        {
+        \affecter{\champ{file}\champ{debut}{arbre}}{a}
+        \affecter{\champ{file}\champ{debut}{ListeSuivante}}{NIL}
+        \affecter{\champ{file}{fin}}{NIL}  
+        }
+\end{algorithme}
+
+
+
+\end{document}
