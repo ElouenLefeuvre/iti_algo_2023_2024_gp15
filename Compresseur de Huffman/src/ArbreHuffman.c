@@ -23,7 +23,7 @@ ArbreHuffman fusionner(ArbreHuffman arbre1,ArbreHuffman arbre2){
 }
 
 int obtenirPonderation(ArbreHuffman arbre){
-    return obtenirPonderation(arbre.statistiques);
+    return arbre.statistiques.ponderation;
 }
 
 
@@ -35,11 +35,27 @@ void* fixerFilsDroit(ArbreHuffman arbre,ArbreHuffman filsDroit){
     arbre.*filsDroit = filsDroit;
 }
 
-
 ArbreHuffman obtenirFilsGauche(ArbreHuffman arbre){
     return arbre.*filsGauche;
 }
 
 ArbreHuffman obtenirFilsDroit(ArbreHuffman arbre){
     return arbre.*filsDroit;
+}
+
+Boolean estVide(ArbreHuffman arbre){
+    return ((arbre.statistiques.caracter == '') && (arbre.statistiques.ponderation == 0));
+}
+
+Boolean estFeuille(ArbreHuffman arbre){
+    return (estVide(arbre.*filsDroit) && estVide(arbre.*filsGauche));
+}
+
+Boolean estPresent(ArbreHuffman arbre, char caractere){
+    if (arbre.statistiques.caracter == caractere) {
+        return True;
+    }
+    else {
+        return (estPresent(obtenirFilsDroit(arbre)) || estPresent(obtenirFilsGauche(arbre)))
+    }
 }

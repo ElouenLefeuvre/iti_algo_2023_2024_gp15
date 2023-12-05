@@ -76,7 +76,7 @@
 \begin{algorithme}
     \fonction{estFeuille}{arbre : ArbreHuffman}{\booleen}{}{}{
 
-    \retourner{(estVide(\champ{arbre}{filsDroit} = NIL) et estVide(\champ{arbre}{filsGauche} = NIL))}
+    \retourner{(estVide(\champ{arbre}{filsDroit}) et estVide(\champ{arbre}{filsGauche}))}
     }
 \end{algorithme}
 
@@ -97,7 +97,7 @@
 
 \begin{algorithme}
     \fonction{estPresent}{arbre : ArbreHuffman, caractere : \caractere}{\booleen}{}{}{
-        \sialorssinon{obtenirOccurences(arbre).caractere = caractere}
+        \sialorssinon{arbre.statistiquescaractere = caractere}
         {\retourner{Vrai}}
         {\retourner{estPresent(obtenirFilsDroit(arbre)) ou estPresent(obtenirFilsGauche(arbre))}}}
 \end{algorithme}
