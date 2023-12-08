@@ -1,6 +1,6 @@
 #ifndef  __ FILEDEPRIORITE__
 #define __FILEDEPRIORITE__
-
+#include "ArbreHuffman.h";
 
 struct FileDePriorite
 {
@@ -9,9 +9,9 @@ struct FileDePriorite
 
 FileDePriorite fileDePriorite();
 bool estVide(FileDePriorite fp);
-FileDePriorite enfiler(FileDePriorite fp,ArbreDeHuffman stat);
+FileDePriorite enfiler(FileDePriorite fp,ArbreHuffman stat);
 FileDePriorite defiler(FileDePriorite fp);
-ArbreDeHuffman obtenirElement(FileDePriorite fp);
+ArbreHuffman obtenirElement(FileDePriorite fp);
 int longueur(FileDePriorite fp);
 FileDePriorite nouvelleFile(FileDePriorite fp);
 

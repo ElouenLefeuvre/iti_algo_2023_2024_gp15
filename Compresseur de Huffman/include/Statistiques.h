@@ -1,10 +1,9 @@
 #ifndef __STATISTIQUES__
 #define __STATISTIQUES__
-struct Statistiques
-{
+typedef struct {
     char caracter;
     int ponderation;
-};
+}Statistiques;
 
 Statistiques statistiques(char caracter, int ponderation);
 char obtenirCaracter(Statistiques stat);
