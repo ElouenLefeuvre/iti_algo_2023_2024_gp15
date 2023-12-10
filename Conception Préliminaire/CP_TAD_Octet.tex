@@ -16,18 +16,12 @@
 \end{algorithme}
 
 \begin{algorithme}
-\signatureFonction{ encoder}{(o : Octet, code : CodeBinaire)}{\chaine}
-{non estVide(code)}
-\end{algorithme}
+\signatureProcedure{ encoder}{\paramEntreeSorite{o : Octet} \paramEntree{code : CodeBinaire, i : \naturel}}
+{non estVide(code), 0 \leq i $<=$ 7}
 
 \begin{algorithme}
-\signatureFonction{ decoder:}{(chaine : \chaine, code : CodeBinaire)}{Octet}
-{non estVide(code)}
-\end{algorithme}
-
-\begin{algorithme}
-\signatureFonction{ obtenirOctet:}{(chaine : \chaine)}{Octet}
-{longueur(chaine) > 0}
+\signatureFonction{ obtenirOctet}{(o : Octet)}{\chaine}
+{}
 \end{algorithme}
 
 \end{document}

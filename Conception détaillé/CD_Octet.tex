@@ -48,22 +48,22 @@
 \section{encoder}
 
 \begin{algorithme}
-    \fonction{encoder}{o : Octet, code : CodeBinaire}{\chaine}
-    {non estVide(code)}
-    {}
-    {}
+    \procedure{encoder}{\paramEntreeSortie{o : Octet}\paramEntree{code : CodeBinaire, i : \naturel}}
+    {non estVide(code), 0 \leq i $<=$ 7}
+    {j : \naturel}
+    {\pour{j}{i}{i + longueur(code)}{}
+    {modifier(o,j,obtenirIemeBit(code,j))}}
 \end{algorithme}
-\section{}
+\section{obtenirOctet}
+
 
 \begin{algorithme}
-    \fonction{}{}{}{}{}
+    \fonction{obtenirOctet}{o : Octet}{\chaine}
     {}
-\end{algorithme}
-\section{}
-
-\begin{algorithme}
-    \fonction{}{}{}{}{}
-    {}
+    {ch : \chaine}
+    {\pourChaque{bit}{o}
+    {\affecter{ch}{ch + bit}}
+    \retourner{ch}}
 \end{algorithme}
 
 
