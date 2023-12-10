@@ -1,10 +1,10 @@
 #ifndef  __ CODEBINAIRE__
 #define __CODEBINAIRE__
 
-struct CodeBinaire
+typedef struct 
 {
-   
-};
+   char* bits;
+}CodeBinaire;
 
 CodeBinaire obtenirCodeBinaire();
 bool estVide(CodeBinaire cb);
