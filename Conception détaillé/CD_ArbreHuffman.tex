@@ -35,10 +35,14 @@
         {arbre : ArbreHuffman}
         {
             \affecter{arbre}{arbrehuffman()}
-            \affecter{\champ{arbre}{filsGauche}}{arbre1}
-            \affecter{\champ{arbre}{filsDroit}}{arbre2}
             \affecter{\champ{arbre}\champ{statistique}{caractere}}{NULL}
-            \affecter{\champ{arbre}\champ{statistique}{occurences}}{obtenirOccurences(arbre1) + obtenirOccurences(arbre2)}
+            \affecter{\champ{arbre}\champ{statistique}{ponderation}}{obtenirOccurences(arbre1) + obtenirOccurences(arbre2)}
+            \sialorssinon{obtenirOccurences(arbre1)$<$obtenirOccurences(arbre2)}
+            {\affecter{\champ{arbre}{filsGauche}}{arbre1}
+            \affecter{\champ{arbre}{filsDroit}}{arbre2}}
+            {\affecter{\champ{arbre}{filsDroit}}{arbre1}
+            \affecter{\champ{arbre}{filsGauche}}{arbre2}}
+            \retourner{arbre}
         
 
         }
@@ -47,7 +51,7 @@
 \begin{algorithme}
     \fonction{obtenirOccurences}{arbre : ArbreHuffman}{\naturel}{}{}
     {
-        \retourner{\champ{arbre}\champ{statistique}{occurences}}
+        \retourner{\champ{arbre}\champ{statistique}{ponderation}}
 
     }
 \end{algorithme}
@@ -69,14 +73,14 @@
 \begin{algorithme}
     \fonction{estVide}{arbre : ArbreHuffman}{\booleen}{}{}
     {
-        \retourner{((\champ{arbre}\champ{statistique}{caractere} = NULL) et (\champ{arbre}\champ{statistique}{occurences} = 0))}
+        \retourner{((\champ{arbre}\champ{statistique}{caractere} = NULL) et (\champ{arbre}\champ{statistique}{ponderation} = 0))}
     }
 \end{algorithme}
 
 \begin{algorithme}
     \fonction{estFeuille}{arbre : ArbreHuffman}{\booleen}{}{}{
 
-    \retourner{(estVide(\champ{arbre}{filsDroit} = NIL) et estVide(\champ{arbre}{filsGauche} = NIL))}
+    \retourner{(estVide(\champ{arbre}{filsDroit}) et estVide(\champ{arbre}{filsGauche}))}
     }
 \end{algorithme}
 
