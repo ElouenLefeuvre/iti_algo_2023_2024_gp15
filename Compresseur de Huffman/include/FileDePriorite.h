@@ -2,10 +2,10 @@
 #define __FILEDEPRIORITE__
 #include "ArbreHuffman.h";
 
-struct FileDePriorite
-{
-    /* data */
-};
+
+typedef struct{
+
+}FileDePriorite;
 
 FileDePriorite fileDePriorite();
 bool estVide(FileDePriorite fp);

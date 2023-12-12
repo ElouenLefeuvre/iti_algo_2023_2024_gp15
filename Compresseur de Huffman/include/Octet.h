@@ -10,7 +10,6 @@ struct Octet{
     Bit bit2;
     Bit bit1;
     Bit bit0;
-    
 };
 
 Octet creerOctet();
