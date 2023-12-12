@@ -2,6 +2,7 @@
 #define __TABLEDECODAGE__
 
 #include "CodeBinaire.h"
+#include "ArbreHuffman.h"
 
 typedef struct Noeud{
         CodeBinaire code ;
@@ -14,10 +15,10 @@ typedef struct {
 }TableDeCodage;
 
 
-TableDeCodage obtenirTableDeCodage();
-CodeBinaire obtenirCodeBinaire(TableDeCodage tdc,char c);
-char obtenirCaracter(TableDeCodage tdc,CodeBinaire c);
-TableDeCodage ajouter(TableDeCodage tdc,char c,CodeBinaire cb);
-TableDeCodage retirer(TableDeCodage tdc, char c);
-bool estPresent(TableDeCodage tdc,char c);
+TableDeCodage obtenirTableDeCodage(ArbreHuffman a);
+CodeBinaire obtenirCode(TableDeCodage tab,char c);
+char obtenirCarac(TableDeCodage tab,CodeBinaire code);
+void ajouter(TableDeCodage tab,char c,CodeBinaire code);
+void supprimer(TableDeCodage tab, char c);
+bool estPresent(TableDeCodage tab,char c);
 #endif

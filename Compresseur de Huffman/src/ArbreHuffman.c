@@ -4,7 +4,7 @@
 #include "Statistiques.h"
 
 
-ArbreHuffman arbrehuffman(Statistiques stat){
+ArbreHuffman arbrehuffman(Statistiques stat) {
     ArbreHuffman arbre;
     arbre.statistiques=stat;
     fixerfilsGauche(arbre,NULL);
@@ -12,7 +12,7 @@ ArbreHuffman arbrehuffman(Statistiques stat){
     return arbre;
 }
 
-ArbreHuffman fusionner(ArbreHuffman arbre1,ArbreHuffman arbre2){
+ArbreHuffman fusionner(ArbreHuffman arbre1,ArbreHuffman arbre2) {
     ArbreHuffman result;
     Statistiques stat ;
     stat.caracter = NULL;
@@ -24,31 +24,31 @@ ArbreHuffman fusionner(ArbreHuffman arbre1,ArbreHuffman arbre2){
 }
 
 
-void* fixerFilsGauche(ArbreHuffman arbre,ArbreHuffman filsGauche){
+void* fixerFilsGauche(ArbreHuffman arbre,ArbreHuffman filsGauche) {
     arbre.filsGauche = filsGauche;
 }
 
-void* fixerFilsDroit(ArbreHuffman arbre,ArbreHuffman filsDroit){
+void* fixerFilsDroit(ArbreHuffman arbre,ArbreHuffman filsDroit) {
     arbre.filsDroit = filsDroit;
 }
 
-ArbreHuffman obtenirFilsGauche(ArbreHuffman arbre){
+ArbreHuffman obtenirFilsGauche(ArbreHuffman arbre) {
     return arbre.filsGauche;
 }
 
-ArbreHuffman obtenirFilsDroit(ArbreHuffman arbre){
+ArbreHuffman obtenirFilsDroit(ArbreHuffman arbre) {
     return arbre.filsDroit;
 }
 
-bool estVide(ArbreHuffman arbre){
+bool estVide(ArbreHuffman arbre) {
     return ((arbre.statistiques.caracter == "") && (arbre.statistiques.ponderation == 0));
 }
 
-bool estFeuille(ArbreHuffman arbre){
+bool estFeuille(ArbreHuffman arbre) {
     return (estVide(arbre.filsDroit) && estVide(arbre.filsGauche));
 }
 
-bool estPresent(ArbreHuffman arbre, char caractere){
+bool estPresent(ArbreHuffman arbre, char caractere) {
     if (arbre.statistiques.caracter == caractere) {
         return true;
     }

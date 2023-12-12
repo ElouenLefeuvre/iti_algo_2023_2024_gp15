@@ -4,7 +4,7 @@
 #include "ArbreHuffman.h"
 #include <string.h>
 
-CodeBinaire obtenirCodeBinaire(ArbreHuffman arbre, char car){
+CodeBinaire obtenirCodeBinaire(ArbreHuffman arbre, char car) {
     CodeBinaire result;
     CodeBinaire one;
     CodeBinaire zero;
@@ -27,16 +27,16 @@ CodeBinaire obtenirCodeBinaire(ArbreHuffman arbre, char car){
 }
 
 
-bool estVide(CodeBinaire cb){
+bool estVide(CodeBinaire cb) {
     return cb.bits == "";
 }
 
-int obtenirIemeBit(CodeBinaire cb,int i){
+int obtenirIemeBit(CodeBinaire cb,int i) {
     return cb.bits[i];
 }
 
 
-CodeBinaire concat(CodeBinaire cb1, CodeBinaire cb2){
+CodeBinaire concat(CodeBinaire cb1, CodeBinaire cb2) {
     strcat(cb1.bits,cb2.bits);
     return cb1;
 }

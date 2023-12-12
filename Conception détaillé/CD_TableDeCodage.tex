@@ -23,7 +23,7 @@
     {res : TableDeCodage}
     {\affecter{res.car}{obtenirCaractere(a.statistiques)}
     \affecter{res.code}{obtenirCodeBinaire(res.car)} 
-    \affecter{listeSuivante}{NIL} 
+    \affecter{res.listeSuivante}{NIL} 
     \retourner{res}}
 \end{algorithme}
 
@@ -57,7 +57,6 @@
     {}
     {temp : TableDeCodage}
     {\affecter{temp}{tab} 
-    \allouer{tab}
     \affecter{tab.car}{car} 
     \affecter{tab.code}{code}
     \affecter{tab.listeSuivante}{temp}}

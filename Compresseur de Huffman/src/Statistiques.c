@@ -2,10 +2,10 @@
 #include "Statistiques.h"
 
 Statistiques statistique(char c, int n) {
-    Statistiques result;
-    result.caracter = c;
-    result.ponderation = n ;
-    return result;
+    Statistiques res;
+    res.caracter = c;
+    res.ponderation = n ;
+    return res;
 }
 
 int obtenirPonderation(Statistiques stat) {
