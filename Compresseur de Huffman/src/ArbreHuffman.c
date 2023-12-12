@@ -12,15 +12,25 @@ ArbreHuffman arbrehuffman(Statistiques stat) {
     return arbre;
 }
 
+int obtenirOccurences(ArbreHuffman arbre){
+    return arbre.statistiques.ponderation
+}
+
 ArbreHuffman fusionner(ArbreHuffman arbre1,ArbreHuffman arbre2) {
-    ArbreHuffman result;
+    ArbreHuffman res;
     Statistiques stat ;
     stat.caracter = NULL;
     stat.ponderation = obtenirPonderation(arbre1.statistiques)+obtenirPonderation(arbre2.statistiques);
-    result.statistiques= stat;
-    fixerfilsGauche(result,arbre1);
-    fixerfilsDroit(result,arbre2);
-    return result;
+    res.statistiques= stat;
+    if (obtenirOccurences(arbre1)<obtenirOccurences(arbre2)){
+    fixerfilsGauche(res,arbre1);
+    fixerfilsDroit(res,arbre2);
+    }
+    else {
+        fixerfilsGauche(res,arbre2);
+        fixerfilsDroit(res,arbre1);
+    }
+    return res;
 }
 
 
