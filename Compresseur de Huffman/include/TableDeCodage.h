@@ -1,7 +1,18 @@
 #ifndef __TABLEDECODAGE__
 #define __TABLEDECODAGE__
 
-struct TableDeCodage{};
+#include "CodeBinaire.h"
+
+typedef struct Noeud{
+        CodeBinaire code ;
+        char c;
+        TableDeCodage listeSuivante;
+};
+
+typedef struct {
+    Noeud* noeud;
+}TableDeCodage;
+
 
 TableDeCodage obtenirTableDeCodage();
 CodeBinaire obtenirCodeBinaire(TableDeCodage tdc,char c);

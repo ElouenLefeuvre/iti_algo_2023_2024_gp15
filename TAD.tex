@@ -33,24 +33,18 @@
 \tadDependances{Chaine de caracteres, Code Binaire, Booleen, Bit}
 \begin{tadOperations}{ObtenirOctet}
     \tadOperation{creerOctet}{}{\tadParams{Octet}}
-    \tadOperation{ajouter}{\tadDeuxParams{Octet}{Bit}}{\tadParams{Octet}}
-    \tadOperation{supprimer}{\tadDeuxParams{Octet}{Bit}}{\tadParams{Octet}}
-    \tadOperationAvecPreconditions{encoder}{\tadDeuxParams{Octet}{Code Binaire}}{\tadParams{ Chaine de caracteres}}
-    \tadOperationAvecPreconditions{decoder}{\tadDeuxParams{Chaine de caracteres}{Code Binaire}}{\tadParams{Octet}}
-    \tadOperationAvecPreconditions{obtenirOctet}{\tadParams{Chaine de caracteres}}{\tadParams{Octet}}
+    \tadOperation{modifier}{\tadParams{Octet}{\naturel}{Bit}}{\tadParams{Octet}}
+    \tadOperationAvecPreconditions{encoder}{\tadDeuxParams{Octet}{Code Binaire}{\naturel}}{\tadParams{ Chaine de caracteres}}
+    \tadOperationAvecPreconditions{obtenirOctet}{\tadParams{Octet}}{\tadParams{\chaine}}
 \end{tadOperations}
 \begin{tadSemantiques}{obtenirCodeBinaire}
-    \tadSemantique{creerOctet}{Permet d'obtenir un octet vide}
-    \tadSemantique{ajouter}{Ajoute un bit dans l'octet}
-    \tadSemantique{supprimer}{Supprime un bit dans l'octet}
-    \tadSemantique{encoder}{Transforme un octet et un code binaire en une chaine de caractère}
-    \tadSemantique{decoder}{Transforme une chaine de caractère et un code binaire en octet}
-    \tadSemantique{obtenirOctet}{Donne l'octet correspondant à une chaine de caractere}
+    \tadSemantique{creerOctet}{Permet d'obtenir un octet avec tous ses bits à 0}
+    \tadSemantique{modifier}{Permet de modifier un bit dans un octet}
+    \tadSemantique{encoder}{Met un code binaire dans un octet à une certaine position}
+    \tadSemantique{obtenirOctet}{Donne la chaine de caractères correspondantes à un octet}
 \end{tadSemantiques}
 \begin{tadPreconditions}{decoder(code, chaine)}
-            \tadPrecondition{encoder(o, code)}{non estVide(code)}
-            \tadPrecondition{decoder(code, chaine)}{non estVide(code)}
-            \tadPrecondition{obtenirOctet(chaine)}{longueur(chaine) $>$ 0}
+            \tadPrecondition{encoder(o, code,i)}{non estVide(code), 0 \leq i $<=$ 7}
 \end{tadPreconditions}
 \end{tad}
     

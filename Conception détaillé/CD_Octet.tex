@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage{pseudocode}
+
+\begin{document}
+\begin{algorithme}
+\begin{enregistrement}{Octet}
+    \champEnregistrement{bit0}{Bit}
+    \champEnregistrement{bit1}{Bit}
+    \champEnregistrement{bit2}{Bit}
+    \champEnregistrement{bit3}{Bit}
+    \champEnregistrement{bit4}{Bit}
+    \champEnregistrement{bit5}{Bit}
+    \champEnregistrement{bit6}{Bit}
+    \champEnregistrement{bit7}{Bit}
+\end{enregistrement}    
+\end{algorithme}
+
+\section{modifier}
+
+\begin{algorithme}
+    \procedure{modifier}{\paramEntreeSorite{o : Octet},\paramEntree{i : \naturel, valeur : Bit}}{}
+    {b : Bit}
+    {\cas{i}{
+        \casclausegenerale{0}{\affecter{o.bit0}{valeur}}
+        \casclausegenerale{1}{\affecter{o.bit1}{valeur}}
+        \casclausegenerale{2}{\affecter{o.bit2}{valeur}}
+        \casclausegenerale{3}{\affecter{o.bit3}{valeur}}
+        \casclausegenerale{4}{\affecter{o.bit4}{valeur}}
+        \casclausegenerale{5}{\affecter{o.bit5}{valeur}}
+        \casclausegenerale{6}{\affecter{o.bit6}{valeur}}
+        \casclausegenerale{7}{\affecter{o.bit7}{valeur}}
+    }
+    \retourner{o}}
+\end{algorithme}
+
+\section{creerOctet}
+
+\begin{algorithme}
+    \fonction{creerOctet}{}{Octet}
+    {}
+    {o : Octet
+    i : \naturel}
+    {\pour{i}{0}{7}{}
+        {modifier(o,i,0)}
+    \retourner{o}}
+\end{algorithme}
+
+\section{encoder}
+
+\begin{algorithme}
+    \procedure{encoder}{\paramEntreeSortie{o : Octet}\paramEntree{code : CodeBinaire, i : \naturel}}
+    {non estVide(code), 0 \leq i $<=$ 7}
+    {j : \naturel}
+    {\pour{j}{i}{i + longueur(code)}{}
+    {modifier(o,j,obtenirIemeBit(code,j))}}
+\end{algorithme}
+\section{obtenirOctet}
+
+
+\begin{algorithme}
+    \fonction{obtenirOctet}{o : Octet}{\chaine}
+    {}
+    {ch : \chaine}
+    {\pourChaque{bit}{o}
+    {\affecter{ch}{ch + bit}}
+    \retourner{ch}}
+\end{algorithme}
+
+
+\end{document}

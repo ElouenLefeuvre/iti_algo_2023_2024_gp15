@@ -101,7 +101,7 @@
 
 \begin{algorithme}
     \fonction{estPresent}{arbre : ArbreHuffman, caractere : \caractere}{\booleen}{}{}{
-        \sialorssinon{obtenirOccurences(arbre).caractere = caractere}
+        \sialorssinon{arbre.statistiquescaractere = caractere}
         {\retourner{Vrai}}
         {\retourner{estPresent(obtenirFilsDroit(arbre)) ou estPresent(obtenirFilsGauche(arbre))}}}
 \end{algorithme}
