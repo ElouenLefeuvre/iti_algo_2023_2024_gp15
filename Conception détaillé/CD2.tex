@@ -9,10 +9,12 @@
     \signatureFonction{ decompresser}{fic : FichierHuffman}{FichierTexte}\newLine
     {}
 début
-    file = creerFiledePriorite(fic)
-    arbre = creerArbreHuffman(file)
+    stats_fic = obtenirStatistiques(fic)
+    pour chaque s dans stats_fic:
+        arbre = fusionner(arbre,arbrehuffman())
+        fusionner(arbre,s)
     ouvrir(fic)
-    tant que non (eof(fic)):
+    tant que non (eof(fic)) et ens!=none:
         ouvrir(fic)
         temp = arbre
         tant que non estUneFeuille(temp)    

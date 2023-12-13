@@ -20,7 +20,7 @@
         \begin{enregistrement}{FileDePriorite}
             \champEnregistrement{debut}{ListeChaineeArbre}
             \champEnregistrement{fin}{ListeChaineeArbre}
-            \champEnregistrement{nb}{\naturel}
+            \champEnregistrement{longueur}{\naturel}
         \end{enregistrement}
         \end{algorithme}
 
@@ -32,7 +32,7 @@
         \affecter{\champ{file}\champ{debut}{arbre}}{a}
         \affecter{\champ{file}\champ{debut}{ListeSuivante}}{NIL}
         \affecter{\champ{file}{fin}}{NIL}
-        \affecter{\champ{file}{nb}{1}}
+        \affecter{\champ{file}{longueur}{1}}
         }
 \end{algorithme}
 
@@ -48,10 +48,10 @@
         \affecter{temp2}{obtenirListeSuivante(temp2)}}
         ajouter(temp1,arbre)
         fixerListeSuivante(temp1,temp2)
-        \tantque{non(estVide(obtenirListeSuivante(temp1)}
+        \tantque{non(estVide(obtenirListeSuivante(temp1)))}
         {\affecter{temp1}{obtenirListeSuivante{temp1}}}
         \affecter{\champ{file}{fin}}{temp1}
-        \affecter{\champ{file}{nb}}{nb + 1}
+        \affecter{\champ{file}{longueur}}{\champ{file}{longueur} + 1}
 
         }
         
@@ -60,13 +60,14 @@
 
 
 \begin{algorithme}
-    \procedure{defiler}{\paramEntreeSortie{file : FileDePriorite}}{}{temp1 : FileDePriorite}
+    \procedure{defiler}{\paramEntreeSortie{file : FileDePriorite}}{}{}
+        {temp : FileDePriorite}
         {
         
         \affecter{temp}{\champ{file}{fin}}
         
         \affecter{\champ{file}{fin}}{obtenirListeSuivante(\champ{file}{fin})}      
-        \affecter{\champ{file}{nb}}{nb - 1}
+        \affecter{\champ{file}{longueur}}{\champ{file}{longueur} - 1}
         \motclefDesallouer(temp)
         }
 \end{algorithme}
@@ -75,14 +76,10 @@
 \begin{algorithme}
     \fonction{obtenirElement}{file : FileDePriorite, i :\naturelNonNul}{Statistiques}{i$<$nb}{}
     {
-        \tantque{j$<$i}{
-            obtenirListeSuivante(\champ{file}{debut})
-            \\
-            \affecter{j}{j + 1}
-        }
-        \retourner{obtenirOccurences(\champ{file}\champ{debut}{arbre})}
-
-
+        temp = file.debut;
+        \pour{j}{1}{i-1}{}
+            {temp = temp.ListeSuivante}
+        \retourner{\champ{temp}\champ{arbre}{statistiques}}
     }
 \end{algorithme}
 

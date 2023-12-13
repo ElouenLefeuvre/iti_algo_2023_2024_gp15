@@ -3,16 +3,23 @@
 #include "ArbreHuffman.h";
 
 
-typedef struct{
+typedef struct {
+    ArbreHuffman arbre;
+    ListeChaineeArbre listeSuivante;
+}ListeChaineeArbre;
 
+typedef struct {
+    ListeChaineeArbre debut;
+    ListeChaineeArbre fin;
+    int longueur;
 }FileDePriorite;
+
 
 FileDePriorite fileDePriorite();
 bool estVide(FileDePriorite fp);
 FileDePriorite enfiler(FileDePriorite fp,ArbreHuffman stat);
 FileDePriorite defiler(FileDePriorite fp);
 ArbreHuffman obtenirElement(FileDePriorite fp);
-int longueur(FileDePriorite fp);
 FileDePriorite nouvelleFile(FileDePriorite fp);
 
 
