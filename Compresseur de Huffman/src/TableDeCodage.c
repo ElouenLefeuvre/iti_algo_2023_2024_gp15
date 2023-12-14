@@ -43,4 +43,33 @@ void ajouter(TableDeCodage tab,char c,CodeBinaire code) {
     tab.listeSuivante = temp;
 }
 
+void supprimer(TableDeCodage tab, char c, CodeBinaire code) {
+    TableDeCodage temp;
+    if (!(estVide(tab.listeSuivante))) {
+        if (temp.car == car) {
+            temp = temp.listeSuivante;
+            tab.listeSuivante = temp;
+        }
+        else {
+            supprimer(temp.listeSuivante, car, code);
+            tab.listeSuivante = temp;
+        }
+    }
 
+
+}
+
+
+int estPresent(TableDeCodage tab, char car) {
+    if (estVide(tab)){
+        return 0;
+    }
+    if ( tab.car==car) {
+        return 1;
+    }
+    else {
+        return estPresent(tab.listeSuivante, car);
+    }
+    }
+
+}
