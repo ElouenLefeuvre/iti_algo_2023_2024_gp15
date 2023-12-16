@@ -26,7 +26,7 @@ Ensemble obtenirStatistiques(char nomfichier[]){
     if (fichier != NULL){ 
         while(car != '/') {
             car = fgetc(fichier);
-            if (car!='/') {
+            if (car!='/') { // il prend le carac / si je vérifie pas de nouveau
                 entier = fgetc(fichier);
                 stat = statistique(car,atoi(&entier));
                 ajouter(&ens,&stat);
