@@ -1,0 +1,71 @@
+#include<stdio.h>
+#include<stdbool.h>
+#include <string.h>
+#include <stddef.h>
+
+
+void libererEnsemble(Ensemble *ens, size_t tailleElement) {
+   free(ens->elements);
+    ens->elements = NULL;
+    ens->tailleElement = 0;
+    ens->taille = 0;
+}
+
+void ajouter(Ensemble *ens, void *element, size_t tailleElement) {
+    // Vérifier si l'élément est déjà présent dans l'ensemble
+    for (size_t i = 0; i < ens->taille; i++) {
+        if (memcmp((char *)ens->elements + i * ens->tailleElement, element, ens->tailleElement) == 0) {
+            return; // L'élément est déjà dans l'ensemble
+        }
+    }
+
+    // Agrandir le tableau dynamique pour accueillir le nouvel élément
+    ens->elements = realloc(ens->elements, (ens->taille + 1) * ens->tailleElement);
+    if (ens->elements == NULL) {
+        fprintf(stderr, "Erreur d'allocation mémoire\n");
+        exit(EXIT_FAILURE);
+    }
+
+    // Copier le nouvel élément dans le tableau
+    memcpy((char *)ens->elements + ens->taille * ens->tailleElement, element, ens->tailleElement);
+
+    // Mettre à jour la taille de l'ensemble
+    ens->taille++;
+}
+
+void supprimer(Ensemble *ens, void *element, size_t tailleElement) {
+     for (size_t i = 0; i < ens->taille; i++) {
+        if (memcmp((char *)ens->elements + i * ens->tailleElement, element, ens->tailleElement) == 0) {
+            // Déplacer les éléments suivants pour remplir l'espace
+            for (size_t j = i; j < ens->taille - 1; j++) {
+                memcpy((char *)ens->elements + j * ens->tailleElement,
+                       (char *)ens->elements + (j + 1) * ens->tailleElement, ens->tailleElement);
+            }
+
+            // Réduire la taille du tableau dynamique
+            ens->elements = realloc(ens->elements, (ens->taille - 1) * ens->tailleElement);
+
+            // Mettre à jour la taille de l'ensemble
+            ens->taille--;
+
+            return; // Élément trouvé et supprimé
+        }
+    }
+}
+
+void *obtenirIemeElement(const Ensemble *ens, size_t index) {
+    if (index < ens->taille) {
+        return (char *)ens->elements + index * ens->tailleElement;
+    } else {
+        fprintf(stderr, "Indice hors de la taille de l'ensemble\n");
+        exit(EXIT_FAILURE);
+    }
+}
+
+Ensemble initialiserEnsemble() {
+    Ensemble ens;
+    ens.elements = NULL;
+    ens.tailleElement = tailleElement;
+    ens.taille = 0;
+    return ens;
+}

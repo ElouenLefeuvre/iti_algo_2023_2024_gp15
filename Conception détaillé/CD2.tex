@@ -55,7 +55,9 @@ fin
     \tantque{str!="/"}
         {\lire{fic,car}
         \lire{fic,int}
-        ajouter(ens,Statistiques.statistique(car,int))}}
+        ajouter(ens,Statistiques.statistique(car,int))}
+    \retourner{ens}
+    }
 \end{algorithme}
 
 \section{creerArbreHuffman}
@@ -74,7 +76,8 @@ fin
     \fonction{insererArbre}{file : FileDePriorite, arbre : Arbre Huffman}{FileDePriorite}
     {}
     {}
-    {\retourner{FileDePriorité.enfiler(arbre,file)}}
+    {FileDePriorité.enfiler(arbre,file)
+    \retourner{file}}
 \end{algorithme}
 
 \section{creerArbre}
