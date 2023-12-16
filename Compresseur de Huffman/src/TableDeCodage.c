@@ -1,21 +1,22 @@
 #include<stdio.h>
 #include "TableDeCodage.h"
+#include<stdbool.h>
 
 TableDeCodage obtenirTableDeCodage(ArbreHuffman a) {
     TableDeCodage res;
-    res.noeud.car = obtenirCaractere(a.statistiques);
-    res.noeud.code = obtenirCodeBinaire(res.noeud->c);
-    res.noeud.listeSuivante = NULL;
+    res.noeud->c = obtenirCaractere(a.statistiques);
+    res.noeud->code = obtenirCodeBinaire(res.noeud->c);
+    res.noeud->listeSuivante = NULL;
     return res;
 }
 
 CodeBinaire obtenirCode(TableDeCodage tab,char c) {
-    if (!(estVide(tab))) {
+    if (!(TCestVide(tab))) {
         if (tab.noeud->c == case) {
-            return tab.noeud.code;
+            return tab.noeud->code;
         }
         else {
-            return obtenirCode(tab.noeud.listeSuivante);
+            return obtenirCode(tab.noeud->listeSuivante,c);
         }
 
     }
@@ -23,36 +24,38 @@ CodeBinaire obtenirCode(TableDeCodage tab,char c) {
 }
 
 char obtenirCarac(TableDeCodage tab,CodeBinaire code) {
-    if (!(estVide(tab))) {
-        if (tab.noeud.code == code) {
-            return tab.noeud.car;
+    if (!(TCestVide(tab))) {
+        //Il faut ajouter une methode equlas dans codeBinaire
+        if (tab.noeud->code == code) {
+            return tab.noeud->c;
         }
         else {
-            return obtenirCode(tab.noeud.listeSuivante);
+            return obtenirCarac(tab.noeud->listeSuivante,code);
         }
 
     }
 
 }
 
-void ajouter(TableDeCodage tab,char c,CodeBinaire code) {
+TableDeCodage ajouter(TableDeCodage tab,char c,CodeBinaire code) {
     TableDeCodage temp;
     temp = tab;
-    tab.noeud.car = car;
-    tab.noeud.code = code;
-    tab.noeud.listeSuivante = temp;
+    tab.noeud->c = c;
+    tab.noeud->code = code;
+    tab.noeud->listeSuivante = temp;
+    return tab;
 }
 
 void supprimer(TableDeCodage tab, char c, CodeBinaire code) {
     TableDeCodage temp;
-    if (!(estVide(tab.noeud.listeSuivante))) {
-        if (temp.noeud.car == car) {
-            temp = temp.noeud.listeSuivante;
-            tab.noeud.listeSuivante = temp;
+    if (!(TCestVide(tab.noeud->listeSuivante))) {
+        if (temp.noeud->c == c) {
+            temp = temp.noeud->listeSuivante;
+            tab.noeud->listeSuivante = temp;
         }
         else {
-            supprimer(temp.noeud.listeSuivante, car, code);
-            tab.noeud.listeSuivante = temp;
+            supprimer(temp.noeud->listeSuivante, c, code);
+            tab.noeud->listeSuivante = temp;
         }
     }
 
@@ -61,13 +64,17 @@ void supprimer(TableDeCodage tab, char c, CodeBinaire code) {
 
 
 int estPresent(TableDeCodage tab, char car) {
-    if (estVide(tab)){
+    if (TCestVide(tab)){
         return 0;
     }
-    if ( tab.noeud.car==car) {
+    if ( tab.noeud->c==car) {
         return 1;
     }
     else {
-        return estPresent(tab.noeud.listeSuivante, car);
+        return estPresent(tab.noeud->listeSuivante, car);
     }
+}
+
+bool TCestVide(TableDeCodage tab){
+    return tab.noeud == NULL;
 }
