@@ -3,19 +3,19 @@
 
 TableDeCodage obtenirTableDeCodage(ArbreHuffman a) {
     TableDeCodage res;
-    res.car = obtenirCaractere(a.statistiques);
-    res.code = obtenirCodeBinaire(res.car);
-    res.listeSuivante = NULL;
+    res.noeud.car = obtenirCaractere(a.statistiques);
+    res.noeud.code = obtenirCodeBinaire(res.car);
+    res.noeud.listeSuivante = NULL;
     return res;
 }
 
 CodeBinaire obtenirCode(TableDeCodage tab,char c) {
     if (!(estVide(tab))) {
-        if (tab.car == car) {
-            return tab.code;
+        if (tab.noeud.car == car) {
+            return tab.noeud.code;
         }
         else {
-            return obtenirCode(tab.listeSuivante);
+            return obtenirCode(tab.noeud.listeSuivante);
         }
 
     }
@@ -24,11 +24,11 @@ CodeBinaire obtenirCode(TableDeCodage tab,char c) {
 
 char obtenirCarac(TableDeCodage tab,CodeBinaire code) {
     if (!(estVide(tab))) {
-        if (tab.code == code) {
-            return tab.car;
+        if (tab.noeud.code == code) {
+            return tab.noeud.car;
         }
         else {
-            return obtenirCode(tab.listeSuivante);
+            return obtenirCode(tab.noeud.listeSuivante);
         }
 
     }
@@ -38,21 +38,21 @@ char obtenirCarac(TableDeCodage tab,CodeBinaire code) {
 void ajouter(TableDeCodage tab,char c,CodeBinaire code) {
     TableDeCodage temp;
     temp = tab;
-    tab.car = car;
-    tab.code = code;
-    tab.listeSuivante = temp;
+    tab.noeud.car = car;
+    tab.noeud.code = code;
+    tab.noeud.listeSuivante = temp;
 }
 
 void supprimer(TableDeCodage tab, char c, CodeBinaire code) {
     TableDeCodage temp;
-    if (!(estVide(tab.listeSuivante))) {
-        if (temp.car == car) {
-            temp = temp.listeSuivante;
-            tab.listeSuivante = temp;
+    if (!(estVide(tab.noeud.listeSuivante))) {
+        if (temp.noeud.car == car) {
+            temp = temp.noeud.listeSuivante;
+            tab.noeud.listeSuivante = temp;
         }
         else {
-            supprimer(temp.listeSuivante, car, code);
-            tab.listeSuivante = temp;
+            supprimer(temp.noeud.listeSuivante, car, code);
+            tab.noeud.listeSuivante = temp;
         }
     }
 
@@ -64,12 +64,10 @@ int estPresent(TableDeCodage tab, char car) {
     if (estVide(tab)){
         return 0;
     }
-    if ( tab.car==car) {
+    if ( tab.noeud.car==car) {
         return 1;
     }
     else {
-        return estPresent(tab.listeSuivante, car);
+        return estPresent(tab.noeud.listeSuivante, car);
     }
-    }
-
 }
