@@ -15,22 +15,6 @@
     %Suite à faire en fonction de la table de codage (soit dictionnaire ou tableau de structures)
 \end{algorithme}
 
-\section{creerFileDePriorite}
-\begin{algorithme}
-    \fonction{ creerFileDePriorite}{fic :  FichierHuffman}{FileDePriorite}
-    {}
-    {file : FileDePriorite; ensC : Ensemble de \caractere; ensS : Ensemble de Statistiques}
-    {\affecter{ensC}{obtenirCaracteres(fic)}
-    \affecter{ensS}{creerStatistique(ensC)}
-    \affecter{file}{filedePriorite()}
-    \pourChaque{Stats}{ensS}
-    {insererArbre(file, creerArbre(stats))}
-    
-    \tantque{non(File.estVide(defiler(file)))}  %Ou faire avec longueur >1 de FileDePrio
-        {formationNouvelArbrePondere(file)}
-    \retourner(file)}
-\end{algorithme}
-
 \section{creerTableDeCodage}
 
 \begin{algorithme}
@@ -49,6 +33,64 @@
         Ensemble.ajouter(ensStats,statistique(car, nbOcc))}
     \retourner{ensStats}}
         
+\end{algorithme}
+
+\section{creerFileDePriorite}
+
+\begin{algorithme}
+    \fonction{ creerFileDePriorite}{fic :  FichierTexte}{FileDePriorite}
+    {}
+    {file : FileDePriorite; ensC : Ensemble de \caractere; ensS : Ensemble de Statistiques}
+    {\affecter{ensC}{obtenirCaracteres(fic)}
+    \affecter{ensS}{creerStatistique(ensC)}
+    \affecter{file}{filedePriorite()}
+    \pourChaque{Stats}{ensS}
+    {insererArbre(file, creerArbre(stats))}
+    
+    \tantque{non(File.estVide(defiler(file)))}  %Ou faire avec longueur >1 de FileDePrio
+        {formationNouvelArbrePondere(file)}
+    \retourner(file)}
+\end{algorithme}
+
+\section{obtenirCaracteres}
+
+\begin{algorithme}
+    \fonction{obtenirCaracteres}{fic : FichierTexte}{Ensemble de \caractere}
+    {}
+    {ens : Ensemble de \caractere}
+    {\affecter(ens,ensemble())
+    ouvrir(fic)
+    \tantque{non(eof(fic))}
+        {\lire(fic,car)
+        \sialorssinon{not(estPresent(ens,car))}
+            {ajouter(ens,car)}{}}
+    \retourner{ens}}
+\end{algorithme}
+
+
+\section{obtenirOccurences}
+\begin{algorithme}
+    \fonction{obtenirOccurences}{c : \caractere}{\naturel}
+    {}
+    {}
+    {\retourner{Statistiques.obtenirOccurence(car)}}
+\end{algorithme}
+
+\section{insererArbre}
+
+\begin{algorithme}
+    \fonction{insererArbre}{file : FileDePriorite, arbre : Arbre Huffman}{FileDePriorite}
+    {}
+    {}
+    {\retourner{FileDePriorité.enfiler(arbre,file)}}
+\end{algorithme}
+
+\section{creerArbre}
+\begin{algorithme}
+    \fonction{creerArbre}{stats : Statistiques}{Arbre Huffman}
+    {}
+    {}
+    {\retourner{Huffman.arbrehuffman(stats)}}
 \end{algorithme}
 
 \end{document}
