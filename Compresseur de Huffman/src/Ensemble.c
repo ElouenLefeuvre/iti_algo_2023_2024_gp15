@@ -2,7 +2,7 @@
 #include<stdbool.h>
 #include <string.h>
 #include <stddef.h>
-
+#include"Statistiques.h"
 
 void libererEnsemble(Ensemble *ens, size_t tailleElement) {
    free(ens->elements);
@@ -62,10 +62,22 @@ void *obtenirIemeElement(const Ensemble *ens, size_t index) {
     }
 }
 
-Ensemble initialiserEnsemble() {
+Ensemble initialiserEnsemble(size_t tailleElement) {
     Ensemble ens;
     ens.elements = NULL;
     ens.tailleElement = tailleElement;
     ens.taille = 0;
     return ens;
+}
+
+void afficherEnsemble(const Ensemble *ens, void (*afficherElement)(const void *)) {
+    for (size_t i = 0; i < ens->taille; i++) {
+        const void *currentElement = (const char *)ens->elements + i * ens->tailleElement;
+        afficherElement(currentElement);
+    }
+}
+
+void afficherStatistique(const void *element) {
+    const Statistiques *stats = (const Statistiques *)element;
+    printf("char : %c, entier : %i\n", stats->caracter, stats->ponderation);
 }

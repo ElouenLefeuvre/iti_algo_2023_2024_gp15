@@ -20,16 +20,22 @@ Ensemble obtenirStatistiques(char nomfichier[]){
     FILE *fichier = NULL;
     char car;
     char entier;
+    car = '0';
+    Statistiques stat;
     fichier = fopen(nomfichier,"r");
     if (fichier != NULL){ 
+        while(car != '/') {
+            car = fgetc(fichier);
+            if (car!='/') {
+                entier = fgetc(fichier);
+                stat = statistique(car,atoi(&entier));
+                ajouter(&ens,&stat);
+            }
+            
+        }
     }
     else {
         printf("Impossible d'ouvrir le fichier  : %s\n", nomfichier);
-    }
-    while(not(EOF) | car = "/") {
-            car = fgetc(fichier);
-            entier = fgetc(fichier);
-            ajouter(&ens,&(statistique(car,entier)));
     }
 
     return ens;
