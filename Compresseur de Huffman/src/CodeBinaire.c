@@ -31,8 +31,11 @@ bool estVide(CodeBinaire cb) {
     return cb.bits == "";
 }
 
-int obtenirIemeBit(CodeBinaire cb,int i) {
-    return cb.bits[i];
+Bit obtenirIemeBit(CodeBinaire cb,int i) {
+    switch (cb.bits[i]){
+        case '1': return bitA1;
+        case '0': return bitA0;
+    }
 }
 
 

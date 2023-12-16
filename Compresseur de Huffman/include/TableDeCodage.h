@@ -4,11 +4,11 @@
 #include "CodeBinaire.h"
 #include "ArbreHuffman.h"
 
-typedef struct Noeud{
+typedef struct {
         CodeBinaire code ;
         char c;
         TableDeCodage listeSuivante;
-};
+}Noeud;
 
 typedef struct {
     Noeud* noeud;
