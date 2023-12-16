@@ -7,5 +7,5 @@ typedef struct {
 
 CodeBinaire obtenirCodeBinaire();
 bool estVide(CodeBinaire cb);
-int obtenirIemeBit(CodeBinaire cd,int i); 
+Bit obtenirIemeBit(CodeBinaire cd,int i); 
 #endif

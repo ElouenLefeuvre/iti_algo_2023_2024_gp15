@@ -36,7 +36,17 @@ fin
 
 \end{algorithme}
 
+\section{obtenirFileDePriorite}
+
+\begin{algorithme}
+    \fonction{ obtenirFileDePriorite}{fic :  FichierHuffman}{FileDePriorite}
+    {}
+    {}
+    {}
+\end{algorithme}
+
 \section{obtenirStatistiques}
+
 \begin{algorithme}
     \fonction{obtenirStatistiques}{fic :  FichierHuffman}{Ensemble de Statistiques}
     {}
@@ -45,7 +55,9 @@ fin
     \tantque{str!="/"}
         {\lire{fic,car}
         \lire{fic,int}
-        ajouter(ens,Statistiques.statistique(car,int))}}
+        ajouter(ens,Statistiques.statistique(car,int))}
+    \retourner{ens}
+    }
 \end{algorithme}
 
 \section{creerArbreHuffman}
@@ -58,37 +70,14 @@ fin
 
 \end{algorithme}
 
-\section{obtenirCaracteres}
-
-\begin{algorithme}
-    \fonction{obtenirCaracteres}{fic : FichierTexte}{Ensemble de \caractere}
-    {}
-    {ens : Ensemble de \caractere}
-    {\affecter(ens,ensemble())
-    ouvrir(fic)
-    \tantque{non(eof(fic))}
-        {\lire(fic,car)
-        \sialorssinon{not(estPresent(ens,car))}
-            {ajouter(ens,car)}{}}
-    \retourner{ens}}
-\end{algorithme}
-
-
-\section{obtenirOccurences}
-\begin{algorithme}
-    \fonction{obtenirOccurences}{c : \caractere}{\naturel}
-    {}
-    {}
-    {\retourner{Statistiques.obtenirOccurence(car)}}
-\end{algorithme}
-
 \section{insererArbre}
 
 \begin{algorithme}
     \fonction{insererArbre}{file : FileDePriorite, arbre : Arbre Huffman}{FileDePriorite}
     {}
     {}
-    {\retourner{FileDePriorité.enfiler(arbre,file)}}
+    {FileDePriorité.enfiler(arbre,file)
+    \retourner{file}}
 \end{algorithme}
 
 \section{creerArbre}

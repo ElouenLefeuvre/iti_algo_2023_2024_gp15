@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdbool.h>
+#include <CUnit/Basic.h>
 #include "FileDePriorite.h"
 #include "ArbreHuffman.h"
 #include "Statistiques.h"
