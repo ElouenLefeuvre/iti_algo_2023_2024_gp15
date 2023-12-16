@@ -36,7 +36,17 @@ fin
 
 \end{algorithme}
 
+\section{obtenirFileDePriorite}
+
+\begin{algorithme}
+    \fonction{ obtenirFileDePriorite}{fic :  FichierHuffman}{FileDePriorite}
+    {}
+    {}
+    {}
+\end{algorithme}
+
 \section{obtenirStatistiques}
+
 \begin{algorithme}
     \fonction{obtenirStatistiques}{fic :  FichierHuffman}{Ensemble de Statistiques}
     {}
@@ -56,30 +66,6 @@ fin
     {}
     {\retourner{ArbreHuffman.arbrehuffman(stats)}}
 
-\end{algorithme}
-
-\section{obtenirCaracteres}
-
-\begin{algorithme}
-    \fonction{obtenirCaracteres}{fic : FichierTexte}{Ensemble de \caractere}
-    {}
-    {ens : Ensemble de \caractere}
-    {\affecter(ens,ensemble())
-    ouvrir(fic)
-    \tantque{non(eof(fic))}
-        {\lire(fic,car)
-        \sialorssinon{not(estPresent(ens,car))}
-            {ajouter(ens,car)}{}}
-    \retourner{ens}}
-\end{algorithme}
-
-
-\section{obtenirOccurences}
-\begin{algorithme}
-    \fonction{obtenirOccurences}{c : \caractere}{\naturel}
-    {}
-    {}
-    {\retourner{Statistiques.obtenirOccurence(car)}}
 \end{algorithme}
 
 \section{insererArbre}
