@@ -76,10 +76,11 @@
 \begin{algorithme}
     \fonction{obtenirElement}{file : FileDePriorite, i :\naturelNonNul}{Statistiques}{i$<$nb}{}
     {
-        temp = file.debut;
+    
         \pour{j}{1}{i-1}{}
-            {temp = temp.ListeSuivante}
-        \retourner{\champ{temp}\champ{arbre}{statistiques}}
+            {\affecter{file}{\champ{file}\champ{debut}{listeSuivante}}
+        \retourner{\champ{file}\champ{debut}{arbre}}
+    }
     }
 \end{algorithme}
 
@@ -94,7 +95,12 @@
 
 
 \end{algorithme}
-
+\begin{algorithme}
+    \fonction{obtenirLongueur}{file : FileDePriorite}{}{}{}
+    {
+        \retourner{\champ{file}{longueur}}
+    }
+\end{algorithme}
 
 
 \end{document}
