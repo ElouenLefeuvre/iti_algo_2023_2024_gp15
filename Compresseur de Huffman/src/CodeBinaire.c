@@ -8,8 +8,8 @@ CodeBinaire obtenirCodeBinaire(ArbreHuffman arbre, char car){
     CodeBinaire result;
     CodeBinaire one;
     CodeBinaire zero;
-    one.bits="1";
-    zero.bits= "0";
+    Bit one= bitA1;
+    Bit zero= bitA0;
 
     if (estFeuille(arbre)) {
         result.bits= "";

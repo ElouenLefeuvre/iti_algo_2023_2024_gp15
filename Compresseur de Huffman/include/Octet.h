@@ -1,7 +1,7 @@
 #ifndef __OCTET__
 #define __OCTET__
 #include "CodeBinaire.h";
-struct Octet{
+typedef struct {
     Bit bit7;
     Bit bit6;
     Bit bit5;
@@ -10,7 +10,7 @@ struct Octet{
     Bit bit2;
     Bit bit1;
     Bit bit0;
-};
+}Octet;
 
 Octet creerOctet();
 Octet ajouter(Octet o, CodeBinaire cd);
