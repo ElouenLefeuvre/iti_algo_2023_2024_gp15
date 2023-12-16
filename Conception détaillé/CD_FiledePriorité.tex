@@ -20,6 +20,7 @@
         \begin{enregistrement}{FileDePriorite}
             \champEnregistrement{debut}{ListeChaineeArbre}
             \champEnregistrement{fin}{ListeChaineeArbre}
+            \champEnregistrement{longueur}{\naturel}
         \end{enregistrement}
         \end{algorithme}
 
@@ -30,42 +31,68 @@
         {
         \affecter{\champ{file}\champ{debut}{arbre}}{a}
         \affecter{\champ{file}\champ{debut}{ListeSuivante}}{NIL}
-        \affecter{\champ{file}{fin}}{NIL}  
+        \affecter{\champ{file}{fin}}{NIL}
+        \affecter{\champ{file}{longueur}{1}}
         }
 \end{algorithme}
 
 \begin{algorithme}
 
-    \procedure{enfiler}{\paramEntreeSortie{file : FileDePriorite}}\paramEntree{arbre : ArbreHuffman}{}{}
-        {f : FileDePriorite}
+    \procedure{enfiler}{\paramEntreeSortie{file : FileDePriorite} \paramEntree{arbre : ArbreHuffman}}{}{}
+        {temp1 : FileDePriorite, temp2 : FileDePriorite}
         {
-        \affecter{f}{fileDePriorite(arbre)}
-        \affecter{\champ{f}{elementPrecedent}}{file}      
+        \affecter{temp1}{\champ{file}{debut}}
+        \affecter{temp2}{\champ{file}{fin}}
+        \tantque{obtenirOccurences(arbre)$>$obtenirOccurences(temp2)}{
+        \affecter{temp1}{obtenirListeSuivante(temp1)} 
+        \affecter{temp2}{obtenirListeSuivante(temp2)}}
+        ajouter(temp1,arbre)
+        fixerListeSuivante(temp1,temp2)
+        \tantque{non(estVide(obtenirListeSuivante(temp1)))}
+        {\affecter{temp1}{obtenirListeSuivante{temp1}}}
+        \affecter{\champ{file}{fin}}{temp1}
+        \affecter{\champ{file}{longueur}}{\champ{file}{longueur} + 1}
+
         }
+        
 \end{algorithme}
 
 
 
 \begin{algorithme}
-    \procedure{defiler}{\paramEntreeSortie{file : FileDePriorite}}{}{temp : FileDePriorite}
+    \procedure{defiler}{\paramEntreeSortie{file : FileDePriorite}}{}{}
+        {temp : FileDePriorite}
         {
         
         \affecter{temp}{\champ{file}{fin}}
-        \affecter{\champ{file}{fin}}{obtenirListeSuivante(\champ{file}{fin})}      
         
+        \affecter{\champ{file}{fin}}{obtenirListeSuivante(\champ{file}{fin})}      
+        \affecter{\champ{file}{longueur}}{\champ{file}{longueur} - 1}
         \motclefDesallouer(temp)
         }
 \end{algorithme}
 
+
+\begin{algorithme}
+    \fonction{obtenirElement}{file : FileDePriorite, i :\naturelNonNul}{Statistiques}{i$<$nb}{}
+    {
+        temp = file.debut;
+        \pour{j}{1}{i-1}{}
+            {temp = temp.ListeSuivante}
+        \retourner{\champ{temp}\champ{arbre}{statistiques}}
+    }
+\end{algorithme}
+
 \begin{algorithme}
 
-    \fonction{fileDePriorite}{a : ArbreHuffman}{FileDePriorite}{}
-        {file:FileDePriorite}
-        {
-        \affecter{\champ{file}\champ{debut}{arbre}}{a}
-        \affecter{\champ{file}\champ{debut}{ListeSuivante}}{NIL}
-        \affecter{\champ{file}{fin}}{NIL}  
-        }
+\procedure{nouvelleFile}{\paramEntreeSortie{file : FileDePriorite}}{}{}
+{
+    enfiler(file,ArbreHuffman.fusionner(\champ{file}\champ{fin}{arbre},obtenirListeSuivante(\champ{file}\champ{fin}{arbre})))
+    defiler(file)
+    defiler(file)
+}
+
+
 \end{algorithme}
 
 

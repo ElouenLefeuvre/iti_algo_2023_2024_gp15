@@ -1,0 +1,75 @@
+#include<stdio.h>
+#include "TableDeCodage.h"
+
+TableDeCodage obtenirTableDeCodage(ArbreHuffman a) {
+    TableDeCodage res;
+    res.car = obtenirCaractere(a.statistiques);
+    res.code = obtenirCodeBinaire(res.car);
+    res.listeSuivante = NULL;
+    return res;
+}
+
+CodeBinaire obtenirCode(TableDeCodage tab,char c) {
+    if (!(estVide(tab))) {
+        if (tab.car == car) {
+            return tab.code;
+        }
+        else {
+            return obtenirCode(tab.listeSuivante);
+        }
+
+    }
+
+}
+
+char obtenirCarac(TableDeCodage tab,CodeBinaire code) {
+    if (!(estVide(tab))) {
+        if (tab.code == code) {
+            return tab.car;
+        }
+        else {
+            return obtenirCode(tab.listeSuivante);
+        }
+
+    }
+
+}
+
+void ajouter(TableDeCodage tab,char c,CodeBinaire code) {
+    TableDeCodage temp;
+    temp = tab;
+    tab.car = car;
+    tab.code = code;
+    tab.listeSuivante = temp;
+}
+
+void supprimer(TableDeCodage tab, char c, CodeBinaire code) {
+    TableDeCodage temp;
+    if (!(estVide(tab.listeSuivante))) {
+        if (temp.car == car) {
+            temp = temp.listeSuivante;
+            tab.listeSuivante = temp;
+        }
+        else {
+            supprimer(temp.listeSuivante, car, code);
+            tab.listeSuivante = temp;
+        }
+    }
+
+
+}
+
+
+int estPresent(TableDeCodage tab, char car) {
+    if (estVide(tab)){
+        return 0;
+    }
+    if ( tab.car==car) {
+        return 1;
+    }
+    else {
+        return estPresent(tab.listeSuivante, car);
+    }
+    }
+
+}

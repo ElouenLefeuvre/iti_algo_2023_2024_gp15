@@ -9,10 +9,12 @@
     \signatureFonction{ decompresser}{fic : FichierHuffman}{FichierTexte}\newLine
     {}
 début
-    file = creerFiledePriorite(fic)
-    arbre = creerArbreHuffman(file)
+    stats_fic = obtenirStatistiques(fic)
+    pour chaque s dans stats_fic:
+        arbre = fusionner(arbre,arbrehuffman())
+        fusionner(arbre,s)
     ouvrir(fic)
-    tant que non (eof(fic)):
+    tant que non (eof(fic)) et ens!=none:
         ouvrir(fic)
         temp = arbre
         tant que non estUneFeuille(temp)    
@@ -34,7 +36,17 @@ fin
 
 \end{algorithme}
 
+\section{obtenirFileDePriorite}
+
+\begin{algorithme}
+    \fonction{ obtenirFileDePriorite}{fic :  FichierHuffman}{FileDePriorite}
+    {}
+    {}
+    {}
+\end{algorithme}
+
 \section{obtenirStatistiques}
+
 \begin{algorithme}
     \fonction{obtenirStatistiques}{fic :  FichierHuffman}{Ensemble de Statistiques}
     {}
@@ -54,30 +66,6 @@ fin
     {}
     {\retourner{ArbreHuffman.arbrehuffman(stats)}}
 
-\end{algorithme}
-
-\section{obtenirCaracteres}
-
-\begin{algorithme}
-    \fonction{obtenirCaracteres}{fic : FichierTexte}{Ensemble de \caractere}
-    {}
-    {ens : Ensemble de \caractere}
-    {\affecter(ens,ensemble())
-    ouvrir(fic)
-    \tantque{non(eof(fic))}
-        {\lire(fic,car)
-        \sialorssinon{not(estPresent(ens,car))}
-            {ajouter(ens,car)}{}}
-    \retourner{ens}}
-\end{algorithme}
-
-
-\section{obtenirOccurences}
-\begin{algorithme}
-    \fonction{obtenirOccurences}{c : \caractere}{\naturel}
-    {}
-    {}
-    {\retourner{Statistiques.obtenirOccurence(car)}}
 \end{algorithme}
 
 \section{insererArbre}

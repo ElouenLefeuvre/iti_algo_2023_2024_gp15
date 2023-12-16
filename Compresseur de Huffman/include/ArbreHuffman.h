@@ -10,6 +10,7 @@ typedef struct {
 }ArbreHuffman;
 
 ArbreHuffman arbreDeHuffman(Statistiques stat);
+int obtenirOccurences(ArbreHuffman arbre);
 ArbreHuffman fusionner(ArbreHuffman ah1,ArbreHuffman ah2);
 void* fixerFilsGauche(ArbreHuffman ah1,ArbreHuffman fg);
 void* fixerFilsDroit(ArbreHuffman ah1,ArbreHuffman fd);
