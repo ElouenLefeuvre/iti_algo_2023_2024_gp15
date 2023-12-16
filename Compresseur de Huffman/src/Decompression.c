@@ -3,6 +3,9 @@
 #include<stdbool.h>
 #include<stdlib.h>
 #include"Ensemble.h"
+#include"FileDePriorite.h"
+#include"Statistiques.h"
+#include"ArbreHuffman.h"
 
 FILE decompresser(char[] nomFichierHuffman) {
     return 0;
