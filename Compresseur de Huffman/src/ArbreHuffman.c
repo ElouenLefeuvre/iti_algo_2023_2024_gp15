@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdbool.h>
 #include "ArbreHuffman.h"
-#include "Statistiques.h"
+#include "Statistiques.oh"
 
 
 ArbreHuffman arbrehuffman(Statistiques stat) {

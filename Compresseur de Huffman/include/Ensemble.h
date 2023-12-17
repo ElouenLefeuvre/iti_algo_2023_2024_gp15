@@ -3,7 +3,7 @@
 
 typedef struct {
     void  **elements;
-    size_t tailleElement
+    size_t tailleElement;
     size_t taille;
 } Ensemble;
 

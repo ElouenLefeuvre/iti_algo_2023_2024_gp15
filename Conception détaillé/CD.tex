@@ -12,13 +12,12 @@
 
     {
     \affecter{file}{creerFileDePriorite(fic)}
-        creerFileDePriorite{fic}
     \affecter{table}{creerTableDeCodage(FileDePriorite.obtenirElement(file))}
     \tantque{non(EOF(fic))}{
         \affecter{temp}{table}
         ecrireOctet(fc,encoder(obtenirCodeBinaire(temp,lireCaractere(fic))))
     }
-
+    \retourner{fic}
     }
     
 
@@ -29,7 +28,7 @@
 
 \section{creerFileDePriorite}
 \begin{algorithme}
-    \fonction{ }{fic :  FichierHuffman}{Arbre}
+    \fonction{ }{fic :  FichierBinaire}{ArbreHuffman}
     {}
     {file : FileDePriorite; ensC : Ensemble de \caractere; ensS : Ensemble de Statistiques}
     {\affecter{ensC}{obtenirCaracteres(fic)}
@@ -66,22 +65,6 @@
         }}
 \end{algorithme}
 
-\section{creerFileDePriorite}
-
-\begin{algorithme}
-    \fonction{ creerFileDePriorite}{fic :  FichierTexte}{FileDePriorite}
-    {}
-    {file : FileDePriorite; ensC : Ensemble de \caractere; ensS : Ensemble de Statistiques}
-    {\affecter{ensC}{obtenirCaracteres(fic)}
-    \affecter{ensS}{creerStatistique(ensC)}
-    \affecter{file}{filedePriorite()}
-    \pourChaque{Stats}{ensS}
-    {insererArbre(file, creerArbre(stats))}
-    
-    \tantque{non(File.estVide(defiler(file)))}  %Ou faire avec longueur >1 de FileDePrio
-        {formationNouvelArbrePondere(file)}
-    \retourner(file)}
-\end{algorithme}
 
 \section{obtenirCaracteres}
 
@@ -121,7 +104,7 @@
     \fonction{creerArbre}{stats : Statistiques}{Arbre Huffman}
     {}
     {}
-    {\retourner{Huffman.arbrehuffman(stats)}}
+    {\retourner{ArbreHuffman.arbrehuffman(stats)}}
 \end{algorithme}
 
 \end{document}
