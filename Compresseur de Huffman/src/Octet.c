@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdbool.h>
+#include <string.h>
 #include "Octet.h"
 #include "CodeBinaire.h"
 
@@ -33,7 +34,7 @@ Octet O_encoder(Octet octet,CodeBinaire cb){
             Bit bit = O_iemeBit(bitRestant,i);
             O_fixerBit(octet,startPosition,bit);
             startPosition++;
-            O_fixerBit(bitRestant,mostImportantBitRestant,bitA0);
+            O_fixerBit(bitRestant,mostImportantBitRestant,BITA0);
             mostImportantBitRestant--;
         }  
     }
@@ -85,3 +86,26 @@ void O_decaler(Octet octet){
     octet.bit1 = octet.bit0;
     octet.bit0= BITA0;
 }
+
+char* O_bitsToStr(Octet octet){
+    char* result = "";
+    for(int i=0;i<8;i++){
+        Bit bitToAdd = O_iemeBit(octet,i);
+        switch(bitToAdd){
+            case BITA0: strcat(result,'0');
+            case BITA1: strcat(result,'1');
+        }
+    }
+    return result;
+}
+
+Octet O_strToBits(char* octet){
+    Octet result; 
+    for(int i=0; i<8;i++){
+        char bit =octet[i];
+        fixerBit(result,7-i,bit);
+    }
+    return result;
+    
+}
+

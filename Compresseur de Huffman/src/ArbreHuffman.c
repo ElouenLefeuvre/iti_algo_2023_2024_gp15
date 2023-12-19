@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdbool.h>
 #include "ArbreHuffman.h"
-#include "Statistiques.oh"
+#include "Statistiques.h"
 
 
 ArbreHuffman AH_arbrehuffman(Statistiques stat) {
@@ -13,7 +13,7 @@ ArbreHuffman AH_arbrehuffman(Statistiques stat) {
 }
 
 int AH_obtenirOccurences(ArbreHuffman arbre){
-    return arbre.statistiques.ponderation
+    return arbre.statistiques.ponderation;
 }
 
 ArbreHuffman AH_fusionner(ArbreHuffman arbre1,ArbreHuffman arbre2) {
@@ -63,6 +63,6 @@ bool AH_estPresent(ArbreHuffman arbre, char caractere) {
         return true;
     }
     else {
-        return (AH_estPresent(obtenirFilsDroit(arbre),caractere) || AH_estPresent(obtenirFilsGauche(arbre),caractere));
+        return (AH_estPresent(AH_obtenirFilsDroit(arbre),caractere) || AH_estPresent(AH_obtenirFilsGauche(arbre),caractere));
     }
 }

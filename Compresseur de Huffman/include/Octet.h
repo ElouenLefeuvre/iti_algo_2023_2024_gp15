@@ -16,11 +16,13 @@ static Octet bitRestant;
 static int mostImportantBitRestant;
 static int startPosition;
 
-Bit iemeBit(Octet octet,int i);
+Bit O_iemeBit(Octet octet,int i);
 Octet creerOctet();
 Octet encoder(Octet octet,CodeBinaire cb);
 void decaler(Octet octet);
 void fixerBit(Octet octet, int position, Bit newBit);
+char* O_bitsToStr(Octet octet);
+Octet O_strToBits(char* octet);
 
 
 #endif
