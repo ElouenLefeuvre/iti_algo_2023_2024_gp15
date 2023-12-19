@@ -83,5 +83,5 @@ void O_decaler(Octet octet){
     octet.bit3=octet.bit2;
     octet.bit2 = octet.bit1;
     octet.bit1 = octet.bit0;
-    octet.bit0= bitA0;
+    octet.bit0= BITA0;
 }

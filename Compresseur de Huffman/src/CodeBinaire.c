@@ -17,8 +17,8 @@ CodeBinaire CB_obtenirCodeBinaireR(ArbreHuffman arbre, char car) {
     CodeBinaire result;
     CodeBinaire one;
     CodeBinaire zero;
-    Bit one= bitA1;
-    Bit zero= bitA0;
+    Bit one= BITA1;
+    Bit zero= BITA0;
 
     if (AH_estFeuille(arbre)) {
         result.bits= "";
@@ -42,8 +42,8 @@ bool CB_estVide(CodeBinaire cb) {
 
 Bit CB_obtenirIemeBit(CodeBinaire cb,int i) {
     switch (cb.bits[i]){
-        case '1': return bitA1;
-        case '0': return bitA0;
+        case '1': return BITA1;
+        case '0': return BITA0;
     }
 }
 

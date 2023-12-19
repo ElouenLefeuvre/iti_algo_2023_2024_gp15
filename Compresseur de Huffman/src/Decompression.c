@@ -7,16 +7,16 @@
 #include"Statistiques.h"
 #include"ArbreHuffman.h"
 
-FILE decompresser(char[] nomFichierHuffman) {
+FILE DECOMP_decompresser(char[] nomFichierHuffman) {
     return 0;
 }
 
-FileDePriorite obtenirFileDePriorite(){
+FileDePriorite DECOMP_obtenirFileDePriorite(){
     return 0;
 }
 
-Ensemble obtenirStatistiques(char nomfichier[]){
-    Ensemble ens = initialiserEnsemble(sizeof(Statistiques));
+Ensemble DECOMP_obtenirStatistiques(char nomfichier[]){
+    Ensemble ens = E_initialiserEnsemble(sizeof(Statistiques));
     FILE *fichier = NULL;
     char car;
     char entier;
@@ -28,8 +28,8 @@ Ensemble obtenirStatistiques(char nomfichier[]){
             car = fgetc(fichier);
             if (car!='/') { // il prend le carac / si je vérifie pas de nouveau
                 entier = fgetc(fichier);
-                stat = statistique(car,atoi(&entier));
-                ajouter(&ens,&stat);
+                stat = S_statistique(car,atoi(&entier));
+                E_ajouter(&ens,&stat);
             }
             
         }
@@ -41,15 +41,15 @@ Ensemble obtenirStatistiques(char nomfichier[]){
     return ens;
 }
 
-ArbreHuffman creerArbreHuffman(Statistiques stat) {
-    return arbrehuffman(stat);
+ArbreHuffman DECOMP_creerArbreHuffman(Statistiques stat) {
+    return AH_arbrehuffman(stat);
 }
 
-FileDePriorite insererArbre(FileDePriorite file, ArbreHuffman arbre) {
-    enfiler(arbre,file);
+FileDePriorite DECOMP_insererArbre(FileDePriorite file, ArbreHuffman arbre) {
+    FDP_enfiler(arbre,file);
     return file;
 }
 
-ArbreHuffman creerArbre(Statistiques stats) {
-    return arbrehuffman(stats);
+ArbreHuffman DECOMP_creerArbre(Statistiques stats) {
+    return AH_arbrehuffman(stats);
 }
