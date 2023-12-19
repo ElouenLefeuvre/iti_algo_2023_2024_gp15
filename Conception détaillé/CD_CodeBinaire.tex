@@ -5,7 +5,6 @@
 
 \type{CodeBinaire}{\chaine}
 
-
 \section{obtenirCodeBinaire}
 
 \begin{algorithme}
@@ -13,10 +12,19 @@
     {non(estVide(a))}
     {}
     {\sialorssinon{estFeuille(a)}
+    {\retourner('0')}
+    \retourner{ObtenirCodeBinaireR(a,car)}}
+\section{obtenirCodeBinaireR}
+
+\begin{algorithme}
+    \fonction{obtenirCodeBinaireR}{a : Arbre Huffman, car : \caractere}{CodeBinaire}
+    {non(estVide(a))}
+    {}
+    {\sialorssinon{estFeuille(a)}
     {\retourner{''}}
     {\sialorssinon{estPresent(car, obtenirFilsGauche(a))}
-    {\retourner{'0' + obtenirCodeBinaire(obtenirFilsGauche(a),car)}}
-    {\retourner{'1' + obtenirCodeBinaire(obtenirFilsDroit(a),car)}}}}
+    {\retourner{'0' + obtenirCodeBinaireR(obtenirFilsGauche(a),car)}}
+    {\retourner{'1' + obtenirCodeBinaireR(obtenirFilsDroit(a),car)}}}}
 \end{algorithme}
 
 \section{estVide}
