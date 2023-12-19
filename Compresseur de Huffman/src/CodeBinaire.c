@@ -5,14 +5,16 @@
 #include <string.h>
 
 CodeBinaire CB_obtenirCodeBinaire(ArbreHuffman arbre, char car) {
-    CodeBinaire res
+    CodeBinaire res;
     if (AH_estFeuille(arbre)){
-        res.bits = "0"
+        res.bits = "0";
         return res;
     }
     else{
         return CB_obtenirCodeBinaireR(arbre,car);
     }
+}
+
 CodeBinaire CB_obtenirCodeBinaireR(ArbreHuffman arbre, char car) {
     CodeBinaire result;
     CodeBinaire one;

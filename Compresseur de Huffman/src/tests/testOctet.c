@@ -50,6 +50,36 @@ void test_iemeBit(){
 void test_decaler(){
     char* octet = "11111111";
     Octet octetInBits = O_strToBits(octet);
+    O_decaler(octetInBits);
+    CU_ASSERT_EQUAL(strcmp(O_bitsToStr(octetInBits),"11111110"), 1);
+}
+
+void test_str_to_bits(){
+    char* octetInstr = "11110011";
+    Octet octetInBits= O_strToBits(octetInstr);
+    CU_ASSERT_EQUAL(O_iemeBit(octetInBits,7), BITA1);
+    CU_ASSERT_EQUAL(O_iemeBit(octetInBits,6), BITA1);
+    CU_ASSERT_EQUAL(O_iemeBit(octetInBits,5), BITA1);
+    CU_ASSERT_EQUAL(O_iemeBit(octetInBits,4), BITA1);
+    CU_ASSERT_EQUAL(O_iemeBit(octetInBits,3), BITA0);
+    CU_ASSERT_EQUAL(O_iemeBit(octetInBits,2), BITA0);
+    CU_ASSERT_EQUAL(O_iemeBit(octetInBits,1), BITA1);
+    CU_ASSERT_EQUAL(O_iemeBit(octetInBits,0), BITA1);
+}
+
+void test_bits_to_str(){
+    Octet octet = O_creerOctet();
+    fixerBit(octet,7,BITA1);
+    fixerBit(octet,6,BITA0);
+    fixerBit(octet,5,BITA1);
+    fixerBit(octet,4,BITA0);
+    fixerBit(octet,3,BITA1);
+    fixerBit(octet,2,BITA0);
+    fixerBit(octet,1,BITA1);
+    fixerBit(octet,0,BITA0);
+    char* octetInstr= O_bitsToStr(octet);
+    CU_ASSERT_EQUAL(strcmp(octetInstr,"10101010"), 1);
+
 }
 
 

@@ -30,7 +30,7 @@ Octet O_encoder(Octet octet,CodeBinaire cb){
     //cas ou y a des bits dans l'octet des bit restant
     // On insere autant de bit possible dans l'octet;
     for (int i=mostImportantBitRestant-1 ;i>0;i--){
-        if(startPosition>7){
+        if(startPosition<8){
             Bit bit = O_iemeBit(bitRestant,i);
             O_fixerBit(octet,startPosition,bit);
             startPosition++;
@@ -43,7 +43,7 @@ Octet O_encoder(Octet octet,CodeBinaire cb){
     //sinon on les insere dans l'octet bit restant
     for (int i=CB_obtenirLongueur(cb)-1;i>0;i--){
         Bit bit = O_obtenirIemeBit(cb,i);
-        if(startPosition > 7){
+        if(startPosition < 8){
             O_fixerBit(octet,startPosition,bit);
         }
         else{
@@ -56,7 +56,7 @@ Octet O_encoder(Octet octet,CodeBinaire cb){
     // et qu'il reste plus de place dans octet on remet start position a 0 pour le prochain octet 
     //qu'on va traite
     
-    if(startPosition>7){
+    if(startPosition >7){
         startPosition =0;
     }
 
