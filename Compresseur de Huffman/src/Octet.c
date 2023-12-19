@@ -33,7 +33,7 @@ Octet encoder(Octet octet,CodeBinaire cb){
             Bit bit = iemeBit(bitRestant,i);
             fixerBit(octet,startPosition,bit);
             startPosition++;
-            fixerBit(bitRestant,mostImportantBitRestant,bitA0);
+            fixerBit(bitRestant,mostImportantBitRestant,BITA0);
             mostImportantBitRestant--;
         }  
     }
@@ -83,5 +83,5 @@ void decaler(Octet octet){
     octet.bit3=octet.bit2;
     octet.bit2 = octet.bit1;
     octet.bit1 = octet.bit0;
-    octet.bit0= bitA0;
+    octet.bit0= BITA0;
 }
