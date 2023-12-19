@@ -1,17 +1,17 @@
 #include<stdio.h>
 #include "Statistiques.h"
 
-Statistiques statistique(char c, int n) {
+Statistiques S_statistique(char c, int n) {
     Statistiques res;
     res.caracter = c;
     res.ponderation = n ;
     return res;
 }
 
-int obtenirPonderation(Statistiques stat) {
+int S_obtenirPonderation(Statistiques stat) {
     return stat.ponderation;
 }
 
-char obtenirCaractere(Statistiques stat) {
+char S_obtenirCaractere(Statistiques stat) {
     return stat.caracter;
 }

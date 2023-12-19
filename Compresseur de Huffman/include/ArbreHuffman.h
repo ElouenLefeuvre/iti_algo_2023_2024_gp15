@@ -9,15 +9,15 @@ typedef struct {
     ArbreHuffman* filsDroit;
 }ArbreHuffman;
 
-ArbreHuffman arbreDeHuffman(Statistiques stat);
-int obtenirOccurences(ArbreHuffman arbre);
-ArbreHuffman fusionner(ArbreHuffman ah1,ArbreHuffman ah2);
-void* fixerFilsGauche(ArbreHuffman ah1,ArbreHuffman fg);
-void* fixerFilsDroit(ArbreHuffman ah1,ArbreHuffman fd);
-ArbreHuffman obtenirFilsGauche(ArbreHuffman ah1);
-ArbreHuffman obtenirFilsDroit(ArbreHuffman ah1);
-bool estVide(ArbreHuffman arbre);
-bool estFeuille(ArbreHuffman arbre);
-bool estPresent(ArbreHuffman arbre, char caractere);
+ArbreHuffman AH_arbreDeHuffman(Statistiques stat);
+int AH_obtenirOccurences(ArbreHuffman arbre);
+ArbreHuffman AH_fusionner(ArbreHuffman ah1,ArbreHuffman ah2);
+void* AH_fixerFilsGauche(ArbreHuffman ah1,ArbreHuffman fg);
+void* AH_fixerFilsDroit(ArbreHuffman ah1,ArbreHuffman fd);
+ArbreHuffman AH_obtenirFilsGauche(ArbreHuffman ah1);
+ArbreHuffman AH_obtenirFilsDroit(ArbreHuffman ah1);
+bool AH_estVide(ArbreHuffman arbre);
+bool AH_estFeuille(ArbreHuffman arbre);
+bool AH_estPresent(ArbreHuffman arbre, char caractere);
 
 #endif

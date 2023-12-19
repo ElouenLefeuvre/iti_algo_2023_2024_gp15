@@ -4,34 +4,34 @@
 #include "ArbreHuffman.h"
 #include <string.h>
 
-CodeBinaire obtenirCodeBinaire(ArbreHuffman arbre, char car) {
+CodeBinaire CB_obtenirCodeBinaire(ArbreHuffman arbre, char car) {
     CodeBinaire result;
     CodeBinaire one;
     CodeBinaire zero;
     Bit one= BITA1;
     Bit zero= BITA0;
 
-    if (estFeuille(arbre)) {
+    if (AH_estFeuille(arbre)) {
         result.bits= "";
         return result;
     }
     else{
-        if(estPresent(obtenirFilsGauche(arbre),car)){
-            return concat(zero,obtenirCodeBinaire(obtenirFilsGauche(arbre),car));
+        if(AH_estPresent(AH_obtenirFilsGauche(arbre),car)){
+            return CB_concat(zero,CB_obtenirCodeBinaire(AH_obtenirFilsGauche(arbre),car));
         }
         else{
-            return concat(one,obtenirCodeBinaire(obtenirFilsDroit(arbre),car));
+            return CB_concat(one,CB_obtenirCodeBinaire(AH_obtenirFilsDroit(arbre),car));
         }
 
     }
 }
 
 
-bool estVide(CodeBinaire cb) {
+bool CB_estVide(CodeBinaire cb) {
     return cb.bits == "";
 }
 
-Bit obtenirIemeBit(CodeBinaire cb,int i) {
+Bit CB_obtenirIemeBit(CodeBinaire cb,int i) {
     switch (cb.bits[i]){
         case '1': return BITA1;
         case '0': return BITA0;
@@ -39,11 +39,8 @@ Bit obtenirIemeBit(CodeBinaire cb,int i) {
 }
 
 
-CodeBinaire concat(CodeBinaire cb1, CodeBinaire cb2) {
+CodeBinaire CB_concat(CodeBinaire cb1, CodeBinaire cb2) {
     strcat(cb1.bits,cb2.bits);
     return cb1;
 }
-
-void ajouterbit(CodeBinaire cb, int n, int bit);
-void supprimerBit(CodeBinaire cb, int n);
 

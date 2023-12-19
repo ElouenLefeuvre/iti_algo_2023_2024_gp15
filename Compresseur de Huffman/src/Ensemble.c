@@ -4,14 +4,14 @@
 #include <stddef.h>
 #include"Statistiques.h"
 
-void libererEnsemble(Ensemble *ens, size_t tailleElement) {
+void E_libererEnsemble(Ensemble *ens, size_t tailleElement) {
    free(ens->elements);
     ens->elements = NULL;
     ens->tailleElement = 0;
     ens->taille = 0;
 }
 
-void ajouter(Ensemble *ens, void *element, size_t tailleElement) {
+void E_ajouter(Ensemble *ens, void *element, size_t tailleElement) {
     // Vérifier si l'élément est déjà présent dans l'ensemble
     for (size_t i = 0; i < ens->taille; i++) {
         if (memcmp((char *)ens->elements + i * ens->tailleElement, element, ens->tailleElement) == 0) {
@@ -33,7 +33,7 @@ void ajouter(Ensemble *ens, void *element, size_t tailleElement) {
     ens->taille++;
 }
 
-void supprimer(Ensemble *ens, void *element, size_t tailleElement) {
+void E_supprimer(Ensemble *ens, void *element, size_t tailleElement) {
      for (size_t i = 0; i < ens->taille; i++) {
         if (memcmp((char *)ens->elements + i * ens->tailleElement, element, ens->tailleElement) == 0) {
             // Déplacer les éléments suivants pour remplir l'espace
@@ -53,7 +53,7 @@ void supprimer(Ensemble *ens, void *element, size_t tailleElement) {
     }
 }
 
-void *obtenirIemeElement(const Ensemble *ens, size_t index) {
+void *E_obtenirIemeElement(const Ensemble *ens, size_t index) {
     if (index < ens->taille) {
         return (char *)ens->elements + index * ens->tailleElement;
     } else {
@@ -62,7 +62,7 @@ void *obtenirIemeElement(const Ensemble *ens, size_t index) {
     }
 }
 
-Ensemble initialiserEnsemble(size_t tailleElement) {
+Ensemble E_initialiserEnsemble(size_t tailleElement) {
     Ensemble ens;
     ens.elements = NULL;
     ens.tailleElement = tailleElement;
@@ -70,14 +70,14 @@ Ensemble initialiserEnsemble(size_t tailleElement) {
     return ens;
 }
 
-void afficherEnsemble(const Ensemble *ens, void (*afficherElement)(const void *)) {
+void E_afficherEnsemble(const Ensemble *ens, void (*afficherElement)(const void *)) {
     for (size_t i = 0; i < ens->taille; i++) {
         const void *currentElement = (const char *)ens->elements + i * ens->tailleElement;
-        afficherElement(currentElement);
+        E_afficherElement(currentElement);
     }
 }
 
-void afficherStatistique(const void *element) {
+void E_afficherStatistique(const void *element) {
     const Statistiques *stats = (const Statistiques *)element;
     printf("char : %c, entier : %i\n", stats->caracter, stats->ponderation);
 }
