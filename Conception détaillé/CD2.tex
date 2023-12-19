@@ -41,13 +41,13 @@ fin
     {}
     {ens : Ensemble de Arbre de Huffman}
     {
-        file = filedePriorite(NULL)
+        file = filedePriorite()
         ens = ensemble()
         pour chaque s dans stats faire
             ajouter(ens, arbrehuffman(s))
         pour chaque a dans ens faire
             enfiler(file, a)
-        tant que longeur(file)>1 faire
+        tant que longueur>1 faire
             nouvelleFile(file)
         retourner file
     }

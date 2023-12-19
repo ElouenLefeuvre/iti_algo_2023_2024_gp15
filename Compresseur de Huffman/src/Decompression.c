@@ -7,15 +7,15 @@
 #include"Statistiques.h"
 #include"ArbreHuffman.h"
 
-FILE decompresser(char[] nomFichierHuffman) {
+FILE DECOMP_decompresser(char[] nomFichierHuffman) {
     return 0;
 }
 
-FileDePriorite obtenirFileDePriorite(){
+FileDePriorite DECOMP_obtenirFileDePriorite(){
     return 0;
 }
 
-Ensemble obtenirStatistiques(char nomfichier[]){
+Ensemble DECOMP_obtenirStatistiques(char nomfichier[]){
     Ensemble ens = initialiserEnsemble(sizeof(Statistiques));
     FILE *fichier = NULL;
     char car;
@@ -41,15 +41,15 @@ Ensemble obtenirStatistiques(char nomfichier[]){
     return ens;
 }
 
-ArbreHuffman creerArbreHuffman(Statistiques stat) {
+ArbreHuffman DECOMP_creerArbreHuffman(Statistiques stat) {
     return arbrehuffman(stat);
 }
 
-FileDePriorite insererArbre(FileDePriorite file, ArbreHuffman arbre) {
+FileDePriorite DECOMP_insererArbre(FileDePriorite file, ArbreHuffman arbre) {
     enfiler(arbre,file);
     return file;
 }
 
-ArbreHuffman creerArbre(Statistiques stats) {
+ArbreHuffman DECOMP_creerArbre(Statistiques stats) {
     return arbrehuffman(stats);
 }

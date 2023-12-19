@@ -9,19 +9,19 @@
 #include"TableDeCodage.h"
 
 
-ArbreHuffman creerArbre(Statistiques stats){
-    return ArbreHuffman.arbrehuffman(stats);
+ArbreHuffman COMP_creerArbre(Statistiques stats){
+    return AH_arbrehuffman(stats);
 }
 
-FileDePriorite insererArbre(FileDePriorite file, ArbreHuffman arbre){
-    return FileDePriorite.enfiler(arbre,file);
+FileDePriorite COMP_insererArbre(FileDePriorite file, ArbreHuffman arbre){
+    return FDP_enfiler(arbre,file);
 }
 
-int obtenirOccurences(char c){
-    return Statistiques.obtenirOccurence(car);
+int COMP_obtenirOccurences(char c){
+    return S_obtenirOccurence(car);
 }
 
-Ensemble obtenirCaracteres(char nomFichier[]){
+Ensemble COMP_obtenirCaracteres(char nomFichier[]){
     Ensemble ens = initialiserEnsemble(sizeof(char));
     FILE *fic = NULL;
     char car;
@@ -45,13 +45,13 @@ Ensemble obtenirCaracteres(char nomFichier[]){
     return ens;}
 
 
-Ensemble creerStatistiques(char nomFichier[], Ensemble ensC){
+Ensemble COMP_creerStatistiques(char nomFichier[], Ensemble ensC){
     Ensemble ensStats = initialiserEnsemble(sizeof(Statistiques));
     int nbOcc;
 
 }
 
-FileDePriorite creerFileDePriorite(char nomFichier[]){
+FileDePriorite COMP_creerFileDePriorite(char nomFichier[]){
     FileDePriorite file;
     Ensemble ensC = initialiserEnsemble(sizeof(char));
     Ensemble ens = initialiserEnsemble(sizeof(Statistiques));
@@ -71,11 +71,11 @@ FileDePriorite creerFileDePriorite(char nomFichier[]){
 }
 
 
-TableDeCodage creerTableDeCodage(ArbreHuffman arbre){
+TableDeCodage COMP_creerTableDeCodage(ArbreHuffman arbre){
     return obtenirTableDeCodage(arbre);
 }
 
-fichierBinaire compresser(char nomFichier[]){
+fichierBinaire COMP_compresser(char nomFichier[]){
     FILE *fic = NULL;
     FILE *fc = NULL;
     char car;
@@ -84,7 +84,7 @@ fichierBinaire compresser(char nomFichier[]){
     TableDeCodage tab;
     ArbreHuffman ArbreHuffman;
     file = creerFileDePriorite(nomFichier);
-    table = creerTableDeCodage(FileDePriorite.obtenirElement(file));
+    table = creerTableDeCodage(FDP_obtenirElement(file));
     fic = fopen(nomFichier, 'r');
     fc = fopen(nomFichier, 'w');
     if (fic != NULL){ 

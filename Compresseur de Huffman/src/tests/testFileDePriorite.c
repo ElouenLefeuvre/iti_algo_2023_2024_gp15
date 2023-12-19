@@ -149,6 +149,10 @@ void test_obtenirIElement_fin() {
     CU_ASSERT_EQUAL(obtenirIemeElement(file,3),stat3);
 }
 
+void test_nouvellefile() {
+}
+
+
 int main (int argc, char** argv) {
     int main() {
     CU_pSuite pSuite = NULL;
