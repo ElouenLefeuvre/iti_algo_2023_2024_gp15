@@ -22,7 +22,7 @@ int COMP_obtenirOccurences(char c){
 }
 
 Ensemble COMP_obtenirCaracteres(char nomFichier[]){
-    Ensemble ens = initialiserEnsemble(sizeof(char));
+    Ensemble ens = E_initialiserEnsemble(sizeof(char));
     FILE *fic = NULL;
     char car;
     char entier;
@@ -31,9 +31,9 @@ Ensemble COMP_obtenirCaracteres(char nomFichier[]){
    if (fic != NULL){ 
         while(car != '/') {
             car = fgetc(fic);
-            if ((car!='/') && (!(estPresent(ens, car)))) {
+            if ((car!='/') && (!(E_estPresent(ens, car)))) {
                 entier = fgetc(fic);
-                ajouter(&ens,&stat);
+                E_ajouter(&ens,&stat);
             }
             
         }
@@ -46,33 +46,33 @@ Ensemble COMP_obtenirCaracteres(char nomFichier[]){
 
 
 Ensemble COMP_creerStatistiques(char nomFichier[], Ensemble ensC){
-    Ensemble ensStats = initialiserEnsemble(sizeof(Statistiques));
+    Ensemble ensStats = E_initialiserEnsemble(sizeof(Statistiques));
     int nbOcc;
 
 }
 
 FileDePriorite COMP_creerFileDePriorite(char nomFichier[]){
     FileDePriorite file;
-    Ensemble ensC = initialiserEnsemble(sizeof(char));
-    Ensemble ens = initialiserEnsemble(sizeof(Statistiques));
-    ensC = obtenirCaracteres(nomFichier);
-    ensS = creerStatistiques(nomFichier, ensC);
-    file = creerFileDePriorite();
+    Ensemble ensC = E_initialiserEnsemble(sizeof(char));
+    Ensemble ens = E_initialiserEnsemble(sizeof(Statistiques));
+    ensC = COMP_obtenirCaracteres(nomFichier);
+    ensS = COMP_creerStatistiques(nomFichier, ensC);
+    file = FDP_fileDePriorite();
     int i;
     for(i=0; i < ensS.taille; i++){
         Statistiques stats;
-        stats = &obtenirIemeElement(&ensS, i);
-        enfiler(file, arbrehuffman(stats));
+        stats = &E_obtenirIemeElement(&ensS, i);
+        FDP_enfiler(file, AH_arbrehuffman(stats));
     }
-    while ((FileDePriorite.obtenirLongueur(file)) > 1){
-        nouvelleFile(file);
+    while ((FDP_obtenirLongueur(file)) > 1){
+        FDP_nouvelleFile(file);
     }
     return file;
 }
 
 
 TableDeCodage COMP_creerTableDeCodage(ArbreHuffman arbre){
-    return obtenirTableDeCodage(arbre);
+    return TDC_obtenirTableDeCodage(arbre);
 }
 
 fichierBinaire COMP_compresser(char nomFichier[]){
@@ -83,8 +83,8 @@ fichierBinaire COMP_compresser(char nomFichier[]){
     TableDeCodage temp;
     TableDeCodage tab;
     ArbreHuffman ArbreHuffman;
-    file = creerFileDePriorite(nomFichier);
-    table = creerTableDeCodage(FDP_obtenirElement(file));
+    file = COMP_creerFileDePriorite(nomFichier);
+    table = COMP_creerTableDeCodage(FDP_obtenirElement(file));
     fic = fopen(nomFichier, 'r');
     fc = fopen(nomFichier, 'w');
     if (fic != NULL){ 
@@ -92,7 +92,7 @@ fichierBinaire COMP_compresser(char nomFichier[]){
                 car = fgetc(fic);
                 if ((car!='/')) {
                     temp = table;
-                    ecrireOctet(fc, encoder(obtenirCodeBinaire(temp,lireCaractere(fic))))
+                    FB_ecrireOctet(fc, O_encoder(CB_obtenirCodeBinaire(temp,FB_lireCaractere(fic))))
                 }
                 
             }

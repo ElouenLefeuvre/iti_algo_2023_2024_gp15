@@ -16,7 +16,7 @@ FileDePriorite DECOMP_obtenirFileDePriorite(){
 }
 
 Ensemble DECOMP_obtenirStatistiques(char nomfichier[]){
-    Ensemble ens = initialiserEnsemble(sizeof(Statistiques));
+    Ensemble ens = E_initialiserEnsemble(sizeof(Statistiques));
     FILE *fichier = NULL;
     char car;
     char entier;
@@ -28,8 +28,8 @@ Ensemble DECOMP_obtenirStatistiques(char nomfichier[]){
             car = fgetc(fichier);
             if (car!='/') { // il prend le carac / si je vérifie pas de nouveau
                 entier = fgetc(fichier);
-                stat = statistique(car,atoi(&entier));
-                ajouter(&ens,&stat);
+                stat = S_statistique(car,atoi(&entier));
+                E_ajouter(&ens,&stat);
             }
             
         }
@@ -42,14 +42,14 @@ Ensemble DECOMP_obtenirStatistiques(char nomfichier[]){
 }
 
 ArbreHuffman DECOMP_creerArbreHuffman(Statistiques stat) {
-    return arbrehuffman(stat);
+    return AH_arbrehuffman(stat);
 }
 
 FileDePriorite DECOMP_insererArbre(FileDePriorite file, ArbreHuffman arbre) {
-    enfiler(arbre,file);
+    FDP_enfiler(arbre,file);
     return file;
 }
 
 ArbreHuffman DECOMP_creerArbre(Statistiques stats) {
-    return arbrehuffman(stats);
+    return AH_arbrehuffman(stats);
 }

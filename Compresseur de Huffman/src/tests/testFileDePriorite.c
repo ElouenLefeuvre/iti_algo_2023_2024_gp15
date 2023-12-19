@@ -6,14 +6,10 @@
 #include "Statistiques.h"
 
 void test_creation_file() {
-    FileDePriorite file; 
-    stat = S_statistique('a', 3);
-    arbre = AH_arbrehuffman(stat);
-    file = FDP_filedePriorite(arbre);
     CU_ASSERT_PTR_NULL(file.listeSuivante);
     CU_ASSERT_PTR_NULL(file.fin);
-    CU_ASSERT_EQUAL(file.longueur,1);
-    CU_ASSERT_EQUAL(file.debut.arbre,arbre);
+    CU_ASSERT_EQUAL(file.longueur,0);
+    CU_ASSERT_EQUAL(file.debut.arbre,NULL);
 }
 
 void testEnfiler_milieu() {
