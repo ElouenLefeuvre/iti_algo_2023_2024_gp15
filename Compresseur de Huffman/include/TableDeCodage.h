@@ -15,10 +15,11 @@ typedef struct {
 }TableDeCodage;
 
 
-TableDeCodage obtenirTableDeCodage();
-CodeBinaire obtenirCodeBinaire(TableDeCodage tdc,char c);
-char obtenirCaracter(TableDeCodage tdc,CodeBinaire c);
-TableDeCodage ajouter(TableDeCodage tdc,char c,CodeBinaire cb);
-TableDeCodage retirer(TableDeCodage tdc, char c);
-bool estPresent(TableDeCodage tdc,char c);
+TableDeCodage TDC_obtenirTableDeCodage(ArbreHuffman a);
+CodeBinaire TDC_obtenirCode(TableDeCodage tab,char c);
+char TDC_obtenirCarac(TableDeCodage tab,CodeBinaire code);
+void TDC_ajouter(TableDeCodage tab,char c,CodeBinaire code);
+void TDC_supprimer(TableDeCodage tab, char c, CodeBinaire code);
+bool TDC_estPresent(TableDeCodage tab,char c);
+bool TDC_estVide(TableDeCodage tab);
 #endif

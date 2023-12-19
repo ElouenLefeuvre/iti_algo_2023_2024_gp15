@@ -2,12 +2,12 @@
 #include<stdbool.h>
 #include "FileDePriorite.h"
 
-FileDePriorite FDP_filedePriorite(ArbreHuffman arbre) {
+FileDePriorite FDP_filedePriorite() {
     FileDePriorite file;
-    file.debut.arbre = arbre;
+    file.debut.arbre = NULL;
     file.debut.listeSuivante = NULL;
     file.fin = NULL;
-    file.longueur = 1;
+    file.longueur = 0;
     return file;
 }
 

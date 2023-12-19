@@ -4,98 +4,98 @@
 #include "Statistiques.h" 
 
 void test_creation_arbreHuffman(){
-    Statistiques stat = statistique('A',5);
-    ArbreHuffman arbre = arbrehuffman(stat);
-    CU_ASSERT_EQUAL(obtenirOccurences(arbre),5);
-    CU_ASSERT_PTR_NULL(obtenirFilsDroit(arbre));
-    CU_ASSERT_PTR_NULL(obtenirFilsGauche(arbre));
+    Statistiques stat = S_statistique('A',5);
+    ArbreHuffman arbre = AH_arbrehuffman(stat);
+    CU_ASSERT_EQUAL(AH_obtenirOccurences(arbre),5);
+    CU_ASSERT_PTR_NULL(AH_obtenirFilsDroit(arbre));
+    CU_ASSERT_PTR_NULL(AH_obtenirFilsGauche(arbre));
 
 }
 
 void test_obtenirOccurences() {
-    Statistiques stat = statistique('A',5);
-    ArbreHuffman arbre = arbrehuffman(stat);
-    int occurences = obtenirOccurences(arbre);
-    CU_ASSERT_EQUAL(occurences, obtenirPonderation(stat));
+    Statistiques stat = S_statistique('A',5);
+    ArbreHuffman arbre = AH_arbrehuffman(stat);
+    int occurences = AH_obtenirOccurences(arbre);
+    CU_ASSERT_EQUAL(occurences, S_obtenirPonderation(stat));
 }
 
 void test_fusionner(){
-    Statistiques stat = statistique('A',5);
-    ArbreHuffman arbre = arbrehuffman(stat);
-    Statistiques stat2 = statistique('E',2);
-    ArbreHuffman arbre2 = arbrehuffman(stat2);
-    arbreF = fusionner(arbre1,arbre2);
-    CU_ASSERT_EQUAL(obtenirOccurences(arbreF),obtenirPonderation(arbre1.statistiques)+obtenirPonderation(arbre2.statistiques)); 
-    CU_ASSERT_EQUAL(obtenirFilsDroit(arbreF),arbre1);
-    CU_ASSERT_EQUAL(obtenirFilsGauche(arbreF),arbre2);
+    Statistiques stat = S_statistique('A',5);
+    ArbreHuffman arbre = AH_arbrehuffman(stat);
+    Statistiques stat2 = S_statistique('E',2);
+    ArbreHuffman arbre2 = AH_arbrehuffman(stat2);
+    arbreF = AH_fusionner(arbre1,arbre2);
+    CU_ASSERT_EQUAL(AH_obtenirOccurences(arbreF),S_obtenirPonderation(arbre1.statistiques)+S_obtenirPonderation(arbre2.statistiques)); 
+    CU_ASSERT_EQUAL(AH_obtenirFilsDroit(arbreF),arbre1);
+    CU_ASSERT_EQUAL(AH_obtenirFilsGauche(arbreF),arbre2);
 }
 
 void test_fixerFilsGauche_et_obtenirFilsGauche() {
-    Statistiques stat = statistique('A',5);
-    ArbreHuffman arbre = arbrehuffman(stat);
-    Statistiques statFils = statistique('T',6);
-    ArbreHuffman filsGauche = arbrehuffman(statFils);
-    fixerFilsGauche(arbre, filsGauche);
-    ArbreHuffman obtenu = obtenirFilsGauche(arbre);
+    Statistiques stat = S_statistique('A',5);
+    ArbreHuffman arbre = AH_arbrehuffman(stat);
+    Statistiques statFils = S_statistique('T',6);
+    ArbreHuffman filsGauche = AH_arbrehuffman(statFils);
+    AH_fixerFilsGauche(arbre, filsGauche);
+    ArbreHuffman obtenu = AH_obtenirFilsGauche(arbre);
     CU_ASSERT_PTR_EQUAL(obtenu, filsGauche);
 }
 
 void test_fixerFilsDroit_et_obtenirFilsDroit() {
-    Statistiques stat = statistique('A',5);
-    ArbreHuffman arbre = arbrehuffman(stat);
-    Statistiques statFils = statistique('T',6);
-    ArbreHuffman filsDroit = arbrehuffman(statFils);
-    fixerFilsDroit(arbre, filsDroit);
-    ArbreHuffman obtenu = obtenirFilsDroit(arbre);
+    Statistiques stat = S_statistique('A',5);
+    ArbreHuffman arbre = AH_arbrehuffman(stat);
+    Statistiques statFils = S_statistique('T',6);
+    ArbreHuffman filsDroit = AH_arbrehuffman(statFils);
+    AH_fixerFilsDroit(arbre, filsDroit);
+    ArbreHuffman obtenu = AH_obtenirFilsDroit(arbre);
     CU_ASSERT_PTR_EQUAL(obtenu, filsDroit);
 }
 
 void test_estVide() {
-    Statistiques stat = statistique('',0);
-    ArbreHuffman arbre = arbrehuffman(stat);
-    CU_ASSERT_TRUE(estVide(arbre));
+    Statistiques stat = S_statistique('',0);
+    ArbreHuffman arbre = AH_arbrehuffman(stat);
+    CU_ASSERT_TRUE(AH_estVide(arbre));
 }
 
 void test_estFeuille() {
-    Statistiques stat = statistique('A',5);
-    ArbreHuffman arbre = arbrehuffman(stat);
-    CU_ASSERT_TRUE(estFeuille(arbre));
+    Statistiques stat = S_statistique('A',5);
+    ArbreHuffman arbre = AH_arbrehuffman(stat);
+    CU_ASSERT_TRUE(AH_estFeuille(arbre));
 }
 
 void test_estPresent_caractere_present_a_la_racine() {
-    Statistiques stat = statistique('A',5);
-    ArbreHuffman arbre = arbrehuffman(stat);
+    Statistiques stat = S_statistique('A',5);
+    ArbreHuffman arbre = AH_arbrehuffman(stat);
     char caractere = 'A';
 
-    CU_ASSERT_TRUE(estPresent(arbre, caractere)); 
+    CU_ASSERT_TRUE(AH_estPresent(arbre, caractere)); 
 }
 
 void test_estPresent_caractere_present_sous_arbre_gauche() {
-    Statistiques stat = statistique('C',7);
-    ArbreHuffman arbre = arbrehuffman(stat);
-    Statistiques statFils = statistique('A',5);
-    ArbreHuffman arbreFils = arbrehuffman(statFils);
+    Statistiques stat = S_statistique('C',7);
+    ArbreHuffman arbre = AH_arbrehuffman(stat);
+    Statistiques statFils = S_statistique('A',5);
+    ArbreHuffman arbreFils = AH_arbrehuffman(statFils);
     char caractere = 'A';
-    fixerFilsGauche(arbre,arbreFils)
-    CU_ASSERT_TRUE(estPresent(arbre, caractere));
+    AH_fixerFilsGauche(arbre,arbreFils)
+    CU_ASSERT_TRUE(AH_estPresent(arbre, caractere));
 }
 
 void test_estPresent_caractere_present_sous_arbre_droit() {
-    Statistiques stat = statistique('C',7);
-    ArbreHuffman arbre = arbrehuffman(stat);
-    Statistiques statFils = statistique('A',5);
-    ArbreHuffman arbreFils = arbrehuffman(statFils);
+    Statistiques stat = S_statistique('C',7);
+    ArbreHuffman arbre = AH_arbrehuffman(stat);
+    Statistiques statFils = S_statistique('A',5);
+    ArbreHuffman arbreFils = AH_arbrehuffman(statFils);
     char caractere = 'A';
-    fixerFilsDroit(arbre,arbreFils)
-    CU_ASSERT_TRUE(estPresent(arbre, caractere));
+    AH_fixerFilsDroit(arbre,arbreFils)
+    CU_ASSERT_TRUE(AH_estPresent(arbre, caractere));
 }
 
 void test_estPresent_caractere_absent() {
-    Statistiques stat = statistique('A',5);
-    ArbreHuffman arbre = arbrehuffman(stat);
+    Statistiques stat = S_statistique('A',5);
+    ArbreHuffman arbre = AH_arbrehuffman(stat);
     char caractere = 'B';
     
-    CU_ASSERT_FALSE(estPresent(arbre, caractere)); 
+    CU_ASSERT_FALSE(AH_estPresent(arbre, caractere)); 
 }
 
 int main() {
