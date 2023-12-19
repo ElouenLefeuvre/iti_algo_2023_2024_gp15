@@ -9,7 +9,8 @@ typedef struct {
         char* bits;
 }CodeBinaire;
 
-CodeBinaire obtenirCodeBinaire();
-bool estVide(CodeBinaire cb);
-Bit obtenirIemeBit(CodeBinaire cd,int i); 
+CodeBinaire CB_obtenirCodeBinaire();
+bool CB_estVide(CodeBinaire cb);
+Bit CB_obtenirIemeBit(CodeBinaire cd,int i); 
+CodeBinaire CB_concat(CodeBinaire cb1, CodeBinaire cb2);
 #endif
