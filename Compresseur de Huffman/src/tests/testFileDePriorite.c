@@ -146,6 +146,16 @@ void test_obtenirIElement_fin() {
 }
 
 void test_nouvellefile() {
+    FileDePriorite file; 
+    stat1 = S_statistique('a', 3);
+    stat2 = S_statistique('b', 4);
+    stat3 = S_statistique('c', 7);
+    arbre = AH_arbrehuffman(stat1);
+    AH_fixerFilsGauche
+    AH_fixerFilsDroit
+
+    file = FDP_fileDePriorite();
+    FDP_enfiler(file,arbre)
 }
 
 
