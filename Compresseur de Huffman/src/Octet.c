@@ -3,14 +3,14 @@
 #include "Octet.h"
 #include "CodeBinaire.h"
 
-Octet creerOctet(){
+Octet O_creerOctet(){
     Octet result;
     startPosition=0;
     for(int i=0;i<8;i++){
-        fixerBit(result,i,0);
+        O_fixerBit(result,i,0);
     }
 }
-void fixerBit(Octet octet, int position, Bit newBit){
+void O_fixerBit(Octet octet, int position, Bit newBit){
     switch(position){
         case 0: octet.bit0= newBit;
         case 1: octet.bit1= newBit;
@@ -22,7 +22,7 @@ void fixerBit(Octet octet, int position, Bit newBit){
         case 7: octet.bit7= newBit;
     }
 }
-Octet encoder(Octet octet,CodeBinaire cb){
+Octet O_encoder(Octet octet,CodeBinaire cb){
     int j=0;
     Bit bit;
 
@@ -30,24 +30,24 @@ Octet encoder(Octet octet,CodeBinaire cb){
     // On insere autant de bit possible dans l'octet;
     for (int i=mostImportantBitRestant-1 ;i>0;i--){
         if(startPosition>7){
-            Bit bit = iemeBit(bitRestant,i);
-            fixerBit(octet,startPosition,bit);
+            Bit bit = O_iemeBit(bitRestant,i);
+            O_fixerBit(octet,startPosition,bit);
             startPosition++;
-            fixerBit(bitRestant,mostImportantBitRestant,bitA0);
+            O_fixerBit(bitRestant,mostImportantBitRestant,bitA0);
             mostImportantBitRestant--;
         }  
     }
 
     //Apres On passe au bits du code binaire ,on les insere s'il reste de la place dans octet,
     //sinon on les insere dans l'octet bit restant
-    for (int i=obtenirLongueur(cb)-1;i>0;i--){
-        Bit bit = obtenirIemeBit(cb,i);
+    for (int i=CB_obtenirLongueur(cb)-1;i>0;i--){
+        Bit bit = O_obtenirIemeBit(cb,i);
         if(startPosition > 7){
-            fixerBit(octet,startPosition,bit);
+            O_fixerBit(octet,startPosition,bit);
         }
         else{
-            decaler(bitRestant);
-            fixerBit(bitRestant,0,bit);
+            O_decaler(bitRestant);
+            O_fixerBit(bitRestant,0,bit);
         }
     }
 
@@ -62,7 +62,7 @@ Octet encoder(Octet octet,CodeBinaire cb){
     return octet;
 }
 
-Bit iemeBit(Octet octet, int i){
+Bit O_iemeBit(Octet octet, int i){
     switch(i){
             case 0: return octet.bit0;
             case 1: return octet.bit1;
@@ -75,7 +75,7 @@ Bit iemeBit(Octet octet, int i){
         }
 }
 
-void decaler(Octet octet){
+void O_decaler(Octet octet){
     octet.bit7=octet.bit6;
     octet.bit6=octet.bit5;
     octet.bit5=octet.bit4;

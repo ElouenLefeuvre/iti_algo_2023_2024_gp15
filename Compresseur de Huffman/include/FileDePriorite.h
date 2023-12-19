@@ -15,12 +15,12 @@ typedef struct {
 }FileDePriorite;
 
 
-FileDePriorite fileDePriorite();
-bool estVide(FileDePriorite fp);
-FileDePriorite enfiler(FileDePriorite fp,ArbreHuffman stat);
-FileDePriorite defiler(FileDePriorite fp);
-ArbreHuffman obtenirElement(FileDePriorite fp);
-FileDePriorite nouvelleFile(FileDePriorite fp);
+FileDePriorite FDP_fileDePriorite();
+bool FDP_estVide(FileDePriorite fp);
+FileDePriorite FDP_enfiler(FileDePriorite fp,ArbreHuffman stat);
+FileDePriorite FDP_defiler(FileDePriorite fp);
+ArbreHuffman FDP_obtenirElement(FileDePriorite fp);
+FileDePriorite FDP_nouvelleFile(FileDePriorite fp);
 
 
 
