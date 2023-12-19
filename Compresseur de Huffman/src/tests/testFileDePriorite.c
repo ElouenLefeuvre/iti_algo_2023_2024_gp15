@@ -7,9 +7,9 @@
 
 void test_creation_file() {
     FileDePriorite file; 
-    stat = statistiques('a', 3);
-    arbre = arbrehuffman(stat);
-    file = filedePriorite(arbre);
+    stat = S_statistique('a', 3);
+    arbre = AH_arbrehuffman(stat);
+    file = FDP_filedePriorite(arbre);
     CU_ASSERT_PTR_NULL(file.listeSuivante);
     CU_ASSERT_PTR_NULL(file.fin);
     CU_ASSERT_EQUAL(file.longueur,1);
@@ -19,21 +19,21 @@ void test_creation_file() {
 void testEnfiler_milieu() {
     FileDePriorite file1; 
     FileDePriorite file2;
-    stat1 = statistiques('a', 3);
-    stat2 = statistiques('b', 4);
-    stat3 = statistiques('c', 7);
+    stat1 = S_statistique('a', 3);
+    stat2 = S_statistique('b', 4);
+    stat3 = S_statistique('c', 7);
 
     file1.longueur = 3;
-    file1.debut.arbre = arbrehuffman(stat1);
-    file1.debut.listeSuivante = arbrehuffman(stat2);
-    file1.debut.listeSuivante.listeSuivante = arbrehuffman(stat3);
+    file1.debut.arbre = AH_arbrehuffman(stat1);
+    file1.debut.listeSuivante = AH_arbrehuffman(stat2);
+    file1.debut.listeSuivante.listeSuivante = AH_arbrehuffman(stat3);
     file1.fin = NULL;
 
     file2.longueur = file1.longueur-1;
-    file2.debut.arbre=arbrehuffman(stat1)
-    file2.debut.listeSuivante = arbrehuffman(stat3);
+    file2.debut.arbre=AH_arbrehuffman(stat1)
+    file2.debut.listeSuivante = AH_arbrehuffman(stat3);
     file2.fin=NULL;
-    enfiler(file2,arbrehuffman(stat2));
+    FDP_enfiler(file2,AH_arbrehuffman(stat2));
 
     CU_ASSERT_PTR_EQUAL(file1,file2);
 }
@@ -41,21 +41,21 @@ void testEnfiler_milieu() {
 void testEnfiler_debut() {
     FileDePriorite file1; 
     FileDePriorite file2;
-    stat1 = statistiques('a', 3);
-    stat2 = statistiques('b', 4);
-    stat3 = statistiques('c', 7);
+    stat1 = S_statistique('a', 3);
+    stat2 = S_statistique('b', 4);
+    stat3 = S_statistique('c', 7);
 
     file1.longueur = 3;
-    file1.debut.arbre = arbrehuffman(stat1);
-    file1.debut.listeSuivante = arbrehuffman(stat2);
-    file1.debut.listeSuivante.listeSuivante = arbrehuffman(stat3);
+    file1.debut.arbre = AH_arbrehuffman(stat1);
+    file1.debut.listeSuivante = AH_arbrehuffman(stat2);
+    file1.debut.listeSuivante.listeSuivante = AH_arbrehuffman(stat3);
     file1.fin = NULL;
 
     file2.longueur = file1.longueur-1;
-    file2.debut.arbre=arbrehuffman(stat2)
-    file2.debut.listeSuivante = arbrehuffman(stat3);
+    file2.debut.arbre=AH_arbrehuffman(stat2)
+    file2.debut.listeSuivante = AH_arbrehuffman(stat3);
     file2.fin=NULL;
-    enfiler(file2,arbrehuffman(stat1));
+    FDP_enfiler(file2,AH_arbrehuffman(stat1));
 
     CU_ASSERT_PTR_EQUAL(file1,file2);
 }
@@ -63,21 +63,21 @@ void testEnfiler_debut() {
 void testEnfiler_fin() {
     FileDePriorite file1; 
     FileDePriorite file2;
-    stat1 = statistiques('a', 3);
-    stat2 = statistiques('b', 4);
-    stat3 = statistiques('c', 7);
+    stat1 = S_statistique('a', 3);
+    stat2 = S_statistique('b', 4);
+    stat3 = S_statistique('c', 7);
 
     file1.longueur = 3;
-    file1.debut.arbre = arbrehuffman(stat1);
-    file1.debut.listeSuivante = arbrehuffman(stat2);
-    file1.debut.listeSuivante.listeSuivante = arbrehuffman(stat3);
+    file1.debut.arbre = AH_arbrehuffman(stat1);
+    file1.debut.listeSuivante = AH_arbrehuffman(stat2);
+    file1.debut.listeSuivante.listeSuivante = AH_arbrehuffman(stat3);
     file1.fin = NULL;
 
     file2.longueur = file1.longueur-1;
-    file2.debut.arbre=arbrehuffman(stat1);
-    file2.debut.listeSuivante = arbrehuffman(stat2);
+    file2.debut.arbre=AH_arbrehuffman(stat1);
+    file2.debut.listeSuivante = AH_arbrehuffman(stat2);
     file2.fin=NULL;
-    enfiler(file2,arbrehuffman(stat3));
+    FDP_enfiler(file2,AH_arbrehuffman(stat3));
 
     CU_ASSERT_PTR_EQUAL(file1,file2);
 }
@@ -85,35 +85,35 @@ void testEnfiler_fin() {
 void testDefiler() {
     FileDePriorite file1; 
     FileDePriorite file2;
-    stat1 = statistiques('a', 3);
-    stat2 = statistiques('b', 4);
-    stat3 = statistiques('c', 7);
+    stat1 = S_statistique('a', 3);
+    stat2 = S_statistique('b', 4);
+    stat3 = S_statistique('c', 7);
 
     file1.longueur = 3;
-    file1.debut.arbre = arbrehuffman(stat1);
-    file1.debut.listeSuivante = arbrehuffman(stat2);
+    file1.debut.arbre = AH_arbrehuffman(stat1);
+    file1.debut.listeSuivante = AH_arbrehuffman(stat2);
     file1.fin = NULL;
 
     file2.longueur = file1.longueur+1
-    file2.debut.arbre=arbrehuffman(stat1);
-    file2.debut.listeSuivante = arbrehuffman(stat2);
-    file1.debut.listeSuivante.listeSuivante = arbrehuffman(stat3);
+    file2.debut.arbre=AH_arbrehuffman(stat1);
+    file2.debut.listeSuivante = AH_arbrehuffman(stat2);
+    file1.debut.listeSuivante.listeSuivante = AH_arbrehuffman(stat3);
     file2.fin=NULL;
-    defiler(file2);
+    FDP_defiler(file2);
 
     CU_ASSERT_PTR_EQUAL(file1,file2);
 }
 
 void test_obtenirIElement_debut() {
     FileDePriorite file; 
-    stat1 = statistiques('a', 3);
-    stat2 = statistiques('b', 4);
-    stat3 = statistiques('c', 7);
+    stat1 = S_statistique('a', 3);
+    stat2 = S_statistique('b', 4);
+    stat3 = S_statistique('c', 7);
 
     file.longueur = 3;
-    file.debut.arbre = arbrehuffman(stat1);
-    file.debut.listeSuivante = arbrehuffman(stat2);
-    file.debut.listeSuivante.listeSuivante = arbrehuffman(stat3);
+    file.debut.arbre = AH_arbrehuffman(stat1);
+    file.debut.listeSuivante = AH_arbrehuffman(stat2);
+    file.debut.listeSuivante.listeSuivante = AH_arbrehuffman(stat3);
     file.fin = NULL;
 
     CU_ASSERT_EQUAL(obtenirIemeElement(file,1),stat1);
@@ -121,14 +121,14 @@ void test_obtenirIElement_debut() {
 
 void test_obtenirIElement_milieu() {
     FileDePriorite file; 
-    stat1 = statistiques('a', 3);
-    stat2 = statistiques('b', 4);
-    stat3 = statistiques('c', 7);
+    stat1 = S_statistique('a', 3);
+    stat2 = S_statistique('b', 4);
+    stat3 = S_statistique('c', 7);
 
     file.longueur = 3;
-    file.debut.arbre = arbrehuffman(stat1);
-    file.debut.listeSuivante = arbrehuffman(stat2);
-    file.debut.listeSuivante.listeSuivante = arbrehuffman(stat3);
+    file.debut.arbre = AH_arbrehuffman(stat1);
+    file.debut.listeSuivante = AH_arbrehuffman(stat2);
+    file.debut.listeSuivante.listeSuivante = AH_arbrehuffman(stat3);
     file.fin = NULL;
 
     CU_ASSERT_EQUAL(obtenirIemeElement(file,2),stat2);
@@ -136,14 +136,14 @@ void test_obtenirIElement_milieu() {
 
 void test_obtenirIElement_fin() {
     FileDePriorite file; 
-    stat1 = statistiques('a', 3);
-    stat2 = statistiques('b', 4);
-    stat3 = statistiques('c', 7);
+    stat1 = S_statistique('a', 3);
+    stat2 = S_statistique('b', 4);
+    stat3 = S_statistique('c', 7);
 
     file.longueur = 3;
-    file.debut.arbre = arbrehuffman(stat1);
-    file.debut.listeSuivante = arbrehuffman(stat2);
-    file.debut.listeSuivante.listeSuivante = arbrehuffman(stat3);
+    file.debut.arbre = AH_arbrehuffman(stat1);
+    file.debut.listeSuivante = AH_arbrehuffman(stat2);
+    file.debut.listeSuivante.listeSuivante = AH_arbrehuffman(stat3);
     file.fin = NULL;
 
     CU_ASSERT_EQUAL(obtenirIemeElement(file,3),stat3);
