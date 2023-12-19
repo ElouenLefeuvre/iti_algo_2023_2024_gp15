@@ -11,17 +11,22 @@
 \end{algorithme}
 
 \begin{algorithme}
-    \signatureFonction{enfiler}{arbreH : ArbreHuffman, file : FileDePriorite }{FileDePriorite}
+    \signatureProcedure{enfiler}{arbreH : ArbreHuffman, file : FileDePriorite }{FileDePriorite}
     {}
 \end{algorithme}
 
 \begin{algorithme}
-        \signatureFonction{defiler}{file : FileDePriorite }{FileDePriorite}
+        \signatureProcedure{defiler}{file : FileDePriorite }{FileDePriorite}
         {non(estVide(file))}
 \end{algorithme}
 
 \begin{algorithme}
-    \signatureFonction{obtenirElement}{file : FileDePriorite }{ArbreHuffmann}
+    \signatureFonction{obtenirElement}{file : FileDePriorite }{ArbreHuffman}
+    {non(estVide(file))}
+\end{algorithme}
+
+\begin{algorithme}
+    \signatureFonction{obtenirArbre}{file : FileDePriorite }{ArbreHuffmann}
     {non(estVide(file))}
 \end{algorithme}
 
