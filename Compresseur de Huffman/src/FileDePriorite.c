@@ -42,7 +42,7 @@ Statistiques FDP_obtenirElement(FileDePriorite file, int i) {
     for {j=1;j<i-1;j++} {
         temp = temp.listeSuivante;
     }
-    return temp.arbre.statistiques;
+    return temp.arbre;
 }
 
 void FDP_nouvelleFile(FileDePriorite file) {
