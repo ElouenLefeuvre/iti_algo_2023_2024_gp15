@@ -16,11 +16,11 @@ static Octet bitRestant;
 static int mostImportantBitRestant;
 static int startPosition;
 
-Bit iemeBit(Octet octet,int i);
-Octet creerOctet();
-Octet encoder(Octet octet,CodeBinaire cb);
-void decaler(Octet octet);
-void fixerBit(Octet octet, int position, Bit newBit);
+Bit O_iemeBit(Octet octet,int i);
+Octet O_creerOctet();
+Octet O_encoder(Octet octet,CodeBinaire cb);
+void O_decaler(Octet octet);
+void O_fixerBit(Octet octet, int position, Bit newBit);
 
 
 #endif

@@ -4,9 +4,9 @@
 
 // Fonction de test pour vérifier la création d'une statistique
 void test_creation_statistique() {
-    Statistiques stat = statistique('A', 5);
-    CU_ASSERT_EQUAL(obtenirCaractere(stat), 'A');
-    CU_ASSERT_EQUAL(obtenirPonderation(stat), 5);
+    Statistiques stat = S_statistique('A', 5);
+    CU_ASSERT_EQUAL(S_obtenirCaractere(stat), 'A');
+    CU_ASSERT_EQUAL(S_obtenirPonderation(stat), 5);
 }
 
 int main() {

@@ -5,9 +5,9 @@ typedef struct {
     int ponderation;
 }Statistiques;
 
-Statistiques statistiques(char caracter, int ponderation);
-char obtenirCaracter(Statistiques stat);
-int obtenirPonderation(Statistiques stat);
+Statistiques S_statistiques(char caracter, int ponderation);
+char S_obtenirCaracter(Statistiques stat);
+int S_obtenirPonderation(Statistiques stat);
 
 
 #endif
