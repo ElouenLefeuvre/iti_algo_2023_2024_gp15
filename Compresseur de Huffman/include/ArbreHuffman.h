@@ -1,15 +1,15 @@
-#ifndef  __ ARBREDEHUFFMAN__
+#ifndef  __ARBREDEHUFFMAN__
 #define __ARBREDEHUFFMAN__
 
-#include "Statistiques.h";
+#include "Statistiques.h"
 
 typedef struct {
     Statistiques statistiques;
     ArbreHuffman* filsGauche;
     ArbreHuffman* filsDroit;
-}ArbreHuffman;
+} ArbreHuffman;
 
-ArbreHuffman AH_arbreDeHuffman(Statistiques stat);
+ArbreHuffman AH_arbrehuffman(Statistiques stat);
 int AH_obtenirOccurences(ArbreHuffman arbre);
 ArbreHuffman AH_fusionner(ArbreHuffman ah1,ArbreHuffman ah2);
 void* AH_fixerFilsGauche(ArbreHuffman ah1,ArbreHuffman fg);
