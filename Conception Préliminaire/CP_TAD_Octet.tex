@@ -6,7 +6,7 @@
 \section{TAD Octet}
 
 \begin{algorithme}
-    \signatureProcedure{modifier}{\paramEntreeSorite{o : Octet},\paramEntree{i : \naturel, valeur : Bit}}
+    \signatureProcedure{modifier}{\paramEntreeSortie{o : Octet},\paramEntree{i : \naturel, valeur : Bit}}
     {}
     \end{algorithme}
 
@@ -16,8 +16,10 @@
 \end{algorithme}
 
 \begin{algorithme}
-\signatureProcedure{ encoder}{\paramEntreeSorite{o : Octet} \paramEntree{code : CodeBinaire, i : \naturel}}
-{non estVide(code), 0 \leq i $<=$ 7}
+\signatureProcedure{ encoder}{\paramEntreeSortie{o : Octet} \paramEntree{code : CodeBinaire, i : \naturel}}
+{non estVide(code), $0 \leq i \leq 7$}
+
+\end{algorithme}
 
 \begin{algorithme}
 \signatureFonction{ obtenirOctet}{(o : Octet)}{\chaine}
