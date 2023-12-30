@@ -3,6 +3,7 @@
 
 \begin{document}
 
+\section{Déclaration du type}
 
 \begin{algorithme}
 \type{TableDeCodage}{\typePointeur{Noeud}}
@@ -15,7 +16,7 @@
 \end{algorithme}
 
 
-\section{TableDeCodage}
+\section{obtenirTableDeCodage}
 
 \begin{algorithme}
     \fonction{obtenirTableDeCodage}{a : Arbre Huffman}{TableDeCodage}
@@ -28,6 +29,7 @@
 \end{algorithme}
 
 
+\section{obtenirCode}
 
 \begin{algorithme}
     \fonction{obtenirCode}{tab: TableDeCodage, car : \caractere}{CodeBinaire}
@@ -39,6 +41,7 @@
             {\retourner{obtenirCode(tab.listeSuivante)}}}
         {}}
 \end{algorithme}
+\section{obtenirCarac}
 
 \begin{algorithme}
     \fonction{obtenirCarac}{tab: TableDeCodage, code : CodeBinaire}{\caractere}
@@ -51,6 +54,7 @@
         {}}
 
 \end{algorithme}
+\section{ajouter}
 
 \begin{algorithme}
     \procedure{ajouter}{\paramEntreeSortie tab : TableDeCodage, \paramEntree car : \caractere, code : CodeBinaire}
@@ -61,6 +65,7 @@
     \affecter{tab.code}{code}
     \affecter{tab.listeSuivante}{temp}}
 \end{algorithme}
+\section{supprimer}
 
 \begin{algorithme}
     \procedure{supprimer}{\paramEntreeSortie tab : TableDeCodage, \paramEntree car : \caractere, code : CodeBinaire}
@@ -74,6 +79,7 @@
             \affecter{tab.listeSuivante}{temp}}}
         {}}
 \end{algorithme}
+\section{estPresent}
 
 \begin{algorithme}
     \fonction{estPresent}{tab : TableDeCodage, car : \caractere}{\booleen}

@@ -2,7 +2,7 @@
 \usepackage{pseudocode}
 
 \begin{document}
-
+\section{Déclaration du type}
 \begin{algorithme}
     \type{ListeChaineeArbre}
         \typePointeur{Noeud}
@@ -16,6 +16,7 @@
     \end{enregistrement}
 \end{algorithme}
 
+
 \begin{algorithme}
         \begin{enregistrement}{FileDePriorite}
             \champEnregistrement{debut}{ListeChaineeArbre}
@@ -23,6 +24,7 @@
             \champEnregistrement{longueur}{\naturel}
         \end{enregistrement}
         \end{algorithme}
+\section{fileDePriorite}
 
 \begin{algorithme}
 
@@ -35,6 +37,7 @@
         \affecter{\champ{file}{longueur}}{1}
         }
 \end{algorithme}
+\section{enfiler}
 
 \begin{algorithme}
 
@@ -57,6 +60,7 @@
         
 \end{algorithme}
 
+\section{defiler}
 
 
 \begin{algorithme}
@@ -72,6 +76,7 @@
         }
 \end{algorithme}
 
+\section{obtenirElement}
 
 \begin{algorithme}
     \fonction{obtenirElement}{file : FileDePriorite, i :\naturelNonNul}{ArbreHuffman}{i$<$nb}{}
@@ -83,6 +88,7 @@
     }
     }
 \end{algorithme}
+\section{nouvelleFile}
 
 \begin{algorithme}
 
@@ -95,6 +101,9 @@
 
 
 \end{algorithme}
+
+\section{obtenirLongueur}
+
 \begin{algorithme}
     \fonction{obtenirLongueur}{file : FileDePriorite}{}{}{}
     {

@@ -2,7 +2,7 @@
 \usepackage{pseudocode}
 
 \begin{document}
-
+\section{Déclaration du type}
 \begin{algorithme}
 \type{ArbreHuffman}
     \typePointeur{Racine}
@@ -17,6 +17,7 @@
 \end{enregistrement}
 \end{algorithme}
 
+\section{arbrehuffman}
 
 \begin{algorithme}
 
@@ -28,6 +29,7 @@
         \retourner{arbre}        
         }
 \end{algorithme}
+\section{fusionner}
 
 \begin{algorithme}
 
@@ -47,6 +49,7 @@
 
         }
 \end{algorithme}
+\section{obtenirOccurences}
 
 \begin{algorithme}
     \fonction{obtenirOccurences}{arbre : ArbreHuffman}{\naturel}{}{}
@@ -55,6 +58,7 @@
 
     }
 \end{algorithme}
+\section{fixerFilsDroit}
 
 \begin{algorithme}
     \procedure{fixerFilsDroit}{\paramEntreeSortie{arbre : ArbreHuffman} \paramEntree{droit : ArbreHuffman}}{}{}
@@ -64,11 +68,13 @@
     
 
 \end{algorithme}
+\section{fixerFilsGauche}
 
 \begin{algorithme}
     \procedure{fixerFilsGauche}{\paramEntreeSortie{arbre : ArbreHuffman} \paramEntree{gauche : ArbreHuffman}}{}{}
         {\affecter{\champ{arbre}{filsGauche}}{gauche}}
 \end{algorithme}
+\section{estVide}
 
 \begin{algorithme}
     \fonction{estVide}{arbre : ArbreHuffman}{\booleen}{}{}
@@ -76,6 +82,7 @@
         \retourner{((\champ{arbre}\champ{statistique}{caractere} = NULL) et (\champ{arbre}\champ{statistique}{ponderation} = 0))}
     }
 \end{algorithme}
+\section{estFeuille}
 
 \begin{algorithme}
     \fonction{estFeuille}{arbre : ArbreHuffman}{\booleen}{}{}{
@@ -85,12 +92,14 @@
 \end{algorithme}
 
 
+\section{obtenirFilsGauche}
 
 \begin{algorithme}
     \fonction{obtenirFilsGauche}{arbre : ArbreHuffman}{ArbreHuffman}{non estFeuille(arbre)}{}
     {\retourner{\champ{arbre}{filsGauche}}}
 \end{algorithme}
 
+\section{obtenirFilsDroit}
 
 \begin{algorithme}
     \fonction{obtenirFilsDroit}{arbre : ArbreHuffman}{ArbreHuffman}{non estFeuille(arbre)}{}
@@ -98,6 +107,7 @@
     \retourner{\champ{arbre}{filsDroit}}
     }
 \end{algorithme}
+\section{estPresent}
 
 \begin{algorithme}
     \fonction{estPresent}{arbre : ArbreHuffman, caractere : \caractere}{\booleen}{}{}{
