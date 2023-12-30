@@ -9,7 +9,6 @@
     \fonction{compresser}{fic : FichierTexte}{fichierBinaire}
     {}
     {file : FileDePriorite;temp, table : TableDeCodage;  arbreHuffman : ArbreHuffman; fc : FichierBinaire}
-
     {
     \affecter{file}{creerFileDePriorite(fic)}
     \affecter{table}{creerTableDeCodage(FileDePriorite.obtenirElement(file))}
@@ -28,18 +27,21 @@
 
 \section{creerFileDePriorite}
 \begin{algorithme}
-    \fonction{ }{fic :  FichierBinaire}{ArbreHuffman}
+    \fonction{creerFileDePriorite}{fic :  FichierBinaire}{ArbreHuffman}
     {}
     {file : FileDePriorite; ensC : Ensemble de \caractere; ensS : Ensemble de Statistiques}
-    {\affecter{ensC}{obtenirCaracteres(fic)}
+    {
+    \affecter{ensC}{obtenirCaracteres(fic)}
     \affecter{ensS}{creerStatistique(ensC)}
     \affecter{file}{filedePriorite()}
-    \pourChaque{Stats}{ensS}
-    {enfiler(file, arbrehuffman(stats))}
-    
-    \tantque{FileDePriorite.obtenirLongueur(file)$>$1}  %OucreerFileDePriorite faire avec longueur >1 de FileDePrio
-        {nouvelleFile(file)}
-    \retourner(file)}
+    \pourChaque{Stats}{ensS}{
+        enfiler(file, arbrehuffman(stats))
+    }
+    \tantque{FileDePriorite.obtenirLongueur(file)$>$1}{  %OucreerFileDePriorite faire avec longueur >1 de FileDePrio
+        nouvelleFile(file)}
+ 
+    \retourner{file}
+    }
 \end{algorithme}
 
 \section{creerTableDeCodage}
@@ -55,14 +57,17 @@
     \fonction{ creerStatistique}{fic : FichierTexte;ensC : Ensemble de \caractere}{Ensemble de Statistiques}
     {}
     {ensStats : Ensemble de Statistiques, nbOcc : \naturel}   				
-    {\pourChaque{car}{ensC}
-        \tantque{non(EOF(fic)){
+    {\pourChaque{car}{ensC}{
+        \tantque{non(EOF(fic))}{
         lire(fic,c)
+        \newline
+        
         \sialors{c=car}{
             \affecter{nbOcc}{nbOcc + 1}
-        Ensemble.ajouter(ensStats,statistique(car, nbOcc))}
+
+        
+        Ensemble.ajouter(ensStats,statistique(car, nbOcc))}}}
     \retourner{ensStats}}
-        }}
 \end{algorithme}
 
 

@@ -4,32 +4,27 @@
 \begin{document}
 
 \section{Décompression}
-
 \begin{algorithme}
-    \signatureFonction{ decompresser}{fic : FichierHuffman}{FichierTexte}\newLine
-    {stats_fic : Ensemble de Statistiques, file : FileDePriorite, temp : ArbreHuffman, digit,car : Caractere}
+    \fonction{ decompresser}{fic : FichierHuffman}{FichierTexte}
+    {}
+    {stats\_fic : Ensemble de Statistiques, file : FileDePriorite, temp : ArbreHuffman, digit,car : Caractere}
 {
-    \affecter{stats_fic}{obtenirStatistiques(fic)}
-    \affecter{file}{obtenirFileDePriorite(stats_fic)}
-    \affecter{temp}{obtenirElement(file)}
+    \affecter{stats\_fic}{obtenirStatistiques(fic)}
+    \affecter{file}{obtenirFileDePriorite(stats\_fic)}
+    \affecter{temp}{obtenirElement(file)}\newline
     ouvrir(fic)
-    \tantque{non(eof(fic))}
-        ouvrir(fic)
-        \tantque{non(estUneFeuille(temp))}    
-            \affecter{digit}{\lire(fic,car)}
+    \tantque{non(eof(fic))}{
+        ouvrir(fic)\newline
+        \tantque{non(estUneFeuille(temp))}{
+            \affecter{digit}{\lire{fic,car}}
             \sialorssinon{digit==0}
                 {\affecter{temp}{obtenirFilsGauche(arbre)}}
-                {\affecter{temp}{obtenirFilsDroit(arbre)}}
+                {\affecter{temp}{obtenirFilsDroit(arbre)}}}
         fermer(fic)
         ouvrir(fictexte)
-        \ecrire(fictexte, obtenirCaractere(temp))  
-        fermer(fictexte)  
-    fintantque
-fin
+        \ecrire{fictexte, obtenirCaractere(temp)}  \newline
+        fermer(fictexte)}
 }
-
-
-\end{algorithme}
 
 \section{obtenirFileDePriorite}
 
@@ -40,11 +35,11 @@ fin
     {
         \affecter{file}{filedePriorite()}
         \pourChaque{s}{stats}
-            ajouter(ens, arbrehuffman(s))
+            {ajouter(ens, arbrehuffman(s))}
         \pourChaque{a}{ens}
-            enfiler(file, a)
-        \tantque{longueur>1}
-            nouvelleFile(file)
+            {enfiler(file, a)}
+        \tantque{longueur$>$1}
+            {nouvelleFile(file)}
         \retourner{file}
     }
 \end{algorithme}
@@ -55,10 +50,10 @@ fin
     \fonction{obtenirStatistiques}{fic :  FichierHuffman}{Ensemble de Statistiques}
     {}
     {ens : Ensemble de Statistiques}
-    {ouvrir(fic)
-    \tantque{str!="/"}
-        {\lire{fic,car}
-        \lire{fic,int}
+    {ouvrir(fic) \newline
+    \tantque{str!="/"}{
+        \lire{fic,car}
+        \lire{fic,int}\newline
         ajouter(ens,Statistiques.statistique(car,int))}
     \retourner{ens}
     }
