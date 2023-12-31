@@ -1,57 +1,77 @@
-#include<stdio.h>
-#include<stdbool.h>
+#include <stdio.h>
+#include <stdbool.h>
 #include "CodeBinaire.h"
-#include "ArbreHuffman.h"
+#include <stdlib.h>
 #include <string.h>
 
-CodeBinaire CB_obtenirCodeBinaire(ArbreHuffman arbre, char car) {
-    CodeBinaire res;
-    if (AH_estFeuille(arbre)){
-        res.bits = "0";
-        return res;
-    }
-    else{
-        return CB_obtenirCodeBinaireR(arbre,car);
-    }
-}
-
-CodeBinaire CB_obtenirCodeBinaireR(ArbreHuffman arbre, char car) {
-    CodeBinaire result;
-    CodeBinaire one;
-    CodeBinaire zero;
-    Bit one= BITA1;
-    Bit zero= BITA0;
-
-    if (AH_estFeuille(arbre)) {
-        result.bits= "";
-        return result;
-    }
-    else{
-        if(AH_estPresent(AH_obtenirFilsGauche(arbre),car)){
-            return CB_concat(zero,CB_obtenirCodeBinaireR(AH_obtenirFilsGauche(arbre),car));
-        }
-        else{
-            return CB_concat(one,CB_obtenirCodeBinaireR(AH_obtenirFilsDroit(arbre),car));
-        }
-
-    }
-}
 
 
 bool CB_estVide(CodeBinaire cb) {
-    return cb.bits == "";
+    int  taille = cb.taille;
+    return taille == 0;
 }
 
-Bit CB_obtenirIemeBit(CodeBinaire cb,int i) {
-    switch (cb.bits[i]){
-        case '1': return BITA1;
-        case '0': return BITA0;
+CodeBinaire CB_creerCodeBinaire(int taille) {
+    CodeBinaire code;
+    code.bits = malloc(taille * sizeof(Bit));
+    code.taille = taille;
+    for (size_t i = 0; i < 4; ++i) {
+        code.bits[i] = BITA0;
+    }
+    return code;
+}
+
+void CB_remplirCodeBinaire(CodeBinaire* code, const char* chaine) {
+    int longueurChaine = strlen(chaine);
+
+
+    if (longueurChaine != code->taille) {
+        fprintf(stderr, "Erreur : La longueur de la chaîne ne correspond pas à la taille du CodeBinaire.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    for (size_t i = 0; i < code->taille; ++i) {
+        code->bits[i] = (chaine[i] == '0') ? BITA0 : BITA1;
     }
 }
 
 
-CodeBinaire CB_concat(CodeBinaire cb1, CodeBinaire cb2) {
-    strcat(cb1.bits,cb2.bits);
-    return cb1;
+void CB_libererCodeBinaire(CodeBinaire* code) {
+    free(code->bits);
+    code->taille = 0;
 }
 
+Bit CB_obtenirIemeBit(CodeBinaire code,int i) {
+    if (i < code.taille) {
+        return code.bits[i];
+    } else {
+        fprintf(stderr, "Erreur : Indice hors limites.\n");
+        exit(EXIT_FAILURE);
+    }
+}
+
+
+CodeBinaire CB_concatener(const CodeBinaire* code1, const CodeBinaire* code2) {
+    CodeBinaire resultat;
+    resultat.taille = code1->taille + code2->taille;
+    resultat.bits = malloc(resultat.taille * sizeof(Bit));
+
+    for (size_t i = 0; i < code1->taille; ++i) {
+        resultat.bits[i] = code1->bits[i];
+    }
+
+    for (size_t i = 0; i < code2->taille; ++i) {
+        resultat.bits[code1->taille + i] = code2->bits[i];
+    }
+
+    return resultat;
+}
+
+char* CB_codeBinaireToStr(const CodeBinaire* code) {
+    char* str = malloc((code->taille + 1) * sizeof(char));  
+    for (int i = 0; i < code->taille; ++i) {
+        str[i] = (code->bits[i] == BITA0) ? '0' : '1';
+    }
+    str[code->taille] = '\0'; 
+    return str;
+}

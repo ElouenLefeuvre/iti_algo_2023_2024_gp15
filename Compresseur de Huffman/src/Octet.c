@@ -41,8 +41,8 @@ Octet O_encoder(Octet octet,CodeBinaire cb){
 
     //Apres On passe au bits du code binaire ,on les insere s'il reste de la place dans octet,
     //sinon on les insere dans l'octet bit restant
-    for (int i=CB_obtenirLongueur(cb)-1;i>0;i--){
-        Bit bit = O_obtenirIemeBit(cb,i);
+    for (int i=4-1;i>0;i--){
+        Bit bit = CB_obtenirIemeBit(cb,i);
         if(startPosition < 8){
             O_fixerBit(octet,startPosition,bit);
         }
@@ -103,9 +103,12 @@ Octet O_strToBits(char* octet){
     Octet result; 
     for(int i=0; i<8;i++){
         char bit =octet[i];
-        fixerBit(result,7-i,bit);
+        O_fixerBit(result,7-i,bit);
     }
     return result;
     
 }
+
+
+
 

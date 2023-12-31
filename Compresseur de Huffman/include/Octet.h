@@ -1,27 +1,20 @@
 #ifndef __OCTET__
 #define __OCTET__
-#include "CodeBinaire.h";
+#include "CodeBinaire.h"
 
 typedef struct {
-    Bit bit7;
-    Bit bit6;
-    Bit bit5;
-    Bit bit4;
-    Bit bit3;
-    Bit bit2;
-    Bit bit1;
-    Bit bit0;
-}Octet;
-static Octet bitRestant;
-static int mostImportantBitRestant;
-static int startPosition;
+    Bit bits[8];  // Tableau de 8 bits
+} Octet;
 
 Bit O_iemeBit(Octet octet,int i);
 Octet O_creerOctet();
 Octet O_encoder(Octet octet,CodeBinaire cb);
-void O_decaler(Octet octet);
-void O_fixerBit(Octet octet, int position, Bit newBit);
-char* O_bitsToStr(Octet octet);
-Octet O_strToBits(char* octet);
-
+Octet O_decaler(Octet octet);
+Octet O_fixerBit(Octet* octet, int position, Bit valeur);
+char* O_octetToStr(const Octet* octet);
+Octet O_strToBits(const char* chaine);
+bool O_estVide(const Octet* octet);
+void O_incrementStartPosition();
+int O_obtenirStartPosition();
+Octet O_obtenirBitRestants();
 #endif

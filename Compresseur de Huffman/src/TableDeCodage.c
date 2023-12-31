@@ -12,7 +12,7 @@ TableDeCodage TDC_obtenirTableDeCodage(ArbreHuffman a) {
 
 CodeBinaire TDC_obtenirCode(TableDeCodage tab,char c) {
     if (!(TDC_estVide(tab))) {
-        if (tab.noeud->c == case) {
+        if (tab.noeud->c == c) {
             return tab.noeud->code;
         }
         else {

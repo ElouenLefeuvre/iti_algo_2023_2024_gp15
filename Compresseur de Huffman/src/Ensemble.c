@@ -2,7 +2,9 @@
 #include<stdbool.h>
 #include <string.h>
 #include <stddef.h>
+#include <stdlib.h>
 #include"Statistiques.h"
+#include "Ensemble.h"
 
 void E_libererEnsemble(Ensemble *ens, size_t tailleElement) {
    free(ens->elements);

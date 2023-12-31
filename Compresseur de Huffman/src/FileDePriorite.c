@@ -16,13 +16,13 @@ void FDP_enfiler(FileDePriorite file, ArbreHuffman arbre) {
     ListeChaineeArbre temp2;
     temp1 = file.debut;
     temp2 = file.fin;
-    while AH_obtenirOccurences(arbre) > AH_obtenirOccurences(temp2) {
+    while (AH_obtenirOccurences(arbre) > AH_obtenirOccurences(temp2)) {
         temp1 = temp1.listeSuivante;
         temp2 = temp2.listeSuivante;
     }
     temp1.arbre = arbre;
     temp1.listeSuivante=temp2;
-    while not(FDP_estVide(temp1.listeSuivante)) {
+    while (not(FDP_estVide(temp1.listeSuivante))) {
         temp1 = temp1.listeSuivante;
     }
     file.fin = temp1;
