@@ -1,9 +1,10 @@
 #include<stdio.h>
 #include<stdbool.h>
 #include <string.h>
-#include "octet.h"
+#include "Octet.h"
 #include "CodeBinaire.h"
 #include <stdlib.h>
+#include "ArbreHuffman.h"
 static int startPosition=0;
 static bool currentisFull;
 static Octet bitRestant;
@@ -32,13 +33,13 @@ Octet O_creerOctet(){
     return result;
 }
 
-Octet O_fixerBit(Octet* octet, int position, Bit valeur) {
+void O_fixerBit(Octet* octet, int position, Bit valeur) {
     if (position < 8) {
         octet->bits[position] = valeur;
     } else {
         fprintf(stderr, "Erreur : Position hors limites.\n");
     }
-    return *octet;
+    //return *octet;
 }
 
 
@@ -48,12 +49,11 @@ Bit O_iemeBit(Octet octet, int i){
 
 
 //decale a gauche pou libere un bit pour insertion dans bitRestant
-Octet O_decaler(Octet octet){
+void O_decaler(Octet octet){
     for(int i=0 ;i<7;i++){
         octet.bits[i]=octet.bits[i+1];
     }
     octet.bits[7]= BITA0;
-    return octet;
 }
 
 
@@ -96,9 +96,11 @@ Octet O_encoder(Octet octet,CodeBinaire cb){
     if (mostImportantBitRestant<=7 && !currentisFull) {
         for (int i=mostImportantBitRestant ;i<8;i++){     
             Bit bit = O_iemeBit(bitRestant,i);
-            octet=O_fixerBit(&octet,startPosition,bit);
+            //octet=O_fixerBit(&octet,startPosition,bit);
+            O_fixerBit(&octet,startPosition,bit);
             startPosition++;
-            bitRestant = O_fixerBit(&bitRestant,mostImportantBitRestant,BITA0);
+            //bitRestant = O_fixerBit(&bitRestant,mostImportantBitRestant,BITA0);
+            O_fixerBit(&bitRestant,mostImportantBitRestant,BITA0);
             mostImportantBitRestant++;  
         }
     }
@@ -110,14 +112,17 @@ Octet O_encoder(Octet octet,CodeBinaire cb){
         //printf("start position after strtobits is : %d\n",O_obtenirStartPosition());
         if(!currentisFull /*ca veut dire il reste de la place dans l'octet principale*/){
             //printf("Je ne dois pas inserer dans l'Octet bitRestants\n");
-            octet = O_fixerBit(&octet,startPosition,bit);
+            //octet = O_fixerBit(&octet,startPosition,bit);
+            O_fixerBit(&octet,startPosition,bit);
             startPosition++;
         }
         else{/*Cad il ne reste pas de la place */
             //printf("Je dois inserer dans l'octet bitRestant\n");
-            bitRestant = O_decaler(bitRestant);
+            //bitRestant = O_decaler(bitRestant);
+            O_decaler(bitRestant);
             //printf("Octet avant insertion decaler : %s\n", O_octetToStr(&bitRestant));
-            bitRestant = O_fixerBit(&bitRestant,7,bit);
+            //bitRestant = O_fixerBit(&bitRestant,7,bit);
+            O_fixerBit(&bitRestant,7,bit);
             //printf("Octet decaler : %s\n", O_octetToStr(&bitRestant));
             mostImportantBitRestant--;
         }
