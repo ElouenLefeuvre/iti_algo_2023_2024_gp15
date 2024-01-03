@@ -46,7 +46,7 @@
         {
         \affecter{temp1}{\champ{file}{debut}}
         \affecter{temp2}{\champ{file}{fin}}
-        \tantque{obtenirOccurences(arbre)$>$obtenirOccurences(temp2)}{
+        \tantque{obtenirOccurences(arbre)$>$obtenirOccurences(\champ{temp2}{arbre}){
         \affecter{temp1}{obtenirListeSuivante(temp1)} 
         \affecter{temp2}{obtenirListeSuivante(temp2)}}
         ajouter(temp1,arbre)

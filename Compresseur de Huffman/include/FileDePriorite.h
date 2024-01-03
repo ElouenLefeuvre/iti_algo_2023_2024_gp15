@@ -9,18 +9,19 @@ typedef struct ListeChaineeArbre{
 } ListeChaineeArbre;
 
 typedef struct {
-    ListeChaineeArbre debut;
-    ListeChaineeArbre fin;
+    struct ListeChaineeArbre *debut;
+    struct ListeChaineeArbre *fin;
     int longueur;
 } FileDePriorite;
 
 
 FileDePriorite FDP_fileDePriorite();
-bool FDP_estVide(FileDePriorite fp);
-FileDePriorite FDP_enfiler(FileDePriorite fp,ArbreHuffman arbre);
-FileDePriorite FDP_defiler(FileDePriorite fp);
+bool FDP_estVide(FileDePriorite *fp);
+bool FDP_estVide_LCA(ListeChaineeArbre *lca);
+void FDP_enfiler(FileDePriorite *fp,ArbreHuffman arbre);
+void FDP_defiler(FileDePriorite *fp);
 ArbreHuffman FDP_obtenirElement(FileDePriorite fp, int i);
-FileDePriorite FDP_nouvelleFile(FileDePriorite fp);
+void FDP_nouvelleFile(FileDePriorite *fp);
 
 
 
