@@ -4,15 +4,15 @@
 #include "CodeBinaire.h"
 #include "ArbreHuffman.h"
 
-typedef struct {
-        CodeBinaire code ;
-        char c;
-        TableDeCodage listeSuivante;
-}Noeud;
+typedef struct Noeud {
+    CodeBinaire code;
+    char c;
+    struct Noeud* listeSuivante;
+} Noeud;
 
 typedef struct {
     Noeud* noeud;
-}TableDeCodage;
+} TableDeCodage;
 
 
 TableDeCodage TDC_obtenirTableDeCodage(ArbreHuffman a);
