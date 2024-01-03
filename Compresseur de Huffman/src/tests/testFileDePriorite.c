@@ -82,7 +82,7 @@ void testEnfiler_fin() {
     file2.longueur = file1.longueur-1;
     file2.debut.arbre=AH_arbrehuffman(stat1);
     file2.debut.listeSuivante.arbre = AH_arbrehuffman(stat2);
-    file2.fin=NULL;
+    file2.fin= NULL;
     FDP_enfiler(file2,AH_arbrehuffman(stat3));
 
     CU_ASSERT_PTR_EQUAL(file1,file2);

@@ -1,19 +1,19 @@
 #include<stdio.h>
 #include<stdbool.h>
-#include <string.h>
-#include <stddef.h>
-#include <stdlib.h>
-#include"Statistiques.h"
+#include<string.h>
+#include<stddef.h>
+#include<stdlib.h>
+#include "Statistiques.h"
 #include "Ensemble.h"
 
-void E_libererEnsemble(Ensemble *ens, size_t tailleElement) {
+void E_libererEnsemble(Ensemble *ens) {
    free(ens->elements);
     ens->elements = NULL;
     ens->tailleElement = 0;
     ens->taille = 0;
 }
 
-void E_ajouter(Ensemble *ens, void *element, size_t tailleElement) {
+void E_ajouter(Ensemble *ens, void *element) {
     // Vérifier si l'élément est déjà présent dans l'ensemble
     for (size_t i = 0; i < ens->taille; i++) {
         if (memcmp((char *)ens->elements + i * ens->tailleElement, element, ens->tailleElement) == 0) {
@@ -35,7 +35,7 @@ void E_ajouter(Ensemble *ens, void *element, size_t tailleElement) {
     ens->taille++;
 }
 
-void E_supprimer(Ensemble *ens, void *element, size_t tailleElement) {
+void E_supprimer(Ensemble *ens, void *element) {
      for (size_t i = 0; i < ens->taille; i++) {
         if (memcmp((char *)ens->elements + i * ens->tailleElement, element, ens->tailleElement) == 0) {
             // Déplacer les éléments suivants pour remplir l'espace
@@ -72,7 +72,7 @@ Ensemble E_initialiserEnsemble(size_t tailleElement) {
     return ens;
 }
 
-void E_afficherEnsemble(const Ensemble *ens, void (*afficherElement)(const void *)) {
+void E_afficherEnsemble(const Ensemble *ens, void (*E_afficherElement)(const void *)) {
     for (size_t i = 0; i < ens->taille; i++) {
         const void *currentElement = (const char *)ens->elements + i * ens->tailleElement;
         E_afficherElement(currentElement);

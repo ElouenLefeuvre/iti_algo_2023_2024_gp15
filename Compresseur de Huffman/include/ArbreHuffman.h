@@ -6,7 +6,7 @@
 typedef struct ArbreHuffman ArbreHuffman;
 
 ArbreHuffman* AH_arbreDeHuffman(Statistiques stat);
-int AH_obtenirPonderation(ArbreHuffman arbre);
+int AH_obtenirOccurences(ArbreHuffman arbre);
 ArbreHuffman AH_fusionner(ArbreHuffman ah1, ArbreHuffman ah2);
 void AH_fixerFilsGauche(ArbreHuffman *arbre,ArbreHuffman *filsGauche);
 void AH_fixerFilsDroit(ArbreHuffman *arbre,ArbreHuffman *filsDroit);
