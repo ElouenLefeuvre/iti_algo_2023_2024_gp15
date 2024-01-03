@@ -1,11 +1,11 @@
 #ifndef  __FILEDEPRIORITE__
 #define __FILEDEPRIORITE__
+#include <stdbool.h>
 #include "ArbreHuffman.h"
 
-
-typedef struct {
+typedef struct ListeChaineeArbre{
     ArbreHuffman arbre;
-    ListeChaineeArbre listeSuivante;
+    struct ListeChaineeArbre *listeSuivante;
 } ListeChaineeArbre;
 
 typedef struct {
