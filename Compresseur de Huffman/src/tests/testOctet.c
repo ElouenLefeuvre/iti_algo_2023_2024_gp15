@@ -32,8 +32,9 @@ void test_encoder(){
     }
 
     CU_ASSERT_EQUAL(strcmp(O_bitsToStr(&octet),"10101111"), 0);
-    Octet octetres = O_obtenirBitRestants();
-    CU_ASSERT_EQUAL(strcmp(O_bitsToStr(&octetres),"00000111"), 0);
+    Octet octetRes = O_obtenirBitRestants();
+
+    CU_ASSERT_EQUAL(strcmp(O_bitsToStr(&octetRes),"00000111"), 0);
 }
 
 
@@ -50,8 +51,7 @@ void test_decaler(){
     char* octet = "01011100";
     Octet octetInBits = O_strToBits(octet);
     //octetInBits= O_decaler(octetInBits);
-    O_decaler(octetInBits);
-    printf(O_bitsToStr(&octetInBits),"%c");
+    O_decaler(&octetInBits);
     CU_ASSERT_EQUAL(strcmp(O_bitsToStr(&octetInBits),"10111000"), 0);
 }
 

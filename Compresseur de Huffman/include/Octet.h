@@ -9,7 +9,7 @@ typedef struct {
 Bit O_iemeBit(Octet octet,int i);
 Octet O_creerOctet();
 Octet O_encoder(Octet octet,CodeBinaire cb);
-void O_decaler(Octet octet);
+void O_decaler(Octet *octet);
 void O_fixerBit(Octet* octet, int position, Bit valeur);
 char* O_bitsToStr(const Octet* octet);
 Octet O_strToBits(const char* chaine);

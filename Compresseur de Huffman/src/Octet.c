@@ -5,7 +5,7 @@
 #include "CodeBinaire.h"
 #include <stdlib.h>
 #include "ArbreHuffman.h"
-static int startPosition=0;
+static int startPosition=0;     
 static bool currentisFull;
 static Octet bitRestant;
 static int mostImportantBitRestant=8;
@@ -51,9 +51,9 @@ Bit O_iemeBit(Octet octet, int i){
 //decale a gauche pou libere un bit pour insertion dans bitRestant
 void O_decaler(Octet *octet){
     for(int i=0 ;i<7;i++){
-        &octet.bits[i]=&octet.bits[i+1];
+        octet->bits[i]=octet->bits[i+1];
     }
-    &octet.bits[7]= BITA0;
+    octet->bits[7]= BITA0;
 }
 
 
@@ -85,9 +85,6 @@ Octet O_strToBits(const char* chaine){
 //00000001
 //00000000
 Octet O_encoder(Octet octet,CodeBinaire cb){
-
-    
-    
     int j=0;
     Bit bit;
     //printf("je ne suis pas encore dans une condition\n");
@@ -104,6 +101,7 @@ Octet O_encoder(Octet octet,CodeBinaire cb){
             mostImportantBitRestant++;  
         }
     }
+
     //printf("je suis dans la deuxieme condition\n");
     //Apres On passe au bits du code binaire ,on les insere s'il reste de la place dans octet,
     //sinon on les insere dans l'octet bitRestant
@@ -112,14 +110,16 @@ Octet O_encoder(Octet octet,CodeBinaire cb){
         //printf("start position after strtobits is : %d\n",O_obtenirStartPosition());
         if(!currentisFull /*ca veut dire il reste de la place dans l'octet principale*/){
             //printf("Je ne dois pas inserer dans l'Octet bitRestants\n");
-            //octet = O_fixerBit(&octet,startPosition,bit);
+            //octet = O_fixerBit(&octet,startPosition,bit);    
+
             O_fixerBit(&octet,startPosition,bit);
+
             startPosition++;
         }
         else{/*Cad il ne reste pas de la place */
             //printf("Je dois inserer dans l'octet bitRestant\n");
             //bitRestant = O_decaler(bitRestant);
-            O_decaler(bitRestant);
+            O_decaler(&bitRestant);
             //printf("Octet avant insertion decaler : %s\n", O_octetToStr(&bitRestant));
             //bitRestant = O_fixerBit(&bitRestant,7,bit);
             O_fixerBit(&bitRestant,7,bit);
@@ -145,7 +145,7 @@ Octet O_encoder(Octet octet,CodeBinaire cb){
         //quand y a plus de place dans l'octet on prend un autre donc start position est remis a 0;
         // startPosition =0;
     }
-    //return octet;
+    return octet;
 }
 
 bool O_estVide(const Octet* octet) {
