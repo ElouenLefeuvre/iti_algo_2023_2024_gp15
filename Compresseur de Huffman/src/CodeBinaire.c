@@ -3,6 +3,7 @@
 #include "CodeBinaire.h"
 #include <stdlib.h>
 #include <string.h>
+#include "ArbreHuffman.h"
 
 
 
@@ -74,4 +75,34 @@ char* CB_codeBinaireToStr(const CodeBinaire* code) {
     }
     str[code->taille] = '\0'; 
     return str;
+}
+
+CodeBinaire CB_cbOfCaracFromAH(ArbreHuffman arbre, char car){
+    //JE manipule en CDC et puis je met tout en CodeBinaire
+    char * cb = CB_cbOfCarac(arbre, car);
+    int longueur = strlen(cb);
+    CodeBinaire result = CB_creerCodeBinaire(longueur);
+    CB_remplirCodeBinaire(&result,cb);
+    return result;
+
+}
+char* CB_cbOfCarac(ArbreHuffman arbre, char car){
+    
+    if(AH_estFeuille(arbre)){
+        return "0";
+    }
+    return obtenirCodeBinaireR(arbre,car);
+}
+
+
+char* obtenirCodeBinaireR(ArbreHuffman arbre,char car){
+    if(AH_estFeuille(arbre)){
+        return "";
+    }
+    if(AH_estPresent(AH_obtenirFilsGauche(&arbre),car) ){
+        return strcat("0",obtenirCodeBinaireR(*AH_obtenirFilsGauche(&arbre),car));
+    }
+    else{
+        return strcat("1",obtenirCodeBinaireR(*AH_obtenirFilsDroit(&arbre),car));
+    }
 }

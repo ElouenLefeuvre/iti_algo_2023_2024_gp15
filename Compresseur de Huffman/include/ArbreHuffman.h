@@ -8,8 +8,8 @@ typedef struct ArbreHuffman ArbreHuffman;
 ArbreHuffman* AH_arbreDeHuffman(Statistiques stat);
 int AH_obtenirPonderation(ArbreHuffman arbre);
 ArbreHuffman AH_fusionner(ArbreHuffman ah1, ArbreHuffman ah2);
-void AH_fixerFilsGauche(ArbreHuffman *ah1, ArbreHuffman *fg);
-void AH_fixerFilsDroit(ArbreHuffman *ah1, ArbreHuffman *fd);
+void AH_fixerFilsGauche(ArbreHuffman *arbre,ArbreHuffman *filsGauche);
+void AH_fixerFilsDroit(ArbreHuffman *arbre,ArbreHuffman *filsDroit);
 ArbreHuffman *AH_obtenirFilsGauche(ArbreHuffman *ah1);
 ArbreHuffman *AH_obtenirFilsDroit(ArbreHuffman *ah1);
 bool AH_estVide(ArbreHuffman *arbre);
@@ -26,4 +26,4 @@ struct ArbreHuffman {
     ArbreHuffman *filsDroit;
 };
 
-#endif
+#endif  
