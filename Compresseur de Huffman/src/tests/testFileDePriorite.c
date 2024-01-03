@@ -23,16 +23,16 @@ void testEnfiler_milieu() {
     Statistiques stat3 = S_statistique('c', 7);
 
     file1->longueur = 3;
-    file1->debut->arbre = AH_arbreDeHuffman(stat1);
-    file1->debut->listeSuivante->arbre = AH_arbreDeHuffman(stat2);
-    file1->debut->listeSuivante->listeSuivante->arbre = AH_arbreDeHuffman(stat3);
+    file1->debut->arbre = *AH_arbreDeHuffman(stat1);
+    file1->debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
+    file1->debut->listeSuivante->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
     file1->fin = NULL;
 
     file2->longueur = file1->longueur-1;
-    file2->debut->arbre=AH_arbreDeHuffman(stat1);
-    file2->debut->listeSuivante->arbre = AH_arbreDeHuffman(stat3);
+    file2->debut->arbre=*AH_arbreDeHuffman(stat1);
+    file2->debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
     file2->fin=NULL;
-    FDP_enfiler(file2,AH_arbreDeHuffman(stat2));
+    FDP_enfiler(file2,*AH_arbreDeHuffman(stat2));
 
     CU_ASSERT_PTR_EQUAL(file1->debut,file2->debut);
     CU_ASSERT_EQUAL(file1->longueur,file2->longueur);
@@ -48,16 +48,16 @@ void testEnfiler_debut() {
     Statistiques stat3 = S_statistique('c', 7);
 
     file1->longueur = 3;
-    file1->debut->arbre = AH_arbreDeHuffman(stat1);
-    file1->debut->listeSuivante->arbre = AH_arbreDeHuffman(stat2);
-    file1->debut->listeSuivante->listeSuivante->arbre = AH_arbreDeHuffman(stat3);
+    file1->debut->arbre = *AH_arbreDeHuffman(stat1);
+    file1->debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
+    file1->debut->listeSuivante->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
     file1->fin = NULL;
 
     file2->longueur = file1->longueur-1;
-    file2->debut->arbre=AH_arbreDeHuffman(stat2);
-    file2->debut->listeSuivante->arbre = AH_arbreDeHuffman(stat3);
+    file2->debut->arbre=*AH_arbreDeHuffman(stat2);
+    file2->debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
     file2->fin=NULL;
-    FDP_enfiler(file2,AH_arbreDeHuffman(stat1));
+    FDP_enfiler(file2,*AH_arbreDeHuffman(stat1));
 
     CU_ASSERT_PTR_EQUAL(file1,file2);
 }
@@ -72,16 +72,16 @@ void testEnfiler_fin() {
     Statistiques stat3 = S_statistique('c', 7);
 
     file1->longueur = 3;
-    file1->debut->arbre = AH_arbreDeHuffman(stat1);
-    file1->debut->listeSuivante->arbre = AH_arbreDeHuffman(stat2);
-    file1->debut->listeSuivante->listeSuivante->arbre = AH_arbreDeHuffman(stat3);
+    file1->debut->arbre = *AH_arbreDeHuffman(stat1);
+    file1->debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
+    file1->debut->listeSuivante->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
     file1->fin = NULL;
 
     file2->longueur = file1->longueur-1;
-    file2->debut->arbre=AH_arbreDeHuffman(stat1);
-    file2->debut->listeSuivante->arbre = AH_arbreDeHuffman(stat2);
+    file2->debut->arbre=*AH_arbreDeHuffman(stat1);
+    file2->debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
     file2->fin= NULL;
-    FDP_enfiler(file2,AH_arbreDeHuffman(stat3));
+    FDP_enfiler(file2,*AH_arbreDeHuffman(stat3));
 
     CU_ASSERT_PTR_EQUAL(file1,file2);
 }
@@ -96,14 +96,14 @@ void testDefiler() {
     Statistiques stat3 = S_statistique('c', 7);
 
     file1->longueur = 3;
-    file1->debut->arbre = AH_arbreDeHuffman(stat1);
-    file1->debut->listeSuivante->arbre = AH_arbreDeHuffman(stat2);
+    file1->debut->arbre = *AH_arbreDeHuffman(stat1);
+    file1->debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
     file1->fin = NULL;
 
     file2->longueur = file1->longueur+1;
-    file2->debut->arbre=AH_arbreDeHuffman(stat1);
-    file2->debut->listeSuivante->arbre = AH_arbreDeHuffman(stat2);
-    file1->debut->listeSuivante->listeSuivante->arbre = AH_arbreDeHuffman(stat3);
+    file2->debut->arbre=*AH_arbreDeHuffman(stat1);
+    file2->debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
+    file1->debut->listeSuivante->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
     file2->fin=NULL;
     FDP_defiler(file2);
 
@@ -118,13 +118,13 @@ void test_obtenirIElement_debut() {
     Statistiques stat3 = S_statistique('c', 7);
 
     file->longueur = 3;
-    file->debut->arbre = AH_arbreDeHuffman(stat1);
-    file->debut->listeSuivante->arbre = AH_arbreDeHuffman(stat2);
-    file->debut->listeSuivante->listeSuivante->arbre = AH_arbreDeHuffman(stat3);
+    file->debut->arbre = *AH_arbreDeHuffman(stat1);
+    file->debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
+    file->debut->listeSuivante->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
     file->fin = NULL;
 
     ArbreHuffman arbre_obtenu = FDP_obtenirElement(*file,1);
-    ArbreHuffman arbre_theorique = AH_arbreDeHuffman(stat1);
+    ArbreHuffman arbre_theorique = *AH_arbreDeHuffman(stat1);
     CU_ASSERT_PTR_EQUAL(arbre_obtenu.filsDroit,arbre_theorique.filsDroit);
     CU_ASSERT_PTR_EQUAL(arbre_obtenu.filsGauche,arbre_theorique.filsGauche);
     CU_ASSERT_EQUAL(arbre_obtenu.statistiques.caracter,arbre_theorique.statistiques.caracter);
@@ -139,13 +139,13 @@ void test_obtenirIElement_milieu() {
     Statistiques stat3 = S_statistique('c', 7);
 
     file->longueur = 3;
-    file->debut->arbre = AH_arbreDeHuffman(stat1);
-    file->debut->listeSuivante->arbre = AH_arbreDeHuffman(stat2);
-    file->debut->listeSuivante->listeSuivante->arbre = AH_arbreDeHuffman(stat3);
+    file->debut->arbre = *AH_arbreDeHuffman(stat1);
+    file->debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
+    file->debut->listeSuivante->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
     file->fin = NULL;
 
     ArbreHuffman arbre_obtenu = FDP_obtenirElement(*file,2);
-    ArbreHuffman arbre_theorique = AH_arbreDeHuffman(stat2);
+    ArbreHuffman arbre_theorique = *AH_arbreDeHuffman(stat2);
     CU_ASSERT_PTR_EQUAL(arbre_obtenu.filsDroit,arbre_theorique.filsDroit);
     CU_ASSERT_PTR_EQUAL(arbre_obtenu.filsGauche,arbre_theorique.filsGauche);
     CU_ASSERT_EQUAL(arbre_obtenu.statistiques.caracter,arbre_theorique.statistiques.caracter);
@@ -160,13 +160,13 @@ void test_obtenirIElement_fin() {
     Statistiques stat3 = S_statistique('c', 7);
 
     file->longueur = 3;
-    file->debut->arbre = AH_arbreDeHuffman(stat1);
-    file->debut->listeSuivante->arbre = AH_arbreDeHuffman(stat2);
-    file->debut->listeSuivante->listeSuivante->arbre = AH_arbreDeHuffman(stat3);
+    file->debut->arbre = *AH_arbreDeHuffman(stat1);
+    file->debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
+    file->debut->listeSuivante->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
     file->fin = NULL;
 
     ArbreHuffman arbre_obtenu = FDP_obtenirElement(*file,3);
-    ArbreHuffman arbre_theorique = AH_arbreDeHuffman(stat3);
+    ArbreHuffman arbre_theorique = *AH_arbreDeHuffman(stat3);
     CU_ASSERT_PTR_EQUAL(arbre_obtenu.filsDroit,arbre_theorique.filsDroit);
     CU_ASSERT_PTR_EQUAL(arbre_obtenu.filsGauche,arbre_theorique.filsGauche);
     CU_ASSERT_EQUAL(arbre_obtenu.statistiques.caracter,arbre_theorique.statistiques.caracter);
@@ -180,10 +180,10 @@ void test_nouvellefile() {
     Statistiques stat2 = S_statistique('b', 4);
     Statistiques stat3 = S_statistique('c', 7);
     Statistiques stat4 = S_statistique(' ',7);
-    ArbreHuffman arbre1 = AH_arbreDeHuffman(stat1);
-    ArbreHuffman arbre2 = AH_arbreDeHuffman(stat2);
-    ArbreHuffman arbre3 = AH_arbreDeHuffman(stat3);
-    ArbreHuffman arbre_f = AH_arbreDeHuffman(stat4);
+    ArbreHuffman arbre1 = *AH_arbreDeHuffman(stat1);
+    ArbreHuffman arbre2 = *AH_arbreDeHuffman(stat2);
+    ArbreHuffman arbre3 = *AH_arbreDeHuffman(stat3);
+    ArbreHuffman arbre_f = *AH_arbreDeHuffman(stat4);
     AH_fixerFilsGauche(&arbre_f, arbre1);
     AH_fixerFilsDroit(&arbre_f, arbre2);
 

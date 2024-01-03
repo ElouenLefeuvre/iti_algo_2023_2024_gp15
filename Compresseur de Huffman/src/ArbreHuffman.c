@@ -26,7 +26,7 @@ Statistiques AH_obtenirStat(ArbreHuffman arbre){
     return arbre.statistiques;
 }
 
-int AH_obtenirPonderation(ArbreHuffman arbre){
+int AH_obtenirOccurences(ArbreHuffman arbre){
     return S_obtenirPonderation(AH_obtenirStat(arbre));
 }
 
@@ -41,7 +41,7 @@ ArbreHuffman AH_fusionner(ArbreHuffman arbre1,ArbreHuffman arbre2) {
     stat.caracter = c;
     stat.ponderation = S_obtenirPonderation(arbre1.statistiques)+S_obtenirPonderation(arbre2.statistiques);
     res.statistiques= stat;
-    if (AH_obtenirPonderation(arbre1)<AH_obtenirPonderation(arbre2)){
+    if (AH_obtenirOccurences(arbre1)<AH_obtenirOccurences(arbre2)){
     AH_fixerFilsGauche(&res,arbre1);
     AH_fixerFilsDroit(&res,arbre2);
     }
@@ -120,7 +120,7 @@ void AH_afficherArbre(ArbreHuffman *arbre) {
         for (int i = 0; i < noeudCourant.niveau; ++i) {
             printf("    ");
         }
-        printf("%c/%d\n", AH_obtenirCaracter(*noeudCourant.noeud), AH_obtenirPonderation(*noeudCourant.noeud));
+        printf("%c/%d\n", AH_obtenirCaracter(*noeudCourant.noeud), AH_obtenirOccurences(*noeudCourant.noeud));
 
         // Empilement du fils droit si non nul
         ArbreHuffman *fd = AH_obtenirFilsDroit(noeudCourant.noeud);

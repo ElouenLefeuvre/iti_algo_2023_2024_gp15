@@ -12,7 +12,7 @@ bool FDP_estVide_LCA(ListeChaineeArbre *lca) {
     return lca==NULL;
 }
 
-FileDePriorite FDP_filedePriorite() {
+FileDePriorite FDP_fileDePriorite() {
     FileDePriorite file;
     file.debut = NULL;
     file.fin = NULL;
