@@ -1,6 +1,6 @@
 #ifndef __ARBREDEHUFFMAN__
 #define __ARBREDEHUFFMAN__
-
+#include <stdbool.h>
 #include "Statistiques.h"
 
 typedef struct ArbreHuffman ArbreHuffman;

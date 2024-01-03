@@ -1,6 +1,6 @@
 #ifndef  __ENSEMBLE__
 #define __ENSEMBLE__
-
+#include <stddef.h>
 typedef struct {
     void  **elements;
     size_t tailleElement;
