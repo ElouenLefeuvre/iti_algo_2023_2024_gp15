@@ -9,9 +9,9 @@ typedef struct {
 Bit O_iemeBit(Octet octet,int i);
 Octet O_creerOctet();
 Octet O_encoder(Octet octet,CodeBinaire cb);
-Octet O_decaler(Octet octet);
-Octet O_fixerBit(Octet* octet, int position, Bit valeur);
-char* O_octetToStr(const Octet* octet);
+void O_decaler(Octet octet);
+void O_fixerBit(Octet* octet, int position, Bit valeur);
+char* O_bitsToStr(const Octet* octet);
 Octet O_strToBits(const char* chaine);
 bool O_estVide(const Octet* octet);
 void O_incrementStartPosition();

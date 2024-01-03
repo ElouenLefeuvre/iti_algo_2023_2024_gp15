@@ -5,22 +5,22 @@
 #include "CodeBinaire.h"
 
 Octet O_creerOctet(){
-    Octet result;
-    startPosition=0;
+    Octet* result;
+    //startPosition=0;
     for(int i=0;i<8;i++){
-        O_fixerBit(result,i,0);
+        O_fixerBit(result,i,BITA0);
     }
 }
-void O_fixerBit(Octet octet, int position, Bit newBit){
+void O_fixerBit(Octet* octet, int position, Bit newBit){
     switch(position){
-        case 0: octet.bit0= newBit;
-        case 1: octet.bit1= newBit;
-        case 2: octet.bit2= newBit;
-        case 3: octet.bit3= newBit;
-        case 4: octet.bit4= newBit;
-        case 5: octet.bit5= newBit;
-        case 6: octet.bit6= newBit;
-        case 7: octet.bit7= newBit;
+        case 0: octet->bits[0]= newBit;
+        case 1: octet->bits[1]= newBit;
+        case 2: octet->bits[2]= newBit;
+        case 3: octet->bits[3]= newBit;
+        case 4: octet->bits[4]= newBit;
+        case 5: octet->bits[5]= newBit;
+        case 6: octet->bits[6]= newBit;
+        case 7: octet->bits[7]= newBit;
     }
 }
 Octet O_encoder(Octet octet,CodeBinaire cb){
@@ -32,7 +32,7 @@ Octet O_encoder(Octet octet,CodeBinaire cb){
     for (int i=mostImportantBitRestant-1 ;i>0;i--){
         if(startPosition<8){
             Bit bit = O_iemeBit(bitRestant,i);
-            O_fixerBit(octet,startPosition,bit);
+            O_fixerBit(&octet,startPosition,bit);
             startPosition++;
             O_fixerBit(bitRestant,mostImportantBitRestant,BITA0);
             mostImportantBitRestant--;
@@ -44,7 +44,7 @@ Octet O_encoder(Octet octet,CodeBinaire cb){
     for (int i=4-1;i>0;i--){
         Bit bit = CB_obtenirIemeBit(cb,i);
         if(startPosition < 8){
-            O_fixerBit(octet,startPosition,bit);
+            O_fixerBit(&octet,startPosition,bit);
         }
         else{
             O_decaler(bitRestant);
@@ -65,26 +65,26 @@ Octet O_encoder(Octet octet,CodeBinaire cb){
 
 Bit O_iemeBit(Octet octet, int i){
     switch(i){
-            case 0: return octet.bit0;
-            case 1: return octet.bit1;
-            case 2: return octet.bit2;
-            case 3: return octet.bit3;
-            case 4: return octet.bit4;
-            case 5: return octet.bit5;
-            case 6: return octet.bit6;
-            case 7: return octet.bit7;
+            case 0: return octet.bits[0];
+            case 1: return octet.bits[1];
+            case 2: return octet.bits[2];
+            case 3: return octet.bits[3];
+            case 4: return octet.bits[4];
+            case 5: return octet.bits[5];
+            case 6: return octet.bits[6];
+            case 7: return octet.bits[7];
         }
 }
 
 void O_decaler(Octet octet){
-    octet.bit7=octet.bit6;
-    octet.bit6=octet.bit5;
-    octet.bit5=octet.bit4;
-    octet.bit4=octet.bit3;
-    octet.bit3=octet.bit2;
-    octet.bit2 = octet.bit1;
-    octet.bit1 = octet.bit0;
-    octet.bit0= BITA0;
+    octet.bits[7]=octet.bits[6];
+    octet.bits[6]=octet.bits[5];
+    octet.bits[5]=octet.bits[4];
+    octet.bits[4]=octet.bits[3];
+    octet.bits[3]=octet.bits[2];
+    octet.bits[2] = octet.bits[1];
+    octet.bits[1] = octet.bits[0];
+    octet.bits[0]= BITA0;
 }
 
 char* O_bitsToStr(Octet octet){
