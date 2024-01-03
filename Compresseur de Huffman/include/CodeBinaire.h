@@ -1,6 +1,7 @@
 #ifndef  __CODEBINAIRE__
 #define __CODEBINAIRE__
 #include <stdbool.h>
+#include "ArbreHuffman.h"
 
 
 typedef enum { BITA0, BITA1} Bit;
