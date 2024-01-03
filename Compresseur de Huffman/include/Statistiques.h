@@ -6,7 +6,7 @@ typedef struct {
 }Statistiques;
 
 Statistiques S_statistique(char caracter, int ponderation);
-char S_obtenirCaracter(Statistiques stat);
+char S_obtenirCaractere(Statistiques stat);
 int S_obtenirPonderation(Statistiques stat);
 
 
