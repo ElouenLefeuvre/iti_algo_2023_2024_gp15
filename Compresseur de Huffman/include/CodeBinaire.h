@@ -17,4 +17,7 @@ Bit CB_obtenirIemeBit(CodeBinaire code,int i);
 CodeBinaire CB_concatener(const CodeBinaire* code1, const CodeBinaire* code2);
 char* CB_codeBinaireToStr(const CodeBinaire* code);
 void CB_remplirCodeBinaire(CodeBinaire* code, const char* chaine);
+CodeBinaire CB_cbOfCaracFromAH(ArbreHuffman arbre, char car);
+char* CB_cbOfCarac(ArbreHuffman arbre, char car);
+char* obtenirCodeBinaireR(ArbreHuffman arbre,char car);
 #endif

@@ -3,7 +3,7 @@
 typedef struct {
     char caracter;
     int ponderation;
-} Statistiques;
+}Statistiques;
 
 Statistiques S_statistique(char caracter, int ponderation);
 char S_obtenirCaracter(Statistiques stat);
