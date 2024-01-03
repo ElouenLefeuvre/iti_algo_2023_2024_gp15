@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include <stdlib.h>
 #include<stdbool.h>
 #include <CUnit/Basic.h>
 #include "FileDePriorite.h"
@@ -22,18 +23,24 @@ void testEnfiler_milieu() {
     Statistiques stat2 = S_statistique('b', 4);
     Statistiques stat3 = S_statistique('c', 7);
     file1.longueur = 3;
+    file1.debut = malloc(sizeof(ListeChaineeArbre));
     file1.debut->arbre = *AH_arbreDeHuffman(stat1);
-    printf("1");
+    file1.debut->listeSuivante = malloc(sizeof(ListeChaineeArbre));
     file1.debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
+    file1.debut->listeSuivante->listeSuivante = malloc(sizeof(ListeChaineeArbre));
     file1.debut->listeSuivante->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
     file1.fin = NULL;
     file2.longueur = file1.longueur-1;
+    file2.debut = malloc(sizeof(ListeChaineeArbre));
     file2.debut->arbre=*AH_arbreDeHuffman(stat1);
+    file2.debut->listeSuivante = malloc(sizeof(ListeChaineeArbre));
     file2.debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
     file2.fin=NULL;
+    printf("1");
     FDP_enfiler(&file2,*AH_arbreDeHuffman(stat2));
-
+    printf("1");
     CU_ASSERT_PTR_EQUAL(file1.debut,file2.debut);
+    CU_ASSERT_PTR_EQUAL(file1.fin,file2.fin);
     CU_ASSERT_EQUAL(file1.longueur,file2.longueur);
 }
 
@@ -45,15 +52,18 @@ void testEnfiler_debut() {
     Statistiques stat1 = S_statistique('a', 3);
     Statistiques stat2 = S_statistique('b', 4);
     Statistiques stat3 = S_statistique('c', 7);
-
     file1.longueur = 3;
+    file1.debut = malloc(sizeof(ListeChaineeArbre));
     file1.debut->arbre = *AH_arbreDeHuffman(stat1);
+    file1.debut->listeSuivante = malloc(sizeof(ListeChaineeArbre));
     file1.debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
+    file1.debut->listeSuivante->listeSuivante = malloc(sizeof(ListeChaineeArbre));
     file1.debut->listeSuivante->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
     file1.fin = NULL;
-
     file2.longueur = file1.longueur-1;
-    file2.debut->arbre=*AH_arbreDeHuffman(stat2);
+    file2.debut = malloc(sizeof(ListeChaineeArbre));
+    file2.debut->arbre=*AH_arbreDeHuffman(stat1);
+    file2.debut->listeSuivante = malloc(sizeof(ListeChaineeArbre));
     file2.debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
     file2.fin=NULL;
     FDP_enfiler(&file2,*AH_arbreDeHuffman(stat1));
@@ -71,17 +81,20 @@ void testEnfiler_fin() {
     Statistiques stat1 = S_statistique('a', 3);
     Statistiques stat2 = S_statistique('b', 4);
     Statistiques stat3 = S_statistique('c', 7);
-
     file1.longueur = 3;
+    file1.debut = malloc(sizeof(ListeChaineeArbre));
     file1.debut->arbre = *AH_arbreDeHuffman(stat1);
+    file1.debut->listeSuivante = malloc(sizeof(ListeChaineeArbre));
     file1.debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
+    file1.debut->listeSuivante->listeSuivante = malloc(sizeof(ListeChaineeArbre));
     file1.debut->listeSuivante->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
     file1.fin = NULL;
-
     file2.longueur = file1.longueur-1;
+    file2.debut = malloc(sizeof(ListeChaineeArbre));
     file2.debut->arbre=*AH_arbreDeHuffman(stat1);
-    file2.debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
-    file2.fin= NULL;
+    file2.debut->listeSuivante = malloc(sizeof(ListeChaineeArbre));
+    file2.debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
+    file2.fin=NULL;
     FDP_enfiler(&file2,*AH_arbreDeHuffman(stat3));
 
     CU_ASSERT_PTR_EQUAL(file1.debut,file2.debut);
