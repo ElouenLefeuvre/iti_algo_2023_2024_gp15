@@ -42,12 +42,12 @@ ArbreHuffman AH_fusionner(ArbreHuffman arbre1,ArbreHuffman arbre2) {
     stat.ponderation = S_obtenirPonderation(arbre1.statistiques)+S_obtenirPonderation(arbre2.statistiques);
     res.statistiques= stat;
     if (AH_obtenirPonderation(arbre1)<AH_obtenirPonderation(arbre2)){
-    AH_fixerFilsGauche(&res,&arbre1);
-    AH_fixerFilsDroit(&res,&arbre2);
+    AH_fixerFilsGauche(&res,arbre1);
+    AH_fixerFilsDroit(&res,arbre2);
     }
     else {
-        AH_fixerFilsGauche(&res,&arbre2);
-        AH_fixerFilsDroit(&res,&arbre1);
+        AH_fixerFilsGauche(&res,arbre2);
+        AH_fixerFilsDroit(&res,arbre1);
     }
     return res;
 }
@@ -55,13 +55,13 @@ ArbreHuffman AH_fusionner(ArbreHuffman arbre1,ArbreHuffman arbre2) {
 
 void AH_fixerFilsGauche(ArbreHuffman *arbre,ArbreHuffman filsGauche) {
     if (arbre != NULL) {
-        arbre->filsGauche = filsGauche;
+        arbre->filsGauche = &filsGauche;
     }
 }
 
 void AH_fixerFilsDroit(ArbreHuffman *arbre,ArbreHuffman filsDroit) {
     if (arbre != NULL) {
-        arbre->filsDroit = filsDroit;
+        arbre->filsDroit = &filsDroit;
     }
 }
 
