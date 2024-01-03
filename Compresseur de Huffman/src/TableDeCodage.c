@@ -5,7 +5,7 @@
 TableDeCodage TDC_obtenirTableDeCodage(ArbreHuffman a) {
     TableDeCodage res;
     res.noeud->c = S_obtenirCaractere(a.statistiques);
-    res.noeud->code = CB_obtenirCodeBinaire(res.noeud->c);
+    res.noeud->code = CB_cbOfCaracFromAH(a,res.noeud->c);
     res.noeud->listeSuivante = NULL;
     return res;
 }
@@ -16,7 +16,7 @@ CodeBinaire TDC_obtenirCode(TableDeCodage tab,char c) {
             return tab.noeud->code;
         }
         else {
-            return TDC_obtenirCode(tab.noeud->listeSuivante,c);
+            return TDC_obtenirCode((TableDeCodage){tab.noeud->listeSuivante}, c);
         }
 
     }
@@ -26,36 +26,37 @@ CodeBinaire TDC_obtenirCode(TableDeCodage tab,char c) {
 char TDC_obtenirCarac(TableDeCodage tab,CodeBinaire code) {
     if (!(TDC_estVide(tab))) {
         //Il faut ajouter une methode equlas dans codeBinaire
-        if (tab.noeud->code == code) {
+        if (CB_codeBinaireToStr(&tab.noeud->code) == CB_codeBinaireToStr(&code)) {
             return tab.noeud->c;
         }
         else {
-            return TDC_obtenirCarac(tab.noeud->listeSuivante,code);
+            return TDC_obtenirCarac((TableDeCodage){tab.noeud->listeSuivante},code);
         }
 
     }
 
 }
 
-TableDeCodage TDC_ajouter(TableDeCodage tab,char c,CodeBinaire code) {
+void TDC_ajouter(TableDeCodage *tab,char *c,CodeBinaire *code) {
     TableDeCodage temp;
-    temp = tab;
-    tab.noeud->c = c;
-    tab.noeud->code = code;
-    tab.noeud->listeSuivante = temp;
-    return tab;
+    temp = *tab;
+    tab->noeud->c = *c;
+    tab->noeud->code = *code;
+    tab->noeud->listeSuivante = temp.noeud;
 }
 
-void TDC_supprimer(TableDeCodage tab, char c, CodeBinaire code) {
-    TableDeCodage temp;
-    if (!(TDC_estVide(tab.noeud->listeSuivante))) {
-        if (temp.noeud->c == c) {
-            temp = temp.noeud->listeSuivante;
-            tab.noeud->listeSuivante = temp;
+void TDC_supprimer(TableDeCodage *tab, char *c, CodeBinaire *code) {
+    TableDeCodage temp, temp2;
+    temp2.noeud = tab->noeud->listeSuivante;
+    if (!(TDC_estVide(temp2))) {
+        if (&temp.noeud->c == c) {
+            temp.noeud = temp.noeud->listeSuivante;
+            tab->noeud->listeSuivante = temp.noeud;
         }
         else {
-            TDC_supprimer(temp.noeud->listeSuivante, c, code);
-            tab.noeud->listeSuivante = temp;
+            temp2.noeud = temp.noeud->listeSuivante;
+            TDC_supprimer(&temp2, c, code);
+            tab->noeud->listeSuivante = temp.noeud;
         }
     }
 
@@ -64,6 +65,7 @@ void TDC_supprimer(TableDeCodage tab, char c, CodeBinaire code) {
 
 
 int TDC_estPresent(TableDeCodage tab, char car) {
+    TableDeCodage temp;
     if (TDC_estVide(tab)){
         return 0;
     }
@@ -71,7 +73,8 @@ int TDC_estPresent(TableDeCodage tab, char car) {
         return 1;
     }
     else {
-        return TDC_estPresent(tab.noeud->listeSuivante, car);
+        temp.noeud = tab.noeud->listeSuivante;
+        return TDC_estPresent(temp, car);
     }
 }
 
