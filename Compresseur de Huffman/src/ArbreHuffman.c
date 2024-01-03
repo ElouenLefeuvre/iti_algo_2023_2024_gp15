@@ -53,13 +53,13 @@ ArbreHuffman AH_fusionner(ArbreHuffman arbre1,ArbreHuffman arbre2) {
 }
 
 
-void AH_fixerFilsGauche(ArbreHuffman *arbre,ArbreHuffman *filsGauche) {
+void AH_fixerFilsGauche(ArbreHuffman *arbre,ArbreHuffman filsGauche) {
     if (arbre != NULL) {
         arbre->filsGauche = filsGauche;
     }
 }
 
-void AH_fixerFilsDroit(ArbreHuffman *arbre,ArbreHuffman *filsDroit) {
+void AH_fixerFilsDroit(ArbreHuffman *arbre,ArbreHuffman filsDroit) {
     if (arbre != NULL) {
         arbre->filsDroit = filsDroit;
     }

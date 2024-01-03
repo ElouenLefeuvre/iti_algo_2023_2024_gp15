@@ -5,11 +5,11 @@
 
 typedef struct ArbreHuffman ArbreHuffman;
 
-ArbreHuffman* AH_arbreDeHuffman(Statistiques stat);
+ArbreHuffman AH_arbreDeHuffman(Statistiques stat);
 int AH_obtenirOccurences(ArbreHuffman arbre);
 ArbreHuffman AH_fusionner(ArbreHuffman ah1, ArbreHuffman ah2);
-void AH_fixerFilsGauche(ArbreHuffman *arbre,ArbreHuffman *filsGauche);
-void AH_fixerFilsDroit(ArbreHuffman *arbre,ArbreHuffman *filsDroit);
+void AH_fixerFilsGauche(ArbreHuffman *arbre,ArbreHuffman filsGauche);
+void AH_fixerFilsDroit(ArbreHuffman *arbre,ArbreHuffman filsDroit);
 ArbreHuffman *AH_obtenirFilsGauche(ArbreHuffman *ah1);
 ArbreHuffman *AH_obtenirFilsDroit(ArbreHuffman *ah1);
 bool AH_estVide(ArbreHuffman *arbre);
