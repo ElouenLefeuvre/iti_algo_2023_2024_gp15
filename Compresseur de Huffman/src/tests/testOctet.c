@@ -1,9 +1,10 @@
 #include<stdio.h>
 #include<stdbool.h>
 #include <CUnit/Basic.h>
+#include <string.h>
 #include "Octet.h"
 #include "CodeBinaire.h"
-#include <string.h>
+
 
 void test_creer_Octet() {
     Octet octet = O_creerOctet();
@@ -30,9 +31,9 @@ void test_encoder(){
         octet = O_encoder(octet,code);
     }
 
-    CU_ASSERT_EQUAL(strcmp(O_octetToStr(&octet),"10101111"), 0);
+    CU_ASSERT_EQUAL(strcmp(O_bitsToStr(&octet),"10101111"), 0);
     Octet octetres = O_obtenirBitRestants();
-    CU_ASSERT_EQUAL(strcmp(O_octetToStr(&octetres),"00000111"), 0);
+    CU_ASSERT_EQUAL(strcmp(O_bitsToStr(&octetres),"00000111"), 0);
 }
 
 
@@ -46,10 +47,12 @@ void test_iemeBit(){
 
 
 void test_decaler(){
-    char* octet = "11111111";
+    char* octet = "01011100";
     Octet octetInBits = O_strToBits(octet);
-    octetInBits= O_decaler(octetInBits);
-    CU_ASSERT_EQUAL(strcmp(O_octetToStr(&octetInBits),"11111110"), 0);
+    //octetInBits= O_decaler(octetInBits);
+    O_decaler(octetInBits);
+    printf(O_bitsToStr(&octetInBits),"%c");
+    CU_ASSERT_EQUAL(strcmp(O_bitsToStr(&octetInBits),"10111000"), 0);
 }
 
 void test_str_to_bits(){
@@ -75,7 +78,7 @@ void test_bits_to_str(){
     O_fixerBit(&octet,5,BITA1);
     O_fixerBit(&octet,6,BITA1);
     O_fixerBit(&octet,7,BITA1);
-    char* octetInstr= O_octetToStr(&octet);
+    char* octetInstr= O_bitsToStr(&octet);
     CU_ASSERT_EQUAL(strcmp(octetInstr,"11111111"), 0);
 
 }

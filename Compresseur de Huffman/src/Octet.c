@@ -49,15 +49,15 @@ Bit O_iemeBit(Octet octet, int i){
 
 
 //decale a gauche pou libere un bit pour insertion dans bitRestant
-void O_decaler(Octet octet){
+void O_decaler(Octet *octet){
     for(int i=0 ;i<7;i++){
-        octet.bits[i]=octet.bits[i+1];
+        &octet.bits[i]=&octet.bits[i+1];
     }
-    octet.bits[7]= BITA0;
+    &octet.bits[7]= BITA0;
 }
 
 
-char* O_octetToStr(const Octet* octet) {
+char* O_bitsToStr(const Octet* octet) {
     char* str = malloc(9 * sizeof(char));  // +1 pour le caractère nul
     for (int i = 0; i < 8; ++i) {
         str[i] = (octet->bits[i] == BITA0) ? '0' : '1';
@@ -145,7 +145,7 @@ Octet O_encoder(Octet octet,CodeBinaire cb){
         //quand y a plus de place dans l'octet on prend un autre donc start position est remis a 0;
         // startPosition =0;
     }
-    return octet;
+    //return octet;
 }
 
 bool O_estVide(const Octet* octet) {
