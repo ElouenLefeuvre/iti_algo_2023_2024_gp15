@@ -203,7 +203,6 @@ void test_nouvellefile() {
 
 
 int main (int argc, char** argv) {
-    int main() {
     CU_pSuite pSuite = NULL;
 
     if (CUE_SUCCESS != CU_initialize_registry())
@@ -236,6 +235,4 @@ int main (int argc, char** argv) {
 
     CU_cleanup_registry();
     return CU_get_error();
-}
-
 }
