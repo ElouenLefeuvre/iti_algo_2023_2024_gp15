@@ -34,6 +34,7 @@ void FDP_enfiler(FileDePriorite *file, ArbreHuffman arbre) {
             if (AH_obtenirPonderation(arbre) < AH_obtenirPonderation(temp->arbre)) {
             file_temp = file;
             file_temp->debut = file_temp->debut->listeSuivante;
+            file_temp->longueur = file_temp->longueur -1;
             FDP_enfiler(file_temp,arbre);
             file->debut->listeSuivante=file_temp->debut;
             }
