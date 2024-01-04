@@ -3,9 +3,7 @@
 #include "CodeBinaire.h"
 #include <stdlib.h>
 #include <string.h>
-#include "ArbreHuffman.h"
-
-
+#define BITA_END '\0'
 
 bool CB_estVide(CodeBinaire cb) {
     int  taille = cb.taille;
@@ -77,32 +75,61 @@ char* CB_codeBinaireToStr(const CodeBinaire* code) {
     return str;
 }
 
-CodeBinaire CB_cbOfCaracFromAH(ArbreHuffman arbre, char car){
-    //JE manipule en CDC et puis je met tout en CodeBinaire
-    char * cb = CB_cbOfCarac(arbre, car);
-    int longueur = strlen(cb);
-    CodeBinaire result = CB_creerCodeBinaire(longueur);
-    CB_remplirCodeBinaire(&result,cb);
-    return result;
 
+CodeBinaire AH_CbFromAH(ArbreHuffman *a, char car){
+    char* result = AH_obtenirCodeBinaire(a,car);
+    int taille = strlen(result);
+    CodeBinaire CB_result = CB_creerCodeBinaire(taille);
+    CB_remplirCodeBinaire(&CB_result,result);
+    return CB_result;
 }
-char* CB_cbOfCarac(ArbreHuffman arbre, char car){
+
+char* AH_obtenirCodeBinaire(ArbreHuffman *a, char car) {
+    if (!AH_estVide(a)) {
+        if (AH_estFeuille(*a)) {
+            return strdup("0");
+        } else {
+            return obtenirCodeBinaireR(a, car);
+        }
+    }
     
-    if(AH_estFeuille(arbre)){
-        return "0";
+    return NULL;
+}
+
+char* obtenirCodeBinaireR(ArbreHuffman *a, char car) {
+    if (!AH_estVide(a)) {
+        if (AH_estFeuille(*a)) {
+            return strdup("");  // Retourne une chaîne vide allouée dynamiquement
+        }
+        if (AH_estPresent(AH_obtenirFilsGauche(a), car)) {
+            a = AH_obtenirFilsGauche(a);
+            char* resultatGauche = obtenirCodeBinaireR(a, car);
+            if (resultatGauche != NULL) {
+                // Alloue suffisamment de mémoire pour "0" suivi de la chaîne de résultat
+                char* resultat = malloc(strlen("0") + strlen(resultatGauche) + 1);
+                if (resultat != NULL) {
+                    strcpy(resultat, "0");
+                    strcat(resultat, resultatGauche);
+                }
+                free(resultatGauche);  // Libère la mémoire allouée dynamiquement pour la chaîne de résultat gauche
+                return resultat;
+            }
+        } else {
+            a = AH_obtenirFilsDroit(a);
+            char* resultatGauche = obtenirCodeBinaireR(a, car);
+            if (resultatGauche != NULL) {
+                // Alloue suffisamment de mémoire pour "1" suivi de la chaîne de résultat
+                char* resultat = malloc(strlen("1") + strlen(resultatGauche) + 1);
+                if (resultat != NULL) {
+                    strcpy(resultat, "1");
+                    strcat(resultat, resultatGauche);
+                }
+                free(resultatGauche);  // Libère la mémoire allouée dynamiquement pour la chaîne de résultat gauche
+                return resultat;
+            }
+        }
     }
-    return obtenirCodeBinaireR(arbre,car);
+    return NULL;
 }
 
 
-char* obtenirCodeBinaireR(ArbreHuffman arbre,char car){
-    if(AH_estFeuille(arbre)){
-        return "";
-    }
-    if(AH_estPresent(AH_obtenirFilsGauche(&arbre),car) ){
-        return strcat("0",obtenirCodeBinaireR(*AH_obtenirFilsGauche(&arbre),car));
-    }
-    else{
-        return strcat("1",obtenirCodeBinaireR(*AH_obtenirFilsDroit(&arbre),car));
-    }
-}

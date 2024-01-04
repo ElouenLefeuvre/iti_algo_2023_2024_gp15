@@ -95,6 +95,40 @@ void test_CB_codeBinaireToStr(void) {
     CB_libererCodeBinaire(&code);
 }
 
+void test_CB_CbFromAH(){
+    Statistiques stat = S_statistique('X', 5);
+    ArbreHuffman* arbre = AH_arbreDeHuffman(stat);
+
+    Statistiques statA = S_statistique('A', 3);
+    ArbreHuffman* arbreA = AH_arbreDeHuffman(statA);
+
+    Statistiques statB = S_statistique('B', 3);
+    ArbreHuffman* arbreB = AH_arbreDeHuffman(statB);
+
+    Statistiques statC = S_statistique('C', 3);
+    ArbreHuffman* arbreC = AH_arbreDeHuffman(statC);
+
+    Statistiques statD = S_statistique('D', 4);
+    ArbreHuffman* arbreD = AH_arbreDeHuffman(statD);
+
+    Statistiques statE = S_statistique('E', 5);
+    ArbreHuffman* arbreE = AH_arbreDeHuffman(statE);
+
+    Statistiques statF = S_statistique('F', 3);
+    ArbreHuffman* arbreF = AH_arbreDeHuffman(statF);
+
+    AH_fixerFilsGauche(arbre, arbreA);
+    AH_fixerFilsDroit(arbre, arbreB);
+    AH_fixerFilsGauche(arbreA , arbreC);
+    AH_fixerFilsDroit(arbreA, arbreD);
+    AH_fixerFilsGauche(arbreB , arbreE);
+    AH_fixerFilsDroit(arbreB, arbreF);
+
+    CodeBinaire cb = AH_CbFromAH(arbre,'E');
+    CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(&cb), "10");
+
+}
+
 int main() {
     // Initialisation de CUnit
     if (CUE_SUCCESS != CU_initialize_registry()) {
@@ -109,6 +143,7 @@ int main() {
     CU_add_test(suite_CB, "Test CB_obtenirIemeBit", test_CB_obtenirIemeBit);
     CU_add_test(suite_CB, "Test CB_concatener", test_CB_concatener);
     CU_add_test(suite_CB, "Test CB_codeBinaireToStr", test_CB_codeBinaireToStr);
+    CU_add_test(suite_CB, "Test CB_CbFromAH", test_CB_CbFromAH);
 
     // Exécution des tests
     CU_basic_run_tests();

@@ -7,7 +7,7 @@
 
 
 
-
+//v
 ArbreHuffman* AH_arbreDeHuffman(Statistiques stat) {
     ArbreHuffman *arbre = malloc(sizeof(ArbreHuffman));
     if (arbre != NULL) {
@@ -17,51 +17,55 @@ ArbreHuffman* AH_arbreDeHuffman(Statistiques stat) {
     }
     return arbre;
 }
-
+//v
 void AH_fixerStatistique(ArbreHuffman *arbre,Statistiques stat){
     arbre->statistiques=stat;
 }
-
+//v
 Statistiques AH_obtenirStat(ArbreHuffman arbre){
     return arbre.statistiques;
 }
 
-int AH_obtenirOccurences(ArbreHuffman arbre){
+//v
+int AH_obtenirPonderation(ArbreHuffman arbre){
     return S_obtenirPonderation(AH_obtenirStat(arbre));
 }
 
+
+
+//v
 char AH_obtenirCaracter(ArbreHuffman arbre){
     return arbre.statistiques.caracter;
 }
 
-ArbreHuffman AH_fusionner(ArbreHuffman arbre1,ArbreHuffman arbre2) {
-    ArbreHuffman res;
+ArbreHuffman* AH_fusionner(ArbreHuffman* arbre1,ArbreHuffman* arbre2) {
+    
     Statistiques stat ;
     char c;
     stat.caracter = c;
-    stat.ponderation = S_obtenirPonderation(arbre1.statistiques)+S_obtenirPonderation(arbre2.statistiques);
-    res.statistiques= stat;
-    if (AH_obtenirOccurences(arbre1)<AH_obtenirOccurences(arbre2)){
-    AH_fixerFilsGauche(&res,arbre1);
-    AH_fixerFilsDroit(&res,arbre2);
+    stat.ponderation = S_obtenirPonderation(arbre1->statistiques)+S_obtenirPonderation(arbre2->statistiques);
+    ArbreHuffman* res = AH_arbreDeHuffman(stat);
+    if (AH_obtenirPonderation(*arbre1)<AH_obtenirPonderation(*arbre2)){
+    AH_fixerFilsGauche(res,arbre1);
+    AH_fixerFilsDroit(res,arbre2);
     }
     else {
-        AH_fixerFilsGauche(&res,arbre2);
-        AH_fixerFilsDroit(&res,arbre1);
+        AH_fixerFilsGauche(res,arbre2);
+        AH_fixerFilsDroit(res,arbre1);
     }
     return res;
 }
 
 
-void AH_fixerFilsGauche(ArbreHuffman *arbre,ArbreHuffman filsGauche) {
+void AH_fixerFilsGauche(ArbreHuffman *arbre,ArbreHuffman *filsGauche) {
     if (arbre != NULL) {
-        arbre->filsGauche = &filsGauche;
+        arbre->filsGauche = filsGauche;
     }
 }
 
-void AH_fixerFilsDroit(ArbreHuffman *arbre,ArbreHuffman filsDroit) {
+void AH_fixerFilsDroit(ArbreHuffman *arbre,ArbreHuffman *filsDroit) {
     if (arbre != NULL) {
-        arbre->filsDroit = &filsDroit;
+        arbre->filsDroit = filsDroit;
     }
 }
 
@@ -82,12 +86,15 @@ bool AH_estFeuille(ArbreHuffman arbre) {
 }
 
 bool AH_estPresent(ArbreHuffman *arbre, char caractere) {
-    if (arbre->statistiques.caracter == caractere) {
-        return true;
+    if (!AH_estVide(arbre)){
+        if (arbre->statistiques.caracter == caractere) {
+            return true;
+        }
+        else {
+            return (AH_estPresent(AH_obtenirFilsDroit(arbre),caractere) || AH_estPresent(AH_obtenirFilsGauche(arbre),caractere));
+        }
     }
-    else {
-        return (AH_estPresent(AH_obtenirFilsDroit(arbre),caractere) || AH_estPresent(AH_obtenirFilsGauche(arbre),caractere));
-    }
+    return false;
 }
 
 void AH_afficherArbre(ArbreHuffman *arbre) {
@@ -120,7 +127,7 @@ void AH_afficherArbre(ArbreHuffman *arbre) {
         for (int i = 0; i < noeudCourant.niveau; ++i) {
             printf("    ");
         }
-        printf("%c/%d\n", AH_obtenirCaracter(*noeudCourant.noeud), AH_obtenirOccurences(*noeudCourant.noeud));
+        printf("%c/%d\n", AH_obtenirCaracter(*noeudCourant.noeud), AH_obtenirPonderation(*noeudCourant.noeud));
 
         // Empilement du fils droit si non nul
         ArbreHuffman *fd = AH_obtenirFilsDroit(noeudCourant.noeud);
