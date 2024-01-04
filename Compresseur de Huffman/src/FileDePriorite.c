@@ -20,18 +20,31 @@ FileDePriorite FDP_fileDePriorite() {
 }
 
 void FDP_enfiler(FileDePriorite *file, ArbreHuffman arbre) {
-    struct ListeChaineeArbre *temp1;
-    struct ListeChaineeArbre *temp2;
-    temp1 = file->debut;
-        while (AH_obtenirPonderation(arbre) > AH_obtenirPonderation(temp2->arbre)) {
-        temp1 = temp1->listeSuivante;
-            }
-    temp1->arbre = arbre;
-    temp1->listeSuivante=temp2;
-    while (!(FDP_estVide_LCA(temp1->listeSuivante))) {
-        temp1 = temp1->listeSuivante;
-    }
+    ListeChaineeArbre *temp;
+    ListeChaineeArbre *temp2;
+    FileDePriorite *file_temp;
+    temp = file->debut;
+    if (FDP_estVide_LCA(temp->listeSuivante)) {
+        temp->listeSuivante = malloc(sizeof(ListeChaineeArbre));
+        temp->listeSuivante->arbre = arbre;
+        temp->listeSuivante->listeSuivante = NULL;
         file->longueur = file->longueur+1;
+    }
+        else {
+            if (AH_obtenirPonderation(arbre) < AH_obtenirPonderation(temp->arbre)) {
+            file_temp = file;
+            file_temp->debut = file_temp->debut->listeSuivante;
+            FDP_enfiler(file_temp,arbre);
+            file->debut->listeSuivante=file_temp->debut;
+            }
+                else {
+                    temp2 = malloc(sizeof(ListeChaineeArbre));
+                    temp2 = temp;
+                    temp->arbre = arbre;
+                    temp->listeSuivante=temp2;
+                    file->longueur = file->longueur+1;
+                }
+        }
 }
 
 void FDP_defiler(FileDePriorite *file) {
