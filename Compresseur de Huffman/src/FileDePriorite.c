@@ -55,7 +55,7 @@ void FDP_defiler(FileDePriorite *file){
 
 void FDP_defilerR(FileDePriorite *file) {
     FileDePriorite *temp = file;
-    if (FDP_estVide(temp->debut->listeSuivante)){
+    if (FDP_estVide_LCA(temp->debut->listeSuivante)){
         free(temp);
     }
     else{
