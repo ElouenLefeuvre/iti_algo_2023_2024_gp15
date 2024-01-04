@@ -10,7 +10,6 @@ typedef struct ListeChaineeArbre{
 
 typedef struct {
     struct ListeChaineeArbre *debut;
-    struct ListeChaineeArbre *fin;
     int longueur;
 } FileDePriorite;
 
