@@ -5,7 +5,6 @@
 #include "Octet.h"
 #include "CodeBinaire.h"
 
-
 void test_creer_Octet() {
     Octet octet = O_creerOctet();
     for (int i=0;i<8;i++){
