@@ -25,7 +25,7 @@ void FDP_enfiler(FileDePriorite *file, ArbreHuffman arbre) {
     struct ListeChaineeArbre *temp2;
     temp1 = file->debut;
     temp2 = file->fin;
-    while (AH_obtenirOccurences(arbre) > AH_obtenirOccurences(temp2->arbre)) {
+    while (AH_obtenirPonderation(arbre) > AH_obtenirPonderation(temp2->arbre)) {
         temp1 = temp1->listeSuivante;
         temp2 = temp2->listeSuivante;
     }
@@ -55,7 +55,7 @@ ArbreHuffman FDP_obtenirElement(FileDePriorite file, int i) {
 }
 
 void FDP_nouvelleFile(FileDePriorite *file) {
-    FDP_enfiler(file,AH_fusionner((file->fin->arbre),(file->fin->listeSuivante->arbre)));
+    FDP_enfiler(file,*AH_fusionner(&(file->fin->arbre),&(file->fin->listeSuivante->arbre)));
     FDP_defiler(file);
     FDP_defiler(file);
 }

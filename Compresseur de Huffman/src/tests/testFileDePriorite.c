@@ -29,16 +29,14 @@ void testEnfiler_milieu() {
     file1.debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
     file1.debut->listeSuivante->listeSuivante = malloc(sizeof(ListeChaineeArbre));
     file1.debut->listeSuivante->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
-    file1.fin = NULL;
+    file1.fin = file1.debut->listeSuivante->listeSuivante;
     file2.longueur = file1.longueur-1;
     file2.debut = malloc(sizeof(ListeChaineeArbre));
     file2.debut->arbre=*AH_arbreDeHuffman(stat1);
     file2.debut->listeSuivante = malloc(sizeof(ListeChaineeArbre));
     file2.debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
-    file2.fin=NULL;
-    printf("1");
+    file2.fin=file2.debut->listeSuivante;
     FDP_enfiler(&file2,*AH_arbreDeHuffman(stat2));
-    printf("1");
     CU_ASSERT_PTR_EQUAL(file1.debut,file2.debut);
     CU_ASSERT_PTR_EQUAL(file1.fin,file2.fin);
     CU_ASSERT_EQUAL(file1.longueur,file2.longueur);
@@ -202,8 +200,8 @@ void test_nouvellefile() {
     ArbreHuffman arbre2 = *AH_arbreDeHuffman(stat2);
     ArbreHuffman arbre3 = *AH_arbreDeHuffman(stat3);
     ArbreHuffman arbre_f = *AH_arbreDeHuffman(stat4);
-    AH_fixerFilsGauche(&arbre_f, arbre1);
-    AH_fixerFilsDroit(&arbre_f, arbre2);
+    AH_fixerFilsGauche(&arbre_f, &arbre1);
+    AH_fixerFilsDroit(&arbre_f, &arbre2);
 
     file = FDP_fileDePriorite();
     FDP_enfiler(&file,arbre1); 
