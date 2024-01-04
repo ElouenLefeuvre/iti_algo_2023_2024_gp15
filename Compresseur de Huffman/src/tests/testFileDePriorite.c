@@ -107,14 +107,14 @@ void testDefiler() {
     Statistiques stat1 = S_statistique('a', 3);
     Statistiques stat2 = S_statistique('b', 4);
     Statistiques stat3 = S_statistique('c', 7);
-
+    printf("1");
     file1.longueur = 2;
     file1.debut = malloc(sizeof(ListeChaineeArbre));
     file1.debut->arbre = *AH_arbreDeHuffman(stat1);
     file1.debut->listeSuivante = malloc(sizeof(ListeChaineeArbre));
     file1.debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
     file1.debut->listeSuivante->listeSuivante = NULL;
-
+    printf("1");
     file2.longueur = file1.longueur+1;
     file2.debut = malloc(sizeof(ListeChaineeArbre));
     file2.debut->arbre=*AH_arbreDeHuffman(stat1);
@@ -123,8 +123,9 @@ void testDefiler() {
     file2.debut->listeSuivante->listeSuivante = malloc(sizeof(ListeChaineeArbre));
     file2.debut->listeSuivante->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
     file2.debut->listeSuivante->listeSuivante->listeSuivante = NULL;
+    printf("1");
     FDP_defiler(&file2);
-
+    printf("1");
     CU_ASSERT_PTR_EQUAL(file1.debut,file2.debut);
     CU_ASSERT_EQUAL(file1.longueur,file2.longueur);
 }
