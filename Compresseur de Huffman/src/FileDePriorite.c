@@ -35,8 +35,16 @@ void FDP_enfiler(FileDePriorite *file, ArbreHuffman arbre) {
 }
 
 void FDP_defiler(FileDePriorite *file) {
-    ListeChaineeArbre *temp;
-        file->longueur = file->longueur - 1;
+    ListeChaineeArbre *temp = file->debut;
+    int i = 0;
+    file->longueur = file->longueur - 1;
+    while(i<file->longueur-1){
+        i++;
+        temp = temp->listeSuivante;
+    }
+    free(temp);
+
+
 }
 
 ArbreHuffman FDP_obtenirElement(FileDePriorite file, int i) {
@@ -49,11 +57,12 @@ ArbreHuffman FDP_obtenirElement(FileDePriorite file, int i) {
 }
 
 void FDP_nouvelleFile(FileDePriorite *file) {
-    ListeChaineeArbre temp = file.debut;
-    while(!(temp.listeSuivante.listeSuivante!=NULL)){
-        temp = temp.listeSuivante;
+    ListeChaineeArbre *temp = file->debut;
+    while(!(temp->listeSuivante->listeSuivante!=NULL)){
+        temp = temp->listeSuivante;
     }
-    FDP_enfiler(file,*AH_fusionner((temp.arbre),(temp.listeSuivante.arbre)));
+    FDP_enfiler(file,*AH_fusionner(&(temp->arbre),&(temp->listeSuivante->arbre)));
     FDP_defiler(file);
     FDP_defiler(file);
+    free(temp);
 }
