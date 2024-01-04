@@ -54,7 +54,7 @@ ArbreHuffman FDP_obtenirElement(FileDePriorite file, int i) {
         temp = temp->listeSuivante;
     }
     return temp->arbre;
-}
+} 
 
 void FDP_nouvelleFile(FileDePriorite *file) {
     ListeChaineeArbre *temp = file->debut;
