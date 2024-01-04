@@ -28,11 +28,14 @@ void testEnfiler_milieu() {
     file1.debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
     file1.debut->listeSuivante->listeSuivante = malloc(sizeof(ListeChaineeArbre));
     file1.debut->listeSuivante->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
+    file1.debut->listeSuivante->listeSuivante->listeSuivante = NULL;
+
     file2.longueur = file1.longueur-1;
     file2.debut = malloc(sizeof(ListeChaineeArbre));
     file2.debut->arbre=*AH_arbreDeHuffman(stat1);
     file2.debut->listeSuivante = malloc(sizeof(ListeChaineeArbre));
     file2.debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
+    file2.debut->listeSuivante->listeSuivante = NULL;
     FDP_enfiler(&file2,*AH_arbreDeHuffman(stat2));
     CU_ASSERT_PTR_EQUAL(file1.debut,file2.debut);
     CU_ASSERT_EQUAL(file1.longueur,file2.longueur);
@@ -53,11 +56,14 @@ void testEnfiler_debut() {
     file1.debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
     file1.debut->listeSuivante->listeSuivante = malloc(sizeof(ListeChaineeArbre));
     file1.debut->listeSuivante->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
+    file1.debut->listeSuivante->listeSuivante->listeSuivante = NULL;
+
     file2.longueur = file1.longueur-1;
     file2.debut = malloc(sizeof(ListeChaineeArbre));
     file2.debut->arbre=*AH_arbreDeHuffman(stat1);
     file2.debut->listeSuivante = malloc(sizeof(ListeChaineeArbre));
     file2.debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
+    file2.debut->listeSuivante->listeSuivante = NULL;
     FDP_enfiler(&file2,*AH_arbreDeHuffman(stat1));
 
     CU_ASSERT_PTR_EQUAL(file1.debut,file2.debut);
@@ -79,11 +85,14 @@ void testEnfiler_fin() {
     file1.debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
     file1.debut->listeSuivante->listeSuivante = malloc(sizeof(ListeChaineeArbre));
     file1.debut->listeSuivante->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
+    file1.debut->listeSuivante->listeSuivante->listeSuivante = NULL;
+
     file2.longueur = file1.longueur-1;
     file2.debut = malloc(sizeof(ListeChaineeArbre));
     file2.debut->arbre=*AH_arbreDeHuffman(stat1);
     file2.debut->listeSuivante = malloc(sizeof(ListeChaineeArbre));
     file2.debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
+    file2.debut->listeSuivante->listeSuivante = NULL;
     FDP_enfiler(&file2,*AH_arbreDeHuffman(stat3));
 
     CU_ASSERT_PTR_EQUAL(file1.debut,file2.debut);
@@ -124,6 +133,7 @@ void test_obtenirIElement_debut() {
     file.debut->arbre = *AH_arbreDeHuffman(stat1);
     file.debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
     file.debut->listeSuivante->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
+    file.debut->listeSuivante->listeSuivante = NULL;
 
     ArbreHuffman arbre_obtenu = FDP_obtenirElement(file,1);
     ArbreHuffman arbre_theorique = *AH_arbreDeHuffman(stat1);
@@ -144,6 +154,7 @@ void test_obtenirIElement_milieu() {
     file.debut->arbre = *AH_arbreDeHuffman(stat1);
     file.debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
     file.debut->listeSuivante->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
+    file.debut->listeSuivante->listeSuivante = NULL;
 
     ArbreHuffman arbre_obtenu = FDP_obtenirElement(file,2);
     ArbreHuffman arbre_theorique = *AH_arbreDeHuffman(stat2);
@@ -164,6 +175,7 @@ void test_obtenirIElement_fin() {
     file.debut->arbre = *AH_arbreDeHuffman(stat1);
     file.debut->listeSuivante->arbre = *AH_arbreDeHuffman(stat2);
     file.debut->listeSuivante->listeSuivante->arbre = *AH_arbreDeHuffman(stat3);
+    file.debut->listeSuivante->listeSuivante = NULL;
 
     ArbreHuffman arbre_obtenu = FDP_obtenirElement(file,3);
     ArbreHuffman arbre_theorique = *AH_arbreDeHuffman(stat3);
