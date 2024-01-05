@@ -39,10 +39,8 @@ char AH_obtenirCaracter(ArbreHuffman arbre){
 }
 
 ArbreHuffman* AH_fusionner(ArbreHuffman* arbre1,ArbreHuffman* arbre2) {
-    
     Statistiques stat ;
-    char c;
-    stat.caracter = c;
+    stat.caracter = ' ';
     stat.ponderation = S_obtenirPonderation(arbre1->statistiques)+S_obtenirPonderation(arbre2->statistiques);
     ArbreHuffman* res = AH_arbreDeHuffman(stat);
     if (AH_obtenirPonderation(*arbre1)<AH_obtenirPonderation(*arbre2)){

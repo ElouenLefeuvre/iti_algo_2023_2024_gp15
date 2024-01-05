@@ -14,9 +14,9 @@ typedef struct {
 } FileDePriorite;
 
 
-
-// void FDP_defiler(FileDePriorite *fp);
-// ArbreHuffman FDP_obtenirElement(FileDePriorite fp, int i);
+void FDP_nouvelleFile(FileDePriorite* file);
+void FDP_defiler(FileDePriorite *fp);
+ArbreHuffman FDP_obtenirElement(FileDePriorite fp, int i);
 bool FDP_estVide(FileDePriorite *fp);
 bool FDP_estVide_LCA(Noeud *lca);
 FileDePriorite FDP_fileDePriorite();
