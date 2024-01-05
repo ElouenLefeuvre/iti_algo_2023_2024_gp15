@@ -3,25 +3,26 @@
 #include <stdbool.h>
 #include "ArbreHuffman.h"
 
-typedef struct ListeChaineeArbre{
-    ArbreHuffman arbre;
-    struct ListeChaineeArbre *listeSuivante;
-} ListeChaineeArbre;
+typedef struct Noeud {
+    ArbreHuffman arbre; 
+    struct Noeud* suivant;
+} Noeud;
 
 typedef struct {
-    struct ListeChaineeArbre *debut;
+    Noeud* debut;
     int longueur;
 } FileDePriorite;
 
 
-FileDePriorite FDP_fileDePriorite();
+
+// void FDP_defiler(FileDePriorite *fp);
+// ArbreHuffman FDP_obtenirElement(FileDePriorite fp, int i);
 bool FDP_estVide(FileDePriorite *fp);
-bool FDP_estVide_LCA(ListeChaineeArbre *lca);
-void FDP_enfiler(FileDePriorite *fp,ArbreHuffman arbre);
-void FDP_defiler(FileDePriorite *fp);
-ArbreHuffman FDP_obtenirElement(FileDePriorite fp, int i);
-void FDP_nouvelleFile(FileDePriorite *fp);
-
-
-
+bool FDP_estVide_LCA(Noeud *lca);
+FileDePriorite FDP_fileDePriorite();
+void FDP_enfiler(FileDePriorite *file,ArbreHuffman* arbre);
+Noeud* FDP_createNoeud(ArbreHuffman* arbreOfLCA);
+void FDP_afficherFileDEPriorite(FileDePriorite* file);
+void fixerNoeud(FileDePriorite* file,Noeud* noeud, int position);
+int trouverIndicePourInsere(ArbreHuffman* arbre,FileDePriorite* file);
 #endif
