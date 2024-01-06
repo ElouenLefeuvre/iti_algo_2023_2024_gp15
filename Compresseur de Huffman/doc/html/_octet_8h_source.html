@@ -71,17 +71,17 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __OCTET__</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __OCTET__</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;CodeBinaire.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_code_binaire_8h.html">CodeBinaire.h</a>&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="struct_octet.html">    5</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    Bit bits[8];  <span class="comment">// Tableau de 8 bits</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <a class="code" href="_code_binaire_8h.html#afa636332d8cd1d6ca643102a5ed11fc4">Bit</a> bits[8];  <span class="comment">// Tableau de 8 bits</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;} <a class="code" href="struct_octet.html">Octet</a>;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;Bit O_iemeBit(<a class="code" href="struct_octet.html">Octet</a> octet,<span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<a class="code" href="_code_binaire_8h.html#afa636332d8cd1d6ca643102a5ed11fc4">Bit</a> O_iemeBit(<a class="code" href="struct_octet.html">Octet</a> octet,<span class="keywordtype">int</span> i);</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<a class="code" href="struct_octet.html">Octet</a> O_creerOctet();</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<a class="code" href="struct_octet.html">Octet</a> O_encoder(<a class="code" href="struct_octet.html">Octet</a> octet,<a class="code" href="struct_code_binaire.html">CodeBinaire</a> cb);</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">void</span> O_decaler(<a class="code" href="struct_octet.html">Octet</a> *octet);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> O_fixerBit(<a class="code" href="struct_octet.html">Octet</a>* octet, <span class="keywordtype">int</span> position, Bit valeur);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> O_fixerBit(<a class="code" href="struct_octet.html">Octet</a>* octet, <span class="keywordtype">int</span> position, <a class="code" href="_code_binaire_8h.html#afa636332d8cd1d6ca643102a5ed11fc4">Bit</a> valeur);</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">char</span>* O_bitsToStr(<span class="keyword">const</span> <a class="code" href="struct_octet.html">Octet</a>* octet);</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<a class="code" href="struct_octet.html">Octet</a> O_strToBits(<span class="keyword">const</span> <span class="keywordtype">char</span>* chaine);</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">bool</span> O_estVide(<span class="keyword">const</span> <a class="code" href="struct_octet.html">Octet</a>* octet);</div>
@@ -89,12 +89,14 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">int</span> O_obtenirStartPosition();</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<a class="code" href="struct_octet.html">Octet</a> O_obtenirBitRestants();</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="astruct_code_binaire_html"><div class="ttname"><a href="struct_code_binaire.html">CodeBinaire</a></div><div class="ttdef"><b>Definition:</b> CodeBinaire.h:9</div></div>
+<div class="ttc" id="a_code_binaire_8h_html"><div class="ttname"><a href="_code_binaire_8h.html">CodeBinaire.h</a></div><div class="ttdoc">Implantation du TAD Code Binaire pour le Compresseur d'Huffman.</div></div>
+<div class="ttc" id="a_code_binaire_8h_html_afa636332d8cd1d6ca643102a5ed11fc4"><div class="ttname"><a href="_code_binaire_8h.html#afa636332d8cd1d6ca643102a5ed11fc4">Bit</a></div><div class="ttdeci">Bit</div><div class="ttdoc">Le type CodeBinaire permet de donner un code en binaire pour chaque caractere present dans le fichier...</div><div class="ttdef"><b>Definition:</b> CodeBinaire.h:17</div></div>
+<div class="ttc" id="astruct_code_binaire_html"><div class="ttname"><a href="struct_code_binaire.html">CodeBinaire</a></div><div class="ttdef"><b>Definition:</b> CodeBinaire.h:19</div></div>
 <div class="ttc" id="astruct_octet_html"><div class="ttname"><a href="struct_octet.html">Octet</a></div><div class="ttdef"><b>Definition:</b> Octet.h:5</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi 4 Janvier 2024 19:51:49 pour Compresseur de Huffman par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+Généré le Samedi 6 Janvier 2024 01:00:53 pour Compresseur de Huffman par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
 </small></address>
 </body>
 </html>

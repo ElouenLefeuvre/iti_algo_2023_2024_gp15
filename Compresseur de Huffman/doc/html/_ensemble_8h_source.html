@@ -69,27 +69,41 @@ $(function() {
 <div class="title">Ensemble.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef  __ENSEMBLE__</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __ENSEMBLE__</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="struct_ensemble.html">    4</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="keywordtype">void</span>  **elements;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keywordtype">size_t</span> tailleElement;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keywordtype">size_t</span> taille;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;} <a class="code" href="struct_ensemble.html">Ensemble</a>;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<a class="code" href="struct_ensemble.html">Ensemble</a> E_initialiserEnsemble(<span class="keywordtype">size_t</span> tailleElement);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> E_ajouter(<a class="code" href="struct_ensemble.html">Ensemble</a> *ens, <span class="keywordtype">void</span> *element);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">void</span> E_supprimer(<a class="code" href="struct_ensemble.html">Ensemble</a> *ens, <span class="keywordtype">void</span> *element);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> *E_obtenirIemeElement(<span class="keyword">const</span> <a class="code" href="struct_ensemble.html">Ensemble</a> *ens, <span class="keywordtype">size_t</span> index);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> E_libererEnsemble(<a class="code" href="struct_ensemble.html">Ensemble</a> *ens);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="astruct_ensemble_html"><div class="ttname"><a href="struct_ensemble.html">Ensemble</a></div><div class="ttdef"><b>Definition:</b> Ensemble.h:4</div></div>
+<a href="_ensemble_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef  __ENSEMBLE__</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define __ENSEMBLE__</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="struct_ensemble.html">   16</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="struct_ensemble.html#ac1e786e007a7eab82fd04bf2f1118302">   17</a></span>&#160;    <span class="keywordtype">void</span>  **<a class="code" href="struct_ensemble.html#ac1e786e007a7eab82fd04bf2f1118302">elements</a>;   </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="struct_ensemble.html#ae5e6f34e7b39da66ce0bc1f0bf57bc2d">   18</a></span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="struct_ensemble.html#ae5e6f34e7b39da66ce0bc1f0bf57bc2d">tailleElement</a>;   </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="struct_ensemble.html#a930939cf52b73e1f58c2ecac08d10ffd">   19</a></span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="struct_ensemble.html#a930939cf52b73e1f58c2ecac08d10ffd">taille</a>;    </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;} <a class="code" href="struct_ensemble.html">Ensemble</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<a class="code" href="struct_ensemble.html">Ensemble</a> <a class="code" href="_ensemble_8h.html#ae6c2f14916e96e669cf468002d18a47a">E_initialiserEnsemble</a>(<span class="keywordtype">size_t</span> tailleElement);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_ensemble_8h.html#a94880c64eb2e6653c15f1d8d107a1568">E_ajouter</a>(<a class="code" href="struct_ensemble.html">Ensemble</a> *ens, <span class="keywordtype">void</span> *element);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_ensemble_8h.html#a890b482c41603bb94a927fd5165ab96b">E_supprimer</a>(<a class="code" href="struct_ensemble.html">Ensemble</a> *ens, <span class="keywordtype">void</span> *element);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> *<a class="code" href="_ensemble_8h.html#ab965d4d2a4d3a146811567545ca3f4d3">E_obtenirIemeElement</a>(<span class="keyword">const</span> <a class="code" href="struct_ensemble.html">Ensemble</a> *ens, <span class="keywordtype">size_t</span> index);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_ensemble_8h.html#acc01e1153a165a80b61cb710a50af281">E_libererEnsemble</a>(<a class="code" href="struct_ensemble.html">Ensemble</a> *ens);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a_ensemble_8h_html_a890b482c41603bb94a927fd5165ab96b"><div class="ttname"><a href="_ensemble_8h.html#a890b482c41603bb94a927fd5165ab96b">E_supprimer</a></div><div class="ttdeci">void E_supprimer(Ensemble *ens, void *element)</div><div class="ttdoc">Fonction qui permet de supprimer un element dans un ensemble.</div><div class="ttdef"><b>Definition:</b> Ensemble.c:38</div></div>
+<div class="ttc" id="a_ensemble_8h_html_a94880c64eb2e6653c15f1d8d107a1568"><div class="ttname"><a href="_ensemble_8h.html#a94880c64eb2e6653c15f1d8d107a1568">E_ajouter</a></div><div class="ttdeci">void E_ajouter(Ensemble *ens, void *element)</div><div class="ttdoc">Fonction qui permet d'ajouter un element dans un ensemble.</div><div class="ttdef"><b>Definition:</b> Ensemble.c:16</div></div>
+<div class="ttc" id="a_ensemble_8h_html_ab965d4d2a4d3a146811567545ca3f4d3"><div class="ttname"><a href="_ensemble_8h.html#ab965d4d2a4d3a146811567545ca3f4d3">E_obtenirIemeElement</a></div><div class="ttdeci">void * E_obtenirIemeElement(const Ensemble *ens, size_t index)</div><div class="ttdoc">Fonction qui permet d'obtenir l'ieme element d'un ensemble.</div><div class="ttdef"><b>Definition:</b> Ensemble.c:58</div></div>
+<div class="ttc" id="a_ensemble_8h_html_acc01e1153a165a80b61cb710a50af281"><div class="ttname"><a href="_ensemble_8h.html#acc01e1153a165a80b61cb710a50af281">E_libererEnsemble</a></div><div class="ttdeci">void E_libererEnsemble(Ensemble *ens)</div><div class="ttdoc">Fonction qui permet de libérer un ensemble.</div><div class="ttdef"><b>Definition:</b> Ensemble.c:9</div></div>
+<div class="ttc" id="a_ensemble_8h_html_ae6c2f14916e96e669cf468002d18a47a"><div class="ttname"><a href="_ensemble_8h.html#ae6c2f14916e96e669cf468002d18a47a">E_initialiserEnsemble</a></div><div class="ttdeci">Ensemble E_initialiserEnsemble(size_t tailleElement)</div><div class="ttdoc">Fonction qui permet d'initialiser un ensemble.</div><div class="ttdef"><b>Definition:</b> Ensemble.c:67</div></div>
+<div class="ttc" id="astruct_ensemble_html"><div class="ttname"><a href="struct_ensemble.html">Ensemble</a></div><div class="ttdoc">Le type Ensemble permet d'implementer plusieurs fonctions nécessaire dans compresser et décompresser.</div><div class="ttdef"><b>Definition:</b> Ensemble.h:16</div></div>
+<div class="ttc" id="astruct_ensemble_html_a930939cf52b73e1f58c2ecac08d10ffd"><div class="ttname"><a href="struct_ensemble.html#a930939cf52b73e1f58c2ecac08d10ffd">Ensemble::taille</a></div><div class="ttdeci">size_t taille</div><div class="ttdef"><b>Definition:</b> Ensemble.h:19</div></div>
+<div class="ttc" id="astruct_ensemble_html_ac1e786e007a7eab82fd04bf2f1118302"><div class="ttname"><a href="struct_ensemble.html#ac1e786e007a7eab82fd04bf2f1118302">Ensemble::elements</a></div><div class="ttdeci">void ** elements</div><div class="ttdef"><b>Definition:</b> Ensemble.h:17</div></div>
+<div class="ttc" id="astruct_ensemble_html_ae5e6f34e7b39da66ce0bc1f0bf57bc2d"><div class="ttname"><a href="struct_ensemble.html#ae5e6f34e7b39da66ce0bc1f0bf57bc2d">Ensemble::tailleElement</a></div><div class="ttdeci">size_t tailleElement</div><div class="ttdef"><b>Definition:</b> Ensemble.h:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi 4 Janvier 2024 19:51:49 pour Compresseur de Huffman par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+Généré le Samedi 6 Janvier 2024 01:00:53 pour Compresseur de Huffman par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
 </small></address>
 </body>
 </html>

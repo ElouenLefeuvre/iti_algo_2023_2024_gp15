@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['octet_15',['Octet',['../struct_octet.html',1,'']]]
+  ['statistiques_79',['Statistiques',['../struct_statistiques.html',1,'']]]
 ];

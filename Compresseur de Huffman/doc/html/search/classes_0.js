@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['arbrehuffman_9',['ArbreHuffman',['../struct_arbre_huffman.html',1,'']]]
+  ['arbrehuffman_73',['ArbreHuffman',['../struct_arbre_huffman.html',1,'']]]
 ];
