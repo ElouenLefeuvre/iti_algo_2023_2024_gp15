@@ -112,10 +112,29 @@ bool AH_estFeuille(ArbreHuffman arbre);
  */
 bool AH_estPresent(ArbreHuffman* arbre, char caractere);
 
+
+/**
+ * \fn AH_obtenirCaracter(ArbreHuffman arbre)
+ * \brief Fonction qui permet d'obtenir le caractère d'un arbre
+ * \param arbre : l'arbre 
+ * \return char
+ */
 char AH_obtenirCaracter(ArbreHuffman arbre);
 
+/**
+ * \fn AH_obtenirPonderation(ArbreHuffman arbre)
+ * \brief Fonction qui permet d'obtenir la pondération d'un arbre
+ * \param arbre : l'arbre 
+ * \return int
+ */
 int AH_obtenirPonderation(ArbreHuffman arbre);
 
+
+/**
+ * \fn AH_afficherArbre(ArbreHuffman *arbre)
+ * \brief Fonction qui permet d'afficher les éléments d'un arbre
+ * \param arbre : l'arbre 
+ */
 void AH_afficherArbre(ArbreHuffman *arbre);
 
 
