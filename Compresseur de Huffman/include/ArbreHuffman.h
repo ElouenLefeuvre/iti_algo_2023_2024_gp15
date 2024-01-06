@@ -148,6 +148,6 @@ int AH_obtenirPonderation(ArbreHuffman arbre);
 void AH_afficherArbre(ArbreHuffman *arbre);
 
 
-
+ArbreHuffman* copierArbreHuffman(ArbreHuffman* arbre);
 
 #endif

@@ -1,7 +1,7 @@
 /**
  * \file TableDeCodage.h
  * \brief Implantation du TAD TableDeCodage pour le Compresseur d'Huffman
- * \author A. El Faïq, T. Barsot, W. Vilayvong, E. Lefeuvre
+ * \author A. El Faïq, T. Barsot, W. Vilayvong
  *
  */
 
@@ -15,14 +15,14 @@
 /**
  * \brief Le type TableDeCodage permet de faire un tableau avec les caracteres et leur code binaire associé
  */
-typedef struct Noeud {
+typedef struct Ligne{
     CodeBinaire code; /**< Le code binaire*/
     char c; /**< Le caractère*/
-    struct Noeud* listeSuivante; /**< la combinaison de caractere/code binaire suivante*/
-} Noeud;
+    struct Ligne* listeSuivante; /**< la combinaison de caractere/code binaire suivante*/
+} Ligne;
 
 typedef struct {
-    Noeud* noeud; /**< Pointeur vers la structure contenant une ligne du tableau*/
+    Ligne* ligne; /**< Pointeur vers la structure contenant une ligne du tableau*/
 } TableDeCodage;
 
 /**
@@ -32,7 +32,7 @@ typedef struct {
  * \param a : l'arbre dont l'on veut obtenir la table de codage
  * \return TableDeCodage
  */
-TableDeCodage TDC_obtenirTableDeCodage(ArbreHuffman a);
+TableDeCodage* TDC_obtenirTableDeCodage();
 
 /**
  * \fn CodeBinaire TDC_obtenirCode(TableDeCodage tab,char c)
@@ -41,7 +41,7 @@ TableDeCodage TDC_obtenirTableDeCodage(ArbreHuffman a);
  * \param c : le caractere dont on cherche le code binaire
  * \return CodeBinaire
  */
-CodeBinaire TDC_obtenirCode(TableDeCodage tab,char c);
+CodeBinaire* TDC_obtenirCode(TableDeCodage tab,char c);
 
 /**
  * \fn char TDC_obtenirCarac(TableDeCodage tab,CodeBinaire code)
@@ -59,7 +59,7 @@ char TDC_obtenirCarac(TableDeCodage tab,CodeBinaire code);
  * \param c : le caractere a ajouter
  * \param code : le code binaire a ajouter
  */
-void TDC_ajouter(TableDeCodage *tab,char *c,CodeBinaire *code);
+void TDC_ajouter(TableDeCodage *tab,char c,CodeBinaire *code);
 
 /**
  * \fn void TDC_supprimer(TableDeCodage *tab,char *c,CodeBinaire *code)
@@ -86,4 +86,7 @@ int TDC_estPresent(TableDeCodage tab,char c);
  * \return bool
  */
 bool TDC_estVide(TableDeCodage tab);
+
+
+char* TDC_afficherTdc(TableDeCodage* tdc);
 #endif

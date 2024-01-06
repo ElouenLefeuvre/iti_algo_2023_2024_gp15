@@ -151,5 +151,19 @@ void AH_afficherArbre(ArbreHuffman *arbre) {
     // Libération de la mémoire de la pile
     free(pile);
 }
+ArbreHuffman* copierArbreHuffman(ArbreHuffman* arbre) {
+    if (arbre == NULL) {
+        return NULL;
+    }
 
+    // Copie récursive du nœud actuel
+    Statistiques stat= S_statistique(AH_obtenirCaracter(*arbre), AH_obtenirPonderation(*arbre));
+    ArbreHuffman* nouveauNoeud = AH_arbreDeHuffman(stat);
+
+    // Appels récursifs pour copier les sous-arbres gauche et droit
+    nouveauNoeud->filsGauche = copierArbreHuffman(AH_obtenirFilsGauche(arbre));
+    nouveauNoeud->filsDroit = copierArbreHuffman(AH_obtenirFilsDroit(arbre));
+
+    return nouveauNoeud;
+}
 

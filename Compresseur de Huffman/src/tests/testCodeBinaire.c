@@ -124,7 +124,7 @@ void test_CB_CbFromAH(){
     AH_fixerFilsGauche(arbreB , arbreE);
     AH_fixerFilsDroit(arbreB, arbreF);
 
-    CodeBinaire cb = AH_CbFromAH(arbre,'E');
+    CodeBinaire cb = CB_CbFromAH(arbre,'E');
     CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(&cb), "10");
 
 }
