@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['e_5fajouter_95',['E_ajouter',['../_ensemble_8h.html#a94880c64eb2e6653c15f1d8d107a1568',1,'Ensemble.c']]],
-  ['e_5finitialiserensemble_96',['E_initialiserEnsemble',['../_ensemble_8h.html#ae6c2f14916e96e669cf468002d18a47a',1,'Ensemble.c']]],
-  ['e_5flibererensemble_97',['E_libererEnsemble',['../_ensemble_8h.html#acc01e1153a165a80b61cb710a50af281',1,'Ensemble.c']]],
-  ['e_5fobteniriemeelement_98',['E_obtenirIemeElement',['../_ensemble_8h.html#ab965d4d2a4d3a146811567545ca3f4d3',1,'Ensemble.c']]],
-  ['e_5fsupprimer_99',['E_supprimer',['../_ensemble_8h.html#a890b482c41603bb94a927fd5165ab96b',1,'Ensemble.c']]]
+  ['decomp_5fcreerarbrehuffman_138',['DECOMP_creerArbreHuffman',['../_decompression_8h.html#a358582895229cf38ce38cce021626e7d',1,'Decompression.c']]],
+  ['decomp_5fdecompresser_139',['DECOMP_decompresser',['../_decompression_8h.html#a1bdac482016186aabc51e1a8d45a5ca2',1,'Decompression.c']]],
+  ['decomp_5finsererarbre_140',['DECOMP_insererArbre',['../_decompression_8h.html#a9db2491e7db209ba773800a552adca77',1,'Decompression.c']]],
+  ['decomp_5fobtenirstatistiques_141',['DECOMP_obtenirStatistiques',['../_decompression_8h.html#ac66d7ff3f40ddf9650b1a060158b53a6',1,'Decompression.c']]]
 ];

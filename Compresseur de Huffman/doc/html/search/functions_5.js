@@ -1,6 +1,15 @@
 var searchData=
 [
-  ['s_5fobtenircaractere_108',['S_obtenirCaractere',['../_statistiques_8h.html#abb54ac4ca6692a423bdcd328bada9ca9',1,'Statistiques.c']]],
-  ['s_5fobtenirponderation_109',['S_obtenirPonderation',['../_statistiques_8h.html#a7b26776548204c97ca1b1ad46eabcae5',1,'Statistiques.c']]],
-  ['s_5fstatistique_110',['S_statistique',['../_statistiques_8h.html#accf763d843799ef6e3445e70c733f262',1,'Statistiques.c']]]
+  ['o_5fbitstostr_154',['O_bitsToStr',['../_octet_8h.html#a0af4b2b0f1faf30d7955ba92fcb18c5a',1,'Octet.c']]],
+  ['o_5fcreeroctet_155',['O_creerOctet',['../_octet_8h.html#a6dbea3372c102985fc05f0c7b0329244',1,'Octet.c']]],
+  ['o_5fdecaler_156',['O_decaler',['../_octet_8h.html#a9490dd7f4d8f627b33f7edbedc6a4881',1,'Octet.c']]],
+  ['o_5fencoder_157',['O_encoder',['../_octet_8h.html#a72c9ed38d960bc53c4731f4141d2f5b2',1,'Octet.c']]],
+  ['o_5festvide_158',['O_estVide',['../_octet_8h.html#a063ff538c7f19f377c4b2fdeced10005',1,'Octet.c']]],
+  ['o_5ffixerbit_159',['O_fixerBit',['../_octet_8h.html#a0b673f8e33e35afab3e833796bbc5fb1',1,'Octet.c']]],
+  ['o_5fiemebit_160',['O_iemeBit',['../_octet_8h.html#a3bed67d0f97515f5d63b787534ab2415',1,'Octet.c']]],
+  ['o_5fincrementstartposition_161',['O_incrementStartPosition',['../_octet_8h.html#a91ef82d8f6b8d9004a6e9af6a6e31045',1,'Octet.c']]],
+  ['o_5fobtenirbitrestants_162',['O_obtenirBitRestants',['../_octet_8h.html#a683dc91858c22c016a7dbee12c83d01d',1,'Octet.c']]],
+  ['o_5fobtenirstartposition_163',['O_obtenirStartPosition',['../_octet_8h.html#a9d1e9d31064700562e9cbc80b03ef50a',1,'Octet.c']]],
+  ['o_5fstrtobits_164',['O_strToBits',['../_octet_8h.html#a8fa06dfffb1c35adcc035b9dbd24bf86',1,'Octet.c']]],
+  ['obtenircodebinairer_165',['obtenirCodeBinaireR',['../_code_binaire_8h.html#aa0bca687a224b9011272b8c97c43caa1',1,'CodeBinaire.c']]]
 ];
