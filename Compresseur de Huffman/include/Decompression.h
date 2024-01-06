@@ -51,7 +51,7 @@ Ensemble DECOMP_obtenirStatistiques(char nomfichier[]);
  * \param stat : statistiques de l'arbre créé
  * \return ArbreHuffman
  */
-ArbreHuffman DECOMP_creerArbreHuffman(Statistiques stat);
+ArbreHuffman* DECOMP_creerArbreHuffman(Statistiques stat);
 
 
 /**
