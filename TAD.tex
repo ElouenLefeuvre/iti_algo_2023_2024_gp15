@@ -169,6 +169,7 @@
     \tadOperation{ajouter}{\tadDeuxParams{\tadDeuxParams{TableDeCodage}{caractere}}{CodeBinaire}}{\tadParams{TableDeCodage}}
     \tadOperation{retirer}{\tadDeuxParams{TableDeCodage}{\caractere}}{\tadParams{TableDeCodage}}
     \tadOperation{estPresent}{\tadDeuxParams{TableDeCodage}{\caractere}}{\tadParams{\booleen}}
+    \tadOperation{estVide}{\tadParams{TableDeCodage}}{\tadParams{\booleen}}
 
 \end{tadOperations}
 
@@ -177,13 +178,14 @@
     \tadSemantique{obtenirCode}{Permet d'obtenir le code binaire d'un caractère grâce à la TableDeCodage}\newline
     \tadSemantique{obtenirCarac}{Permet d'obtenir le caractere d'un code binaire grâce à la TableDeCodage}\newline
     \tadSemantique{ajouter}{Permet d'ajouter une nouveeau caractère avec son code binaire dans la TableDeCodage}\newline
-    \tadSemantique{retirer}{Permet de supprimer un caractère de la TableDeCodage}\newline
+    \tadSemantique{supprimerer}{Permet de supprimer un caractère de la TableDeCodage}\newline
     \tadSemantique{estPresent}{Permet de savoir si un caractère est présent dans la TableDeCodage}\newline
+    \tadSemantique{estVide}{Permet de savoir si la TableDeCodage est vide}\newline
 \end{tadSemantiques}
     
 \begin{tadPreconditions}{obtenirTableDeCodage(A)}
     \tadPrecondition{obtenirTableDeCodage(A)}{non estVide(A)}
-    \tadPrecondition{obtenirCode(t,car)}{estPresent(t,car)}
+    \tadPrecondition{obtenirCode(t,c)}{estPresent(t,c)}
 \end{tadPreconditions}
 \end{tad}
 \end{document}
