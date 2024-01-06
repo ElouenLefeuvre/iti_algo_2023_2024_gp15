@@ -1,7 +1,7 @@
 /**
  * \file Statistiques.h
  * \brief Implantation du TAD Statistiques pour le Compresseur d'Huffman
- * \author A. El Faïq, T. Barsot, W. Vilayvong
+ * \author A. El Faïq, T. Barsot, W. Vilayvong, E. Lefeuvre
  *
  */
 

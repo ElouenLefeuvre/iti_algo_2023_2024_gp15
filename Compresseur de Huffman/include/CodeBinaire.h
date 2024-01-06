@@ -1,7 +1,7 @@
 /**
  * \file CodeBinaire.h
  * \brief Implantation du TAD Code Binaire pour le Compresseur d'Huffman
- * \author A. El Faïq, T. Barsot, W. Vilayvong
+ * \author A. El Faïq, T. Barsot, W. Vilayvong, E. Lefeuvre
  *
  */
 

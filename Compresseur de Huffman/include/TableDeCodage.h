@@ -1,7 +1,7 @@
 /**
  * \file TableDeCodage.h
  * \brief Implantation du TAD TableDeCodage pour le Compresseur d'Huffman
- * \author A. El Faïq, T. Barsot, W. Vilayvong
+ * \author A. El Faïq, T. Barsot, W. Vilayvong, E. Lefeuvre
  *
  */
 

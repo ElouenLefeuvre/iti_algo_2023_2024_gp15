@@ -1,7 +1,7 @@
 /**
  * \file ArbreHuffman.h
  * \brief Implantation du TAD Arbre Huffman pour le Compresseur d'Huffman
- * \author A. El Faiq, T. Barsot, W. Vilayvong
+ * \author A. El Faiq, T. Barsot, W. Vilayvong, E. Lefeuvre
  *
  */
 #ifndef  __ ARBREDEHUFFMAN__
