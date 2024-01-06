@@ -1,7 +1,7 @@
 /**
  * \file ArbreHuffman.h
  * \brief Implantation du TAD Arbre Huffman pour le Compresseur d'Huffman
- * \author A. El Faïq, T. Barsot, W. Vilayvong
+ * \author A. El Faiq, T. Barsot, W. Vilayvong
  *
  */
 #ifndef  __ ARBREDEHUFFMAN__
@@ -27,7 +27,7 @@ typedef struct {
  * \param stat : Statistique contenue dans l'arbre
  * \return ArbreHuffman
  */
-ArbreHuffman AH_arbreDeHuffman(Statistiques stat);
+ArbreHuffman* AH_arbreDeHuffman(Statistiques stat);
 
 /**
  * \fn int AH_obtenirOccurences(ArbreHuffman arbre)
@@ -47,7 +47,7 @@ int AH_obtenirOccurences(ArbreHuffman arbre);
 
  * \return ArbreHuffman
  */
-ArbreHuffman AH_fusionner(ArbreHuffman ah1,ArbreHuffman ah2);
+ArbreHuffman* AH_fusionner(ArbreHuffman* ah1,ArbreHuffman* ah2);
 
 /**
  * \fn AH_fixerFilsGauche(ArbreHuffman ah1,ArbreHuffman fg)
@@ -57,7 +57,7 @@ ArbreHuffman AH_fusionner(ArbreHuffman ah1,ArbreHuffman ah2);
  * \param fg : arbre qui va remplacer le fils gauche de ah1
 
  */
-void* AH_fixerFilsGauche(ArbreHuffman ah1,ArbreHuffman fg);
+void AH_fixerFilsGauche(ArbreHuffman* ah1,ArbreHuffman* fg);
 
 /**
  * \fn AH_fixerFilsDroit(ArbreHuffman ah1,ArbreHuffman fd)
@@ -67,7 +67,7 @@ void* AH_fixerFilsGauche(ArbreHuffman ah1,ArbreHuffman fg);
  * \param fd : arbre qui va remplacer le fils droit de ah1
 
  */
-void* AH_fixerFilsDroit(ArbreHuffman ah1,ArbreHuffman fd);
+void AH_fixerFilsDroit(ArbreHuffman* ah1,ArbreHuffman* fd);
 
 /**
  * \fn ArbreHuffman AH_obtenirFilsGauche(ArbreHuffman ah1)
@@ -75,7 +75,7 @@ void* AH_fixerFilsDroit(ArbreHuffman ah1,ArbreHuffman fd);
  * \param ah1 : arbre dont le fils gauche va être obtenu
  * \return ArbreHuffman
  */
-ArbreHuffman AH_obtenirFilsGauche(ArbreHuffman ah1);
+ArbreHuffman* AH_obtenirFilsGauche(ArbreHuffman* ah1);
 
 /**
  * \fn ArbreHuffman AH_obtenirFilsDroit(ArbreHuffman ah1)
@@ -83,7 +83,7 @@ ArbreHuffman AH_obtenirFilsGauche(ArbreHuffman ah1);
  * \param ah1 : arbre dont le fils droit va être obtenu
  * \return ArbreHuffman
  */
-ArbreHuffman AH_obtenirFilsDroit(ArbreHuffman ah1);
+ArbreHuffman* AH_obtenirFilsDroit(ArbreHuffman* ah1);
 
 /**
  * \fn bool AH_estVide(ArbreHuffman arbre)
@@ -91,7 +91,7 @@ ArbreHuffman AH_obtenirFilsDroit(ArbreHuffman ah1);
  * \param arbre : l'arbre 
  * \return bool
  */
-bool AH_estVide(ArbreHuffman arbre);
+bool AH_estVide(ArbreHuffman* arbre);
 
 /**
  * \fn bool AH_estFeuille(ArbreHuffman arbre)
@@ -108,6 +108,6 @@ bool AH_estFeuille(ArbreHuffman arbre);
  * \param char : le caractère dont l'on cherche la présence
  * \return bool
  */
-bool AH_estPresent(ArbreHuffman arbre, char caractere);
+bool AH_estPresent(ArbreHuffman* arbre, char caractere);
 
 #endif

@@ -10,10 +10,10 @@ void test_obtenirTableDeCodage() {
     CodeBinaire cb=CB_creerCodeBinaire(1);
     CB_remplirCodeBinaire(&cb,'0');
     stat = S_statistique('c',5);
-    a = arbreDeHuffman(stat);
-    TableDeCodage table = obtenirTableDeCodage(a);
+    a = *AH_arbreDeHuffman(stat);
+    TableDeCodage table = TDC_obtenirTableDeCodage(a);
     CU_ASSERT_STRING_EQUAL(table.noeud->c ,'c');
-    CU_ASSERT_STRING_EQUAL(table.noeud->code,CB_codeBinaireToStr(cb));
+    CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(&table.noeud->code),CB_codeBinaireToStr(&cb));
     CU_ASSERT_EQUAL(table.noeud->listeSuivante,NULL);
 }
 
@@ -34,7 +34,7 @@ void test_TDC_obtenirCode() {
 
     CodeBinaire res = TDC_obtenirCode(table1,'B');
 
-    CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(res), "010");
+    CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(&res), "010");
     
 }
 
@@ -63,10 +63,10 @@ void test_TDC_obtenirCarac() {
 void test_TDC_ajouter(){
     TableDeCodage table = {NULL};
     CodeBinaire cbres= CB_creerCodeBinaire(3);
-    CB_remplirCodeBinaire(&cbress'001');
-    TDC_ajouter(table,'A',cbres);
+    CB_remplirCodeBinaire(&cbres,'001');
+    TDC_ajouter(&table,'A',&cbres);
     CU_ASSERT_EQUAL(table.noeud->c,'A');
-    CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(table.noeud->code),'001')
+    CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(&table.noeud->code),'001')
     CU_ASSERT_EQUAL(table.noeud->listeSuivante,NULL);
 
 }
@@ -87,7 +87,7 @@ void test_TDC_supprimer(){
 
     CB_remplirCodeBinaire(&cb,'010');
 
-    TDC_supprimer(table1,'B',cb);
+    TDC_supprimer(&table1,'B',&cb);
     CB_remplirCodeBinaire(&cb,'011');
 
     CU_ASSERT_PTR_NOT_NULL(table_test.noeud);

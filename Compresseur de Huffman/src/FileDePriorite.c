@@ -8,10 +8,6 @@ bool FDP_estVide(FileDePriorite *fp) {
     return fp->longueur==0;
 }
 
-bool FDP_estVide_LCA(Noeud *lca) {
-    return lca==NULL;
-}
-
 FileDePriorite FDP_fileDePriorite() {
     FileDePriorite file;
     file.debut = NULL;
@@ -146,5 +142,6 @@ void FDP_nouvelleFile(FileDePriorite* file) {
     FDP_defiler(file);
     FDP_defiler(file);
 
-    FDP_enfiler(file, AH_fusionner(&arbre1, &arbre2));
+    ArbreHuffman arbreFusionne = *AH_fusionner(&arbre1,&arbre2);
+    FDP_enfiler(file, &arbreFusionne);
 }

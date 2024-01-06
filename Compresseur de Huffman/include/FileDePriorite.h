@@ -28,9 +28,9 @@ typedef struct {
 
 /**
  * \fn void FDP_nouvelleFile(FileDePriorite* file)
- * \brief Fonction qui creer une nouvelle file
+ * \brief Fonction qui fusionne les deux arbres les plus prioritaires d'une file
  *
- * \param file : file que l'on va initialiser
+ * \param file : file sur laquelle on applique
  */
 void FDP_nouvelleFile(FileDePriorite* file);
 
@@ -61,24 +61,53 @@ ArbreHuffman FDP_obtenirElement(FileDePriorite fp, int i);
  */
 bool FDP_estVide(FileDePriorite *fp);
 
-/**
- * \fn bool FDP_estVide_LCA(Noeud *lca)
- * \brief ?
- * \param lca : ?
- * \return bool
- */
-bool FDP_estVide_LCA(Noeud *lca);
 
 /**
- * \fn ArbreHuffman FDP_obtenirElement(FileDePriorite fp, int i)
- * \brief Fonction qui va permettre d'obtenir l'ieme element d'une file
+ * \fn FileDePriorite FDP_fileDePriorite()
+ * \brief PErmet de creer et initialiser une file
  *
  * \return FileDePriorite
  */
 FileDePriorite FDP_fileDePriorite();
+
+/**
+ * \fn void FDP_enfiler(FileDePriorite *file,ArbreHuffman* arbre)
+ * \brief fonction qui enfile en prenant en consideration l'ordre
+ *
+ * \param fp : file ou on enfile
+ * \param arbre : l'arbre a enfiler
+ */
 void FDP_enfiler(FileDePriorite *file,ArbreHuffman* arbre);
+
+
+/**
+ * \fn Noeud* FDP_createNoeud(ArbreHuffman* arbreOfLCA);
+ * \brief cree un noeud qui contient un arbre et un pointeur vers un autre
+ *
+ * \return Noeud*
+ */
 Noeud* FDP_createNoeud(ArbreHuffman* arbreOfLCA);
+
+/**
+ * \fn void FDP_afficherFileDEPriorite(FileDePriorite* file);
+ * \brief affiche la file pour avoir une vision plus pratique et graphique
+ *
+ */
 void FDP_afficherFileDEPriorite(FileDePriorite* file);
-void fixerNoeud(FileDePriorite* file,Noeud* noeud, int position);
+
+/**
+ * \fn void fixerNoeud(FileDePriorite* file,Noeud* noeud, int position);
+ * \brief
+ *
+ */
+//void fixerNoeud(FileDePriorite* file,Noeud* noeud, int position);
+
+
+/**
+ * \fn int trouverIndicePourInsere(ArbreHuffman* arbre,FileDePriorite* file);
+ * \brief elle permet de trouver l'indice du dernier element plus grand que la ponderation de l'arbre qu'on veut inserer 
+ *
+ * \return int
+ */
 int trouverIndicePourInsere(ArbreHuffman* arbre,FileDePriorite* file);
 #endif

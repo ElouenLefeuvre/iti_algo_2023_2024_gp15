@@ -5,7 +5,7 @@
 TableDeCodage TDC_obtenirTableDeCodage(ArbreHuffman a) {
     TableDeCodage res;
     res.noeud->c = S_obtenirCaractere(a.statistiques);
-    res.noeud->code = CB_cbOfCaracFromAH(a,res.noeud->c);
+    res.noeud->code = AH_CbFromAH(&a,res.noeud->c);
     res.noeud->listeSuivante = NULL;
     return res;
 }
