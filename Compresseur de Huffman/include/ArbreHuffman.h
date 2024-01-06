@@ -32,13 +32,23 @@ struct ArbreHuffman {
 ArbreHuffman* AH_arbreDeHuffman(Statistiques stat);
 
 /**
- * \fn int AH_obtenirOccurences(ArbreHuffman arbre)
- * \brief Fonction qui permet d'obtenir le nombre d'occurences de la statistique contenue dans l'arbre
+ * \fn ArbreHuffman AH_fixerStatistique(ArbreHuffman arbre,Statistiques stat)
+ * \brief Fonction qui permet de fixer la statistique à un arbre
  *
- * \param arbre : L'arbre dont on veut connaître le nombre d'occurences
- * \return int
+ * \param arbre : Arbre dont on veut fixer la statistique
+ * \param stat : Statistique qu'on veut fixer
+
  */
-int AH_obtenirOccurences(ArbreHuffman arbre);
+void AH_fixerStatistique(ArbreHuffman *arbre,Statistiques stat);
+
+/**
+ * \fn int AH_obtenirStat(ArbreHuffman arbre)
+ * \brief Fonction qui permet d'obtenir la statistique contenue dans l'arbre
+ *
+ * \param arbre : L'arbre dont on veut connaître la statistique
+ * \return Statistiques
+ */
+Statistiques AH_obtenirStat(ArbreHuffman arbre);
 
 /**
  * \fn ArbreHuffman AH_fusionner(ArbreHuffman ah1,ArbreHuffman ah2)

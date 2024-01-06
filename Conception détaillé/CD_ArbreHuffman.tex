@@ -10,25 +10,73 @@
 \end{algorithme}
 
 \begin{algorithme}
-\begin{enregistrement}{Racine}
-    \champEnregistrement{filsGauche}{ArbreHuffman}
-    \champEnregistrement{filsDroit}{ArbreHuffman}
-    \champEnregistrement{statistique}{Statistiques}
+\begin{enregistrement}{ArbreHuffman}
+    \champEnregistrement{statistiques}{Statistiques}
+    \champEnregistrement{filsGauche}{\typePointeur{ArbreHuffman}}
+    \champEnregistrement{filsDroit}{\typePointeur{ArbreHuffman}}
 \end{enregistrement}
 \end{algorithme}
 
-\section{arbrehuffman}
+
+\section{arbreDeHuffman}
 
 \begin{algorithme}
 
-    \fonction{arbrehuffman}{stat : Statistiques}{ArbreHuffman}{}
-        {arbre : ArbreHuffman}
-        {\affecter{\champ{arbre}{filsGauche}}{NIL}
-        \affecter{\champ{arbre}{filsDroit}}{NIL}
-        \affecter{\champ{arbre}{statistique}}{stat}
+    \fonction{arbreDeHuffman}{stat : Statistiques}{ArbreHuffman}{}
+        {arbre : \typePointeur{ArbreHuffman}}
+        {
+        \sialors{arbre $\neq$ NIL}
+        {
+        \affecter{\champPointeur{arbre}{statistiques}}{stat}
+        \affecter{\champPointeur{arbre}{filsGauche}}{NIL}
+        \affecter{\champPointeur{arbre}{filsDroit}}{NIL}
+        }
         \retourner{arbre}        
         }
 \end{algorithme}
+
+\section{fixerStatistique}
+
+\begin{algorithme}
+
+    \procedure{fixerStatistique}{\paramEntreeSortie{arbre : \typePointeur{ArbreHuffman}}\paramEntree{stat : Statistiques}}{}
+    {}
+    {
+    \affecter{\champPointeur{arbre}{statistiques}}{stat}
+    }
+
+
+\end{algorithme}
+
+\section{obtenirStat}
+
+\begin{algorithme}
+
+    \fonction{obtenirStat}{arbre : ArbreHuffman}{Statistiques}{}
+    {}
+    {
+    \retourner{\champ{arbre}{statistiques}}
+    }
+
+
+\end{algorithme}
+
+\section{obtenirStat}
+
+\begin{algorithme}
+
+    \fonction{obtenirStat}{arbre : ArbreHuffman}{Statistiques}{}
+    {}
+    {
+    \retourner{\champ{arbre}{statistiques}}
+    }
+
+
+\end{algorithme}
+
+
+
+
 \section{fusionner}
 
 \begin{algorithme}
@@ -37,8 +85,8 @@
         {arbre : ArbreHuffman}
         {
             \affecter{arbre}{arbrehuffman()}
-            \affecter{\champ{arbre}\champ{statistique}{caractere}}{NULL}
-            \affecter{\champ{arbre}\champ{statistique}{ponderation}}{obtenirOccurences(arbre1) + obtenirOccurences(arbre2)}
+            \affecter{\champ{arbre}\champ{statistiques}{caractere}}{NULL}
+            \affecter{\champ{arbre}\champ{statistiques}{ponderation}}{obtenirOccurences(arbre1) + obtenirOccurences(arbre2)}
             \sialorssinon{obtenirOccurences(arbre1)$<$obtenirOccurences(arbre2)}
             {\affecter{\champ{arbre}{filsGauche}}{arbre1}
             \affecter{\champ{arbre}{filsDroit}}{arbre2}}
@@ -49,12 +97,13 @@
 
         }
 \end{algorithme}
-\section{obtenirOccurences}
+
+\section{obtenirPonderation}
 
 \begin{algorithme}
-    \fonction{obtenirOccurences}{arbre : ArbreHuffman}{\naturel}{}{}
+    \fonction{obtenirPonderation}{arbre : ArbreHuffman}{\naturel}{}{}
     {
-        \retourner{\champ{arbre}\champ{statistique}{ponderation}}
+        \retourner{\champ{arbre}\champ{statistiques}{ponderation}}
 
     }
 \end{algorithme}
@@ -79,7 +128,7 @@
 \begin{algorithme}
     \fonction{estVide}{arbre : ArbreHuffman}{\booleen}{}{}
     {
-        \retourner{((\champ{arbre}\champ{statistique}{caractere} = NULL) et (\champ{arbre}\champ{statistique}{ponderation} = 0))}
+        \retourner{((\champ{arbre}\champ{statistiques}{caractere} = NULL) et (\champ{arbre}\champ{statistique}{ponderation} = 0))}
     }
 \end{algorithme}
 \section{estFeuille}
