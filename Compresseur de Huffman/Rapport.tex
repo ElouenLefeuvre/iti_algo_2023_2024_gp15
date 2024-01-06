@@ -6,6 +6,20 @@
 \usepackage{pseudocode}
 \usepackage{listings}
 
+\lstset{
+    language=C,
+    basicstyle=\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    breaklines=true,
+    showstringspaces=false,
+    frame=single,
+    tabsize=2
+}
+
 \begin{document}
 
 \title{Rapport de projet ALGO}
@@ -34,7 +48,7 @@
 
 \maketitle
 
-\section{Introduction}
+\section{\textbf{Introduction}}
 
 \begin{itemize}[label={\textbullet}]
   \item Objectif 1 :
@@ -45,10 +59,15 @@
 
 \section{\textbf{Analyses}}
 
-\input{TAD.tex}
+\subsection{Compression}
+
+\subsection{Decompression}
+section
+
+\input{../TAD.tex}
 
 
-\subsection*{\textbf{Compression}}
+
 
 \begin{figure}
   \centering
@@ -57,7 +76,7 @@
   \label{fig:image2}
 \end{figure}
 
-\subsection*{\textbf{Decompression}}
+
 
 \begin{figure}
   \centering
@@ -71,84 +90,124 @@
 
 \section{Conception préliminaire}
 
-\subsection*{\textbf{Arbre Huffman}}
+\subsection{\textbf{Arbre Huffman}}
 
-\input{CP_ArbreHuffman.tex}
+\input{Conception Préliminaire/CP_ArbreHuffman.tex}
 
-\subsection*{\textbf{Code Binaire}}
+\subsection{\textbf{Code Binaire}}
 
-\input{CP_TAD_CodeBinaire.tex}
+\input{Conception Préliminaire/CP_TAD_CodeBinaire.tex}
 
-\subsection*{\textbf{Statistiques}}
+\subsection{\textbf{Statistiques}}
 
-\input{CP_Statistiques.tex}
+\input{Conception Préliminaire/CP_Statistiques.tex}
 
-\subsection*{\textbf{Octet}}
+\subsection{\textbf{Octet}}
 
-\input{CP_TAD_Octet.tex}
+\input{Conception Préliminaire/CP_TAD_Octet.tex}
 
-\subsection*{\textbf{FileDePriorite}}
+\subsection{\textbf{FileDePriorite}}
 
-\input{CP_TAD_FileDePriorite.tex}
+\input{Conception Préliminaire/CP_TAD_FileDePriorite.tex}
 
-\subsection*{\textbf{TableDeCodage}}
+\subsection{\textbf{TableDeCodage}}
 
-\input{CP_TAD_TableDeCodage.tex}
+\input{Conception Préliminaire/CP_TAD_TableDeCodage.tex}
 
-\subsection*{\textbf{Compression}}
+\subsection{\textbf{Compression}}
 
-\input{CP_Compression.tex}
+\input{Conception Préliminaire/CP_Compression.tex}
 
-\subsection*{\textbf{Decompression}}
+\subsection{\textbf{Decompression}}
 
-\input{CP_Decompression.tex}
+\input{Conception Préliminaire/CP_Decompression.tex}
 
 \newpage
 
 \section{Conception détaillée}
 
-\subsection*{\textbf{Arbre Huffman}}
+\subsection{\textbf{Arbre Huffman}}
 
-\input{CD_ArbreHuffman.tex}
+\input{Conception détaillé/CD_ArbreHuffman.tex}
 
-\subsection*{\textbf{Code Binaire}}
+\subsection{\textbf{Code Binaire}}
 
-\input{CD_CodeBinaire.tex}
+\input{Conception détaillé/CD_CodeBinaire.tex}
 
-\subsection*{\textbf{Statistiques}}
+\subsection{\textbf{Statistiques}}
 
-\input{CD_Statistiques.tex}
+\input{Conception détaillé/CD_Statistiques.tex}
 
-\subsection*{\textbf{Octet}}
+\subsection{\textbf{Octet}}
 
-\input{CD_Octet.tex}
+\input{Conception détaillé/CD_Octet.tex}
 
-\subsection*{\textbf{FileDePriorite}}
+\subsection{\textbf{FileDePriorite}}
 
-\input{CD_FiledePriorité.tex}
+\input{Conception détaillé/CD_FiledePriorité.tex}
 
-\subsection*{\textbf{TableDeCodage}}
+\subsection{\textbf{TableDeCodage}}
 
-\input{CD_TableDeCodage.tex}
+\input{Conception détaillé/CD_TableDeCodage.tex}
 
-\subsection*{\textbf{Compression}}
+\subsection{\textbf{Compression}}
 
-\input{CD_Compression.tex}
+\input{Conception détaillé/CD_Compression.tex}
 
-\subsection*{\textbf{Decompression}}
+\subsection{\textbf{Decompression}}
 
-\input{CD_Decompression.tex}
+\input{Conception détaillé/CD_Decompression.tex}
 
 \newpage
 
 \section{Code C et Tests Unitaires}
 
-\newpage
+\subsection{Code}
+\subsubsection{\textbf{Arbre Huffman}}
+\lstinputlisting[language=C, caption={ArbreHuffman.c}]{src/ArbreHuffman.c}
 
-\section{Difficultés rencontrées}
+\subsubsection{\textbf{Code Binaire}}
+\lstinputlisting[language=C, caption={CodeBinaire.c}]{src/CodeBinaire.c}
+
+\subsubsection{\textbf{Statistiques}}
+\lstinputlisting[language=C, caption={Statistiques.c}]{src/Statistiques.c}
+
+\subsubsection{\textbf{Octet}}
+\lstinputlisting[language=C, caption={Octet.c}]{src/Octet.c}
+
+\subsubsection{\textbf{FileDePriorite}}
+\lstinputlisting[language=C, caption={FileDePriorite.c}]{src/FileDePriorite.c}
+
+\subsubsection{\textbf{TableDeCodage}}
+\lstinputlisting[language=C, caption={TableDeCodage.c}]src/{TableDeCodage.c}
+
+\subsubsection{\textbf{Compression}}
+\lstinputlisting[language=C, caption={Compression.c}]{src/Compression.c}
+
+\subsubsection{\textbf{Decompression}}
+\lstinputlisting[language=C, caption={Decompression.c}]{src/Decompression.c}
+
+\subsection{Tests unitaires}
+
+\subsubsection{\textbf{Arbre Huffman}}
+\lstinputlisting[language=C, caption={testArbreHuffman.c}]{src/tests/testArbreHuffman.c}
+
+\subsubsection{\textbf{Code Binaire}}
+\lstinputlisting[language=C, caption={testCodeBinaire.c}]{src/tests/testCodeBinaire.c}
+
+\subsubsection{\textbf{Statistiques}}
+\lstinputlisting[language=C, caption={testFileDePriorite.c}]{src/tests/testFileDePriorite.c}
+
+\subsubsection{\textbf{Octet}}
+\lstinputlisting[language=C, caption={testOctet.c}]{src/tests/testOctet.c}
+
+\subsubsection{\textbf{FileDePriorite}}
+\lstinputlisting[language=C, caption={testStatistiques.c}]{src/tests/testStatistiques.c}
+
+\subsubsection{\textbf{TableDeCodage}}
+\lstinputlisting[language=C, caption={testTableDeCodage.c}]{src/tests/testTableDeCodage.c}
 
 
-\subsection*{\textbf{Ensemble et Listes Chaînées}}
 
 \newpage
 
@@ -178,21 +237,21 @@ Pour conclure ce projet,  A FAIRE
   \hline
 & TAD & CP & CD & Développement & Tests unitaires  \\
   \hline
-ArbreHuffman & X & X & X & X & X\\
+ArbreHuffman & \textcolor{red}{X} & \textcolor{green}{X} & \textcolor{yellow}{X} & \textcolor{yellow}{X} & \textcolor{red}{X}\\
   \hline
-CodeBinaire & X & X & X & X & X \\
+CodeBinaire & \textcolor{blue}{X} & \textcolor{green}{X} & \textcolor{green}{X} & \textcolor{red}{X} & \textcolor{green}{X} \\
   \hline
-FileDePriorite & X & X & X & X & X \\
+FileDePriorite & \textcolor{green}{X} & \textcolor{blue}{X} & \textcolor{green}{X} & \textcolor{yellow}{X} & \textcolor{blue}{X} \\
   \hline
-Octet & X & X & X & X & X \\
+Octet & \textcolor{red}{X} & \textcolor{blue}{X} & \textcolor{yellow}{X} & \textcolor{green}{X} & \textcolor{red}{X} \\
   \hline
-Statistiques & X & X & X & X & X\\
+Statistiques & \textcolor{blue}{X} & \textcolor{green}{X} & \textcolor{red}{X} & \textcolor{red}{X} & \textcolor{green}{X}\\
   \hline
-TableDeCodage & X & X & X & X & X \\
+TableDeCodage & \textcolor{green}{X} & \textcolor{yellow}{X} & \textcolor{blue}{X} & \textcolor{blue}{X} & \textcolor{yellow}{X} \\
   \hline
-Compression & X & X & X & X & X\\
+Compression & \textcolor{yellow}{X} & \textcolor{blue}{X} & \textcolor{blue}{X} & \textcolor{red}{X} & \\
   \hline
-Decompression & X & X & X & X & X\\
+Decompression & \textcolor{yellow}{X} & \textcolor{red}{X} & \textcolor{green}{X} & \textcolor{blue}{X} & \\
   \hline
 \end{tabular}
 }
