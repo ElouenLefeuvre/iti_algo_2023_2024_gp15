@@ -1,4 +1,6 @@
-\section{Déclaration du type}
+\subsection{Octet}
+
+\subsubsection{Déclaration du type}
 \begin{algorithme}
 \begin{enregistrement}{Octet}
     \champEnregistrement{bit0}{Bit}
@@ -12,7 +14,7 @@
 \end{enregistrement}    
 \end{algorithme}
 
-\section{modifier}
+\subsubsection{modifier}
 
 \begin{algorithme}
     \procedure{modifier}{\paramEntreeSorite{o : Octet},\paramEntree{i : \naturel, valeur : Bit}}{}
@@ -30,7 +32,7 @@
     \retourner{o}}
 \end{algorithme}
 
-\section{creerOctet}
+\subsubsection{creerOctet}
 
 \begin{algorithme}
     \fonction{creerOctet}{}{Octet}
@@ -42,7 +44,7 @@
     \retourner{o}}
 \end{algorithme}
 
-\section{encoder}
+\subsubsection{encoder}
 
 \begin{algorithme}
     \procedure{encoder}{\paramEntreeSortie{o : Octet}\paramEntree{code : CodeBinaire, i : \naturel}}
@@ -51,7 +53,8 @@
     {\pour{j}{i}{i + longueur(code)}{}
     {modifier(o,j,obtenirIemeBit(code,j))}}
 \end{algorithme}
-\section{obtenirOctet}
+
+\subsubsection{obtenirOctet}
 
 
 \begin{algorithme}

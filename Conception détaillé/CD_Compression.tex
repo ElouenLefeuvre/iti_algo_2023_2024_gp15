@@ -1,5 +1,6 @@
-\section{compression}
+\subsection{Compression}
 
+\subsubsection[Compresser]
 \begin{algorithme}
     \fonction{compresser}{fic : FichierTexte}{fichierBinaire}
     {}
@@ -20,7 +21,8 @@
     
 \end{algorithme}
 
-\section{creerFileDePriorite}
+\subsubsection{creerFileDePriorite}
+
 \begin{algorithme}
     \fonction{creerFileDePriorite}{fic :  FichierBinaire}{ArbreHuffman}
     {}
@@ -39,14 +41,14 @@
     }
 \end{algorithme}
 
-\section{creerTableDeCodage}
+\subsubsection{creerTableDeCodage}
 
 \begin{algorithme}
     \fonction{ creerTableDeCodage}{arbre : ArbreHuffman}{TableDeCodage}{}{}
     {\retourner{obtenirTableDeCodage(arbre)}}
 \end{algorithme}
 
-\section{creerStatistique}
+\subsubsection{creerStatistique}
 
 \begin{algorithme}
     \fonction{ creerStatistique}{fic : FichierTexte;ensC : Ensemble de \caractere}{Ensemble de Statistiques}
@@ -66,7 +68,7 @@
 \end{algorithme}
 
 
-\section{obtenirCaracteres}
+\subsubsection{obtenirCaracteres}
 
 \begin{algorithme}
     \fonction{obtenirCaracteres}{fic : FichierTexte}{Ensemble de \caractere}
@@ -82,7 +84,8 @@
 \end{algorithme}
 
 
-\section{obtenirOccurences}
+\subsubsection{obtenirOccurences}
+
 \begin{algorithme}
     \fonction{obtenirOccurences}{c : \caractere}{\naturel}
     {}
@@ -90,7 +93,7 @@
     {\retourner{Statistiques.obtenirOccurence(car)}}
 \end{algorithme}
 
-\section{insererArbre}
+\subsubsection{insererArbre}
 
 \begin{algorithme}
     \fonction{insererArbre}{file : FileDePriorite, arbre : Arbre Huffman}{FileDePriorite}
@@ -99,7 +102,8 @@
     {\retourner{FileDePriorité.enfiler(arbre,file)}}
 \end{algorithme}
 
-\section{creerArbre}
+\subsubsection{creerArbre}
+
 \begin{algorithme}
     \fonction{creerArbre}{stats : Statistiques}{Arbre Huffman}
     {}

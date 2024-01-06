@@ -1,7 +1,7 @@
-\section{Déclaration du type}
+\subsubsection{Déclaration du type}
 \type{CodeBinaire}{\chaine}
 
-\section{obtenirCodeBinaire}
+\subsubsection{obtenirCodeBinaire}
 
 \begin{algorithme}
     \fonction{obtenirCodeBinaire}{a : Arbre Huffman, car : \caractere}{CodeBinaire}
@@ -10,7 +10,8 @@
     {\sialorssinon{estFeuille(a)}
     {\retourner('0')}
     \retourner{ObtenirCodeBinaireR(a,car)}}
-\section{obtenirCodeBinaireR}
+
+\subsubsection{obtenirCodeBinaireR}
 
 \begin{algorithme}
     \fonction{obtenirCodeBinaireR}{a : Arbre Huffman, car : \caractere}{CodeBinaire}
@@ -23,7 +24,7 @@
     {\retourner{'1' + obtenirCodeBinaireR(obtenirFilsDroit(a),car)}}}}
 \end{algorithme}
 
-\section{estVide}
+\subsubsection{estVide}
 
 \begin{algorithme}
     \fonction{estVide}{code : CodeBinaire}{\booleen}
@@ -32,7 +33,7 @@
     {\retourner{code = ''}}
 \end{algorithme}
 
-\section{obtenirIemeBit}
+\subsubsection{obtenirIemeBit}
 
 \begin{algorithme}
     \fonction{obtenirIemeBit}{code : CodeBinaire, i : \naturelNonNul}{Bit}
@@ -40,6 +41,8 @@
     {}
     {\retourner{code[i]}}
 \end{algorithme}
+
+\subsubsection{longueur}
 
 \begin{algorithme}
     \fonction{longueur}{code : CodeBinaire}{\naturel}
