@@ -23,24 +23,35 @@ FILE* compresser(const char* fileName){
     }
     FileDePriorite fp= FDP_fileDePriorite();
 
+    const char *filename = "compressedFile.txt";
+    FILE *compressedFile = fopen(filename, "w");
+    if (compressedFile == NULL) {
+        fprintf(stderr, "Impossible d'ouvrir le fichier %s en écriture.\n", filename);
+    }
+
     int occurrences[256] = {0};
     int caracteresSansRepetition[256] = {0};
     int nbCaracteresSansRepetition = 0;
+    int nbCaracAvecRepetition=0;
     
 
     int caractere;
     while ((caractere = fgetc(file)) != EOF) {
         occurrences[caractere]++;
+        nbCaracAvecRepetition++;
         if (occurrences[caractere] == 1) {
             caracteresSansRepetition[nbCaracteresSansRepetition++] = caractere;
         }
     }
 
+    fprintf(compressedFile,"%d\n",nbCaracAvecRepetition-1);
     for (int i = 0; i < nbCaracteresSansRepetition; i++) {
         Statistiques stat = S_statistique(caracteresSansRepetition[i],occurrences[caracteresSansRepetition[i]]);
+        fprintf(compressedFile,"%c%d",S_obtenirCaractere(stat),S_obtenirPonderation);
         ArbreHuffman* arbre = AH_arbreDeHuffman(stat);
         FDP_enfiler(&fp,arbre);
     }
+
     
     while(fp.longueur != 1){
         ArbreHuffman arbre1 = FDP_obtenirElement(fp, fp.longueur);
@@ -61,11 +72,7 @@ FILE* compresser(const char* fileName){
         TDC_ajouter(tableDeCodageFinale,c,&cb);
     }
     
-    const char *filename = "compressedFile.txt";
-    FILE *compressedFile = fopen(filename, "w");
-    if (compressedFile == NULL) {
-        fprintf(stderr, "Impossible d'ouvrir le fichier %s en écriture.\n", filename);
-    }
+    
 
 
     fseek(file, 0, SEEK_SET);
