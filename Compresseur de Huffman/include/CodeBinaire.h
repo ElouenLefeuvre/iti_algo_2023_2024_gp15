@@ -88,27 +88,8 @@ char* CB_codeBinaireToStr(const CodeBinaire* code);
 void CB_remplirCodeBinaire(CodeBinaire* code, const char* chaine);
 
 /**
- * \fn CodeBinaire AH_CbFromAH(ArbreHuffman *a, char car)
- * \brief Fonction qui permet de calculer un code binaire à partir d'un arbre d'Huffman et d'un caractere
- *
- * \param a : l' arbre
- * \param car : le caractere dont on veut calculer le code
- * \return CodeBinaire
- */
-CodeBinaire AH_CbFromAH(ArbreHuffman *a, char car);
-
-/**
- * \fn char* AH_obtenirCodeBinaire(ArbreHuffman *a, char car)
- * \brief Fonction qui permet de trouver la chaine de caractere qui va être convertie en code binaire par AH_CbFromAH
- * \param a : l'arbre
- * \param car : le caractere dont on veut calculer le code
- * \return char*  (la chaîne de caractère)
- */
-char* AH_obtenirCodeBinaire(ArbreHuffman *a, char car);
-
-/**
  * \fn char* obtenirCodeBinaireR(ArbreHuffman *a, char car )
- * \brief Fonction récursive qui va permettre d'avoir le code binaire d'un caractere et qui va être appelé dans AH_obtenirCodeBinaire
+ * \brief Fonction récursive qui va permettre d'avoir le code binaire d'un caractere et qui va être appelé dans CB_obtenirCodeBinaire
  * \param a : l'arbre
  * \param car : le caractere dont on veut calculer le code
  * \return char*  (la chaîne de caractère)

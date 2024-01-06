@@ -3,28 +3,47 @@
 
 \begin{document}
 \section{Déclaration du type}
-\type{CodeBinaire}{\chaine}
-
-\section{obtenirCodeBinaire}
 
 \begin{algorithme}
-    \fonction{obtenirCodeBinaire}{a : Arbre Huffman, car : \caractere}{CodeBinaire}
-    {non(estVide(a))}
-    {}
-    {\sialorssinon{estFeuille(a)}
-    {\retourner('0')}
-    \retourner{ObtenirCodeBinaireR(a,car)}}
-\section{obtenirCodeBinaireR}
+    \begin{enregistrement}{CodeBinaire}
+        \champEnregistrement{bits}{\tableau{1..MAX}
+        {de}{Bit}}
+        \champEnregistrement{taille}{\naturel}    
+    \end{enregistrement}
+    \end{algorithme}
+
+\section{creerCodeBinaire}
 
 \begin{algorithme}
-    \fonction{obtenirCodeBinaireR}{a : Arbre Huffman, car : \caractere}{CodeBinaire}
-    {non(estVide(a))}
+    \fonction{creerCodeBinaire}{taille : \naturel}{CodeBinaire}
     {}
-    {\sialorssinon{estFeuille(a)}
-    {\retourner{''}}
-    {\sialorssinon{estPresent(car, obtenirFilsGauche(a))}
-    {\retourner{'0' + obtenirCodeBinaireR(obtenirFilsGauche(a),car)}}
-    {\retourner{'1' + obtenirCodeBinaireR(obtenirFilsDroit(a),car)}}}}
+    {code : CodeBinaire, i : \naturel}
+    {\affecter{code.taille}{taille}
+    \pour{i}{0}{4}{}{
+        \affecter{code.bits[i]}{0}
+    }
+    \retourner{code}}
+\end{algorithme}
+
+\section{remplirCodeBinaire}
+
+\begin{algorithme}
+    \procedure{remplirCodeBinaire}{\paramEntreeSortie{code : CodeBinaire}, \paramEntree{chaine : \chaine}}
+    {$longueur(chaine) \ne code.taille$}
+    {i : \naturel}
+    {\pour{i}{0}{code.taille}{}{
+        \affecter{code.bits[i]}{obtenirIemecaractere(chaine,i)}
+    }}
+\end{algorithme}
+
+\section{libererCodeBinaire}
+
+\begin{algorithme}
+\procedure{libererCodeBinaire}{\paramEntreeSortie{code : CodeBinaire}}
+    {}
+    {}
+    {liberer(code.bits) \newline
+    \affecter{code.taille}{0}}
 \end{algorithme}
 
 \section{estVide}
@@ -32,26 +51,105 @@
 \begin{algorithme}
     \fonction{estVide}{code : CodeBinaire}{\booleen}
     {}
-    {}
-    {\retourner{code = ''}}
+    {taille : \naturel}
+    {\affecter{taille}{code.taille}
+        \retourner{code = ""}}
 \end{algorithme}
 
 \section{obtenirIemeBit}
 
 \begin{algorithme}
     \fonction{obtenirIemeBit}{code : CodeBinaire, i : \naturelNonNul}{Bit}
-    {i $>$ 0 et i \leq longueur(code)}
+    {$i > 0$ et $i \leq longueur(code)$}
     {}
     {\retourner{code[i]}}
 \end{algorithme}
 
+
+\section{concatener}
+
 \begin{algorithme}
-    \fonction{longueur}{code : CodeBinaire}{\naturel}
+    \fonction{concatener}{code1, code2: CodeBinaire}{CodeBinaire}
     {}
-    {l : naturel}
-    {\affecter{l}{0}
-    \pourChaque{car}{code}
-    {\affecter{l}{l+1}}
-    \retourner{l}}
+    {res : CodeBinaire, i : \naturel}
+    {\affecter{res.taille}{code1.taille + code2.taille}
+    \pour{i}{0}{code1.taille}{}
+    {\affecter{res.bits[i]}{code1.bits[i]}}
+    \pour{i}{0}{code2.taille}{}
+    {\affecter{res.bits[i + code1.taille]}{code2.bits[i]}}
+    \retourner{res}}
 \end{algorithme}
+
+
+\section{codeBinaireToStr}
+
+\begin{algorithme}
+    \fonction{codeBinaireToStr}{code: CodeBinaire}{\chaine}
+    {}
+    {str : \chaine, i : \naturel}
+    {
+    \pour{i}{0}{code.taille}{}
+    {\affecter{str}{str + code.bits[i]}}
+    \retourner{str}}
+\end{algorithme}
+
+\section{obtenirCodeBinaire}
+
+\begin{algorithme}
+    \fonction{obtenirCodeBinaire}{a : ArbreHuffman, car : \caractere}{\chaine}
+    {non ArbreHuffman.estVide(a)}
+    {}
+    {\sialorssinon{ArbreHuffman.estFeuille(a)}
+    {\retourner{'0'}}
+    {obtenirCodeBinaireR(a,car)}}
+\end{algorithme}
+
+\section{obtenirCodeBinaireR}
+
+\begin{algorithme}
+    \fonction{obtenirCodeBinaireR}{a : ArbreHuffman, car : \caractere}{\chaine}
+    {non ArbreHuffman.estVide(a)}
+    {str,res : \chaine, taille : \naturel}
+    {\sialorssinon{ArbreHuffman.estFeuille(a)}
+    {\retourner{""}}{}
+    \sialorssinon{ArbreHuffman.estPresent(ArbreHuffman.obtenirFilsGauche(a),car)}{
+        \affecter{a}{ArbreHuffman.obtenirFilsGauche(a)}
+        \affecter{str}{obtenirCodeBinaireR(a,car)}
+        \sialorssinon{str \ne NULL}{
+            \affecter{res}{'0' + str}
+            \retourner{res}
+        }{}
+    }{\affecter{a}{ArbreHuffman.obtenirFilsDroit(a)}
+    \affecter{str}{obtenirCodeBinaireR(a,car)}
+    \sialorssinon{str \ne NULL}{
+        \affecter{res}{'1' + str}
+        \retourner{res}}{}}}
+\end{algorithme}
+
+\section{CbFromAH}
+
+\begin{algorithme}
+    \fonction{CbFromAH}{a : ArbreHuffman, car : \caractere}{CodeBinaire}
+    {}
+    {res : CodeBinaire, str : \chaine, taille : \naturel}
+    {
+    \affecter{str}{obtenirCodeBinaire(a,car)}
+    \affecter{taille}{longueur(str)}
+    \affecter{res}{creerCodeBinaire(res,str)}
+    \retourner{res}}
+\end{algorithme}
+
+\section{codeBinaireToStr}
+
+\begin{algorithme}
+    \fonction{codeBinaireToStr}{code: CodeBinaire}{\chaine}
+    {}
+    {str : \chaine, i : \naturel}
+    {
+    \pour{i}{0}{code.taille}{}
+    {\affecter{str}{str + code.bits[i]}}
+    \retourner{str}}
+\end{algorithme}
+
+
 \end{document}

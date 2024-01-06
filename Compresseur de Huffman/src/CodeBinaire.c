@@ -75,16 +75,7 @@ char* CB_codeBinaireToStr(const CodeBinaire* code) {
     return str;
 }
 
-
-CodeBinaire AH_CbFromAH(ArbreHuffman *a, char car){
-    char* result = AH_obtenirCodeBinaire(a,car);
-    int taille = strlen(result);
-    CodeBinaire CB_result = CB_creerCodeBinaire(taille);
-    CB_remplirCodeBinaire(&CB_result,result);
-    return CB_result;
-}
-
-char* AH_obtenirCodeBinaire(ArbreHuffman *a, char car) {
+char* CB_obtenirCodeBinaire(ArbreHuffman *a, char car) {
     if (!AH_estVide(a)) {
         if (AH_estFeuille(*a)) {
             return strdup("0");
@@ -95,6 +86,15 @@ char* AH_obtenirCodeBinaire(ArbreHuffman *a, char car) {
     
     return NULL;
 }
+
+CodeBinaire CB_CbFromAH(ArbreHuffman *a, char car){
+    char* result = CB_obtenirCodeBinaire(a,car);
+    int taille = strlen(result);
+    CodeBinaire CB_result = CB_creerCodeBinaire(taille);
+    CB_remplirCodeBinaire(&CB_result,result);
+    return CB_result;
+}
+
 
 char* obtenirCodeBinaireR(ArbreHuffman *a, char car) {
     if (!AH_estVide(a)) {

@@ -7,21 +7,38 @@
 \tadNom{Code Binaire}
         
 \tadDependances{TableDeCodage, Caractere, Bit}
-\begin{tadOperations}{obtenirCodeBinaire}
-        \tadOperation{obtenirCodeBinaire}{\tadDeuxParams{Arbre Huffman}{\caractere}}{\tadParams{CodeBinaire}}
-        \tadOperationAvecPreconditions{estVide}{\tadParams{CodeBinaire}}{\tadParams{\booleen}}
+\begin{tadOperations}{obtenirCodeBinaireR}
+        \tadOperation{creerCodeBinaire}{\tadParams{\naturel}}{\tadParams{CodeBinaire}}
+        \tadOperationAvecPreconditions{remplirCodeBinaire}{\tadDeuxParams{\chaine}{CodeBinaire}}{\tadParams{CodeBinaire}}
+        \tadOperation{libererCodeBinaire}{\tadParams{CodeBinaire}}{\tadParams{CodeBinaire}}
+        \tadOperation{estVide}{\tadParams{CodeBinaire}}{\tadParams{\booleen}}
         \tadOperationAvecPreconditions{obtenirIemeBit}{\tadParams{CodeBinaire,\naturelNonNul}}{\tadParams{Bit}}
-        \tadOperation{longueur}{\tadParams{CodeBinaire}}{\tadParams{\naturel}}
+        \tadOperation{concatener}{\tadDeuxParams{CodeBinaire}{CodeBinaire}}{\tadParams{CodeBinaire}}
+        \tadOperation{codeBinaireToStr}{\tadParams{CodeBinaire}}{\tadParams{\chaine}}
+        \tadOperationAvecPreconditions{obtenirCodeBinaire}{\tadDeuxParams{ArbreHuffman}{\caractere}}{\tadParams{\chaine}}
+        \tadOperationAvecPreconditions{obtenirCodeBinaireR}{\tadDeuxParams{ArbreHuffman}{\caractere}}{\tadParams{\chaine}}
+        \tadOperation{CbFromAH}{\tadDeuxParams{ArbreHuffman}{\caractere}}{\tadParams{CodeBinaire}}        
+        \tadOperation{codeBinaireToStr}{\tadParams{CodeBinaire}}{\tadParams{\chaine}}
 \end{tadOperations}
-\begin{tadSemantiques}{obtenirCodeBinaire}
-        \tadSemantique{obtenirCodeBinaire}{Permet d'obtenir un code binaire d'un caractère présent dans l'arbre}
-        \tadSemantique{estVide}{Cherche si un code binaire est vide ou non}
-        \tadSemantique{obtenirIemeBit}{Donne le ième bit d'un code binaire}
-        \tadSemantique{longueur}{Donne la longueur du code binaire}
+\begin{tadSemantiques}{obtenirCodeBinaireR}
+        \tadSemantique{creerCodeBinaire}{Fonction qui creer un code binaire à partir de sa taille}
+        \tadSemantique{remplirCodeBinaire}{Fonction qui permet de remplir un code binaire avec une chaîne de caractère}
+        \tadSemantique{libererCodeBinaire}{Fonction qui libère un code binaire }
+        \tadSemantique{estVide}{Fonction qui permet de savoir si un code est vide ou non}
+        \tadSemantique{obtenirIemeBit}{Fonction qui permet d'obtenir le ieme bit d'un code binaire}
+        \tadSemantique{concatener}{Fonction qui permet de concatener 2 codes binaires}
+        \tadSemantique{codeBinaireToStr}{Fonction qui permet de convertir un code binaire en chaîne de caractères}
+        \tadSemantique{obtenirCodeBinaire}{Fonction qui va permettre d'avoir le code binaire d'un caractere}
+        \tadSemantique{obtenirCodeBinaireR}{Fonction récursive qui va permettre d'avoir le code binaire d'un caractere et qui va être appelé dans obtenirCodeBinaire}
+        \tadSemantique{CbFromAH}{Fonction qui donne un code binaire à partir d'un arbre d'Huffman et d'un caractere }
+        \tadSemantique{codeBinaireToStr}{Fonction qui transforme un code binaire en chaine de caracteres}
+
 \end{tadSemantiques}
-    \begin{tadPreconditions}{obtenirIemeBit(code, i)}
-            \tadPrecondition{obtenirCodeBinaire(a, car)}{non(estVide(a))}
-            \tadPrecondition{obtenirIemeBit(code, i)}{n $>$ 0 et n $\leq$ longueur(code) }
+    \begin{tadPreconditions}{obtenirCodeBinaireR(a, car)}
+            \tadPrecondition{remplirCodeBinaire(code)}{$longueur(chaine) \ne code.taille$}
+            \tadPrecondition{obtenirIemeBit(code, i)}{$i > 0$ et $i \leq longueur(code)$}
+            \tadPrecondition{obtenirCodeBinaire(a, car)}{non ArbreHuffman.estVide(a)}
+            \tadPrecondition{obtenirCodeBinaireR(a, car)}{non ArbreHuffman.estVide(a)}
         \end{tadPreconditions}
 
 \end{tad}   
