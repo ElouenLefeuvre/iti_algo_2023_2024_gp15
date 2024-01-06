@@ -1,7 +1,3 @@
-\documentclass{article}
-\usepackage{pseudocode}
-
-\begin{document}
 \section{Déclaration du type}
 \begin{algorithme}
 \type{ArbreHuffman}
@@ -26,7 +22,7 @@
         {\affecter{\champ{arbre}{filsGauche}}{NIL}
         \affecter{\champ{arbre}{filsDroit}}{NIL}
         \affecter{\champ{arbre}{statistique}}{stat}
-        \retourner{arbre}        
+        \retourner{arbre}
         }
 \end{algorithme}
 \section{fusionner}
@@ -115,5 +111,3 @@
         {\retourner{Vrai}}
         {\retourner{estPresent(obtenirFilsDroit(arbre)) ou estPresent(obtenirFilsGauche(arbre))}}}
 \end{algorithme}
-
-\end{document}
