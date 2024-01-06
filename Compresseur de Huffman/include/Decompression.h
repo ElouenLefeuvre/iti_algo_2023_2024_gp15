@@ -31,7 +31,7 @@ FILE DECOMP_decompresser(char nomFichierHuffman[]);
  * \param stats : Ensemble de statistiques du fichier compressé
  * \return FileDePriorite
  */
-FileDePriorite DECOMP_obtenirFileDePriorite(stats : Ensemble de Statistiques);
+FileDePriorite DECOMP_obtenirFileDePriorite(Ensemble Statistiques);
 
 
 /**

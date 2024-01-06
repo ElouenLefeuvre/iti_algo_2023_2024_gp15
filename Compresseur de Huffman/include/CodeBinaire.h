@@ -96,4 +96,12 @@ void CB_remplirCodeBinaire(CodeBinaire* code, const char* chaine);
  */
 char* obtenirCodeBinaireR(ArbreHuffman *a, char car );
 
+/**
+ * \fn CodeBinaire CB_CbFromAH(ArbreHuffman *a, char car)
+ * \brief Fonction qui donne un code binaire à partir d'un arbre d'Huffman et d'un caractere
+ * \param car : le caractere dont on veut calculer le code
+ * \return CodeBinaire
+ */
+CodeBinaire CB_CbFromAH(ArbreHuffman *a, char car);
+
 #endif
