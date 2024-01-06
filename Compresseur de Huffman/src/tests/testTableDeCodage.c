@@ -90,11 +90,10 @@ void test_TDC_supprimer(){
     TDC_supprimer(&table1,'B',&cb);
     CB_remplirCodeBinaire(&cb,'011');
 
-    CU_ASSERT_PTR_NOT_NULL(table_test.noeud);
-    CU_ASSERT_PTR_NOT_NULL(table_test.noeud->listeSuivante);
+    CU_ASSERT_PTR_NOT_NULL(&table_test.noeud);
+    CU_ASSERT_PTR_NOT_NULL(&table_test.noeud->listeSuivante);
     CU_ASSERT_EQUAL(table1.noeud->listeSuivante->c,'C');
     CU_ASSERT_EQUAL(table1.noeud->listeSuivante->code,cb);
- 
 }
 
 void test_TDC_estPresent(){

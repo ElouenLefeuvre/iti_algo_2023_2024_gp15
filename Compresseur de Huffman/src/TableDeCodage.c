@@ -10,6 +10,7 @@ TableDeCodage TDC_obtenirTableDeCodage(ArbreHuffman a) {
     return res;
 }
 
+
 CodeBinaire TDC_obtenirCode(TableDeCodage tab,char c) {
     if (!(TDC_estVide(tab))) {
         if (tab.noeud->c == c) {
