@@ -99,7 +99,7 @@ typedef struct <a class="el" href="struct_noeud.html">Noeud</a>&#160;</td><td cl
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a8faca263fc54f136817b5543dcdb495d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_file_de_priorite_8h.html#a8faca263fc54f136817b5543dcdb495d">FDP_nouvelleFile</a> (<a class="el" href="struct_file_de_priorite.html">FileDePriorite</a> *file)</td></tr>
-<tr class="memdesc:a8faca263fc54f136817b5543dcdb495d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui creer une nouvelle file.  <a href="_file_de_priorite_8h.html#a8faca263fc54f136817b5543dcdb495d">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:a8faca263fc54f136817b5543dcdb495d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui fusionne les deux arbres les plus prioritaires d'une file.  <a href="_file_de_priorite_8h.html#a8faca263fc54f136817b5543dcdb495d">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a8faca263fc54f136817b5543dcdb495d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa32b5993744004450840fa9f1d520041"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_file_de_priorite_8h.html#aa32b5993744004450840fa9f1d520041">FDP_defiler</a> (<a class="el" href="struct_file_de_priorite.html">FileDePriorite</a> *fp)</td></tr>
 <tr class="memdesc:aa32b5993744004450840fa9f1d520041"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui va défiler une file.  <a href="_file_de_priorite_8h.html#aa32b5993744004450840fa9f1d520041">Plus de détails...</a><br /></td></tr>
@@ -110,32 +110,48 @@ Fonctions</h2></td></tr>
 <tr class="memitem:a0367edebed9ce1024e1a774ea79755e4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_file_de_priorite_8h.html#a0367edebed9ce1024e1a774ea79755e4">FDP_estVide</a> (<a class="el" href="struct_file_de_priorite.html">FileDePriorite</a> *fp)</td></tr>
 <tr class="memdesc:a0367edebed9ce1024e1a774ea79755e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui va permettre de verifier si une file est vide ou non.  <a href="_file_de_priorite_8h.html#a0367edebed9ce1024e1a774ea79755e4">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a0367edebed9ce1024e1a774ea79755e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a664ca36a59742601a01dad577860e6c6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_file_de_priorite_8h.html#a664ca36a59742601a01dad577860e6c6">FDP_estVide_LCA</a> (<a class="el" href="struct_noeud.html">Noeud</a> *lca)</td></tr>
-<tr class="memdesc:a664ca36a59742601a01dad577860e6c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">?  <a href="_file_de_priorite_8h.html#a664ca36a59742601a01dad577860e6c6">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a664ca36a59742601a01dad577860e6c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4498970b54b77d39d1db474fa35f3966"><td class="memItemLeft" align="right" valign="top"><a id="a4498970b54b77d39d1db474fa35f3966"></a>
-<a class="el" href="struct_file_de_priorite.html">FileDePriorite</a>&#160;</td><td class="memItemRight" valign="bottom"><b>FDP_fileDePriorite</b> ()</td></tr>
+<tr class="memitem:a4498970b54b77d39d1db474fa35f3966"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_file_de_priorite.html">FileDePriorite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_file_de_priorite_8h.html#a4498970b54b77d39d1db474fa35f3966">FDP_fileDePriorite</a> ()</td></tr>
+<tr class="memdesc:a4498970b54b77d39d1db474fa35f3966"><td class="mdescLeft">&#160;</td><td class="mdescRight">PErmet de creer et initialiser une file.  <a href="_file_de_priorite_8h.html#a4498970b54b77d39d1db474fa35f3966">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a4498970b54b77d39d1db474fa35f3966"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac16d8b9d15a9c350320195786da7b59e"><td class="memItemLeft" align="right" valign="top"><a id="ac16d8b9d15a9c350320195786da7b59e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>FDP_enfiler</b> (<a class="el" href="struct_file_de_priorite.html">FileDePriorite</a> *file, <a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> *arbre)</td></tr>
 <tr class="separator:ac16d8b9d15a9c350320195786da7b59e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aceb6a6334a9d8c8c8660e0580c1db1dd"><td class="memItemLeft" align="right" valign="top"><a id="aceb6a6334a9d8c8c8660e0580c1db1dd"></a>
-<a class="el" href="struct_noeud.html">Noeud</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>FDP_createNoeud</b> (<a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> *arbreOfLCA)</td></tr>
+<tr class="memitem:aceb6a6334a9d8c8c8660e0580c1db1dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_noeud.html">Noeud</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_file_de_priorite_8h.html#aceb6a6334a9d8c8c8660e0580c1db1dd">FDP_createNoeud</a> (<a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> *arbreOfLCA)</td></tr>
+<tr class="memdesc:aceb6a6334a9d8c8c8660e0580c1db1dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">cree un noeud qui contient un arbre et un pointeur vers un autre  <a href="_file_de_priorite_8h.html#aceb6a6334a9d8c8c8660e0580c1db1dd">Plus de détails...</a><br /></td></tr>
 <tr class="separator:aceb6a6334a9d8c8c8660e0580c1db1dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78108e88ee10f953644a635ba42e3ec6"><td class="memItemLeft" align="right" valign="top"><a id="a78108e88ee10f953644a635ba42e3ec6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>FDP_afficherFileDEPriorite</b> (<a class="el" href="struct_file_de_priorite.html">FileDePriorite</a> *file)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_file_de_priorite_8h.html#a78108e88ee10f953644a635ba42e3ec6">FDP_afficherFileDEPriorite</a> (<a class="el" href="struct_file_de_priorite.html">FileDePriorite</a> *file)</td></tr>
+<tr class="memdesc:a78108e88ee10f953644a635ba42e3ec6"><td class="mdescLeft">&#160;</td><td class="mdescRight">affiche la file pour avoir une vision plus pratique et graphique <br /></td></tr>
 <tr class="separator:a78108e88ee10f953644a635ba42e3ec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29367190fbc3a5a086704eb981081be6"><td class="memItemLeft" align="right" valign="top"><a id="a29367190fbc3a5a086704eb981081be6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>fixerNoeud</b> (<a class="el" href="struct_file_de_priorite.html">FileDePriorite</a> *file, <a class="el" href="struct_noeud.html">Noeud</a> *noeud, int position)</td></tr>
-<tr class="separator:a29367190fbc3a5a086704eb981081be6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab991880c8b9caea0a3533553b6e31f41"><td class="memItemLeft" align="right" valign="top"><a id="ab991880c8b9caea0a3533553b6e31f41"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>trouverIndicePourInsere</b> (<a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> *arbre, <a class="el" href="struct_file_de_priorite.html">FileDePriorite</a> *file)</td></tr>
+<tr class="memitem:ab991880c8b9caea0a3533553b6e31f41"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_file_de_priorite_8h.html#ab991880c8b9caea0a3533553b6e31f41">trouverIndicePourInsere</a> (<a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> *arbre, <a class="el" href="struct_file_de_priorite.html">FileDePriorite</a> *file)</td></tr>
+<tr class="memdesc:ab991880c8b9caea0a3533553b6e31f41"><td class="mdescLeft">&#160;</td><td class="mdescRight">elle permet de trouver l'indice du dernier element plus grand que la ponderation de l'arbre qu'on veut inserer  <a href="_file_de_priorite_8h.html#ab991880c8b9caea0a3533553b6e31f41">Plus de détails...</a><br /></td></tr>
 <tr class="separator:ab991880c8b9caea0a3533553b6e31f41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Implantation du TAD <a class="el" href="struct_file_de_priorite.html">FileDePriorite</a> pour le Compresseur d'Huffman. </p>
-<dl class="section author"><dt>Auteur</dt><dd>A. El Faïq, T. Barsot, W. Vilayvong </dd></dl>
+<dl class="section author"><dt>Auteur</dt><dd>A. El Faïq, T. Barsot, W. Vilayvong, E. Lefeuvre </dd></dl>
 </div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="aceb6a6334a9d8c8c8660e0580c1db1dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aceb6a6334a9d8c8c8660e0580c1db1dd">&#9670;&nbsp;</a></span>FDP_createNoeud()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_noeud.html">Noeud</a>* FDP_createNoeud </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> *&#160;</td>
+          <td class="paramname"><em>arbreOfLCA</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>cree un noeud qui contient un arbre et un pointeur vers un autre </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Noeud* </dd></dl>
+
+</div>
+</div>
 <a id="aa32b5993744004450840fa9f1d520041"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa32b5993744004450840fa9f1d520041">&#9670;&nbsp;</a></span>FDP_defiler()</h2>
 
@@ -189,30 +205,23 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>trouverIndicePourInser
 
 </div>
 </div>
-<a id="a664ca36a59742601a01dad577860e6c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a664ca36a59742601a01dad577860e6c6">&#9670;&nbsp;</a></span>FDP_estVide_LCA()</h2>
+<a id="a4498970b54b77d39d1db474fa35f3966"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4498970b54b77d39d1db474fa35f3966">&#9670;&nbsp;</a></span>FDP_fileDePriorite()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool FDP_estVide_LCA </td>
+          <td class="memname"><a class="el" href="struct_file_de_priorite.html">FileDePriorite</a> FDP_fileDePriorite </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_noeud.html">Noeud</a> *&#160;</td>
-          <td class="paramname"><em>lca</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>? </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">lca</td><td>: ? </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>bool </dd></dl>
+<p>PErmet de creer et initialiser une file. </p>
+<dl class="section return"><dt>Renvoie</dt><dd><a class="el" href="struct_file_de_priorite.html">FileDePriorite</a> </dd></dl>
 
 </div>
 </div>
@@ -232,10 +241,10 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>trouverIndicePourInser
       </table>
 </div><div class="memdoc">
 
-<p>Fonction qui creer une nouvelle file. </p>
+<p>Fonction qui fusionne les deux arbres les plus prioritaires d'une file. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">file</td><td>: file que l'on va initialiser </td></tr>
+    <tr><td class="paramname">file</td><td>: file sur laquelle on applique </td></tr>
   </table>
   </dd>
 </dl>
@@ -276,16 +285,45 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>trouverIndicePourInser
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd><a class="el" href="struct_arbre_huffman.html" title="Le type ArbreHuffman permet de stocker et de ranger les statistiques.">ArbreHuffman</a></dd>
-<dd>
-<a class="el" href="struct_file_de_priorite.html">FileDePriorite</a> </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd><a class="el" href="struct_arbre_huffman.html" title="Le type ArbreHuffman permet de stocker et de ranger les statistiques.">ArbreHuffman</a> </dd></dl>
+
+</div>
+</div>
+<a id="ab991880c8b9caea0a3533553b6e31f41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab991880c8b9caea0a3533553b6e31f41">&#9670;&nbsp;</a></span>trouverIndicePourInsere()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int trouverIndicePourInsere </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> *&#160;</td>
+          <td class="paramname"><em>arbre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_file_de_priorite.html">FileDePriorite</a> *&#160;</td>
+          <td class="paramname"><em>file</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>elle permet de trouver l'indice du dernier element plus grand que la ponderation de l'arbre qu'on veut inserer </p>
+<dl class="section return"><dt>Renvoie</dt><dd>int </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Samedi 6 Janvier 2024 01:00:53 pour Compresseur de Huffman par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+Généré le Samedi 6 Janvier 2024 14:11:50 pour Compresseur de Huffman par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
 </small></address>
 </body>
 </html>
