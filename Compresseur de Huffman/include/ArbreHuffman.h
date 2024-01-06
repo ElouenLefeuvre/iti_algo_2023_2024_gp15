@@ -4,21 +4,23 @@
  * \author A. El Faiq, T. Barsot, W. Vilayvong, E. Lefeuvre
  *
  */
-#ifndef  __ ARBREDEHUFFMAN__
+#ifndef  __ARBREDEHUFFMAN__
 #define __ARBREDEHUFFMAN__
 
-#include "Statistiques.h";
+#include "Statistiques.h"
 
 /**
  * \brief Le type ArbreHuffman permet de stocker et de ranger les statistiques
  *
  */
+typedef struct ArbreHuffman ArbreHuffman;
 
-typedef struct {
-    Statistiques statistiques;  /**< la statistique contenue dans l'arbre */
-    ArbreHuffman* filsGauche;  /**< le fils gauche de l'arbre actuel */
-    ArbreHuffman* filsDroit;    /**< le fils droit de l'arbre actuel */
-}ArbreHuffman;
+
+struct ArbreHuffman {
+    Statistiques statistiques; /**< la statistique contenue dans l'arbre */
+    ArbreHuffman* filsGauche; /**< le fils gauche de l'arbre actuel */
+    ArbreHuffman* filsDroit;  /**< le fils droit de l'arbre actuel */
+};
 
 /**
  * \fn ArbreHuffman AH_arbreDeHuffman(Statistiques stat)
@@ -109,5 +111,14 @@ bool AH_estFeuille(ArbreHuffman arbre);
  * \return bool
  */
 bool AH_estPresent(ArbreHuffman* arbre, char caractere);
+
+char AH_obtenirCaracter(ArbreHuffman arbre);
+
+int AH_obtenirPonderation(ArbreHuffman arbre);
+
+void AH_afficherArbre(ArbreHuffman *arbre);
+
+
+
 
 #endif
