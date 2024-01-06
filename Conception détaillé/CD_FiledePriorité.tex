@@ -3,27 +3,21 @@
 
 \begin{document}
 \section{Déclaration du type}
+
 \begin{algorithme}
-    \type{ListeChaineeArbre}
-        \typePointeur{Noeud}
-    
+        \begin{enregistrement}{Noeud}
+            \champEnregistrement{arbre}{ArbreHuffman}
+            \champEnregistrement{suivant}{Noeud}
+        \end{enregistrement}
     \end{algorithme}
     
-    \begin{algorithme}
-    \begin{enregistrement}{Noeud}
-        \champEnregistrement{arbre}{ArbreHuffman}
-        \champEnregistrement{ListeSuivante}{ListeChainee}
+\begin{algorithme}
+    \begin{enregistrement}{FileDePriorite}
+        \champEnregistrement{debut}{Noeud}
+        \champEnregistrement{longueur}{\naturel}
     \end{enregistrement}
 \end{algorithme}
 
-
-\begin{algorithme}
-        \begin{enregistrement}{FileDePriorite}
-            \champEnregistrement{debut}{ListeChaineeArbre}
-            \champEnregistrement{fin}{ListeChaineeArbre}
-            \champEnregistrement{longueur}{\naturel}
-        \end{enregistrement}
-        \end{algorithme}
 \section{fileDePriorite}
 
 \begin{algorithme}
@@ -32,60 +26,99 @@
         {file:FileDePriorite}
         {
         \affecter{\champ{file}\champ{debut}}{NIL}
-        \affecter{\champ{file}\champ{debut}{ListeSuivante}}{NIL}
-        \affecter{\champ{file}{fin}}{NIL}
-        \affecter{\champ{file}{longueur}}{1}
+        \affecter{\champ{file}{longueur}}{0}
+        \retourner{file}
         }
 \end{algorithme}
+
 \section{enfiler}
 
 \begin{algorithme}
 
     \procedure{enfiler}{\paramEntreeSortie{file : FileDePriorite} \paramEntree{arbre : ArbreHuffman}}{}{}
-        {temp1 : FileDePriorite, temp2 : FileDePriorite}
+        {noeud,tmp : Noeud, positionToInsert,i : \naturel}
         {
-        \affecter{temp1}{\champ{file}{debut}}
-        \affecter{temp2}{\champ{file}{fin}}
-        \tantque{obtenirOccurences(arbre)$>$obtenirOccurences(\champ{temp2}{arbre}){
-        \affecter{temp1}{obtenirListeSuivante(temp1)} 
-        \affecter{temp2}{obtenirListeSuivante(temp2)}}
-        ajouter(temp1,arbre)
-        fixerListeSuivante(temp1,temp2)
-        \tantque{non(estVide(obtenirListeSuivante(temp1)))}
-        {\affecter{temp1}{obtenirListeSuivante{temp1}}}
-        \affecter{\champ{file}{fin}}{temp1}
-        \affecter{\champ{file}{longueur}}{\champ{file}{longueur} + 1}
+        \affecter{noeud}{createNoeud(arbre)}
+        \sialorssinon{estVide(file)}
+            {\affecter{\champ{file}{debut}}{noeud}
+            \affecter{\champ{noeud}{suivant}}{NIL}
+            \affecter{\champ{file}{longueur}}{\champ{file}{longueur}+1}}
+            {\affecter{positionToInsert}{trouverIndicePourInsere(arbre,file)}
+            \sialorsinon{positionToInsert=0}
+                {\affecter{\champ{noeud}{suivant}}{\champ{file}{debut}}
+                \affecter{\champ{file}{debut}}{noeud}}
+                {\affecter{tmp}{\champ{file}{debut}}
+                \pour{i}{0}{positionToInsert-2}{}
+                    {\affecter{tmp}{\champ{tmp}{suivant}}}
 
+                \affecter{\champ{noeud}{suivant}}{\champ{tmp}{suivant}}
+                \affecter{\champ{tmp}{suivant}}{noeud}}
+            \affecter{\champ{file}{longueur}}{\champ{file}{longueur}+1}}
         }
-        
+     
 \end{algorithme}
+
+
+\section{createNoeud}
+
+
+\begin{algorithme}
+    \fonction{createNoeud}{arbreOfLCA : ArbreHuffman}{Noeud}{}
+        {noeud : Noeud}
+        {\affecter{\champ{noeud}{arbre}}{arbreOfLCA}      
+        \affecter{\champ{noeud}{suivant}}{NIL}
+        \retourner{noeud}
+        }
+\end{algorithme}
+
+
+\section{trouverIndicePourInsere}
+
+
+\begin{algorithme}
+    \fonction{trouverIndicePourInsere}{arbre : ArbreHuffman, file : FileDePriorite}{\naturel}{}
+        {tmp : Noeud, ponderationArbre, result : \naturel}
+        {\affecter{tmp}{\champ{file}{debut}}
+        \affecter{ponderationArbre}{obtenirPonderation(arbre)}      
+        \affecter{result}{0}
+        \tantque{(tmp \ne NIL) et (obtenirPonderation(\champ{tmp}{arbre}) $>$ ponderationArbre)}
+        {\affecter{tmp}{\champ{tmp}{suivant}}
+        \affecter{result}{result+1}}
+        \retourner{result}
+        }
+\end{algorithme}
+
 
 \section{defiler}
 
 
 \begin{algorithme}
-    \procedure{defiler}{\paramEntreeSortie{file : FileDePriorite}}{}{}
-        {temp : FileDePriorite}
-        {
-        
-        \affecter{temp}{\champ{file}{fin}}
-        
-        \affecter{\champ{file}{fin}}{obtenirListeSuivante(\champ{file}{fin})}      
-        \affecter{\champ{file}{longueur}}{\champ{file}{longueur} - 1}
-        \motclefDesallouer(temp)
+    \procedure{defiler}{\paramEntreeSortie{file : FileDePriorite}}{}
+    {non(estVide(file))}
+        {noeudActuel,noeudPrecedent : Noeud}
+        {\affecter{noeudActuel}{\champ{file}{debut}}
+        \affecter{noeudPrecedent}{NIL}
+        \tantque{\champ{noeudActuel}{suivant}\ne NIL}
+            {\affecter{noeudPrecedent}{noeudActuel}
+            \affecter{noeudActuel}{\champ{noeudActuel}{suivant}}}    
+        \sialorssinon{noeudPrecedent \ne NIL} 
+            {\affecter{\champ{noeudPrecedent}{suivant}}{NIL}}
+            {\affecter{\champ{file}{debut}}{NIL}}
+       
+        \instruction{\desallouer{noeudActuel}}
+        \affecter{\champ{file}{longueur}}{\champ{file}{longueur}-1}
         }
 \end{algorithme}
 
 \section{obtenirElement}
 
 \begin{algorithme}
-    \fonction{obtenirElement}{file : FileDePriorite, i :\naturelNonNul}{ArbreHuffman}{i$<$nb}{}
-    {
-    
-        \pour{j}{1}{i-1}{}
-            {\affecter{file}{\champ{file}\champ{debut}{listeSuivante}}
-        \retourner{\champ{file}\champ{debut}{arbre}}
-    }
+    \fonction{obtenirElement}{file : FileDePriorite, i :\naturelNonNul}{ArbreHuffman}{i$<$\champ{file}{longueur}}
+    {temp : Noeud}
+    {\affecter{temp}{\champ{file}{debut}}
+    \pour{j}{1}{i-1}{}
+            {\affecter{temp}{\champ{temp}{suivant}}}
+    \retourner{\champ{temp}{arbre}}
     }
 \end{algorithme}
 \section{nouvelleFile}
@@ -93,23 +126,20 @@
 \begin{algorithme}
 
 \procedure{nouvelleFile}{\paramEntreeSortie{file : FileDePriorite}}{}{}
-{
-    enfiler(file,ArbreHuffman.fusionner(\champ{file}\champ{fin}{arbre},obtenirListeSuivante(\champ{file}\champ{fin}{arbre})))
+{i : \naturel, arbre1,arbre2,arbreFusionne : ArbreHuffman}
+{\sialorssinon{\champ{file}{longueur} $<$ 2}{}
+    {\affecter{i}{\champ{file}{longueur}} 
+    \affecter{arbre1}{obtenirElement(file,i)} 
+    \affecter{arbre2}{obtenirElement(file,i-1)} 
     defiler(file)
     defiler(file)
+
+    \affecter{arbreFusionne}{fusionner(arbre1,arbre2)} 
+    enfiler(file,arbreFusionne)}
 }
 
-
 \end{algorithme}
 
-\section{obtenirLongueur}
-
-\begin{algorithme}
-    \fonction{obtenirLongueur}{file : FileDePriorite}{}{}{}
-    {
-        \retourner{\champ{file}{longueur}}
-    }
-\end{algorithme}
 
 
 \end{document}

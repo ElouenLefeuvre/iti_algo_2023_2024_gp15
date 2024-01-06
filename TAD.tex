@@ -150,24 +150,23 @@
 
 \begin{tadOperations}{fileDePriorite}
 \tadOperation{fileDePriorite}{}{\tadParams{FileDePriorite}}
-\tadOperation{enfiler}{\tadDeuxParams{FileDePriorite}{Element}}{\tadParams{FileDePriorite}}
+\tadOperation{enfiler}{\tadDeuxParams{FileDePriorite}{ArbreHuffman}}{\tadParams{FileDePriorite}}
+\tadOperation{createNoeud}{\tadParams{ArbreHuffman}}{\tadParams{Noeud}}
+\tadOperation{trouverIndicePourInsere}{\tadDeuxParams{ArbreHuffman}{FileDePriorite}}{\tadParams{\naturel}}
 \tadOperation{defiler}{\tadParams{FileDePriorite}}{\tadParams{FileDePriorite}}
-\tadOperation{longueur}{\tadParams{FiledePriorite}}{\tadParams{\naturel}}
+\tadOperation{obtenirElement}{\tadDeuxParams{FileDePriorite}{\naturelNonNul}}{\tadParams{ArbreHuffman}}
 \tadOperation{nouvelleFile}{\tadParams{FiledePriorite}}{\tadParams{FiledePriorite}}
-\tadOperation{estVide}{\tadParams{FileDePriorite}}{\tadParams{\booleen}}
-\tadOperation{estPresent}{\tadDeuxParams{FileDePriorite}{Element}}{\tadParams{\booleen}}
-\tadOperation{obtenirElement}{\tadParams{FileDePriorite}}{\tadParams{Element}}
+
 \end{tadOperations}
 
 \begin{tadSemantiques}{fileDePriorite}
     \tadSemantique{filedePriorite}{Créer une file de priotité vide}
     \tadSemantique{enfiler}{Enfile un élément en fin de file}
+    \tadSemantique{createNoeud}{Crée un nouveau Noeud}
+    \tadSemantique{trouverIndicePourInsere}{Trouve l'indice d'insertion d'un arbre}
     \tadSemantique{defiler}{Défile le dernier élément de la file}
-    \tadSemantique{longueur}{Calcule la longueur de la file}
+    \tadSemantique{obtenirElement}{Donne l'arbre présent à telle position dans la file}
     \tadSemantique{nouvelleFile}{Créer la nouvelle file de priorité à partir de l'actuelle}
-    \tadSemantique{estVide}{Cherche si la file de priotité est vide ou non}
-    \tadSemantique{estPresent}{Cherche si un élément donné est présent dans la file ou non}
-    \tadSemantique{obtenirElement}{Donne le dernier élément de la file}
 \end{tadSemantiques}
     
 
