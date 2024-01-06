@@ -1,3 +1,9 @@
+/**
+ * \file Decompression.h
+ * \brief Implantation de l'analyse Desvendante Decompression pour le Compresseur d'Huffman
+ * \author A. El Faïq, T. Barsot, W. Vilayvong, E. Lefeuvre
+ *
+ */
 #ifndef  __DECOMPRESSION__
 #define __DECOMPRESSION__
 
@@ -9,11 +15,54 @@
 #include "Statistiques.h"
 
 
+/**
+ * \fn DECOMP_decompresser(char nomFichierHuffman[])
+ * \brief Fonction qui permet de décompresser un fichier compressé
+ * \param nomFichier : fichier à décompresser
+ * \return FILE
+ */
 FILE DECOMP_decompresser(char nomFichierHuffman[]);
-FileDePriorite DECOMP_obtenirFileDePriorite();
+
+
+/**
+ * \fn DECOMP_obtenirFileDePriorite()
+ * \brief Fonction qui permet d'obtenir la file de priorité à partir des statistiques du fichier compressé
+ *
+ * \param stats : Ensemble de statistiques du fichier compressé
+ * \return FileDePriorite
+ */
+FileDePriorite DECOMP_obtenirFileDePriorite(stats : Ensemble de Statistiques);
+
+
+/**
+ * \fn DECOMP_obtenirStatistiques(char nomfichier[])
+ * \brief Fonction qui permet de lire les statistiques du fichier compressé
+ *
+ * \param nomfichier : fichier compressé à lire
+ * \return Ensemble
+ */
 Ensemble DECOMP_obtenirStatistiques(char nomfichier[]);
+
+
+/**
+ * \fn DECOMP_creerArbreHuffman(Statistiques stats)
+ * \brief Fonction qui crée un arbre à partir de statistiques
+ *
+ * \param stat : statistiques de l'arbre créé
+ * \return ArbreHuffman
+ */
 ArbreHuffman DECOMP_creerArbreHuffman(Statistiques stat);
+
+
+/**
+ * \fn DECOMP_insererArbre(FileDePriorite file, ArbreHuffman arbre)
+ * \brief Fonction qui insère un arbre dans une file
+ *
+ * \param arbre : arbre à insérer
+ * \param file : file à parcourir
+ * \return FileDePriorite
+ */
 FileDePriorite DECOMP_insererArbre(FileDePriorite file, ArbreHuffman arbre);
-ArbreHuffman DECOMP_creerArbre(Statistiques stats);
+
 
 #endif

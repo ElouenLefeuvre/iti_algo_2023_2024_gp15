@@ -101,7 +101,3 @@ FileDePriorite DECOMP_insererArbre(FileDePriorite file, ArbreHuffman arbre) {
     FDP_enfiler(arbre,file);
     return file;
 }
-
-ArbreHuffman DECOMP_creerArbre(Statistiques stats) {
-    return AH_arbrehuffman(stats);
-}
