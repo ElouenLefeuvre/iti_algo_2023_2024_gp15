@@ -1,28 +1,33 @@
 \subsection{TAD FileDePriorite}
 
 \begin{algorithme}
-\signatureFonction{ filedePriorite}{}{FileDePriorite}
+\signatureFonction{filedePriorite}{}{FileDePriorite}
 {}
 \end{algorithme}
 
 \begin{algorithme}
-    \signatureProcedure{enfiler}{\paramEntreeSortie{file : FileDePriorite} , \paramEntree{arbreH : ArbreHuffman}}
+    \signatureProcedure{enfiler}{\paramEntreeSortie{file : FileDePriorite} , \paramEntree{arbre : ArbreHuffman}}
     {}
 \end{algorithme}
 
 \begin{algorithme}
-        \signatureProcedure{defiler}{\paramEntreeSortie{file : FileDePriorite} }
+    \signatureFonction{createNoeud}{arbreOfLCA : ArbreHuffman}{Noeud}
+    {}
+\end{algorithme}
+
+\begin{algorithme}
+    \signatureFonction{trouverIndicePourInsere}{arbre : ArbreHuffman, file : FileDePriorite}{\naturel}
+    {}
+\end{algorithme}
+
+\begin{algorithme}
+        \signatureProcedure{defiler}{\paramEntreeSortie{file : FileDePriorite}}
         {non(estVide(file))}
 \end{algorithme}
 
 \begin{algorithme}
-    \signatureFonction{obtenirElement}{file : FileDePriorite }{ArbreHuffman}
-    {non(estVide(file))}
-\end{algorithme}
-
-\begin{algorithme}
-    \signatureFonction{obtenirArbre}{file : FileDePriorite }{ArbreHuffmann}
-    {non(estVide(file))}
+    \signatureFonction{obtenirElement}{file : FileDePriorite, i :\naturelNonNul}{ArbreHuffman}
+    {i$<$\champ{file}{longueur}}
 \end{algorithme}
 
 \begin{algorithme}
