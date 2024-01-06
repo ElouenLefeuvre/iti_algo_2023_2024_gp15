@@ -32,13 +32,23 @@ struct ArbreHuffman {
 ArbreHuffman* AH_arbreDeHuffman(Statistiques stat);
 
 /**
- * \fn int AH_obtenirOccurences(ArbreHuffman arbre)
- * \brief Fonction qui permet d'obtenir le nombre d'occurences de la statistique contenue dans l'arbre
+ * \fn ArbreHuffman AH_fixerStatistique(ArbreHuffman arbre,Statistiques stat)
+ * \brief Fonction qui permet de fixer la statistique à un arbre
  *
- * \param arbre : L'arbre dont on veut connaître le nombre d'occurences
- * \return int
+ * \param arbre : Arbre dont on veut fixer la statistique
+ * \param stat : Statistique qu'on veut fixer
+
  */
-int AH_obtenirOccurences(ArbreHuffman arbre);
+void AH_fixerStatistique(ArbreHuffman *arbre,Statistiques stat);
+
+/**
+ * \fn int AH_obtenirStat(ArbreHuffman arbre)
+ * \brief Fonction qui permet d'obtenir la statistique contenue dans l'arbre
+ *
+ * \param arbre : L'arbre dont on veut connaître la statistique
+ * \return Statistiques
+ */
+Statistiques AH_obtenirStat(ArbreHuffman arbre);
 
 /**
  * \fn ArbreHuffman AH_fusionner(ArbreHuffman ah1,ArbreHuffman ah2)
@@ -112,10 +122,29 @@ bool AH_estFeuille(ArbreHuffman arbre);
  */
 bool AH_estPresent(ArbreHuffman* arbre, char caractere);
 
+
+/**
+ * \fn AH_obtenirCaracter(ArbreHuffman arbre)
+ * \brief Fonction qui permet d'obtenir le caractère d'un arbre
+ * \param arbre : l'arbre 
+ * \return char
+ */
 char AH_obtenirCaracter(ArbreHuffman arbre);
 
+/**
+ * \fn AH_obtenirPonderation(ArbreHuffman arbre)
+ * \brief Fonction qui permet d'obtenir la pondération d'un arbre
+ * \param arbre : l'arbre 
+ * \return int
+ */
 int AH_obtenirPonderation(ArbreHuffman arbre);
 
+
+/**
+ * \fn AH_afficherArbre(ArbreHuffman *arbre)
+ * \brief Fonction qui permet d'afficher les éléments d'un arbre
+ * \param arbre : l'arbre 
+ */
 void AH_afficherArbre(ArbreHuffman *arbre);
 
 

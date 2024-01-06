@@ -1,5 +1,5 @@
 /**
- * \file Statistiques.h
+ * \file Octet.h
  * \brief Implantation du TAD Octet pour le Compresseur d'Huffman
  * \author A. El Faïq, T. Barsot, W. Vilayvong, E. Lefeuvre
  *

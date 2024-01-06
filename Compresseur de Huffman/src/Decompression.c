@@ -7,62 +7,16 @@
 #include"Statistiques.h"
 #include"ArbreHuffman.h"
 
-FILE DECOMP_decompresser(char[] nomFichierHuffman) {
-    Ensemble stats_fic = E_initialiserEnsemble(sizeof(Statistiques));
-    FileDePriorite file;
-    ArbreHuffman arbre,temp;
-    Char digit;
-    FILE *fictexte=NULL;
-    FILE *fichier_h=NULL;
 
-    stats_fic = DECOMP_obtenirStatistiques(nomFichierHuffman);
-    file = DECOMP_obtenirFileDePriorite(stats_fic);
-    arbre = FDP_obtenirElement(file);
-    while(!(EOF(fichier_h))) {
-        fichier_h = fopen(nomFichierHuffman, "r");
-        temp = arbre;
-        while(!(estFeuille(temp))) {
-            digit = fgetc(fichier_h);
-            if (digit==0) {
-                temp = AH_obtenirFilsGauche(temp);
-                }
-            else {
-                temp = AH_obtenirFilsDroit(temp);
-            }
-        
-        }
-        int err = fclose(fichier_h);
-        if (err!=0) {
-        printf("Erreur de fermeture du fichier_h");  
-        }
-
-        fictexte = fopen(nomfichierTexte,"a");
-        fputc(S_obtenirCaractere(temp.statistiques), fictexte);
-
-        int err2 = fclose(fictexte);
-        if (err2!=0) {
-        printf("Erreur de fermeture du fichier texte");  
-        }
-    }
-    return fictexte;
+ArbreHuffman* DECOMP_creerArbreHuffman(Statistiques stat) {
+    return AH_arbreDeHuffman(stat);
 }
 
-FileDePriorite DECOMP_obtenirFileDePriorite(stats : Ensemble de Statistiques){
-    FileDePriorite file;
-    Ensemble ens = E_initialiserEnsemble(sizeof(ArbreHuffman))
-
-    file = FDP_fileDePriorite();
-    for (size_t i=1;i<stats.taille;i++) {
-        ajouter(ens,AH_arbrehuffman(stats.elements[i]))
-    }
-    for (size_t i=1;i<ens.taille;i++) {
-        FDP_enfiler(file,ens.elements[i])
-    }
-    while(file.longueur>1) {
-        FDP_nouvelleFile(file);
-    }
-    return file;
+FileDePriorite DECOMP_insererArbre(FileDePriorite* file, ArbreHuffman* arbre) {
+    FDP_enfiler(file,arbre);
+    return *file;
 }
+
 
 Ensemble DECOMP_obtenirStatistiques(char nomfichier[]){
     Ensemble ens = E_initialiserEnsemble(sizeof(Statistiques));
@@ -86,22 +40,71 @@ Ensemble DECOMP_obtenirStatistiques(char nomfichier[]){
     else {
         printf("Impossible d'ouvrir le fichier  : %s\n", nomfichier);
     }
-    int err = fclose(fic);
+    int err = fclose(fichier);
     if (err!=0) {
         printf("Erreur de fermeture de fichier");  
         }
     return ens;
 }
 
-ArbreHuffman DECOMP_creerArbreHuffman(Statistiques stat) {
-    return AH_arbrehuffman(stat);
-}
+FileDePriorite DECOMP_obtenirFileDePriorite(Ensemble stats){
+    FileDePriorite file;
+    Ensemble ens = E_initialiserEnsemble(sizeof(ArbreHuffman));
 
-FileDePriorite DECOMP_insererArbre(FileDePriorite file, ArbreHuffman arbre) {
-    FDP_enfiler(arbre,file);
+    file = FDP_fileDePriorite();
+    for (size_t i=1;i<stats.taille;i++) {
+        E_ajouter(&ens, DECOMP_creerArbreHuffman(*(Statistiques*)stats.elements[i]));
+    }
+    for (size_t i=1;i<ens.taille;i++) {
+        FDP_enfiler(&file,ens.elements[i]);
+    }
+    while(file.longueur>1) {
+        FDP_nouvelleFile(&file);
+    }
     return file;
 }
 
-ArbreHuffman DECOMP_creerArbre(Statistiques stats) {
-    return AH_arbrehuffman(stats);
+
+FILE* DECOMP_decompresser(char nomFichierHuffman[]) {
+    Ensemble stats_fic = E_initialiserEnsemble(sizeof(Statistiques));
+    FileDePriorite file;
+    ArbreHuffman arbre;
+    ArbreHuffman* temp;
+    char digit;
+    FILE *fictexte=NULL;
+    FILE *fichier_h=NULL;
+
+    stats_fic = DECOMP_obtenirStatistiques(nomFichierHuffman);
+    file = DECOMP_obtenirFileDePriorite(stats_fic);
+    arbre = FDP_obtenirElement(file,1);
+    while(fscanf(fichier_h, "%c", &digit) != EOF) {
+        fichier_h = fopen(nomFichierHuffman, "r");
+        temp = &arbre;
+        while(!(AH_estFeuille(*temp))) {
+            digit = fgetc(fichier_h);
+            if (digit== '0') {
+                temp = AH_obtenirFilsGauche(temp);
+                }
+            else {
+                temp = AH_obtenirFilsDroit(temp);
+            }
+        
+        }
+        int err = fclose(fichier_h);
+        if (err!=0) {
+        printf("Erreur de fermeture du fichier_h");
+        return NULL;
+        }
+
+        fictexte = fopen(nomFichierHuffman,"a");
+        fputc(S_obtenirCaractere(temp->statistiques), fictexte);
+
+        int err2 = fclose(fictexte);
+        if (err2!=0) {
+        printf("Erreur de fermeture du fichier texte");  
+        return NULL;
+        }
+    }
+    return fictexte;
 }
+

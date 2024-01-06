@@ -64,7 +64,7 @@ bool FDP_estVide(FileDePriorite *fp);
 
 /**
  * \fn FileDePriorite FDP_fileDePriorite()
- * \brief PErmet de creer et initialiser une file
+ * \brief Permet de creer et initialiser une file
  *
  * \return FileDePriorite
  */
@@ -72,25 +72,26 @@ FileDePriorite FDP_fileDePriorite();
 
 /**
  * \fn void FDP_enfiler(FileDePriorite *file,ArbreHuffman* arbre)
- * \brief fonction qui enfile en prenant en consideration l'ordre
+ * \brief Fonction qui enfile en prenant en consideration l'ordre
  *
- * \param fp : file ou on enfile
- * \param arbre : l'arbre a enfiler
+ * \param file : file où on enfile
+ * \param arbre : l'arbre à enfiler
  */
 void FDP_enfiler(FileDePriorite *file,ArbreHuffman* arbre);
 
 
 /**
  * \fn Noeud* FDP_createNoeud(ArbreHuffman* arbreOfLCA);
- * \brief cree un noeud qui contient un arbre et un pointeur vers un autre
- *
+ * \brief Crée un noeud qui contient un arbre et un pointeur vers un autre
+ * \param arbreOfLCA : Crée un noeud dans la file, en fixant son champ arbre
  * \return Noeud*
  */
 Noeud* FDP_createNoeud(ArbreHuffman* arbreOfLCA);
 
 /**
  * \fn void FDP_afficherFileDEPriorite(FileDePriorite* file);
- * \brief affiche la file pour avoir une vision plus pratique et graphique
+ * \brief Affiche la file pour avoir une vision plus pratique et graphique
+ * \param file : file à afficher
  *
  */
 void FDP_afficherFileDEPriorite(FileDePriorite* file);
@@ -105,8 +106,9 @@ void FDP_afficherFileDEPriorite(FileDePriorite* file);
 
 /**
  * \fn int trouverIndicePourInsere(ArbreHuffman* arbre,FileDePriorite* file);
- * \brief elle permet de trouver l'indice du dernier element plus grand que la ponderation de l'arbre qu'on veut inserer 
- *
+ * \brief Permet de trouver l'indice du dernier élement plus grand que la ponderation de l'arbre qu'on veut insérer 
+ * \param arbre : arbre à insérer
+ * \param file : file à parcourir
  * \return int
  */
 int trouverIndicePourInsere(ArbreHuffman* arbre,FileDePriorite* file);

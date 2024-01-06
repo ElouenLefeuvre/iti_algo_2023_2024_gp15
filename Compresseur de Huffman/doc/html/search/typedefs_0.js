@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['noeud_136',['Noeud',['../_file_de_priorite_8h.html#a8e9241b13e33c89b710a91795150ede0',1,'Noeud():&#160;FileDePriorite.h'],['../_table_de_codage_8h.html#a8e9241b13e33c89b710a91795150ede0',1,'Noeud():&#160;TableDeCodage.h']]]
+  ['arbrehuffman_194',['ArbreHuffman',['../_arbre_huffman_8h.html#a3428c82af17b7c591072ada6377706cc',1,'ArbreHuffman.h']]]
 ];

@@ -12,8 +12,8 @@
 
 \begin{algorithme}
 	\signatureFonction{obtenirCode}
-		{tab : TableDeCodage, car : \caractere}{CodeBinaire}
-		{estPresent(tab,car)}
+		{tab : TableDeCodage, c : \caractere}{CodeBinaire}
+		{estPresent(tab,c)}
 \end{algorithme}
 
 \begin{algorithme}
@@ -24,19 +24,26 @@
 
 \begin{algorithme}
 	\signatureProcedure{ajouter}
-		{\paramEntreeSortie{ tab : TableDeCodage} \paramEntree{ car : \caractere, code : CodeBinaire}}
+		{\paramEntreeSortie{tab : TableDeCodage} \paramEntree{c : \caractere, code : CodeBinaire}}
 		{}
 \end{algorithme}
 
 \begin{algorithme}
-	\signatureProcedure{retirer}
-		{\paramEntreeSortie{ tab : TableDeCodage} \paramEntree{ car : \caractere}}
+	\signatureProcedure{supprimer}
+		{\paramEntreeSortie{tab : TableDeCodage} \paramEntree{c : \caractere, code : CodeBinaire}}
 		{}
 \end{algorithme}
 
 \begin{algorithme}
 	\signatureFonction{estPresent}
-		{tab : TableDeCodage, car : \caractere}{\booleen}
+		{tab : TableDeCodage, c : \caractere}{\booleen}
+		{}
+\end{algorithme}
+
+
+\begin{algorithme}
+	\signatureFonction{estVide}
+		{tab : TableDeCodage}{\booleen}
 		{}
 \end{algorithme}
 
