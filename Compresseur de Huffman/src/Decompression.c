@@ -1,110 +1,86 @@
-#include <string.h>
-#include<stdio.h>
-#include<stdbool.h>
-#include<stdlib.h>
-#include"Ensemble.h"
-#include"FileDePriorite.h"
-#include"Statistiques.h"
-#include"ArbreHuffman.h"
+#include "octet.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "CodeBinaire.h"
+#include "Statistiques.h"
+#include "ArbreHuffman.h"
+#include "FileDePriorite.h"
+#include "TableDeCodage.h"
+#define TAILLE_MAX 1000 
 
 
-ArbreHuffman* DECOMP_creerArbreHuffman(Statistiques stat) {
-    return AH_arbreDeHuffman(stat);
+FileDePriorite DECOMP_fileFromFILE(FileDePriorite fp,char caracter,int ponderation){
+    Statistiques stat= S_statistique(caracter,ponderation); 
+    ArbreHuffman* arbre= AH_arbreDeHuffman(stat);
+    FDP_enfiler(&fp,arbre);
+    return fp;
 }
 
-FileDePriorite DECOMP_insererArbre(FileDePriorite* file, ArbreHuffman* arbre) {
-    FDP_enfiler(file,arbre);
-    return *file;
+
+ArbreHuffman DECOMP_arbrePrincipale(FileDePriorite fp){
+    
+    while(fp.longueur != 1){
+        ArbreHuffman arbre1 = FDP_obtenirElement(fp, fp.longueur);
+        ArbreHuffman arbre2 = FDP_obtenirElement(fp, fp.longueur - 1);
+        FDP_defiler(&fp);
+        FDP_defiler(&fp);
+        ArbreHuffman* arbreFusionne1 = AH_fusionner(&arbre1,&arbre2);
+        ArbreHuffman* copy = copierArbreHuffman(arbreFusionne1);
+        FDP_enfiler(&fp, copy);
+    }
+
+    return FDP_obtenirElement(fp,0);
 }
 
 
-Ensemble DECOMP_obtenirStatistiques(char nomfichier[]){
-    Ensemble ens = E_initialiserEnsemble(sizeof(Statistiques));
-    FILE *fichier = NULL;
+FILE* DECOMP_decompresser(const char* fileName){
+    FILE *file = fopen(fileName, "r");
+    char tailleStr[TAILLE_MAX] = "";
+    int taille = 1;
+
+    if (file == NULL) {
+        perror("Erreur lors de l'ouverture du fichier");
+        exit(EXIT_FAILURE);
+    }
+
+    
+    if(fgets(tailleStr, TAILLE_MAX, file) != NULL){
+        taille= atoi(tailleStr);
+    }
+
+    char c;
+    FileDePriorite fp= FDP_fileDePriorite();
+    while((c = fgetc(file)) != '\n'){ 
+        char statCaracter = c;      
+        c= fgetc(file);
+        int statPonderation = atoi(&c);
+        fp = DECOMP_fileFromFILE(fp,statCaracter,statPonderation);
+    }
+
+    const char *decompressed = "decompressedFile.txt";
+    FILE* decompresssedFile = fopen(decompressed,"w");
+    ArbreHuffman arbrePrincipale = DECOMP_arbrePrincipale(fp);
+    ArbreHuffman *tmp = &arbrePrincipale;
     char car;
-    char entier;
-    car = '0';
-    Statistiques stat;
-    fichier = fopen(nomfichier,"r");
-    if (fichier != NULL){ 
-        while(car != '/') {
-            car = fgetc(fichier);
-            if (car!='/') { // il prend le carac / si je vérifie pas de nouveau
-                entier = fgetc(fichier);
-                stat = S_statistique(car,atoi(&entier));
-                E_ajouter(&ens,&stat);
-            }
-            
+    while((car = fgetc(file)) != EOF){ 
+        if(car== '.'){
+            continue;
         }
-    }
-    else {
-        printf("Impossible d'ouvrir le fichier  : %s\n", nomfichier);
-    }
-    int err = fclose(fichier);
-    if (err!=0) {
-        printf("Erreur de fermeture de fichier");  
-        }
-    return ens;
-}
 
-FileDePriorite DECOMP_obtenirFileDePriorite(Ensemble stats){
-    FileDePriorite file;
-    Ensemble ens = E_initialiserEnsemble(sizeof(ArbreHuffman));
-
-    file = FDP_fileDePriorite();
-    for (size_t i=1;i<stats.taille;i++) {
-        E_ajouter(&ens, DECOMP_creerArbreHuffman(*(Statistiques*)stats.elements[i]));
-    }
-    for (size_t i=1;i<ens.taille;i++) {
-        FDP_enfiler(&file,ens.elements[i]);
-    }
-    while(file.longueur>1) {
-        FDP_nouvelleFile(&file);
-    }
-    return file;
-}
-
-
-FILE* DECOMP_decompresser(char nomFichierHuffman[]) {
-    Ensemble stats_fic = E_initialiserEnsemble(sizeof(Statistiques));
-    FileDePriorite file;
-    ArbreHuffman arbre;
-    ArbreHuffman* temp;
-    char digit;
-    FILE *fictexte=NULL;
-    FILE *fichier_h=NULL;
-
-    stats_fic = DECOMP_obtenirStatistiques(nomFichierHuffman);
-    file = DECOMP_obtenirFileDePriorite(stats_fic);
-    arbre = FDP_obtenirElement(file,1);
-    while(fscanf(fichier_h, "%c", &digit) != EOF) {
-        fichier_h = fopen(nomFichierHuffman, "r");
-        temp = &arbre;
-        while(!(AH_estFeuille(*temp))) {
-            digit = fgetc(fichier_h);
-            if (digit== '0') {
-                temp = AH_obtenirFilsGauche(temp);
-                }
-            else {
-                temp = AH_obtenirFilsDroit(temp);
-            }
+        else{
+            if(car== '0') tmp = tmp->filsGauche;
+            else if (car =='1') tmp=tmp->filsDroit;
+        }   
+        if (AH_estFeuille(*tmp)){
+            fprintf(decompresssedFile,"%c",AH_obtenirCaracter(*tmp));
+            tmp = &arbrePrincipale;
         
         }
-        int err = fclose(fichier_h);
-        if (err!=0) {
-        printf("Erreur de fermeture du fichier_h");
-        return NULL;
-        }
-
-        fictexte = fopen(nomFichierHuffman,"a");
-        fputc(S_obtenirCaractere(temp->statistiques), fictexte);
-
-        int err2 = fclose(fictexte);
-        if (err2!=0) {
-        printf("Erreur de fermeture du fichier texte");  
-        return NULL;
-        }
     }
-    return fictexte;
+    fclose(file);
+    return NULL;
 }
+
+
+
 

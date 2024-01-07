@@ -158,7 +158,13 @@ bool O_estVide(const Octet* octet) {
 }
 
 
-
+Octet O_inverser(Octet o){
+    Octet result = O_creerOctet();
+    for(int i=0;i<8;i++){
+        O_fixerBit(&result,i,O_iemeBit(o,7-i));
+    }
+    return result;
+}
 
 
 
