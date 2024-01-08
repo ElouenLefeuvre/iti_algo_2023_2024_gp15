@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['codebinaire_99',['CodeBinaire',['../struct_code_binaire.html',1,'']]]
+  ['codebinaire_85',['CodeBinaire',['../struct_code_binaire.html',1,'']]]
 ];

@@ -117,9 +117,9 @@ Fonctions</h2></td></tr>
 <tr class="memitem:a7c712ec0c055ed84792db5b608530d68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_code_binaire_8h.html#a7c712ec0c055ed84792db5b608530d68">CB_remplirCodeBinaire</a> (<a class="el" href="struct_code_binaire.html">CodeBinaire</a> *code, const char *chaine)</td></tr>
 <tr class="memdesc:a7c712ec0c055ed84792db5b608530d68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de remplir un code binaire avec une chaîne de caractère.  <a href="_code_binaire_8h.html#a7c712ec0c055ed84792db5b608530d68">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a7c712ec0c055ed84792db5b608530d68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a007b0791c00eca69b44f38e2e72a0d93"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_code_binaire.html">CodeBinaire</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_code_binaire_8h.html#a007b0791c00eca69b44f38e2e72a0d93">AH_CbFromAH</a> (<a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> *a, char car)</td></tr>
-<tr class="memdesc:a007b0791c00eca69b44f38e2e72a0d93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de calculer un code binaire à partir d'un arbre d'Huffman et d'un caractere.  <a href="_code_binaire_8h.html#a007b0791c00eca69b44f38e2e72a0d93">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a007b0791c00eca69b44f38e2e72a0d93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abeeb47ab20d492d90c14473b8569db0c"><td class="memItemLeft" align="right" valign="top"><a id="abeeb47ab20d492d90c14473b8569db0c"></a>
+<a class="el" href="struct_code_binaire.html">CodeBinaire</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CB_CbFromAH</b> (<a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> *a, char car)</td></tr>
+<tr class="separator:abeeb47ab20d492d90c14473b8569db0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51216f82f75a6fcf8483fa3d3c4bd9b2"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_code_binaire_8h.html#a51216f82f75a6fcf8483fa3d3c4bd9b2">AH_obtenirCodeBinaire</a> (<a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> *a, char car)</td></tr>
 <tr class="memdesc:a51216f82f75a6fcf8483fa3d3c4bd9b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de trouver la chaine de caractere qui va être convertie en code binaire par AH_CbFromAH.  <a href="_code_binaire_8h.html#a51216f82f75a6fcf8483fa3d3c4bd9b2">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a51216f82f75a6fcf8483fa3d3c4bd9b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,44 +131,6 @@ Fonctions</h2></td></tr>
 <div class="textblock"><p>Implantation du TAD Code Binaire pour le Compresseur d'Huffman. </p>
 <dl class="section author"><dt>Auteur</dt><dd>A. El Faïq, T. Barsot, W. Vilayvong, E. Lefeuvre </dd></dl>
 </div><h2 class="groupheader">Documentation des fonctions</h2>
-<a id="a007b0791c00eca69b44f38e2e72a0d93"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a007b0791c00eca69b44f38e2e72a0d93">&#9670;&nbsp;</a></span>AH_CbFromAH()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_code_binaire.html">CodeBinaire</a> AH_CbFromAH </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> *&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>car</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Fonction qui permet de calculer un code binaire à partir d'un arbre d'Huffman et d'un caractere. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">a</td><td>: l' arbre </td></tr>
-    <tr><td class="paramname">car</td><td>: le caractere dont on veut calculer le code </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd><a class="el" href="struct_code_binaire.html">CodeBinaire</a> </dd></dl>
-
-</div>
-</div>
 <a id="a51216f82f75a6fcf8483fa3d3c4bd9b2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a51216f82f75a6fcf8483fa3d3c4bd9b2">&#9670;&nbsp;</a></span>AH_obtenirCodeBinaire()</h2>
 
@@ -468,7 +430,7 @@ Fonctions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Samedi 6 Janvier 2024 14:45:17 pour Compresseur de Huffman par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+Généré le Lundi 8 Janvier 2024 19:25:01 pour Compresseur de Huffman par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
 </small></address>
 </body>
 </html>

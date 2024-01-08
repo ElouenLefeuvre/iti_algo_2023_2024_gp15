@@ -85,97 +85,43 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a1bdac482016186aabc51e1a8d45a5ca2"><td class="memItemLeft" align="right" valign="top">FILE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_decompression_8h.html#a1bdac482016186aabc51e1a8d45a5ca2">DECOMP_decompresser</a> (char nomFichierHuffman[])</td></tr>
-<tr class="memdesc:a1bdac482016186aabc51e1a8d45a5ca2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de décompresser un fichier compressé  <a href="_decompression_8h.html#a1bdac482016186aabc51e1a8d45a5ca2">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a1bdac482016186aabc51e1a8d45a5ca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7476ae161c1a4a362cc741fb78dfbdad"><td class="memItemLeft" align="right" valign="top"><a id="a7476ae161c1a4a362cc741fb78dfbdad"></a>
-<a class="el" href="struct_file_de_priorite.html">FileDePriorite</a>&#160;</td><td class="memItemRight" valign="bottom"><b>DECOMP_obtenirFileDePriorite</b> (stats :<a class="el" href="struct_ensemble.html">Ensemble</a> de <a class="el" href="struct_statistiques.html">Statistiques</a>)</td></tr>
-<tr class="separator:a7476ae161c1a4a362cc741fb78dfbdad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac66d7ff3f40ddf9650b1a060158b53a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_ensemble.html">Ensemble</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_decompression_8h.html#ac66d7ff3f40ddf9650b1a060158b53a6">DECOMP_obtenirStatistiques</a> (char nomfichier[])</td></tr>
-<tr class="memdesc:ac66d7ff3f40ddf9650b1a060158b53a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de lire les statistiques du fichier compressé  <a href="_decompression_8h.html#ac66d7ff3f40ddf9650b1a060158b53a6">Plus de détails...</a><br /></td></tr>
-<tr class="separator:ac66d7ff3f40ddf9650b1a060158b53a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a358582895229cf38ce38cce021626e7d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_decompression_8h.html#a358582895229cf38ce38cce021626e7d">DECOMP_creerArbreHuffman</a> (<a class="el" href="struct_statistiques.html">Statistiques</a> stat)</td></tr>
-<tr class="memdesc:a358582895229cf38ce38cce021626e7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui crée un arbre à partir de statistiques.  <a href="_decompression_8h.html#a358582895229cf38ce38cce021626e7d">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a358582895229cf38ce38cce021626e7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9db2491e7db209ba773800a552adca77"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_file_de_priorite.html">FileDePriorite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_decompression_8h.html#a9db2491e7db209ba773800a552adca77">DECOMP_insererArbre</a> (<a class="el" href="struct_file_de_priorite.html">FileDePriorite</a> file, <a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> arbre)</td></tr>
-<tr class="memdesc:a9db2491e7db209ba773800a552adca77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui insère un arbre dans une file.  <a href="_decompression_8h.html#a9db2491e7db209ba773800a552adca77">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a9db2491e7db209ba773800a552adca77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6ebf544f812448802bcc4c63ac81edb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_file_de_priorite.html">FileDePriorite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_decompression_8h.html#ab6ebf544f812448802bcc4c63ac81edb">DECOMP_fileFromFILE</a> (<a class="el" href="struct_file_de_priorite.html">FileDePriorite</a> fp, char caracter, int ponderation)</td></tr>
+<tr class="memdesc:ab6ebf544f812448802bcc4c63ac81edb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet d'obtenir la file de priorité à partir des statistiques du fichier compressé  <a href="_decompression_8h.html#ab6ebf544f812448802bcc4c63ac81edb">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab6ebf544f812448802bcc4c63ac81edb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84246909f8349f274c991a2f08333b76"><td class="memItemLeft" align="right" valign="top"><a id="a84246909f8349f274c991a2f08333b76"></a>
+FILE *&#160;</td><td class="memItemRight" valign="bottom"><b>DECOMP_decompresser</b> (const char *fileName)</td></tr>
+<tr class="separator:a84246909f8349f274c991a2f08333b76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06a033d804bb939c9fc20b62072239a4"><td class="memItemLeft" align="right" valign="top"><a id="a06a033d804bb939c9fc20b62072239a4"></a>
+<a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a>&#160;</td><td class="memItemRight" valign="bottom"><b>DECOMP_arbrePrincipale</b> (<a class="el" href="struct_file_de_priorite.html">FileDePriorite</a> fp)</td></tr>
+<tr class="separator:a06a033d804bb939c9fc20b62072239a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Implantation de l'analyse Desvendante Decompression pour le Compresseur d'Huffman. </p>
 <dl class="section author"><dt>Auteur</dt><dd>A. El Faïq, T. Barsot, W. Vilayvong, E. Lefeuvre </dd></dl>
 </div><h2 class="groupheader">Documentation des fonctions</h2>
-<a id="a358582895229cf38ce38cce021626e7d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a358582895229cf38ce38cce021626e7d">&#9670;&nbsp;</a></span>DECOMP_creerArbreHuffman()</h2>
+<a id="ab6ebf544f812448802bcc4c63ac81edb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6ebf544f812448802bcc4c63ac81edb">&#9670;&nbsp;</a></span>DECOMP_fileFromFILE()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> DECOMP_creerArbreHuffman </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_statistiques.html">Statistiques</a>&#160;</td>
-          <td class="paramname"><em>stat</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Fonction qui crée un arbre à partir de statistiques. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">stat</td><td>: statistiques de l'arbre créé </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd><a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> </dd></dl>
-
-</div>
-</div>
-<a id="a1bdac482016186aabc51e1a8d45a5ca2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1bdac482016186aabc51e1a8d45a5ca2">&#9670;&nbsp;</a></span>DECOMP_decompresser()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">FILE DECOMP_decompresser </td>
-          <td>(</td>
-          <td class="paramtype">char[]&#160;</td>
-          <td class="paramname"><em>nomFichierHuffman</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Fonction qui permet de décompresser un fichier compressé </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">nomFichier</td><td>: fichier à décompresser </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>FILE </dd></dl>
-
-</div>
-</div>
-<a id="a9db2491e7db209ba773800a552adca77"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9db2491e7db209ba773800a552adca77">&#9670;&nbsp;</a></span>DECOMP_insererArbre()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_file_de_priorite.html">FileDePriorite</a> DECOMP_insererArbre </td>
+          <td class="memname"><a class="el" href="struct_file_de_priorite.html">FileDePriorite</a> DECOMP_fileFromFILE </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_file_de_priorite.html">FileDePriorite</a>&#160;</td>
-          <td class="paramname"><em>file</em>, </td>
+          <td class="paramname"><em>fp</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a>&#160;</td>
-          <td class="paramname"><em>arbre</em>&#160;</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>caracter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ponderation</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -185,11 +131,12 @@ Fonctions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Fonction qui insère un arbre dans une file. </p>
+<p>Fonction qui permet d'obtenir la file de priorité à partir des statistiques du fichier compressé </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">arbre</td><td>: arbre à insérer </td></tr>
-    <tr><td class="paramname">file</td><td>: file à parcourir </td></tr>
+    <tr><td class="paramname">fp</td><td>une file de priorite </td></tr>
+    <tr><td class="paramname">caracter</td><td>: un caractere </td></tr>
+    <tr><td class="paramname">ponderation</td><td>une ponderation </td></tr>
   </table>
   </dd>
 </dl>
@@ -197,37 +144,10 @@ Fonctions</h2></td></tr>
 
 </div>
 </div>
-<a id="ac66d7ff3f40ddf9650b1a060158b53a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac66d7ff3f40ddf9650b1a060158b53a6">&#9670;&nbsp;</a></span>DECOMP_obtenirStatistiques()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_ensemble.html">Ensemble</a> DECOMP_obtenirStatistiques </td>
-          <td>(</td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>nomfichier</em>[]</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Fonction qui permet de lire les statistiques du fichier compressé </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">nomfichier</td><td>: fichier compressé à lire </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd><a class="el" href="struct_ensemble.html" title="Le type Ensemble permet d&#39;implementer plusieurs fonctions nécessaire dans compresser et décompresser.">Ensemble</a> </dd></dl>
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Samedi 6 Janvier 2024 14:45:17 pour Compresseur de Huffman par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+Généré le Lundi 8 Janvier 2024 19:25:01 pour Compresseur de Huffman par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
 </small></address>
 </body>
 </html>
