@@ -16,6 +16,13 @@
     numbers=left,
     numberstyle=\tiny\color{gray},
     breaklines=true,
+    literate=
+    {à}{{\'a}}1 
+    {è}{{\`{e}}}1
+    {î}{{\^i}}1
+    {ê}{{\^e}}1
+    {ù}{{\`u}}1
+    {é}{{\'e}}1,
     showstringspaces=false,
     frame=single,
     tabsize=2
@@ -64,26 +71,26 @@
 
 \subsection{Decompression}
 
-\input{../TAD.tex}
+\input{TAD.tex}
 
 
 
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.8\linewidth]{Analyse_decsendante_compression.jpg}
-  \caption{Analyse Descendante Compression}
-  \label{fig:image2}
-\end{figure}
+%\begin{figure}
+%  \centering
+%  \includegraphics[width=0.8\linewidth]{Analyse_decsendante_compression.jpg}
+%  \caption{Analyse Descendante Compression}
+%  \label{fig:image2}
+%\end{figure}
 
 
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.8\linewidth]{Analyse_decsendante_décompression.jpg}
-  \caption{Analyse Descendante Décompression}
-  \label{fig:image3}
-\end{figure}
+%\begin{figure}
+%  \centering
+%  \includegraphics[width=0.8\linewidth]{Analyse_decsendante_décompression.jpg}
+%  \caption{Analyse Descendante Décompression}
+%  \label{fig:image3}
+%\end{figure}
 
 
 \newpage
@@ -152,11 +159,11 @@
 
 \subsection{\textbf{Compression}}
 
-\input{Conception détaillé/CD_Compression.tex}
+%\input{Conception détaillé/CD_Compression.tex}
 
 \subsection{\textbf{Decompression}}
 
-\input{Conception détaillé/CD_Decompression.tex}
+%\input{Conception détaillé/CD_Decompression.tex}
 
 \newpage
 
@@ -164,48 +171,48 @@
 
 \subsection{Code}
 \subsubsection{\textbf{Arbre Huffman}}
-\lstinputlisting[language=C, caption={ArbreHuffman.c}]{src/ArbreHuffman.c}
+\lstinputlisting[language=C, caption={ArbreHuffman.c}]{Compresseur de Huffman/src/ArbreHuffman.c}
 
 \subsubsection{\textbf{Code Binaire}}
-\lstinputlisting[language=C, caption={CodeBinaire.c}]{src/CodeBinaire.c}
+\lstinputlisting[language=C, caption={CodeBinaire.c}]{Compresseur de Huffman/src/CodeBinaire.c}
 
 \subsubsection{\textbf{Statistiques}}
-\lstinputlisting[language=C, caption={Statistiques.c}]{src/Statistiques.c}
+\lstinputlisting[language=C, caption={Statistiques.c}]{Compresseur de Huffman/src/Statistiques.c}
 
 \subsubsection{\textbf{Octet}}
-\lstinputlisting[language=C, caption={Octet.c}]{src/Octet.c}
+\lstinputlisting[language=C, caption={Octet.c}]{Compresseur de Huffman/src/Octet.c}
 
 \subsubsection{\textbf{FileDePriorite}}
-\lstinputlisting[language=C, caption={FileDePriorite.c}]{src/FileDePriorite.c}
+\lstinputlisting[language=C, caption={FileDePriorite.c}]{Compresseur de Huffman/src/FileDePriorite.c}
 
 \subsubsection{\textbf{TableDeCodage}}
-\lstinputlisting[language=C, caption={TableDeCodage.c}]src/{TableDeCodage.c}
+\lstinputlisting[language=C, caption={TableDeCodage.c}]{Compresseur de Huffman/src/TableDeCodage.c}
 
 \subsubsection{\textbf{Compression}}
-\lstinputlisting[language=C, caption={Compression.c}]{src/Compression.c}
+\lstinputlisting[language=C, caption={Compression.c}]{Compresseur de Huffman/src/Compression.c}
 
 \subsubsection{\textbf{Decompression}}
-\lstinputlisting[language=C, caption={Decompression.c}]{src/Decompression.c}
+\lstinputlisting[language=C, caption={Decompression.c}]{Compresseur de Huffman/src/Decompression.c}
 
 \subsection{Tests unitaires}
 
 \subsubsection{\textbf{Arbre Huffman}}
-\lstinputlisting[language=C, caption={testArbreHuffman.c}]{src/tests/testArbreHuffman.c}
+\lstinputlisting[language=C, caption={testArbreHuffman.c}]{Compresseur de Huffman/src/tests/testArbreHuffman.c}
 
 \subsubsection{\textbf{Code Binaire}}
-\lstinputlisting[language=C, caption={testCodeBinaire.c}]{src/tests/testCodeBinaire.c}
+\lstinputlisting[language=C, caption={testCodeBinaire.c}]{Compresseur de Huffman/src/tests/testCodeBinaire.c}
 
 \subsubsection{\textbf{Statistiques}}
-\lstinputlisting[language=C, caption={testFileDePriorite.c}]{src/tests/testFileDePriorite.c}
+\lstinputlisting[language=C, caption={testFileDePriorite.c}]{Compresseur de Huffman/src/tests/testFileDePriorite.c}
 
 \subsubsection{\textbf{Octet}}
-\lstinputlisting[language=C, caption={testOctet.c}]{src/tests/testOctet.c}
+\lstinputlisting[language=C, caption={testOctet.c}]{Compresseur de Huffman/src/tests/testOctet.c}
 
 \subsubsection{\textbf{FileDePriorite}}
-\lstinputlisting[language=C, caption={testStatistiques.c}]{src/tests/testStatistiques.c}
+\lstinputlisting[language=C, caption={testStatistiques.c}]{Compresseur de Huffman/src/tests/testStatistiques.c}
 
 \subsubsection{\textbf{TableDeCodage}}
-\lstinputlisting[language=C, caption={testTableDeCodage.c}]{src/tests/testTableDeCodage.c}
+\lstinputlisting[language=C, caption={testTableDeCodage.c}]{Compresseur de Huffman/src/tests/testTableDeCodage.c}
 
 
 

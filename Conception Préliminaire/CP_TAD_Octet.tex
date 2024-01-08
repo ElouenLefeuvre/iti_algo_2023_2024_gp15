@@ -1,49 +1,49 @@
 \section{TAD Octet}
 
 \begin{algorithme}
-    \signatureFonction{obtenirStartPosition}{}
+    \signatureFonction{obtenirStartPosition}{}{}
     {}
 \end{algorithme}
 
 \begin{algorithme}
-\signatureFonction{creerOctet}{}{Octet}
-{}
-\end{algorithme}
-
-\begin{algorithme}
-    \signatureProcedure{\paramEntreeSortie{octet : \typePointeur{Octet}}
-    \paramEntree{pos : \entier, valeur : Bit}}{}{}
+    \signatureFonction{creerOctet}{}{Octet}
     {}
-\end{algorithme}
-
-\begin{algorithme}
-    \signatureFonction{iemeBit}{octet : Octet, i : \entier}{Bit}
-    {}
-\end{algorithme}
+    \end{algorithme}
     
-
-\begin{algorithme}
-\signatureProcedure{decaler}{\paramEntreeSortie{octet : \typePointeur{Octet}}}{}
-{}
-
-\end{algorithme}
-
-\begin{algorithme}
-\signatureFonction{bitsToStr}{octet : \typePointeur{Octet}}{\chaine}
-{}
-\end{algorithme}
-
-\begin{algorithme}
-    \signatureFonction{strToBits}{chaine : \chaine}{Octet}
+    \begin{algorithme}
+        \signatureProcedure{\paramEntreeSortie{octet : \typePointeur{Octet}}
+        \paramEntree{pos : \entier, valeur : Bit}}{}{}
+        {}
+    \end{algorithme}
+    
+    \begin{algorithme}
+        \signatureFonction{iemeBit}{octet : Octet, i : \entier}{Bit}
+        {}
+    \end{algorithme}
+        
+    
+    \begin{algorithme}
+    \signatureProcedure{decaler}{\paramEntreeSortie{octet : \typePointeur{Octet}}}{}
     {}
-\end{algorithme}
-
-\begin{algorithme}
-    \signatureProcedure{encoder}{}{}
+    
+    \end{algorithme}
+    
+    \begin{algorithme}
+    \signatureFonction{bitsToStr}{octet : \typePointeur{Octet}}{\chaine}
     {}
-\end{algorithme}
-
-\begin{algorithme}
-    \signatureFonction{estVide}{\booleen}{octet : \champPointeur{Octet}}
-    {}
-\end{algorithme}
+    \end{algorithme}
+    
+    \begin{algorithme}
+        \signatureFonction{strToBits}{chaine : \chaine}{Octet}
+        {}
+    \end{algorithme}
+    
+    \begin{algorithme}
+        \signatureProcedure{encoder}{}{}
+        {}
+    \end{algorithme}
+    
+    \begin{algorithme}
+        \signatureFonction{estVide}{\booleen}{octet : \champPointeur{Octet}}
+        {}
+    \end{algorithme}

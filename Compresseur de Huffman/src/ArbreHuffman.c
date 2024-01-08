@@ -112,16 +112,16 @@ void AH_afficherArbre(ArbreHuffman *arbre) {
     int capacitePile = 10;
     int taillePile = 0;
 
-    // Empilement du nœud racine
+    // Empilement du noeud racine
     StackNode racineNode = {arbre, 0};
     pile = realloc(pile, capacitePile * sizeof(StackNode));
     pile[taillePile++] = racineNode;
 
     while (taillePile > 0) {
-        // Dépilement du nœud
+        // Dépilement du noeud
         StackNode noeudCourant = pile[--taillePile];
 
-        // Affichage du nœud
+        // Affichage du noeud
         for (int i = 0; i < noeudCourant.niveau; ++i) {
             printf("    ");
         }
@@ -156,7 +156,7 @@ ArbreHuffman* copierArbreHuffman(ArbreHuffman* arbre) {
         return NULL;
     }
 
-    // Copie récursive du nœud actuel
+    // Copie récursive du noeud actuel
     Statistiques stat= S_statistique(AH_obtenirCaracter(*arbre), AH_obtenirPonderation(*arbre));
     ArbreHuffman* nouveauNoeud = AH_arbreDeHuffman(stat);
 

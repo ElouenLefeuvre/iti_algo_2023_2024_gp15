@@ -5,26 +5,6 @@
 \end{enregistrement}    
 \end{algorithme}
 
-\section{obtenirBitRestants}
-\begin{algorithme}
-
-
-
-\end{algorithme}
-
-\section{incrementStartPosition}
-\begin{algorithme}
-
-
-
-\end{algorithme}
-
-\section{obtenirStartPosition}
-\begin{algorithme}
-
-
-
-\end{algorithme}
 
 \subsubsection{creerOctet}
 
@@ -39,11 +19,11 @@
     \retourner{res}}
 \end{algorithme}
 
-\section{fixerBit}
+\subsubsection{fixerBit}
 
 \begin{algorithme}
     \procedure{fixerBit}{\paramEntreeSortie{octet : \typePointeur{Octet}}
-                        \paramEntree{pos : \entier, valeur : Bit}}{}
+                        \paramEntree{pos : \entier, valeur : Bit}}
     {position$leq$ 9}{}
     {
     \sialors{position $leq$ 9}
@@ -53,7 +33,7 @@
     }
 \end{algorithme}
 
-\section{iemeBit}
+\subsubsection{iemeBit}
 
 \begin{algorithme}
     \fonction{iemeBit}{octet : Octet, i : \entier}{Bit}
@@ -63,10 +43,10 @@
     }
 \end{algorithme}
 
-\section{decaler}
+\subsubsection{decaler}
 
 \begin{algorithme}
-    \procedure{decaler}{\paramEntreeSortie{octet : \typePointeur{Octet}}}{}
+    \procedure{decaler}{\paramEntreeSortie{octet : \typePointeur{Octet}}}
     {}
     {i : \naturel}
     {\pour{i}{1}{8}{}
@@ -74,7 +54,7 @@
     \affecter{\champPointeur{octet}{bits}[8]}{BITA0}}
 \end{algorithme}
 
-\section{bitsToStr}
+\subsubsection{bitsToStr}
 
 \begin{algorithme}
     \fonction{bitsToStr}{octet : \typePointeur{Octet}}{\chaine}
@@ -82,16 +62,17 @@
     {str : \typePointeur{\chaine},
     i : \naturel}
     {
-    \allouer{str}
+    \instruction{\allouer{str}}
     \pour{i}{1}{8}{}
-    \sialorssinon{\champPointeur{octet}{bits}[0] == BITA0}
-    {\affecter{str[i]}{'0'}}
-    {\affecter{str[i]}{'1'}}
-    \affecter{str[8]}{'0'}
-    }
+        {\sialorssinon{\champPointeur{octet}{bits}[0] == BITA0}
+            {\affecter{str[i]}{'0'}}
+            {\affecter{str[i]}{'1'}}}
+            \affecter{str[8]}{'0'}
+            }
+
 \end{algorithme}
 
-\section{strToBits}
+\subsubsection{strToBits}
 
 \begin{algorithme}
     \fonction{strToBits}{chaine : \chaine}{Octet}
@@ -103,25 +84,17 @@
     \affecter{octet}{creerOctet()}
     \affecter{longueurChaine}{taille(chaine)}
     \pour{i}{1}{longueurChaine-1}{}
-    \sialorssinon{\champPointeur{chaine[i ]== '0'}
+    {\sialorssinon{\champPointeur{chaine[i ]== '0'}}
     {\affecter{\champ{octet}{bits}[i]}{BITA0}
-    incrementStartPosition()}
+    \instruction{incrementStartPosition()}}
     {\affecter{\champ{octet}{bits}[i]}{BITA1}
-    incrementStartPosition()}
-    }
+    \instruction{incrementStartPosition()}}
+    }}
 \end{algorithme}
 
 \subsubsection{encoder}
 
-\begin{algorithme}
-    \procedure{encoder}{\paramEntreeSortie{o : Octet}\paramEntree{code : CodeBinaire, i : \naturel}}
-    {non estVide(code), 0 \leq i $<=$ 7}
-    {j : \naturel}
-    {\pour{j}{i}{i + longueur(code)}{}
-    {modifier(o,j,obtenirIemeBit(code,j))}}
-\end{algorithme}
-
-\section{estVide}
+\subsubsection{estVide}
 
 \begin{algorithme}
     \fonction{estVide}{\booleen}{octet : \champPointeur{Octet}}

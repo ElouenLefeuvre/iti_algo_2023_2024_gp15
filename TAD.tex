@@ -1,4 +1,4 @@
-\subsubection{TAD Code Binaire}
+\section{TAD Code Binaire}
 \begin{tad}
 \tadNom{Code Binaire}
         
@@ -23,8 +23,7 @@
 \end{tad}   
 
 
-\subsection{TAD Octet}
-
+\section{TAD Octet}
 \begin{tad}
 \tadNom{Octet}
 \tadDependances{Chaine de caracteres, Code Binaire, Booleen, Bit}
@@ -45,8 +44,7 @@
 \end{tadPreconditions}
 \end{tad}
     
-\subsection{TAD Statistiques}
-
+\section{TAD Statistiques}
 \begin{tad}
 \tadNom{Statistiques}
 \tadDependances{Caractère, Chaine de caracteres, Naturel}
@@ -73,19 +71,25 @@
     \begin{tad}
         \tadNom{Arbre Huffman}
         
-        \tadDependances{statistiques}
+        \tadDependances{statistiques,\booleen}
         
         \begin{tadOperations}{obtenirPonderation}
         
-            \tadOperation{arbrehuffman}{Statistiques}{\tadParams{Arbre Huffman}}
+            \tadOperation{arbreDeHuffman}{Statistiques}{\tadParams{Arbre Huffman}}
+
+            \tadOperation{fixerStatistique}{\tadDeuxParams{Arbre Huffman}{Statistiques}}{\tadParams{Arbre Huffman}}
+
+            \tadOperation{obtenirStat}{\tadParams{Arbre Huffman}}{\tadParams{Statistiques}}
+
+            \tadOperation{obtenirCaractere}{Arbre Huffman}{\tadParams{\caractere}}
             
             \tadOperationAvecPreconditions{fusionner}{\tadDeuxParams{Arbre Huffman}{Arbre Huffman}}{\tadParams{Arbre Huffman}}
 
             \tadOperation{obtenirPonderation}{\tadParams{Arbre Huffman}}{\tadParams{\naturel}}
 
-            \tadOperationAvecPreconditions{fixerFilsDroit}{\tadDeuxParams{\paramEntree{arbred : Arbre Huffman}\paramEntreeSortie{racine : Arbre Huffman}}}
+            \tadOperationAvecPreconditions{fixerFilsDroit}{\tadDeuxParams{Arbre Huffman}{Arebre Huffman}}{\tadParams{Arbre Huffman}}
 
-            \tadOperationAvecPreconditions{fixerFilsGauche}{\tadDeuxParams{\paramEntree{arbreg : Arbre Huffman}\paramEntreeSortie{racine : Arbre Huffman}}}
+            \tadOperationAvecPreconditions{fixerFilsGauche}{\tadDeuxParams{Arbre Huffman}{Arebre Huffman}}{\tadParams{Arbre Huffman}}
 
             \tadOperationAvecPreconditions{obtenirFilsGauche}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
 
@@ -94,10 +98,16 @@
             \tadOperation{estFeuille}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
 
             \tadOperation{estVide}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
+
+            \tadOperation{estPresent}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
+
         \end{tadOperations}
         
-        \begin{tadSemantiques}{}
-            \tadSemantique{arbrehuffman}{Crée un arbre de huffman à partir d'une statistique}
+        \begin{tadSemantiques}{obtenirPonderation}
+            \tadSemantique{arbreDeHuffman}{Crée un arbre de huffman à partir d'une statistique}
+            \tadSemantique{fixerStatistique}{Fixe une statistique à un arbre}
+            \tadSemantique{obtenirStat}{Retourne la valeur de la statistique d'un arbre}
+            \tadSemantique{obtenirCaractere}{Retourne le caractère associé à un arbre}
             \tadSemantique{fusionner}{Fusionne deux arbres entre eux}
             \tadSemantique{obtenirPonderation}{Permet d'obtenir la ponderation d'un arbre de huffman}
             \tadSemantique{fixerFilsDroit}{Affecte la valeur au fils droit de l'arbre}
@@ -106,6 +116,7 @@
             \tadSemantique{obtenirFilsDroit}{Permet d'obtenir le fils droit d'un arbre de huffman}
             \tadSemantique{estFeuille}{Verifie si l'arbre de huffman est une feuille}
             \tadSemantique{estVide}{Verifie si l'arbre est vide, si son champ caractère est vide}
+            \tadSemantique{estPresent}{Vérifie si un élément est présent dans un arbre}
             
         \end{tadSemantiques}
         
@@ -119,11 +130,11 @@
            
         \end{tad}
 
+
     
 
 
-\subsection{FileDePriorité}
-
+\section{FileDePriorité}
 \begin{tad}
 
 \tadNom{FileDePriorité} 
@@ -155,7 +166,7 @@
 
 \end{tad}
 
-\subsection{TAD TableDeCodage}
+\section{TAD TableDeCodage}
 
 \begin{tad}
 \tadNom{TableDeCodage}
