@@ -7,8 +7,11 @@ TESTDIR=tests
 CC = gcc
 AR = ar
 CFLAGS=-Wall -pedantic -g -std=c99  -I$(INCLUDEDIR)  
-LDFLAGS=-lm -lcurses 
+LDFLAGS=-lm -lcurses -lcunit
 EXEC=CompDecomp
+DOCUMENTATION=./doc
+LATEX_FILE = Rapport.tex
+RAPPORT=Rapport.aux Rapport.log Rapport.out Rapport.pdf Rapport.toc
 
 all :  $(BINDIR)/$(EXEC)
 
@@ -28,9 +31,17 @@ $(SRCDIR)/%.o : $(SRCDIR)/%.c
 $(SRCTESTDIR)/%.o : $(SRCTESTDIR)/%.c
 	$(CC) -o $@ -c $< $(CFLAGS)
 
+rapport :
+	pdflatex $(LATEX_FILE)
+
+doc : Doxyfile
+	doxygen $<
+	
 clean :
 	rm -rf $(BINDIR)/*
 	rm -rf $(LIBDIR)/*
 	rm -rf $(SRCDIR)/*.o
 	rm -rf $(SRCTESTDIR)/*.o
 	rm -rf $(TESTDIR)/*
+	rm -rf $(DOCUMENTATION)
+	rm $(RAPPORT)
