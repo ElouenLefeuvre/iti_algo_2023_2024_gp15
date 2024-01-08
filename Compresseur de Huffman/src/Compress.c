@@ -1,8 +1,5 @@
 #include "Octet.h"
 #include "FileDePriorite.h"
-
-
-#include "octet.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include "CodeBinaire.h"
@@ -15,7 +12,6 @@
 
 
 FILE* compresser(const char* fileName){
-    
     FILE* file = fopen(fileName,"r");
     if (file == NULL) {
         perror("Erreur lors de l'ouverture du fichier");
@@ -33,25 +29,30 @@ FILE* compresser(const char* fileName){
     int caracteresSansRepetition[256] = {0};
     int nbCaracteresSansRepetition = 0;
     int nbCaracAvecRepetition=0;
-    
 
     int caractere;
     while ((caractere = fgetc(file)) != EOF) {
-        occurrences[caractere]++;
         nbCaracAvecRepetition++;
+        occurrences[caractere]++;
         if (occurrences[caractere] == 1) {
             caracteresSansRepetition[nbCaracteresSansRepetition++] = caractere;
         }
     }
-
     fprintf(compressedFile,"%d\n",nbCaracAvecRepetition-1);
+
     for (int i = 0; i < nbCaracteresSansRepetition; i++) {
         Statistiques stat = S_statistique(caracteresSansRepetition[i],occurrences[caracteresSansRepetition[i]]);
-        fprintf(compressedFile,"%c%d",S_obtenirCaractere(stat),S_obtenirPonderation);
+        if(i==nbCaracteresSansRepetition-1){
+            fprintf(compressedFile,"%c%d\n",S_obtenirCaractere(stat),S_obtenirPonderation(stat));
+        }
+        else{
+            fprintf(compressedFile,"%c%d",S_obtenirCaractere(stat),S_obtenirPonderation(stat));
+        }
         ArbreHuffman* arbre = AH_arbreDeHuffman(stat);
         FDP_enfiler(&fp,arbre);
     }
-
+    
+    
     
     while(fp.longueur != 1){
         ArbreHuffman arbre1 = FDP_obtenirElement(fp, fp.longueur);
@@ -64,6 +65,8 @@ FILE* compresser(const char* fileName){
     }
 
 
+
+
     ArbreHuffman ArbreFinal = FDP_obtenirElement(fp,0);
     TableDeCodage* tableDeCodageFinale = TDC_obtenirTableDeCodage();
     for (int i=0 ; i<nbCaracteresSansRepetition;i++){
@@ -72,6 +75,7 @@ FILE* compresser(const char* fileName){
         TDC_ajouter(tableDeCodageFinale,c,&cb);
     }
     
+    TDC_afficherTdc(tableDeCodageFinale);
     
 
 
@@ -85,18 +89,27 @@ FILE* compresser(const char* fileName){
             
         }
         else{
-            printf("octet is is %s\n", O_octetToStr(&firstOctet));
-            fprintf(compressedFile,"%s.",O_octetToStr(&firstOctet));
+            //printf("octet is is %s\n", O_octetToStr(&firstOctet));
+            fprintf(compressedFile,"%s.",O_bitsToStr(&firstOctet));
             firstOctet = O_creerOctet();
-            printf("J'ai creer un nv octet\n");
+            //printf("J'ai creer un nv octet\n");
             CodeBinaire* code = TDC_obtenirCode(*tableDeCodageFinale,car);
             firstOctet =O_encoder(firstOctet,*code);
         }
     }
-    printf("octet is is %s\n", O_octetToStr(&firstOctet));
-    fprintf(compressedFile,"%s",O_octetToStr(&firstOctet));
+    //printf("octet is is %s\n", O_octetToStr(&firstOctet));
+    fprintf(compressedFile,"%s.",O_bitsToStr(&firstOctet));
+    if(O_obtenirMostImportantBitRestant()<= 7){
+        Octet octet = O_inverser(O_obtenirBitRestants());
+        fprintf(compressedFile,"%s",O_bitsToStr(&octet));
+    }
+    
     fclose(file);   
 
     return compressedFile;
 
+}
+
+void null(){
+    printf("aa");
 }

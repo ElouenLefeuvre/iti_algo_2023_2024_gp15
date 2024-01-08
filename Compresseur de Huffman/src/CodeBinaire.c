@@ -76,7 +76,7 @@ char* CB_codeBinaireToStr(const CodeBinaire* code) {
 }
 
 
-CodeBinaire AH_CbFromAH(ArbreHuffman *a, char car){
+CodeBinaire CB_CbFromAH(ArbreHuffman *a, char car){
     char* result = AH_obtenirCodeBinaire(a,car);
     int taille = strlen(result);
     CodeBinaire CB_result = CB_creerCodeBinaire(taille);

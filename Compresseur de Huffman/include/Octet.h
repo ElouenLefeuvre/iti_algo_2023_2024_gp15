@@ -35,6 +35,11 @@ Bit O_iemeBit(Octet octet,int i);
  */
 Octet O_creerOctet();
 
+
+
+bool O_currentisFull();
+
+
 /**
  * \fn Octet O_encoder(Octet octet,CodeBinaire cb)
  * \brief Fonction qui permet de remplir un octet avec un code binaire
@@ -103,4 +108,9 @@ int O_obtenirStartPosition();
  * \return Octet
  */
 Octet O_obtenirBitRestants();
+
+
+int O_obtenirMostImportantBitRestant();
+Octet O_inverser(Octet o);
+
 #endif

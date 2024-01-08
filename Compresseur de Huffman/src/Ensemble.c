@@ -5,6 +5,7 @@
 #include<stdlib.h>
 #include "Statistiques.h"
 #include "Ensemble.h"
+#include "Compression.h"
 
 void E_libererEnsemble(Ensemble *ens) {
    free(ens->elements);

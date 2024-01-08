@@ -1,4 +1,4 @@
-#include "octet.h"
+#include "Octet.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include "CodeBinaire.h"

@@ -15,6 +15,10 @@ Octet O_obtenirBitRestants(){
     return bitRestant;
 }
 
+int O_obtenirMostImportantBitRestant(){
+    return mostImportantBitRestant;
+}
+
 void O_incrementStartPosition(){
     startPosition++;
 }
@@ -40,6 +44,10 @@ void O_fixerBit(Octet* octet, int position, Bit valeur) {
         fprintf(stderr, "Erreur : Position hors limites.\n");
     }
     //return *octet;
+}
+
+bool O_currentisFull(){
+    return currentisFull;
 }
 
 
