@@ -16,12 +16,12 @@ RAPPORT=../Rapport.aux ../Rapport.log ../Rapport.out ../Rapport.pdf ../Rapport.t
 all :  $(BINDIR)/$(EXEC)
 
 tests: $(SRCTESTDIR)/testArbreHuffman.o $(SRCTESTDIR)/testCodeBinaire.o $(SRCTESTDIR)/testFileDePriorite.o $(SRCTESTDIR)/testOctet.o $(SRCTESTDIR)/testStatistiques.o $(SRCTESTDIR)/testTableDeCodage.o
-	$(CC) -o $(TESTDIR)/testArbreHuffman $(SRCTESTDIR)/testArbreHuffman.o $(SRCDIR)/ArbreHuffman.o $(SRCDIR)/Statistiques.o $(LDFLAGS) -lcunit
-	$(CC) -o $(TESTDIR)/testCodeBinaire $(SRCTESTDIR)/testCodeBinaire.o  $(SRCDIR)/CodeBinaire.o $(SRCDIR)/Statistiques.o $(SRCDIR)/ArbreHuffman.o $(LDFLAGS) -lcunit
-	$(CC) -o $(TESTDIR)/testFileDePriorite $(SRCTESTDIR)/testFileDePriorite.o $(SRCDIR)/FileDePriorite.o $(SRCDIR)/Statistiques.o $(SRCDIR)/ArbreHuffman.o $(LDFLAGS) -lcunit
-	$(CC) -o $(TESTDIR)/testOctet $(SRCTESTDIR)/testOctet.o $(SRCDIR)/Octet.o $(SRCDIR)/CodeBinaire.o $(SRCDIR)/ArbreHuffman.o $(SRCDIR)/Statistiques.o $(LDFLAGS) -lcunit
-	$(CC) -o $(TESTDIR)/testStatistiques $(SRCTESTDIR)/testStatistiques.o  $(SRCDIR)/Statistiques.o $(LDFLAGS) -lcunit
-	$(CC) -o $(TESTDIR)/testTableDeCodage $(SRCTESTDIR)/testTableDeCodage.o $(SRCDIR)/TableDeCodage.o $(SRCDIR)/CodeBinaire.o $(SRCDIR)/Statistiques.o $(SRCDIR)/ArbreHuffman.o $(LDFLAGS) -lcunit
+	$(CC) -o $(TESTDIR)/testArbreHuffman $(SRCTESTDIR)/testArbreHuffman.o $(SRCDIR)/ArbreHuffman.o $(SRCDIR)/Statistiques.o $(LDFLAGS)
+	$(CC) -o $(TESTDIR)/testCodeBinaire $(SRCTESTDIR)/testCodeBinaire.o  $(SRCDIR)/CodeBinaire.o $(SRCDIR)/Statistiques.o $(SRCDIR)/ArbreHuffman.o $(LDFLAGS)
+	$(CC) -o $(TESTDIR)/testFileDePriorite $(SRCTESTDIR)/testFileDePriorite.o $(SRCDIR)/FileDePriorite.o $(SRCDIR)/Statistiques.o $(SRCDIR)/ArbreHuffman.o $(LDFLAGS)
+	$(CC) -o $(TESTDIR)/testOctet $(SRCTESTDIR)/testOctet.o $(SRCDIR)/Octet.o $(SRCDIR)/CodeBinaire.o $(SRCDIR)/ArbreHuffman.o $(SRCDIR)/Statistiques.o $(LDFLAGS)
+	$(CC) -o $(TESTDIR)/testStatistiques $(SRCTESTDIR)/testStatistiques.o  $(SRCDIR)/Statistiques.o $(LDFLAGS)
+	$(CC) -o $(TESTDIR)/testTableDeCodage $(SRCTESTDIR)/testTableDeCodage.o $(SRCDIR)/TableDeCodage.o $(SRCDIR)/CodeBinaire.o $(SRCDIR)/Statistiques.o $(SRCDIR)/ArbreHuffman.o $(LDFLAGS)
 
 $(BINDIR)/$(EXEC) : $(SRCDIR)/main.o $(SRCDIR)/ArbreHuffman.o $(SRCDIR)/CodeBinaire.o $(SRCDIR)/Compression.o $(SRCDIR)/Decompression.o $(SRCDIR)/FileDePriorite.o $(SRCDIR)/Octet.o $(SRCDIR)/Statistiques.o $(SRCDIR)/TableDeCodage.o
 	$(CC)  -o $@ $^ $(LDFLAGS)
