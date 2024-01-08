@@ -11,7 +11,7 @@ LDFLAGS=-lm -lcurses -lcunit
 EXEC=CompDecomp
 DOCUMENTATION=./doc
 LATEX_FILE = Rapport.tex
-RAPPORT=Rapport.aux Rapport.log Rapport.out Rapport.pdf Rapport.toc
+RAPPORT=../Rapport.aux ../Rapport.log ../Rapport.out ../Rapport.pdf ../Rapport.toc
 
 all :  $(BINDIR)/$(EXEC)
 
