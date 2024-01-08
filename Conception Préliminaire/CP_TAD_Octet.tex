@@ -1,20 +1,49 @@
+\section{TAD Octet}
+
 \begin{algorithme}
-    \signatureProcedure{modifier}{\paramEntreeSortie{o : Octet},\paramEntree{i : \naturel, valeur : Bit}}
+    \signatureFonction{obtenirStartPosition}{}
     {}
-    \end{algorithme}
+\end{algorithme}
 
 \begin{algorithme}
-\signatureFonction{ creerOctet}{}{Octet}
+\signatureFonction{creerOctet}{}{Octet}
 {}
 \end{algorithme}
 
 \begin{algorithme}
-\signatureProcedure{ encoder}{\paramEntreeSortie{o : Octet} \paramEntree{code : CodeBinaire, i : \naturel}}
-{non estVide(code), $0 \leq i \leq 7$}
+    \signatureProcedure{\paramEntreeSortie{octet : \typePointeur{Octet}}
+    \paramEntree{pos : \entier, valeur : Bit}}{}{}
+    {}
+\end{algorithme}
+
+\begin{algorithme}
+    \signatureFonction{iemeBit}{octet : Octet, i : \entier}{Bit}
+    {}
+\end{algorithme}
+    
+
+\begin{algorithme}
+\signatureProcedure{decaler}{\paramEntreeSortie{octet : \typePointeur{Octet}}}{}
+{}
 
 \end{algorithme}
 
 \begin{algorithme}
-\signatureFonction{ obtenirOctet}{(o : Octet)}{\chaine}
+\signatureFonction{bitsToStr}{octet : \typePointeur{Octet}}{\chaine}
 {}
+\end{algorithme}
+
+\begin{algorithme}
+    \signatureFonction{strToBits}{chaine : \chaine}{Octet}
+    {}
+\end{algorithme}
+
+\begin{algorithme}
+    \signatureProcedure{encoder}{}{}
+    {}
+\end{algorithme}
+
+\begin{algorithme}
+    \signatureFonction{estVide}{\booleen}{octet : \champPointeur{Octet}}
+    {}
 \end{algorithme}

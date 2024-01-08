@@ -1,33 +1,29 @@
 \subsubsection{Déclaration du type}
 \begin{algorithme}
 \begin{enregistrement}{Octet}
-    \champEnregistrement{bit0}{Bit}
-    \champEnregistrement{bit1}{Bit}
-    \champEnregistrement{bit2}{Bit}
-    \champEnregistrement{bit3}{Bit}
-    \champEnregistrement{bit4}{Bit}
-    \champEnregistrement{bit5}{Bit}
-    \champEnregistrement{bit6}{Bit}
-    \champEnregistrement{bit7}{Bit}
+    \champEnregistrement{Bit}{\tableau{1..8}{de}{Bit}}
 \end{enregistrement}    
 \end{algorithme}
 
-\subsubsection{modifier}
-
+\section{obtenirBitRestants}
 \begin{algorithme}
-    \procedure{modifier}{\paramEntreeSorite{o : Octet},\paramEntree{i : \naturel, valeur : Bit}}{}
-    {b : Bit}
-    {\cas{i}{
-        \casclausegenerale{0}{\affecter{o.bit0}{valeur}}
-        \casclausegenerale{1}{\affecter{o.bit1}{valeur}}
-        \casclausegenerale{2}{\affecter{o.bit2}{valeur}}
-        \casclausegenerale{3}{\affecter{o.bit3}{valeur}}
-        \casclausegenerale{4}{\affecter{o.bit4}{valeur}}
-        \casclausegenerale{5}{\affecter{o.bit5}{valeur}}
-        \casclausegenerale{6}{\affecter{o.bit6}{valeur}}
-        \casclausegenerale{7}{\affecter{o.bit7}{valeur}}
-    }
-    \retourner{o}}
+
+
+
+\end{algorithme}
+
+\section{incrementStartPosition}
+\begin{algorithme}
+
+
+
+\end{algorithme}
+
+\section{obtenirStartPosition}
+\begin{algorithme}
+
+
+
 \end{algorithme}
 
 \subsubsection{creerOctet}
@@ -35,11 +31,84 @@
 \begin{algorithme}
     \fonction{creerOctet}{}{Octet}
     {}
-    {o : Octet
+    {res : Octet,
     i : \naturel}
-    {\pour{i}{0}{7}{}
-        {modifier(o,i,0)}
-    \retourner{o}}
+    {\affecter{startPosition}{0}
+    \pour{i}{1}{8}{}
+        {\affecter{\champ{res}{bits}[i]}{BITA0}}
+    \retourner{res}}
+\end{algorithme}
+
+\section{fixerBit}
+
+\begin{algorithme}
+    \procedure{fixerBit}{\paramEntreeSortie{octet : \typePointeur{Octet}}
+                        \paramEntree{pos : \entier, valeur : Bit}}{}
+    {position$leq$ 9}{}
+    {
+    \sialors{position $leq$ 9}
+    {
+    \affecter{\champPointeur{octet}{bits}[position]}
+    }
+    }
+\end{algorithme}
+
+\section{iemeBit}
+
+\begin{algorithme}
+    \fonction{iemeBit}{octet : Octet, i : \entier}{Bit}
+    {}{}
+    {
+    \retourner{\champ{octet}{bits}[i]}
+    }
+\end{algorithme}
+
+\section{decaler}
+
+\begin{algorithme}
+    \procedure{decaler}{\paramEntreeSortie{octet : \typePointeur{Octet}}}{}
+    {}
+    {i : \naturel}
+    {\pour{i}{1}{8}{}
+        {\affecter{\champPointeur{octet}{bits}[i]}{bits[i+1]}}
+    \affecter{\champPointeur{octet}{bits}[8]}{BITA0}}
+\end{algorithme}
+
+\section{bitsToStr}
+
+\begin{algorithme}
+    \fonction{bitsToStr}{octet : \typePointeur{Octet}}{\chaine}
+    {}
+    {str : \typePointeur{\chaine},
+    i : \naturel}
+    {
+    \allouer{str}
+    \pour{i}{1}{8}{}
+    \sialorssinon{\champPointeur{octet}{bits}[0] == BITA0}
+    {\affecter{str[i]}{'0'}}
+    {\affecter{str[i]}{'1'}}
+    \affecter{str[8]}{'0'}
+    }
+\end{algorithme}
+
+\section{strToBits}
+
+\begin{algorithme}
+    \fonction{strToBits}{chaine : \chaine}{Octet}
+    {}
+    {octet : Octet,
+    i : \naturel,
+    longueurChaine : \entier}
+    {
+    \affecter{octet}{creerOctet()}
+    \affecter{longueurChaine}{taille(chaine)}
+    \pour{i}{1}{longueurChaine-1}{}
+    \sialorssinon{\champPointeur{chaine[i ]== '0'}
+    {\affecter{\champ{octet}{bits}[i]}{BITA0}
+    incrementStartPosition()}
+    {\affecter{\champ{octet}{bits}[i]}{BITA1}
+    incrementStartPosition()}
+    }
 \end{algorithme}
 
 \subsubsection{encoder}
@@ -52,14 +121,17 @@
     {modifier(o,j,obtenirIemeBit(code,j))}}
 \end{algorithme}
 
-\subsubsection{obtenirOctet}
-
+\section{estVide}
 
 \begin{algorithme}
-    \fonction{obtenirOctet}{o : Octet}{\chaine}
+    \fonction{estVide}{\booleen}{octet : \champPointeur{Octet}}
     {}
-    {ch : \chaine}
-    {\pourChaque{bit}{o}
-    {\affecter{ch}{ch + bit}}
-    \retourner{ch}}
+    {i : \naturel}
+    {\pour{i}{1}{8}{}
+    {\sialors{\champPointeur{octet}{bits}[i] $neq$ BITA0}
+    {\retourner{Faux}}
+    }
+    \retourner{Vrai}
+    }
 \end{algorithme}
+
