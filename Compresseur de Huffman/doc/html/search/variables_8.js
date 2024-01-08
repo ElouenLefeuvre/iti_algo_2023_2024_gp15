@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['statistiques_162',['statistiques',['../struct_arbre_huffman.html#a72a1041f085b93cd80ae70902ba418c3',1,'ArbreHuffman']]],
-  ['suivant_163',['suivant',['../struct_noeud.html#a3cd9016cfef3286da554103e0f0b48a0',1,'Noeud']]]
+  ['taille_147',['taille',['../struct_code_binaire.html#a29bf3fc0ffe4e72e45f0c84ab4f8cd1e',1,'CodeBinaire']]]
 ];
