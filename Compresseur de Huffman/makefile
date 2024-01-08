@@ -6,7 +6,7 @@ SRCTESTDIR=src/tests
 TESTDIR=tests
 CC = gcc
 AR = ar
-CFLAGS=-Wall -pedantic -g -std=c99  -I$(INCLUDEDIR)  
+CFLAGS=-Wall -pedantic -g -std=gnu99  -I$(INCLUDEDIR)  
 LDFLAGS=-lm -lcurses -lcunit
 EXEC=CompDecomp
 DOCUMENTATION=./doc

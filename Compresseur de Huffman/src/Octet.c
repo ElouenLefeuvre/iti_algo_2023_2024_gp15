@@ -93,14 +93,13 @@ Octet O_strToBits(const char* chaine){
 //00000001
 //00000000
 Octet O_encoder(Octet octet,CodeBinaire cb){
-    int j=0;
     Bit bit;
     //printf("je ne suis pas encore dans une condition\n");
     //cas ou y a des bits dans l'octet des bit restant
     // On insere autant de bit possible dans l'octet;
     if (mostImportantBitRestant<=7 && !currentisFull) {
         for (int i=mostImportantBitRestant ;i<8;i++){     
-            Bit bit = O_iemeBit(bitRestant,i);
+            bit = O_iemeBit(bitRestant,i);
             //octet=O_fixerBit(&octet,startPosition,bit);
             O_fixerBit(&octet,startPosition,bit);
             startPosition++;
