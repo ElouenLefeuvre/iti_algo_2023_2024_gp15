@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include "ArbreHuffman.h"
 #include "FileDePriorite.h"
-#include "Ensemble.h"
 #include "Statistiques.h"
 #include "TableDeCodage.h"
 

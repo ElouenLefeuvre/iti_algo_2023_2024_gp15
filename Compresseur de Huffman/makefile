@@ -9,7 +9,7 @@ CUNIT_FLAGS = -lcunit
 # Source files
 TESTS_DIR = tests
 SRC_DIR = src
-SRC_FILES = $(SRC_DIR)/CodeBinaire.c $(SRC_DIR)/Octet.c $(SRC_DIR)/Statistiques.c $(SRC_DIR)/ArbreHuffman.c $(SRC_DIR)/FileDePriorite.c $(SRC_DIR)/TableDeCodage.c $(SRC_DIR)/Decompression.c $(SRC_DIR)/Compress.c $(SRC_DIR)/main.c  
+SRC_FILES = $(SRC_DIR)/CodeBinaire.c $(SRC_DIR)/Octet.c $(SRC_DIR)/Statistiques.c $(SRC_DIR)/ArbreHuffman.c $(SRC_DIR)/FileDePriorite.c $(SRC_DIR)/TableDeCodage.c $(SRC_DIR)/Decompression.c $(SRC_DIR)/Compression.c $(SRC_DIR)/main.c  
 TEST_CODEBINAIRE_SRC = $(TESTS_DIR)/testCodeBinaire.c
 TEST_OCTET_SRC = $(TESTS_DIR)/testOctet.c
 TEST_STATISTIQUE_SRC = $(TESTS_DIR)/testStatistiques.c
@@ -18,7 +18,7 @@ TEST_FDP_SRC = $(TESTS_DIR)/testFileDePriorite.c
 TEST_TDC_SRC = $(TESTS_DIR)/testTableDeCodage.c
 
 # Object files
-OBJ_FILES = CodeBinaire.o Octet.o Statistiques.o ArbreHuffman.o FileDePriorite.o TableDeCodage.o Decompression.o Compress.o
+OBJ_FILES = CodeBinaire.o Octet.o Statistiques.o ArbreHuffman.o FileDePriorite.o TableDeCodage.o Decompression.o Compression.o
 
 # Target executable
 TARGET = prog
@@ -78,7 +78,7 @@ TableDeCodage.o: $(SRC_DIR)/TableDeCodage.c
 Decompression.o:$(SRC_DIR)/Decompression.c
 	$(CC) -c $< -o $@ $(CFLAGS)
 
-Compress.o:$(SRC_DIR)/Compress.c
+Compress.o:$(SRC_DIR)/Compression.c
 	$(CC) -c $< -o $@ $(CFLAGS)
  
 clean:

@@ -8,7 +8,7 @@
 #include "ArbreHuffman.h"
 #include "FileDePriorite.h"
 #include "TableDeCodage.h"
-#include "Compress.h"
+#include "Compression.h"
 #include "Decompression.h"
 
 
