@@ -32,7 +32,7 @@ $(SRCTESTDIR)/%.o : $(SRCTESTDIR)/%.c
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 rapport :
-	pdflatex $(LATEX_FILE)
+	pdflatex -output-directory=.. $(LATEX_FILE)
 
 doc : Doxyfile
 	doxygen $<
