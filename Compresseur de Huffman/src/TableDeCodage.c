@@ -47,17 +47,18 @@ void TDC_ajouter(TableDeCodage *tab, char c, CodeBinaire *code) {
 }
 
 void TDC_supprimer(TableDeCodage *tab, char *c, CodeBinaire *code) {
-    TableDeCodage temp, temp2;
+    TableDeCodage temp2;
+    TableDeCodage* temp = TDC_obtenirTableDeCodage();
     temp2.ligne = tab->ligne->listeSuivante;
     if (!(TDC_estVide(temp2))) {
-        if (&temp.ligne->c == c) {
-            temp.ligne = temp.ligne->listeSuivante;
-            tab->ligne->listeSuivante = temp.ligne;
+        if (&temp->ligne->c == c) {
+            temp->ligne = temp->ligne->listeSuivante;
+            tab->ligne->listeSuivante = temp->ligne;
         }
         else {
-            temp2.ligne = temp.ligne->listeSuivante;
+            temp2.ligne = temp->ligne->listeSuivante;
             TDC_supprimer(&temp2, c, code);
-            tab->ligne->listeSuivante = temp.ligne;
+            tab->ligne->listeSuivante = temp->ligne;
         }
     }
 }
