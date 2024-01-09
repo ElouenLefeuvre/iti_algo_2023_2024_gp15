@@ -121,7 +121,7 @@ Octet O_encoder(Octet octet,CodeBinaire cb){
             //octet = O_fixerBit(&octet,startPosition,bit);    
 
             O_fixerBit(&octet,startPosition,bit);
-
+            //0100101000101101001000011010  00111111
             startPosition++;
         }
         else{/*Cad il ne reste pas de la place */
