@@ -14,7 +14,7 @@
  */
 
 typedef struct {
-    char caracter; /**< Le caractère*/
+    char car; /**< Le caractère*/
     int ponderation; /**< Son nombre d'occurences*/
 }Statistiques;
 

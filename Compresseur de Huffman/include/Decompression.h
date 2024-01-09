@@ -13,7 +13,13 @@
 #include "FileDePriorite.h"
 #include "Statistiques.h"
 
-
+/**
+ * \fn DECOMP_lireBit(FILE *fichier)
+ * \brief Fonction qui permet de lire un bit d'un fichier binaire
+ *
+ * \param fp: une file de priorite
+ * \return un bit
+ */
 int DECOMP_lireBit(FILE *fichier);
 
 /**

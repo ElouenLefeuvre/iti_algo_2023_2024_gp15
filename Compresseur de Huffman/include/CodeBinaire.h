@@ -104,7 +104,7 @@ CodeBinaire CB_CbFromAH(ArbreHuffman *a, char car);
  * \param car : le caractere dont on veut calculer le code
  * \return char*  (la chaîne de caractère)
  */
-char* AH_obtenirCodeBinaire(ArbreHuffman *a, char car);
+char* CB_obtenirCodeBinaire(ArbreHuffman *a, char car);
 
 /**
  * \fn char* obtenirCodeBinaireR(ArbreHuffman *a, char car )

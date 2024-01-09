@@ -16,21 +16,21 @@ FileDePriorite FDP_fileDePriorite() {
 }
 
 void FDP_enfiler(FileDePriorite *file, ArbreHuffman* arbre) {
-    Noeud* noeud = FDP_createNoeud(arbre);
+    Noeud* noeud = FDP_creerNoeud(arbre);
     if (FDP_estVide(file)) {  
         file->debut = noeud;
         noeud->suivant = NULL;
         file->longueur++;
     }
     else {
-        int positionToInsert = trouverIndicePourInsere(arbre, file);
-        if (positionToInsert == 0) {
+        int positionDinsertion = FDP_trouverIndicePourInsere(arbre, file);
+        if (positionDinsertion == 0) {
             noeud->suivant = file->debut;
             file->debut = noeud;
         } 
         else {
             Noeud *tmp = file->debut;
-            for (int i = 0; i < positionToInsert - 1; i++) {
+            for (int i = 0; i < positionDinsertion - 1; i++) {
                 tmp = tmp->suivant;
             }
             noeud->suivant = tmp->suivant;
@@ -40,50 +40,36 @@ void FDP_enfiler(FileDePriorite *file, ArbreHuffman* arbre) {
     }
 }
 
-Noeud* FDP_createNoeud(ArbreHuffman* arbreOfLCA) {
+Noeud* FDP_creerNoeud(ArbreHuffman* arbre) {
     Noeud* noeud = malloc(sizeof(Noeud));
-    noeud->arbre = *arbreOfLCA;
+    noeud->arbre = *arbre;
     noeud->suivant = NULL;
     return noeud;
 }
 
-void FDP_afficherFileDEPriorite(FileDePriorite* file) {
-    Noeud *actuel = file->debut;
-    printf("la liste est: \n");
-    while (actuel != NULL) {
-        AH_afficherArbre(&actuel->arbre);
-        printf("->");
-        actuel = actuel->suivant;
-    }
-    if(actuel == NULL) printf("NULL");
-}
-
-int trouverIndicePourInsere(ArbreHuffman* arbre,FileDePriorite* file) {
+int FDP_trouverIndicePourInsere(ArbreHuffman* arbre,FileDePriorite* file) {
     Noeud *tmp = file->debut;
     int ponderationArbre = AH_obtenirPonderation(*arbre);
-    int result = 0;
+    int resultat = 0;
     while (tmp != NULL && AH_obtenirPonderation(tmp->arbre) > ponderationArbre) {
         tmp = tmp->suivant;
-        result++;
+        resultat++;
     }
-    return result;
+    return resultat;
 }
 
 void FDP_defiler(FileDePriorite *file) {
         if (!FDP_estVide(file)) {
         Noeud *noeudActuel = file->debut;
         Noeud *noeudPrecedent = NULL;
-        // Parcourir la file jusqu'au dernier élément
         while (noeudActuel->suivant != NULL) {
             noeudPrecedent = noeudActuel;
             noeudActuel = noeudActuel->suivant;
         }
-        // Si la file contient plus d'un élément
         if (noeudPrecedent != NULL) {
             noeudPrecedent->suivant = NULL;
         } 
         else {
-            // Si la file ne contient qu'un seul élément
             file->debut = NULL;
         }
         free(noeudActuel);

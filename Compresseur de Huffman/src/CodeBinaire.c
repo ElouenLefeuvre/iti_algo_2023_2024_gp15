@@ -76,14 +76,14 @@ char* CB_codeBinaireToStr(const CodeBinaire* code) {
 
 
 CodeBinaire CB_CbFromAH(ArbreHuffman *a, char car) {
-    char* result = AH_obtenirCodeBinaire(a, car);
+    char* result = CB_obtenirCodeBinaire(a, car);
     int taille = strlen(result);
     CodeBinaire CB_result = CB_creerCodeBinaire(taille);
     CB_remplirCodeBinaire(&CB_result, result);
     return CB_result;
 }
 
-char* AH_obtenirCodeBinaire(ArbreHuffman *a, char car) {
+char* CB_obtenirCodeBinaire(ArbreHuffman *a, char car) {
     if (!AH_estVide(a)) {
         if (AH_estFeuille(*a)) {
             return strdup("0");
@@ -98,19 +98,18 @@ char* AH_obtenirCodeBinaire(ArbreHuffman *a, char car) {
 char* obtenirCodeBinaireR(ArbreHuffman *a, char car) {
     if (!AH_estVide(a)) {
         if (AH_estFeuille(*a)) {
-            return strdup("");  // Retourne une chaîne vide allouée dynamiquement
+            return strdup("");
         }
         if (AH_estPresent(AH_obtenirFilsGauche(a), car)) {
             a = AH_obtenirFilsGauche(a);
             char* resultatGauche = obtenirCodeBinaireR(a, car);
             if (resultatGauche != NULL) {
-                // Alloue suffisamment de mémoire pour "0" suivi de la chaîne de résultat
                 char* resultat = malloc(strlen("0") + strlen(resultatGauche) + 1);
                 if (resultat != NULL) {
                     strcpy(resultat, "0");
                     strcat(resultat, resultatGauche);
                 }
-                free(resultatGauche);  // Libère la mémoire allouée dynamiquement pour la chaîne de résultat gauche
+                free(resultatGauche);
                 return resultat;
             }
         } 
@@ -118,13 +117,12 @@ char* obtenirCodeBinaireR(ArbreHuffman *a, char car) {
             a = AH_obtenirFilsDroit(a);
             char* resultatGauche = obtenirCodeBinaireR(a, car);
             if (resultatGauche != NULL) {
-                // Alloue suffisamment de mémoire pour "1" suivi de la chaîne de résultat
                 char* resultat = malloc(strlen("1") + strlen(resultatGauche) + 1);
                 if (resultat != NULL) {
                     strcpy(resultat, "1");
                     strcat(resultat, resultatGauche);
                 }
-                free(resultatGauche);  // Libère la mémoire allouée dynamiquement pour la chaîne de résultat gauche
+                free(resultatGauche);
                 return resultat;
             }
         }

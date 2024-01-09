@@ -50,7 +50,7 @@ ArbreHuffman COMP_FusionnerArbreFDP(FileDePriorite fp){
         FDP_defiler(&fp);
         FDP_defiler(&fp);
         ArbreHuffman* arbreFusionne1 = AH_fusionner(&arbre1,&arbre2);
-        ArbreHuffman* copy = copierArbreHuffman(arbreFusionne1);
+        ArbreHuffman* copy = AH_copierArbreHuffman(arbreFusionne1);
         FDP_enfiler(&fp, copy);
     }
     return FDP_obtenirElement(fp,0);

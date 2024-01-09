@@ -147,7 +147,11 @@ int AH_obtenirPonderation(ArbreHuffman arbre);
  */
 void AH_afficherArbre(ArbreHuffman *arbre);
 
-
-ArbreHuffman* copierArbreHuffman(ArbreHuffman* arbre);
+/**
+ * \fn ArbreHuffman* copierArbreHuffman(ArbreHuffman* arbre)
+ * \brief Fonction qui permet de copier un arbre
+ * \param arbre : copie de l'arbre 
+ */
+ArbreHuffman* AH_copierArbreHuffman(ArbreHuffman* arbre);
 
 #endif

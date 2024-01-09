@@ -43,14 +43,6 @@ TableDeCodage* TDC_obtenirTableDeCodage();
  */
 CodeBinaire* TDC_obtenirCode(TableDeCodage tab,char c);
 
-/**
- * \fn char TDC_obtenirCarac(TableDeCodage tab,CodeBinaire code)
- * \brief Fonction qui permet d'obtenir le caractere à partir d'une table de codage et d'un code binaire
- * \param tab : la table de codage
- * \param code : le code binaire
- * \return char
- */
-char TDC_obtenirCarac(TableDeCodage tab,CodeBinaire code);
 
 /**
  * \fn void TDC_ajouter(TableDeCodage *tab,char *c,CodeBinaire *code)
@@ -61,14 +53,6 @@ char TDC_obtenirCarac(TableDeCodage tab,CodeBinaire code);
  */
 void TDC_ajouter(TableDeCodage *tab,char c,CodeBinaire *code);
 
-/**
- * \fn void TDC_supprimer(TableDeCodage *tab,char *c,CodeBinaire *code)
- * \brief Fonction qui permet de supprimer une ligne (caractere + code binaire) dans la table de codage
- * \param tab : la table de codage
- * \param c : le caractere a supprimer
- * \param code : le code binaire a supprimer
- */
-void TDC_supprimer(TableDeCodage *tab, char *c, CodeBinaire *code);
 
 /**
  * \fn int TDC_estPresent(TableDeCodage tab,char c)
@@ -87,6 +71,4 @@ int TDC_estPresent(TableDeCodage tab,char c);
  */
 bool TDC_estVide(TableDeCodage tab);
 
-
-char* TDC_afficherTdc(TableDeCodage* tdc);
 #endif

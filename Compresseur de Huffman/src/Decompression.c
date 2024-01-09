@@ -16,7 +16,7 @@ FileDePriorite DECOMP_obtenirFileFichier(FileDePriorite fp,char caracter,int pon
     return fp;
 }
 
-int lireBit(FILE *fichier) {
+int DECOMP_lireBit(FILE *fichier) {
     static unsigned char octet = 0;
     static int bitsLus = 0;
     if (bitsLus == 0) {
@@ -69,7 +69,7 @@ FILE* DECOMP_decompresser(const char* nomFichier) {
     ArbreHuffman arbrePrincipal = DECOMP_arbrePrincipal(fp);
     ArbreHuffman *tmp = &arbrePrincipal;
     int bit;
-    while ((bit = lireBit(file)) != EOF) {
+    while ((bit = DECOMP_lireBit(file)) != EOF) {
         if(bit == 0) tmp = tmp->filsGauche;
         else if (bit == 1) tmp  =tmp->filsDroit;   
         if (AH_estFeuille(*tmp)){

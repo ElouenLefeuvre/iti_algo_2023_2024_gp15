@@ -36,7 +36,11 @@ Bit O_iemeBit(Octet octet,int i);
 Octet O_creerOctet();
 
 
-
+/**
+ * \fn O_currentisFull();
+ * \brief retourne si l'octet courant est plein
+ * \return boolean
+ */
 bool O_currentisFull();
 
 
@@ -109,8 +113,18 @@ int O_obtenirStartPosition();
  */
 Octet O_obtenirBitRestants();
 
+/**
+ * \fn int O_obtenirIndicePlusImportantDeBitRestant()
+ * \brief Fonction qui renvoie l'indice le plus important de l'octet bitRestants 
+ * \return int
+ */
+int O_obtenirIndicePlusImportantDeBitRestant();
 
-int O_obtenirMostImportantBitRestant();
+/**
+ * \fn Octet O_inverser(Octet o)
+ * \brief Fonction qui inverse un octet
+ * \return Octet
+ */
 Octet O_inverser(Octet o);
 
 #endif

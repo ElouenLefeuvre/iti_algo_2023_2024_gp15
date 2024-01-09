@@ -86,7 +86,7 @@ void FDP_enfiler(FileDePriorite *file,ArbreHuffman* arbre);
  * \param arbreOfLCA : Crée un noeud dans la file, en fixant son champ arbre
  * \return Noeud*
  */
-Noeud* FDP_createNoeud(ArbreHuffman* arbreOfLCA);
+Noeud* FDP_creerNoeud(ArbreHuffman* arbre);
 
 /**
  * \fn void FDP_afficherFileDEPriorite(FileDePriorite* file);
@@ -96,20 +96,13 @@ Noeud* FDP_createNoeud(ArbreHuffman* arbreOfLCA);
  */
 void FDP_afficherFileDEPriorite(FileDePriorite* file);
 
-/**
- * \fn void fixerNoeud(FileDePriorite* file,Noeud* noeud, int position);
- * \brief
- *
- */
-//void fixerNoeud(FileDePriorite* file,Noeud* noeud, int position);
-
 
 /**
- * \fn int trouverIndicePourInsere(ArbreHuffman* arbre,FileDePriorite* file);
+ * \fn int FDP_trouverIndicePourInsere(ArbreHuffman* arbre,FileDePriorite* file);
  * \brief Permet de trouver l'indice du dernier élement plus grand que la ponderation de l'arbre qu'on veut insérer 
  * \param arbre : arbre à insérer
  * \param file : file à parcourir
  * \return int
  */
-int trouverIndicePourInsere(ArbreHuffman* arbre,FileDePriorite* file);
+int FDP_trouverIndicePourInsere(ArbreHuffman* arbre,FileDePriorite* file);
 #endif

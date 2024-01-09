@@ -13,12 +13,12 @@ TableDeCodage* TDC_obtenirTableDeCodage() {
 }
 
 CodeBinaire* TDC_obtenirCode(TableDeCodage tab, char c) {
-    Ligne* current = tab.ligne;
-    while (current != NULL) {
-        if (current->c == c) {
-            return &current->code;
+    Ligne* actuel = tab.ligne;
+    while (actuel != NULL) {
+        if (actuel->c == c) {
+            return &actuel->code;
         }
-        current = current->listeSuivante;
+        actuel = actuel->listeSuivante;
     }
     return NULL;
 }
@@ -49,14 +49,4 @@ int TDC_estPresent(TableDeCodage tab, char car) {
 
 bool TDC_estVide(TableDeCodage tab) {
     return tab.ligne == NULL;
-}
-
-char* TDC_afficherTdc(TableDeCodage* tdc) {
-    Ligne *actuel = tdc->ligne;
-    printf("la table de codage est: \n");
-    while (actuel != NULL) {
-        printf(" | Caracter is: %c  ,CodeBinaire is: %s |\n", actuel->c,CB_codeBinaireToStr(&actuel->code));
-        actuel = actuel->listeSuivante;
-    }
-    return NULL;
 }
