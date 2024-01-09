@@ -9,7 +9,7 @@
 #include "TableDeCodage.h"
 #include <string.h>
 
-void ecrireBit(FILE *fichier, char bit) {
+void COMP_ecrireBit(FILE *fichier, char bit) {
     static unsigned char octet = 0;
     static int bitsEcrits = 0;
     octet |= (bit - '0') << (7 - bitsEcrits);
@@ -21,7 +21,7 @@ void ecrireBit(FILE *fichier, char bit) {
     }
 }
 
-void ecrireBitsDansFichier(FILE *fichier, const char *bits) {
+void COMP_ecrireBitsDansFichier(FILE *fichier, const char *bits) {
     size_t longueur = strlen(bits);
 
     for (size_t i = 0; i < longueur; i++) {
@@ -102,7 +102,7 @@ FILE* COMP_compresser(const char* fileName){
     while ((car = fgetc(file)) != EOF) {
         CodeBinaire* code = TDC_obtenirCode(*tableDeCodageFinale,car);
         char* bitsInstr = CB_codeBinaireToStr(code);
-        ecrireBitsDansFichier(compressedFile,bitsInstr);
+        COMP_ecrireBitsDansFichier(compressedFile,bitsInstr);
     }
 
     fclose(file);   

@@ -8,82 +8,45 @@
 #include "Statistiques.h"
 #include "TableDeCodage.h"
 
-// /**
-//  * \fn COMP_creerArbre(Statistiques stats)
-//  * \brief Fonction qui crée un arbre à partir de statistiques
-//  *
-//  * \param stats : statistiques de l'arbre créé
-//  * \return ArbreHuffman
-//  */
-// ArbreHuffman COMP_creerArbre(Statistiques stats);
 
-
-// /**
-//  * \fn COMP_insererArbre(FileDePriorite file, ArbreHuffman arbre)
-//  * \brief Fonction qui insère un arbre dans une file
-//  *
-//  * \param arbre : arbre à insérer
-//  * \param file : file à parcourir
-//  * \return FileDePriorite
-//  */
-// FileDePriorite COMP_insererArbre(FileDePriorite file, ArbreHuffman arbre);
-
-
-// /**
-//  * \fn COMP_obtenirOccurences(char c)
-//  * \brief Fonction qui permet d'obtenir les occurences d'un caractère donné
-//  *
-//  * \param c : caractère à compter
-//  * \return int
-//  */
-// int COMP_obtenirOccurences(char c);
-
-
-// /**
-//  * \fn COMP_obtenirCaracteres(char nomFichier[])
-//  * \brief Fonction qui permet d'obtenir les caractères présents dans un fichier donné
-//  *
-//  * \param nomFichier : nom du fichier à lire
-//  * \return Ensemble
-//  */
-// Ensemble COMP_obtenirCaracteres(char nomFichier[]);
-
-
-// /**
-//  * \fn COMP_creerStatistiques(char nomFichier[], Ensemble ensC)
-//  * \brief Fonction qui permet de créer un ensemble de statistiques pour chaque caractère d'un fichier
-//  *
-//  * \param nomFichier : nom du fichier à lire
-//  * \param ensC : ensemble de caractères du fichier
-
-//  * \return Ensemble
-//  */
-// Ensemble COMP_creerStatistiques(char nomFichier[], Ensemble ensC);
-
-
-// /**
-//  * \fn COMP_creerFileDePriorite(char nomFichier[])
-//  * \brief Fonction qui permet de créer une file de priorité à partir d'un fichier donné
-//  *
-//  * \param nomFichier : nom du fichier à lire
-//  * \return FileDePriorite
-//  */
-// FileDePriorite COMP_creerFileDePriorite(char nomFichier[]);
-
-
-// /**
-//  * \fn COMP_creerTableDeCodage(ArbreHuffman arbre);
-//  * \brief Fonction qui permet de créer une table de codage à partir d'un arbre de Huffman
-//  * \param arbre : arbre à partir duquel est crée la table de codage
-//  * \return TableDeCodage
-//  */
-// TableDeCodage COMP_creerTableDeCodage(ArbreHuffman arbre);
-
-
+/**
+ * void COMP_ecrireBit(FILE *fichier, char bit)
+ * \brief Fonction qui permet d'écrire des bits dans un fichier
+ * \param fichier : fichier à remplir
+ * \param bit : la valeur du bit
+ */
 void COMP_ecrireBit(FILE *fichier, char bit);
+
+/**
+ * void COMP_ecrireBitsDansFichier(FILE *fichier, const char *bits) 
+ * \brief Fonction qui permet d'écrire des bits (en chaîne de caractères) dans un fichier
+ * \param fichier : fichier à remplir
+ * \param bit chaîne de caractères avec les bits que l'on veut écrire
+ */
 void COMP_ecrireBitsDansFichier(FILE *fichier, const char *bits) ;
-FILE* COMP_initSrcFile(const char* fileName);
+
+/**
+ * FILE* COMP_initFichier(const char* nomFichier)
+ * \brief Fonction qui permet d'initialiser l'ouverture du fichier
+ * \param nomFichier : nom du fichier à remplir
+ * \return FILE
+ */
+FILE* COMP_initFichier(const char* nomFichier);
+
+/**
+ * void COMP_CreerArbreEtEnfiler(Statistiques stat,FileDePriorite* fp)
+ * \brief Fonction qui permet d'initialiser l'arbre d'huffman et de l'enfiler dans une file de priorité
+ * \param stat : la statistique à mettre dans l'arbre
+ * \param fp : la file de priorité
+ */
 void COMP_CreerArbreEtEnfiler(Statistiques stat,FileDePriorite* fp);
+
+/**
+ * ArbreHuffman COMP_FusionnerArbreFDP(FileDePriorite fp)
+ * \brief Fonction qui permet de fusionner les arbres dans la file afin d'obtenir l'arbre final
+ * \param fp : la file de priorité
+ * \return ArbreHuffman
+ */
 ArbreHuffman COMP_FusionnerArbreFDP(FileDePriorite fp);
 
 /**
@@ -92,7 +55,7 @@ ArbreHuffman COMP_FusionnerArbreFDP(FileDePriorite fp);
  * \param nomFichier : fichier à compresser
  * \return FILE
  */
-FILE* COMP_compresser(const char* fileName);
+FILE* COMP_compresser(const char* nomFichier);
 
 
 
