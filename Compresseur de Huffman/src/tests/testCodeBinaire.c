@@ -37,15 +37,19 @@ void test_CB_remplirCodeBinaire(void) {
     CodeBinaire code;
     code.taille = 4;
     code.bits = malloc(4 * sizeof(Bit));
-    const char * bits =  "1101";
-    CB_remplirCodeBinaire(&code,bits);
-
+    const char *bits =  "1101";
+    CB_remplirCodeBinaire(&code, bits);
     for (int i = 0; i < code.taille; ++i) {
-        if(strcmp(&bits[i], "0"), 0) CU_ASSERT_EQUAL(code.bits[i], BITA0);
-        if(strcmp(&bits[i], "1"), 0) CU_ASSERT_EQUAL(code.bits[i], BITA1);
+        if (bits[i] == '0') {
+            CU_ASSERT_EQUAL(code.bits[i], BITA0);
+        } 
+        else if (bits[i] == '1') {
+            CU_ASSERT_EQUAL(code.bits[i], BITA1);
+        }
     }
     CB_libererCodeBinaire(&code);
 }
+
 
 // Tests pour CB_obtenirIemeBit
 void test_CB_obtenirIemeBit(void) {
