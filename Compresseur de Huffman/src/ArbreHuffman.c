@@ -16,7 +16,7 @@ ArbreHuffman* AH_arbreDeHuffman(Statistiques stat) {
     return arbre;
 }
 
-void AH_fixerStatistique(ArbreHuffman *arbre,Statistiques stat) {
+void AH_fixerStatistique(ArbreHuffman *arbre,  Statistiques stat) {
     arbre->statistiques=stat;
 }
 
@@ -32,30 +32,30 @@ char AH_obtenirCaracter(ArbreHuffman arbre) {
     return arbre.statistiques.caracter;
 }
 
-ArbreHuffman* AH_fusionner(ArbreHuffman* arbre1,ArbreHuffman* arbre2) {
+ArbreHuffman* AH_fusionner(ArbreHuffman* arbre1,  ArbreHuffman* arbre2) {
     Statistiques stat ;
     stat.caracter = ' ';
     stat.ponderation = S_obtenirPonderation(arbre1->statistiques) + S_obtenirPonderation(arbre2->statistiques);
     ArbreHuffman* res = AH_arbreDeHuffman(stat);
     if (AH_obtenirPonderation(*arbre1)<AH_obtenirPonderation(*arbre2)) {
-        AH_fixerFilsGauche(res,arbre1);
-        AH_fixerFilsDroit(res,arbre2);
+        AH_fixerFilsGauche(res, arbre1);
+        AH_fixerFilsDroit(res, arbre2);
     }
     else {
-        AH_fixerFilsGauche(res,arbre2);
-        AH_fixerFilsDroit(res,arbre1);
+        AH_fixerFilsGauche(res, arbre2);
+        AH_fixerFilsDroit(res, arbre1);
     }
     return res;
 }
 
 
-void AH_fixerFilsGauche(ArbreHuffman *arbre,ArbreHuffman *filsGauche) {
+void AH_fixerFilsGauche(ArbreHuffman *arbre,  ArbreHuffman *filsGauche) {
     if (arbre != NULL) {
         arbre->filsGauche = filsGauche;
     }
 }
 
-void AH_fixerFilsDroit(ArbreHuffman *arbre,ArbreHuffman *filsDroit) {
+void AH_fixerFilsDroit(ArbreHuffman *arbre,  ArbreHuffman *filsDroit) {
     if (arbre != NULL) {
         arbre->filsDroit = filsDroit;
     }
@@ -83,7 +83,7 @@ bool AH_estPresent(ArbreHuffman *arbre, char caractere) {
             return true;
         }
         else {
-            return (AH_estPresent(AH_obtenirFilsDroit(arbre),caractere) || AH_estPresent(AH_obtenirFilsGauche(arbre),caractere));
+            return (AH_estPresent(AH_obtenirFilsDroit(arbre), caractere) || AH_estPresent(AH_obtenirFilsGauche(arbre), caractere));
         }
     }
     return false;
@@ -105,7 +105,7 @@ void AH_afficherArbre(ArbreHuffman *arbre) {
     int taillePile = 0;
     // Empilement du noeud racine
     StackNode racineNode = {arbre, 0};
-    pile = realloc(pile,capacitePile * sizeof(StackNode));
+    pile = realloc(pile, capacitePile * sizeof(StackNode));
     pile[taillePile++] = racineNode;
     while (taillePile > 0) {
         // Dépilement du noeud
