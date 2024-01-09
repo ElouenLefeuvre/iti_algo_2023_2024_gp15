@@ -97,18 +97,3 @@
             {\affecter{temp}{\champ{temp}{suivant}}}
         \retourner{\champ{temp}{arbre}}}
 \end{algorithme}
-
-\subsection{nouvelleFile}
-
-\begin{algorithme}
-    \procedure{nouvelleFile}{\paramEntreeSortie{file : FileDePriorite}}{}
-        {i : \naturel, arbre1,arbre2,arbreFusionne : ArbreHuffman}
-        {\sialorssinon{\champ{file}{longueur} $>$ 2}
-            {\affecter{i}{\champ{file}{longueur}} 
-            \affecter{arbre1}{obtenirElement(file,i)} 
-            \affecter{arbre2}{obtenirElement(file,i-1)} 
-            \instruction{defiler(file)}
-            \instruction{defiler(file)}
-            \affecter{arbreFusionne}{fusionner(arbre1,arbre2)} 
-            \instruction{enfiler(file,arbreFusionne)}}{}}
-\end{algorithme}

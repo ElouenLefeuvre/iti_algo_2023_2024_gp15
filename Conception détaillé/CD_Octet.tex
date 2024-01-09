@@ -74,14 +74,16 @@
 
 \subsubsection{encoder}
 
-\fonction{encoder}{octet : Octet,cb : CodeBinaire}{Octet}{}
-    {bit : Bit}
-    {}
+\begin{algorithme}
+    \fonction{encoder}{octet : Octet, cb : CodeBinaire}{Octet}{}
+        {bit : Bit}
+        {\retourner{Vrai}}
+\end{algorithme}
 
 \subsubsection{estVide}
 
 \begin{algorithme}
-    \fonction{estVide}{\booleen}{octet : \champPointeur{Octet}}{}
+    \fonction{estVide}{octet : \champPointeur{Octet}}{\booleen}{}
         {i : \naturel}
         {\pour{i}{1}{8}{}
             {\sialors{\champPointeur{octet}{bits}[i] $neq$ BITA0}
@@ -92,8 +94,8 @@
 \subsubsection{inverser}
 
 \begin{algorithme}
-    \fonction{inverser}{Octet}{octet : Octet}{}
-        {res : Octet}
+    \fonction{inverser}{octet : Octet}{Octet}{}
+        {i : \naturel, res : Octet}
         {\affecter{res}{creerOctet()}
         \pour{i}{1}{8}{}
             {fixerBit(\adresse{res},i,iemeBit(octet,8-i))}

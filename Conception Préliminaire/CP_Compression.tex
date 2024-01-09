@@ -1,44 +1,29 @@
 \begin{algorithme}
-    \signatureFonction{ compresser}{fic : FichierTexte}{FichierHuffman}
+\signatureProcedure{ecrireBit}{\paramEntreeSortie{fichier : Fichier Binaire}\paramEntree{bit : \caractere}}
     {}
 \end{algorithme}
 
 \begin{algorithme}
-    \signatureFonction{ creerArbreHuffman}{file : FileDePriorité}{Arbre Huffman}
+\signatureProcedure{ecrireBitsDansFichier}{\paramEntreeSortie{fichier : Fichier Binaire}\paramEntree{bits : \chaine}}
     {}
 \end{algorithme}
 
 \begin{algorithme}
-    \signatureFonction{ creerTableDeCodage}{arbre : Arbre Huffman}{TableDeCodage}
+\signatureFonction{initSrcFile}{fileName : \chaine}{Fichier Texte}
     {}
 \end{algorithme}
 
 \begin{algorithme}
-    \signatureFonction{ creerStatistiques}{ensC : Ensemble de \caractere}{Ensemble de Statistiques}
+\signatureProcedure{CreerArbreEtEnfiler}{\paramEntreeSortie{fp : FileDePriorite}\paramEntree{stat : Statistiques}}
     {}
 \end{algorithme}
 
 \begin{algorithme}
-    \signatureFonction{ creerFileDePriorite}{fic :  Fichier Texte}{FileDePriorite}
+\signatureFonction{FusionnerArbreFDP}{fp :  FileDePriorite}{ArbreHuffman}
     {}
 \end{algorithme}
 
 \begin{algorithme}
-    \signatureFonction{ obtenirCaracteres}{fic : FichierTexte}{Ensemble de \caractere}
-    {}
-\end{algorithme}
-
-\begin{algorithme}
-    \signatureFonction{ obtenirOccurences}{c : \caractere}{\naturel}
-    {}
-\end{algorithme}
-
-\begin{algorithme}
-    \signatureProcedure{ insererArbre}{\paramEntreeSortie{file : FileDePriorite}, \paramEntree{arbre : Arbre Huffman}}
-    {}
-\end{algorithme}
-
-\begin{algorithme}
-    \signatureFonction{ creerArbre}{stats : Statistiques}{Arbre Huffman}
+\signatureFonction{compresser}{fileName : \chaine}{Fichier Binaire}
     {}
 \end{algorithme}
