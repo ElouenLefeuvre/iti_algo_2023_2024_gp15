@@ -105,4 +105,14 @@
             {\retourner{estPresent(obtenirFilsDroit(arbre)) ou estPresent(obtenirFilsGauche(arbre))}}}
 \end{algorithme}
 
+\subsubsection{copierArbreHuffman}
+
+\begin{algorithme}
+    \fonction{copierArbreHuffman}{arbre : ArbreHuffman}{ArbreHuffman}{arbre $\ne$ NULL}{stat : Statistiques, nouveauNoeud : ArbreHuffman}{
+        \affecter{stat}{Statistiques.statistique(obtenirCaractere(arbre), obtenirPonderation(arbre))}
+        \affecter{\champ{nouveauNoeud}{filsGauche}}{copierArbreHuffman(obtenirFilsGauche(arbre))}
+        \affecter{\champ{nouveauNoeud}{filsDroite}}{copierArbreHuffman(obtenirFilsDroit(arbre))}
+        \retourner{nouveauNoeud}
+    }
+\end{algorithme}
 
