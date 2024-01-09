@@ -42,18 +42,31 @@
 \section{TAD Octet}
 \begin{tad}
 \tadNom{Octet}
+
 \tadDependances{Chaine de caracteres, Code Binaire, Booleen, Bit}
 \begin{tadOperations}{ObtenirOctet}
     \tadOperation{creerOctet}{}{\tadParams{Octet}}
-    \tadOperation{modifier}{\tadParams{Octet}{\naturel}{Bit}}{\tadParams{Octet}}
-    \tadOperationAvecPreconditions{encoder}{\tadDeuxParams{Octet}{Code Binaire}{\naturel}}{\tadParams{ Chaine de caracteres}}
-    \tadOperationAvecPreconditions{obtenirOctet}{\tadParams{Octet}}{\tadParams{\chaine}}
+    \tadOperation{fixerBit}{\tadParams{Octet}{\entier}{Bit}}{\tadParams{Octet}}
+    \tadOperation{iemeBit}{\tadParams{Octet}{\entier}}{Bit}
+    \tadOperation{decaler}{\tadParams{Octet}}{Octet}
+    \tadOperation{bitsToStr}{\tadParams{Octet}}{\chaine}
+    \tadOperation{strToBits}{\chaine}{Octet}
+    \tadOperationAvecPreconditions{encoder}{\tadDeuxParams{Octet}{Code Binaire}}{Octet}
+    \tadOperation{estVide}{\tadParams{Octet}}{\booleen}
+    \tadOperation{inverser}{\tadParams{Octet}}{Octet}
 \end{tadOperations}
 \begin{tadSemantiques}{obtenirCodeBinaire}
     \tadSemantique{creerOctet}{Permet d'obtenir un octet avec tous ses bits à 0}
-    \tadSemantique{modifier}{Permet de modifier un bit dans un octet}
-    \tadSemantique{encoder}{Met un code binaire dans un octet à une certaine position}
-    \tadSemantique{obtenirOctet}{Donne la chaine de caractères correspondantes à un octet}
+    \tadSemantique{fixerBit}{Permet de fixer les bits d'un octet}
+    \tadSemantique{iemeBit}{Renvoie le i-eme bit d'un octet}
+    \tadSemantique{decaler}{Decale l'octet vers la gauche}
+    \tadSemantique{bitsToStr}{Renvoie un octet en chaîne de caractere}
+    \tadSemantique{strToBits}{Renvoie l'octet d'une chaîne de caractere}
+    \tadSemantique{encoder}{Remplit un octet avec un code binaire}
+    \tadSemantique{estVide}{Verfie si l'octet est vide}
+    \tadSemantique{inverser}{Inverse l'octet}
+
+    
 \end{tadSemantiques}
 \begin{tadPreconditions}{decoder(code, chaine)}
     \tadPrecondition{encoder(o, code,i)}{non estVide(code), $0 \leq i \leq 7$}

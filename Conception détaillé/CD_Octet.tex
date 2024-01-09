@@ -93,7 +93,12 @@
 \end{algorithme}
 
 \subsubsection{encoder}
+\fonction{encoder}{octet : Octet,cb : CodeBinaire}{Octet}
+    {}
+    {bit : Bit}
+    {
 
+    }
 \subsubsection{estVide}
 
 \begin{algorithme}
@@ -108,3 +113,15 @@
     }
 \end{algorithme}
 
+\subsubsection{inverser}
+\begin{algorithme}
+    \fonction{inverser}{Octet}{octet : Octet}
+    {}
+    {res : Octet}
+    {\affecter{res}{creerOctet()}
+    \pour{i}{1}{8}{}{
+        fixerBit(\adresse{res},i,iemeBit(octet,8-i))
+        }
+    \retourner{res}
+    }
+\end{algorithme}
