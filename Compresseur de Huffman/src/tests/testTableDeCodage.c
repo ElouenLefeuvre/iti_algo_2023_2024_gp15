@@ -12,54 +12,41 @@ void test_obtenirTableDeCodage(void) {
 
 void test_TDC_obtenirCode(void) {
     TableDeCodage* table = TDC_obtenirTableDeCodage();
-
     CodeBinaire cb_A = CB_creerCodeBinaire(3);
     CB_remplirCodeBinaire(&cb_A, "001");
     TDC_ajouter(table, 'A', &cb_A);
-
     CodeBinaire* res_A = TDC_obtenirCode(*table, 'A');
     CU_ASSERT_PTR_NOT_NULL(res_A);
     CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(res_A), "001");
-
     CodeBinaire* res_B = TDC_obtenirCode(*table, 'B');
     CU_ASSERT_PTR_NULL(res_B);
-
     CB_libererCodeBinaire(&cb_A);
 }
 
 void test_TDC_ajouter(void) {
     TableDeCodage* table = TDC_obtenirTableDeCodage();
-
     CodeBinaire cb_A = CB_creerCodeBinaire(3);
     CB_remplirCodeBinaire(&cb_A, "001");
     TDC_ajouter(table, 'A', &cb_A);
-
     CU_ASSERT_FALSE(TDC_estVide(*table));
-
     CodeBinaire* res_A = TDC_obtenirCode(*table, 'A');
     CU_ASSERT_PTR_NOT_NULL(res_A);
     CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(res_A), "001");
-
     CB_libererCodeBinaire(&cb_A);
 }
 
 void test_TDC_estPresent(void) {
     TableDeCodage* table = TDC_obtenirTableDeCodage();
-
     CodeBinaire cb_A = CB_creerCodeBinaire(3);
     CB_remplirCodeBinaire(&cb_A, "001");
     TDC_ajouter(table, 'A', &cb_A);
-
     CodeBinaire cb_B = CB_creerCodeBinaire(3);
     CB_remplirCodeBinaire(&cb_B, "010");
     TDC_ajouter(table, 'B', &cb_B);
-
     int present_A = TDC_estPresent(*table, 'A');
     CU_ASSERT_EQUAL(present_A, 1);
-
     int present_C = TDC_estPresent(*table, 'C');
     CU_ASSERT_EQUAL(present_C, 0);
-
     CB_libererCodeBinaire(&cb_A);
     CB_libererCodeBinaire(&cb_B);
 }
@@ -67,29 +54,22 @@ void test_TDC_estPresent(void) {
 void test_TDC_estVide(void) {
     TableDeCodage* table_vide = TDC_obtenirTableDeCodage();
     CU_ASSERT_TRUE(TDC_estVide(*table_vide));
-
     TableDeCodage* table_non_vide = TDC_obtenirTableDeCodage();
     CodeBinaire cb_A = CB_creerCodeBinaire(3);
     CB_remplirCodeBinaire(&cb_A, "001");
     TDC_ajouter(table_non_vide, 'A', &cb_A);
-
     CU_ASSERT_FALSE(TDC_estVide(*table_non_vide));
-
     CB_libererCodeBinaire(&cb_A);
 }
 
-
 int main() {
-    // Initialiser le framework CUnit
     CU_initialize_registry();
-    // Ajouter la suite de tests
     CU_pSuite suite = CU_add_suite("Suite_de_tests", NULL, NULL);
     CU_add_test(suite, "test_obtenirTableDeCodage", test_obtenirTableDeCodage);
     CU_add_test(suite, "test_TDC_obtenirCode", test_TDC_obtenirCode);
     CU_add_test(suite, "test_TDC_ajouter", test_TDC_ajouter);
     CU_add_test(suite, "test_TDC_estPresent", test_TDC_estPresent);
     CU_add_test(suite, "test_TDC_estVide", test_TDC_estVide);
-    // Exécuter les tests
     CU_basic_set_mode(CU_BRM_VERBOSE);
     CU_basic_run_tests();
     printf("\n");
