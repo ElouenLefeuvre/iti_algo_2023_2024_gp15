@@ -81,14 +81,23 @@
 // TableDeCodage COMP_creerTableDeCodage(ArbreHuffman arbre);
 
 
+void ecrireBit(FILE *fichier, char bit);
+void ecrireBitsDansFichier(FILE *fichier, const char *bits) ;
+int COMP_obtenirStatNumber();
+FILE* COMP_initSrcFile(const char* fileName);
+FILE* COMP_initDestFile(const char* fileName);
+void COMP_createArbreEtEnfiler(Statistiques stat,FileDePriorite* fp);
+ArbreHuffman COMP_fusionArbreDeFP(FileDePriorite fp);
+TableDeCodage* COMP_remplirTDC(char tableau[],ArbreHuffman arbreFinal);
+
 /**
  * \fn COMP_compresser(char nomFichier[]);
  * \brief Fonction qui permet de créer un fichier compressé à partir d'un fichier donné
  * \param nomFichier : fichier à compresser
  * \return FILE
  */
-FILE* compresser(const char* fileName);
+FILE* COMP_compresser(const char* fileName);
 
-void COMP_null();
+
 
 #endif

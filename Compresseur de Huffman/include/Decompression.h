@@ -15,6 +15,7 @@
 #include "Statistiques.h"
 
 
+int lireBit(FILE *fichier);
 
 /**
  * \fn DECOMP_fileFromFILE(FileDePriorite fp,char caracter,int ponderation)

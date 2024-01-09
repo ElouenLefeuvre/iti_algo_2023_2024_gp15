@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/Users/ilyes/iti_algo_2023_2024_gp15/Compresseur de Huffman",
+            "binaryPath": "/Users/ilyes/iti_algo_2023_2024_gp15/Compresseur de Huffman/prog",
+            "binaryArgs": []
+        }
+    ]
+}

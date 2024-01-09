@@ -6,7 +6,9 @@
 #include "ArbreHuffman.h"
 #include "FileDePriorite.h"
 #include "TableDeCodage.h"
+#include "compression.h"
 #define TAILLE_MAX 1000 
+
 
 
 FileDePriorite DECOMP_fileFromFILE(FileDePriorite fp,char caracter,int ponderation){
@@ -14,6 +16,22 @@ FileDePriorite DECOMP_fileFromFILE(FileDePriorite fp,char caracter,int ponderati
     ArbreHuffman* arbre= AH_arbreDeHuffman(stat);
     FDP_enfiler(&fp,arbre);
     return fp;
+}
+
+int lireBit(FILE *fichier) {
+    static unsigned char octet = 0;
+    static int bitsLus = 0;
+    if (bitsLus == 0) {
+        size_t result = fread(&octet, sizeof(unsigned char), 1, fichier);
+        if (result == 0) {
+            return EOF; 
+        }
+        bitsLus = 8;
+    }
+    int bit = (octet >> (bitsLus - 1)) & 1;
+    bitsLus--;
+
+    return bit;
 }
 
 
@@ -34,49 +52,40 @@ ArbreHuffman DECOMP_arbrePrincipale(FileDePriorite fp){
 
 
 FILE* DECOMP_decompresser(const char* fileName){
-    FILE *file = fopen(fileName, "r");
+    FILE *file = fopen(fileName, "rb");
     char tailleStr[TAILLE_MAX] = "";
     int taille = 1;
-
     if (file == NULL) {
         perror("Erreur lors de l'ouverture du fichier");
         exit(EXIT_FAILURE);
     }
-
-    
-    if(fgets(tailleStr, TAILLE_MAX, file) != NULL){
-        taille= atoi(tailleStr);
-    }
-
+    fread(&taille, sizeof(int),1, file);
     char c;
     FileDePriorite fp= FDP_fileDePriorite();
-    while((c = fgetc(file)) != '\n'){ 
-        char statCaracter = c;      
-        c= fgetc(file);
-        int statPonderation = atoi(&c);
-        fp = DECOMP_fileFromFILE(fp,statCaracter,statPonderation);
+    int i=0;
+    while(i<256){
+        c = fgetc(file);
+        int statPonderation ;
+        fread(&statPonderation,sizeof(int),1,file);
+        if(statPonderation!=0){
+            fp = DECOMP_fileFromFILE(fp,c,statPonderation);
+        }
+        i++;
     }
-
     const char *decompressed = "decompressedFile.txt";
     FILE* decompresssedFile = fopen(decompressed,"w");
     ArbreHuffman arbrePrincipale = DECOMP_arbrePrincipale(fp);
     ArbreHuffman *tmp = &arbrePrincipale;
-    char car;
-    while((car = fgetc(file)) != EOF){ 
-        if(car== '.'){
-            continue;
-        }
-
-        else{
-            if(car== '0') tmp = tmp->filsGauche;
-            else if (car =='1') tmp=tmp->filsDroit;
-        }   
+    int bit;
+    while ((bit = lireBit(file)) != EOF) {
+        if(bit == 0) tmp = tmp->filsGauche;
+        else if (bit ==1) tmp=tmp->filsDroit;   
         if (AH_estFeuille(*tmp)){
             fprintf(decompresssedFile,"%c",AH_obtenirCaracter(*tmp));
             tmp = &arbrePrincipale;
-        
         }
     }
+    
     fclose(file);
     return NULL;
 }

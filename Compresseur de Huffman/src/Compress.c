@@ -7,24 +7,66 @@
 #include "ArbreHuffman.h"
 #include "FileDePriorite.h"
 #include "TableDeCodage.h"
+#include <string.h>
+static int nbreStat = 0;
+
+void ecrireBit(FILE *fichier, char bit) {
+    static unsigned char octet = 0;
+    static int bitsEcrits = 0;
+    octet |= (bit - '0') << (7 - bitsEcrits);
+    bitsEcrits++;
+    if (bitsEcrits == 8) {
+        fwrite(&octet, sizeof(unsigned char), 1, fichier);
+        octet = 0;
+        bitsEcrits = 0;
+    }
+}
+
+void ecrireBitsDansFichier(FILE *fichier, const char *bits) {
+    size_t longueur = strlen(bits);
+
+    for (size_t i = 0; i < longueur; i++) {
+        ecrireBit(fichier, bits[i]);
+    }
+}
 
 
-
-
-FILE* compresser(const char* fileName){
+FILE* COMP_initSrcFile(const char* fileName){
     FILE* file = fopen(fileName,"r");
     if (file == NULL) {
         perror("Erreur lors de l'ouverture du fichier");
         exit(EXIT_FAILURE);
     }
-    FileDePriorite fp= FDP_fileDePriorite();
+    return file;
+}
 
-    const char *filename = "compressedFile.txt";
-    FILE *compressedFile = fopen(filename, "w");
+void COMP_createArbreEtEnfiler(Statistiques stat,FileDePriorite* fp){
+    ArbreHuffman* arbre = AH_arbreDeHuffman(stat);
+    FDP_enfiler(fp,arbre);
+}
+
+ArbreHuffman COMP_fusionArbreDeFP(FileDePriorite fp){
+    while(fp.longueur != 1){
+        ArbreHuffman arbre1 = FDP_obtenirElement(fp, fp.longueur);
+        ArbreHuffman arbre2 = FDP_obtenirElement(fp, fp.longueur - 1);
+        FDP_defiler(&fp);
+        FDP_defiler(&fp);
+        ArbreHuffman* arbreFusionne1 = AH_fusionner(&arbre1,&arbre2);
+        ArbreHuffman* copy = copierArbreHuffman(arbreFusionne1);
+        FDP_enfiler(&fp, copy);
+    }
+    return FDP_obtenirElement(fp,0);
+}
+
+FILE* COMP_compresser(const char* fileName,const char* dest){
+    unsigned char back = '\n';
+    FILE* file = COMP_initSrcFile(fileName);
+    FileDePriorite fp= FDP_fileDePriorite();
+    const char *filename = "compressedFile.huff";
+    FILE *compressedFile = fopen(filename, "wb");
     if (compressedFile == NULL) {
         fprintf(stderr, "Impossible d'ouvrir le fichier %s en écriture.\n", filename);
     }
-
     int occurrences[256] = {0};
     int caracteresSansRepetition[256] = {0};
     int nbCaracteresSansRepetition = 0;
@@ -38,78 +80,38 @@ FILE* compresser(const char* fileName){
             caracteresSansRepetition[nbCaracteresSansRepetition++] = caractere;
         }
     }
-    fprintf(compressedFile,"%d\n",nbCaracAvecRepetition-1);
-
-    for (int i = 0; i < nbCaracteresSansRepetition; i++) {
+    nbCaracAvecRepetition--;
+    fwrite(&nbCaracAvecRepetition, sizeof(int), 1, compressedFile);
+    for (int i = 0; i < 256; i++) {
         Statistiques stat = S_statistique(caracteresSansRepetition[i],occurrences[caracteresSansRepetition[i]]);
-        if(i==nbCaracteresSansRepetition-1){
-            fprintf(compressedFile,"%c%d\n",S_obtenirCaractere(stat),S_obtenirPonderation(stat));
+        char car = caracteresSansRepetition[i];
+        int ent = occurrences[caracteresSansRepetition[i]];
+        fwrite(&car, sizeof(char), 1, compressedFile);
+        fwrite(&ent, sizeof(int), 1, compressedFile);
+        if(ent!=0){
+            COMP_createArbreEtEnfiler(stat,&fp);
         }
-        else{
-            fprintf(compressedFile,"%c%d",S_obtenirCaractere(stat),S_obtenirPonderation(stat));
-        }
-        ArbreHuffman* arbre = AH_arbreDeHuffman(stat);
-        FDP_enfiler(&fp,arbre);
     }
-    
-    
-    
-    while(fp.longueur != 1){
-        ArbreHuffman arbre1 = FDP_obtenirElement(fp, fp.longueur);
-        ArbreHuffman arbre2 = FDP_obtenirElement(fp, fp.longueur - 1);
-        FDP_defiler(&fp);
-        FDP_defiler(&fp);
-        ArbreHuffman* arbreFusionne1 = AH_fusionner(&arbre1,&arbre2);
-        ArbreHuffman* copy = copierArbreHuffman(arbreFusionne1);
-        FDP_enfiler(&fp, copy);
-    }
-
-
-
-
-    ArbreHuffman ArbreFinal = FDP_obtenirElement(fp,0);
+    ArbreHuffman ArbreFinal = COMP_fusionArbreDeFP(fp);
     TableDeCodage* tableDeCodageFinale = TDC_obtenirTableDeCodage();
     for (int i=0 ; i<nbCaracteresSansRepetition;i++){
         char c = caracteresSansRepetition[i];
         CodeBinaire cb = CB_CbFromAH(&ArbreFinal,c);
         TDC_ajouter(tableDeCodageFinale,c,&cb);
     }
-    
-    TDC_afficherTdc(tableDeCodageFinale);
-    
-
-
     fseek(file, 0, SEEK_SET);
-    Octet firstOctet = O_creerOctet();
     char car;
     while ((car = fgetc(file)) != EOF) {
-        if(!O_currentisFull()){
-            CodeBinaire* code = TDC_obtenirCode(*tableDeCodageFinale,car);
-            firstOctet = O_encoder(firstOctet,*code);
-            
-        }
-        else{
-            //printf("octet is is %s\n", O_octetToStr(&firstOctet));
-            fprintf(compressedFile,"%s.",O_bitsToStr(&firstOctet));
-            firstOctet = O_creerOctet();
-            //printf("J'ai creer un nv octet\n");
-            CodeBinaire* code = TDC_obtenirCode(*tableDeCodageFinale,car);
-            firstOctet =O_encoder(firstOctet,*code);
-        }
+        CodeBinaire* code = TDC_obtenirCode(*tableDeCodageFinale,car);
+        char* bitsInstr = CB_codeBinaireToStr(code);
+        ecrireBitsDansFichier(compressedFile,bitsInstr);
     }
-    //printf("octet is is %s\n", O_octetToStr(&firstOctet));
-    fprintf(compressedFile,"%s.",O_bitsToStr(&firstOctet));
-    if(O_obtenirMostImportantBitRestant()<= 7){
-        Octet octet = O_inverser(O_obtenirBitRestants());
-        fprintf(compressedFile,"%s",O_bitsToStr(&octet));
-    }
-    
+
     fclose(file);   
 
     return compressedFile;
 
 }
 
-void null(){
-    printf("aa");
-}
+
+

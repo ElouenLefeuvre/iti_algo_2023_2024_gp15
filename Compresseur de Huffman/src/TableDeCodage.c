@@ -19,7 +19,7 @@ CodeBinaire* TDC_obtenirCode(TableDeCodage tab,char c) {
         }
         current = current->listeSuivante;
     }
-    return NULL;  // Le caractère n'a pas été trouvé dans la table.
+    return NULL;
 }
 
 char TDC_obtenirCarac(TableDeCodage tab,CodeBinaire code) {

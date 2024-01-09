@@ -13,6 +13,8 @@
 
 
 int main(){
-    compresser("file.txt");
+    //COMP_compresser("file.txt");
+    DECOMP_decompresser("compressedFile.huff");
+    
 }
 
