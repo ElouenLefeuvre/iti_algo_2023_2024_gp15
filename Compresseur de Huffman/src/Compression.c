@@ -24,14 +24,12 @@ void COMP_ecrireBit(FILE *fichier, char bit) {
 
 void COMP_ecrireBitsDansFichier(FILE *fichier, const char *bits) {
     size_t longueur = strlen(bits);
-
     for (size_t i = 0; i < longueur; i++) {
         COMP_ecrireBit(fichier, bits[i]);
     }
 }
 
-
-FILE* COMP_initFichier(const char* nomFichier){
+FILE* COMP_initFichier(const char* nomFichier) {
     FILE* file = fopen(nomFichier,"r");
     if (file == NULL) {
         perror("Erreur lors de l'ouverture du fichier");
@@ -40,7 +38,7 @@ FILE* COMP_initFichier(const char* nomFichier){
     return file;
 }
 
-void COMP_CreerArbreEtEnfiler(Statistiques stat,FileDePriorite* fp){
+void COMP_CreerArbreEtEnfiler(Statistiques stat,FileDePriorite* fp) {
     ArbreHuffman* arbre = AH_arbreDeHuffman(stat);
     FDP_enfiler(fp,arbre);
 }
@@ -58,9 +56,9 @@ ArbreHuffman COMP_FusionnerArbreFDP(FileDePriorite fp){
     return FDP_obtenirElement(fp,0);
 }
 
-FILE* COMP_compresser(const char* nomFichier){
+FILE* COMP_compresser(const char* nomFichier) {
     FILE* file = COMP_initFichier(nomFichier);
-    FileDePriorite fp= FDP_fileDePriorite();
+    FileDePriorite fp = FDP_fileDePriorite();
     const char *nomFichierComp = "compressedFile.huff";
     FILE *compressedFile = fopen(nomFichierComp, "wb");
     if (compressedFile == NULL) {
@@ -69,8 +67,7 @@ FILE* COMP_compresser(const char* nomFichier){
     int occurrences[256] = {0};
     int caracteresSansRepetition[256] = {0};
     int nbCaracteresSansRepetition = 0;
-    int nbCaracAvecRepetition=0;
-
+    int nbCaracAvecRepetition = 0;
     int caractere;
     while ((caractere = fgetc(file)) != EOF) {
         nbCaracAvecRepetition++;
@@ -87,29 +84,26 @@ FILE* COMP_compresser(const char* nomFichier){
         int ent = occurrences[caracteresSansRepetition[i]];
         fwrite(&car, sizeof(char), 1, compressedFile);
         fwrite(&ent, sizeof(int), 1, compressedFile);
-        if(ent!=0){
-            COMP_CreerArbreEtEnfiler(stat,&fp);
+        if(ent != 0) {
+            COMP_CreerArbreEtEnfiler(stat, &fp);
         }
     }
     ArbreHuffman ArbreFinal = COMP_FusionnerArbreFDP(fp);
     TableDeCodage* tableDeCodageFinale = TDC_obtenirTableDeCodage();
-    for (int i=0 ; i<nbCaracteresSansRepetition;i++){
+    for (int i = 0 ; i < nbCaracteresSansRepetition;i++) {
         char c = caracteresSansRepetition[i];
-        CodeBinaire cb = CB_CbFromAH(&ArbreFinal,c);
-        TDC_ajouter(tableDeCodageFinale,c,&cb);
+        CodeBinaire cb = CB_CbFromAH(&ArbreFinal, c);
+        TDC_ajouter(tableDeCodageFinale, c, &cb);
     }
     fseek(file, 0, SEEK_SET);
     char car;
     while ((car = fgetc(file)) != EOF) {
-        CodeBinaire* code = TDC_obtenirCode(*tableDeCodageFinale,car);
+        CodeBinaire* code = TDC_obtenirCode(*tableDeCodageFinale, car);
         char* bitsInstr = CB_codeBinaireToStr(code);
-        COMP_ecrireBitsDansFichier(compressedFile,bitsInstr);
+        COMP_ecrireBitsDansFichier(compressedFile, bitsInstr);
     }
-
     fclose(file);   
-
     return compressedFile;
-
 }
 
 

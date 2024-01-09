@@ -9,11 +9,9 @@
 #include "Compression.h"
 #define TAILLE_MAX 1000 
 
-
-
-FileDePriorite DECOMP_obtenirFileFichier(FileDePriorite fp,char caracter,int ponderation){
-    Statistiques stat= S_statistique(caracter,ponderation); 
-    ArbreHuffman* arbre= AH_arbreDeHuffman(stat);
+FileDePriorite DECOMP_obtenirFileFichier(FileDePriorite fp,char caracter,int ponderation) {
+    Statistiques stat = S_statistique(caracter, ponderation); 
+    ArbreHuffman* arbre = AH_arbreDeHuffman(stat);
     FDP_enfiler(&fp,arbre);
     return fp;
 }
@@ -30,61 +28,55 @@ int lireBit(FILE *fichier) {
     }
     int bit = (octet >> (bitsLus - 1)) & 1;
     bitsLus--;
-
     return bit;
 }
 
-
-ArbreHuffman DECOMP_arbrePrincipal(FileDePriorite fp){
-    
-    while(fp.longueur != 1){
+ArbreHuffman DECOMP_arbrePrincipal(FileDePriorite fp) {
+    while(fp.longueur != 1) {
         ArbreHuffman arbre1 = FDP_obtenirElement(fp, fp.longueur);
         ArbreHuffman arbre2 = FDP_obtenirElement(fp, fp.longueur - 1);
         FDP_defiler(&fp);
         FDP_defiler(&fp);
-        ArbreHuffman* arbreFusionne1 = AH_fusionner(&arbre1,&arbre2);
+        ArbreHuffman* arbreFusionne1 = AH_fusionner(&arbre1, &arbre2);
         ArbreHuffman* copy = copierArbreHuffman(arbreFusionne1);
         FDP_enfiler(&fp, copy);
     }
-
-    return FDP_obtenirElement(fp,0);
+    return FDP_obtenirElement(fp, 0);
 }
 
-
-FILE* DECOMP_decompresser(const char* fileName){
-    FILE *file = fopen(fileName, "rb");
+FILE* DECOMP_decompresser(const char* nomFichier) {
+    FILE *file = fopen(nomFichier, "rb");
     int taille = 1;
     if (file == NULL) {
         perror("Erreur lors de l'ouverture du fichier");
         exit(EXIT_FAILURE);
     }
-    fread(&taille, sizeof(int),1, file);
+    fread(&taille, sizeof(int), 1, file);
     char c;
     FileDePriorite fp= FDP_fileDePriorite();
-    int i=0;
-    while(i<256){
+    int i = 0;
+    while(i < 256) {
         c = fgetc(file);
-        int statPonderation ;
-        fread(&statPonderation,sizeof(int),1,file);
-        if(statPonderation!=0){
-            fp = DECOMP_obtenirFileFichier(fp,c,statPonderation);
+        int statPonderation;
+        fread(&statPonderation, sizeof(int), 1, file);
+        if(statPonderation!=0) {
+            fp = DECOMP_obtenirFileFichier(fp, c, statPonderation);
         }
         i++;
     }
     const char *decompressed = "decompressedFile.txt";
-    FILE* decompresssedFile = fopen(decompressed,"w");
-    ArbreHuffman arbrePrincipale = DECOMP_arbrePrincipal(fp);
-    ArbreHuffman *tmp = &arbrePrincipale;
+    FILE* decompresssedFile = fopen(decompressed, "w");
+    ArbreHuffman arbrePrincipal = DECOMP_arbrePrincipal(fp);
+    ArbreHuffman *tmp = &arbrePrincipal;
     int bit;
     while ((bit = lireBit(file)) != EOF) {
         if(bit == 0) tmp = tmp->filsGauche;
-        else if (bit ==1) tmp=tmp->filsDroit;   
+        else if (bit == 1) tmp  =tmp->filsDroit;   
         if (AH_estFeuille(*tmp)){
-            fprintf(decompresssedFile,"%c",AH_obtenirCaracter(*tmp));
-            tmp = &arbrePrincipale;
+            fprintf(decompresssedFile, "%c", AH_obtenirCaracter(*tmp));
+            tmp = &arbrePrincipal;
         }
     }
-    
     fclose(file);
     return NULL;
 }
