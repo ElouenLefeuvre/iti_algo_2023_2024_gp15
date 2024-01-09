@@ -164,8 +164,8 @@ indicePlusImportantDeBitRestant = 9\\
 \begin{algorithme}
     \fonction{inverser}{octet : Octet}{Octet}{}
         {i : \naturel, res : Octet}
-        {\affecter{res}{creerOctet()}
+        {\affecter{res}{\instruction{creerOctet()}
         \pour{i}{1}{8}{}
-            {fixerBit(\adresse{res},i,iemeBit(octet,8-i))}
-        \retourner{res}}
+            {\instruction{fixerBit(\adresse{res},i,iemeBit(octet,8-i))}}
+        \retourner{res}}}
 \end{algorithme}
