@@ -1,82 +1,71 @@
+\subsubsection{obtenirFileFichier}
 \begin{algorithme}
-    \fonction{decompresser}{fic : FichierHuffman}{FichierTexte}
+    \fonction{ obtenirFileFichier}{fp : FileDePriorite, car : \caractere, ponderation : \naturel }{FileDePriorite}
     {}
-    {stats\_fic : Ensemble de Statistiques, file : FileDePriorite, temp : ArbreHuffman, digit,car : Caractere}
+    {stat : Statistiques, arbre : ArbreHuffman}
 {
-    \affecter{stats\_fic}{obtenirStatistiques(fic)}
-    \affecter{file}{obtenirFileDePriorite(stats\_fic)}
-    \affecter{temp}{obtenirElement(file)}\newline
-    ouvrir(fic)
-    \tantque{non(eof(fic))}{
-        ouvrir(fic)\newline
-        \tantque{non(estUneFeuille(temp))}{
-            \affecter{digit}{\lire{fic,car}}
-            \sialorssinon{digit==0}
-                {\affecter{temp}{obtenirFilsGauche(arbre)}}
-                {\affecter{temp}{obtenirFilsDroit(arbre)}}}
-        fermer(fic)
-        ouvrir(fictexte)
-        \ecrire{fictexte, obtenirCaractere(temp)}  \newline
-        fermer(fictexte)}
+    \affecter{stat}{Statistiques.statistique(car, ponderation)}
+    \affecter{arbre}{ArbreHuffman.arbreDeHuffman}
+    enfiler(fp,arbre)
+    \retourner{fp}
 }
 
-\subsubsection{obtenirFileDePriorite}
 
+\subsubsection{arbrePrincipal}
 \begin{algorithme}
-    \fonction{ obtenirFileDePriorite}{stats : Ensemble de Statistiques}{FileDePriorite}
+    \fonction{arbrePrincipal}{fp :  FileDePriorite}{ArbreHuffman}
     {}
-    {ens : Ensemble de Arbre de Huffman, file : FileDePriorite, s : Statistiques, a : ArbreHuffman}
-    {
-        \affecter{file}{filedePriorite()}
-        \pourChaque{s}{stats}
-            {ajouter(ens, arbrehuffman(s))}
-        \pourChaque{a}{ens}
-            {enfiler(file, a)}
-        \tantque{longueur$>$1}
-            {nouvelleFile(file)}
-        \retourner{file}
+    {arbre1, arbre2, arbreFusionne, copie : ArbreHuffman}
+    {\tantque{\champ{fp}{longueur $\ne$ 1}}{
+        \affecter{arbre1}{FileDePriorite.obtenirElement(fp, \champ{fp}{longueur})}
+        \affecter{arbre2}{FileDePriorite.obtenirElement(fp, \champ{fp}{longueur} - 1)}
+        FileDePriorite.defiler(fp)
+        FileDePriorite.defiler(fp)
+        \affecter{arbreFusionne}{ArbreHuffman.fusionner(arbre1, arbre2)}
+        \affecter{copie}{ArbreHuffman.copierArbreHuffman(arbreFusionne)}
+        FileDePriorite.enfiler(fp, copie)
+    }
+    \retourner{FileDePriorite.obtenirElement(fp, 0)}
     }
 \end{algorithme}
 
-\subsubsection{obtenirStatistiques}
-
+\subsubsection{decompresser}
 \begin{algorithme}
-    \fonction{obtenirStatistiques}{fic :  FichierHuffman}{Ensemble de Statistiques}
+    \fonction{decompresser}{fichier : FichierBinaire}{FichierTexte}
     {}
-    {ens : Ensemble de Statistiques}
-    {ouvrir(fic) \newline
-    \tantque{str!="/"}{
-        \lire{fic,car}
-        \lire{fic,int}\newline
-        ajouter(ens,Statistiques.statistique(car,int))}
-    \retourner{ens}
+{taille, i, statPonderation, bit : \naturel, c : \caractere, fp : FileDePriorite, decompressed : \chaine, decompressedFile : FichierTexte, arbrePrincipal, tmp : ArbreHuffman}
+{ouvrir(fichier)
+    \affecter{taille}{1}
+    lireFichier(taille, taille(\naturel), 1, fichier)
+    \affecter{fp}{FileDePriorite.fileDePriorite}
+    \affecter{i}{0}
+    \tantqu{i < 256}{
+        \affecter{c}{obtenirCaractereFichier(fichier)}
+        lireFichier(statPonderation, taille(\naturel), 1, fichier)
+        \sialorssinon{statPonderation $\ne$ 0}{
+            \affecter{fp}{obtenirFileFichier(fp, c, statPonderation)}
+        }{}
+        \affecter{i}{i + 1}
     }
-\end{algorithme}
+    \affecter{decompressed}{"decompressedFile.txt"}
+    \affecter{decompressedFile}{ouvrirFichier(decompressed)}
+    \affecter{arbrePrincipal}{arbrePrincipal(fp)}
+    \affecter{tmp}{arbrePrincipal}
+    \tantque{(bit = lireBit(fichier)) $\ne$ FinDuFichier}{
+        \sialorssinon{bit = 0}{
+            \affecter{tmp}{\champ{tmp}{filsGauche}}
+        }{
+            \sialorssinon{bit = 0}{
+                \affecter{tmp}{\champ{tmp}{filsDroit}}
+            }{}
+        }
+        \sialorssinon{ArbreHuffman.estFeuille(tmp)}{
+            ecrireFichier(decompressedFile, ArbreHuffman.obtenirCaracter(*tmp))
+            \affecter{tmp}{arbrePrincipal}
+        }
+    }
+    fermerFichier(fichier)
+    \retourner{NULL}
+    }
 
-\subsubsection{creerArbreHuffman}
-
-\begin{algorithme}
-    \fonction{creerArbreHuffman}{stats : Statistiques}{Arbre Huffman}
-    {}
-    {}
-    {\retourner{ArbreHuffman.arbrehuffman(stats)}}
-
-\end{algorithme}
-
-\subsubsection{insererArbre}
-
-\begin{algorithme}
-    \fonction{insererArbre}{file : FileDePriorite, arbre : Arbre Huffman}{FileDePriorite}
-    {}
-    {}
-    {FileDePriorité.enfiler(arbre,file)
-    \retourner{file}}
-\end{algorithme}
-
-\subsubsection{creerArbre}
-\begin{algorithme}
-    \fonction{creerArbre}{stats : Statistiques}{Arbre Huffman}
-    {}
-    {}
-    {\retourner{Huffman.arbrehuffman(stats)}}
 \end{algorithme}
