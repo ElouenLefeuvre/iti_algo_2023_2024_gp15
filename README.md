@@ -21,7 +21,8 @@ Un programme en C capable de compresser un fichier texte en fichier binaire, et 
 3. Exécutez les tests unitaires avec `make tests`.
 4. Créer la documentation avec `make doc`.
 5. Créer le rapport sous format pdf avec `make rapport`.
-6. Nettoyez le projet avant de le reconstruire avec `make clean`.
+6. Nettoyez le projet avant de le reconstruire avec `make clean`. 
+7. Pour supprimer la documentation, il faut préciser avec `make clean DOC=true` afin d'éviter de l'actualiser trop souvent.
 
 ## Structure du Projet
 
@@ -51,18 +52,16 @@ Un programme en C capable de compresser un fichier texte en fichier binaire, et 
 
 ## Évaluation et Performances
 
-Avec un fichier texte de 38..., nous obtenons un fichier compressé de ..., ce qui correspond à un fichier ... moins volumineux.
+Avec un fichier pdf de 78KB, nous obtenons un fichier compressé de 4KB, ce qui correspond à un fichier presque 20 fois moins volumineux.
 
 ## Limitations et Améliorations Possibles
 
 Notre principale limitation et piste d'amélioration et de rendre notre programme universel vis à vis du type de fichier, et de rendre cette compression plus efficace.
 
-## Conclusions
+## Conclusion
 
-Ce projet algorithmique a permis de ...
-
-## Références
-- si vous avez des réf a mettre c'est ici
+Ce projet algorithmique nous a permis de se familiariser avec toutes les différentes étapes dans la réalisation d'un projet. Nous avons pu travailler dans le cycle en V, de l'analyse aux tests unitaires, en développant chaque partie de celui-ci. Nous avons aussi pu établir une documentation, un makefile et renforcer nos compétences en matière de C.
+De plus, travailler en groupe nous a permis de nous initier à l'utilisation de GitLab et à se répartir les tâches efficacement sur une longue période.
 
 
 - **Version 1.0.0 (09/01/2024)**

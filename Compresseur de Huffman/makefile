@@ -12,7 +12,7 @@ EXEC=CompDecomp
 DOCUMENTATION=./doc
 LATEX_FILE = ../Rapport.tex
 RAPPORT=../Rapport.aux ../Rapport.log ../Rapport.out ../Rapport.pdf ../Rapport.toc
-
+DOC ?=
 all :  $(BINDIR)/$(EXEC)
 
 tests: $(SRCTESTDIR)/testArbreHuffman.o $(SRCTESTDIR)/testCodeBinaire.o $(SRCTESTDIR)/testFileDePriorite.o $(SRCTESTDIR)/testOctet.o $(SRCTESTDIR)/testStatistiques.o $(SRCTESTDIR)/testTableDeCodage.o
@@ -43,5 +43,5 @@ clean :
 	rm -rf $(SRCDIR)/*.o
 	rm -rf $(SRCTESTDIR)/*.o
 	rm -rf $(TESTDIR)/*
-	rm -rf $(DOCUMENTATION)
+	if [ "$(DOC)" != "" ]; then rm -rf $(DOCUMENTATION); fi
 	rm $(RAPPORT)
