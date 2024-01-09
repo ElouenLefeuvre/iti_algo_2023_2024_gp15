@@ -20,10 +20,7 @@ void test_TDC_obtenirCode() {
     TDC_ajouter(table,'B',&cb);
     CB_remplirCodeBinaire(&cb,"011");
     TDC_ajouter(table,'C',&cb);
-    printf("1");
     CodeBinaire* res = TDC_obtenirCode(*table,'B');
-    printf("1");
-
     CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(res), "010");
     
 }

@@ -67,7 +67,15 @@ CodeBinaire CB_concatener(const CodeBinaire* code1, const CodeBinaire* code2) {
 }
 
 char* CB_codeBinaireToStr(const CodeBinaire* code) {
+    if (code == NULL || code->bits == NULL || code->taille < 0) {
+        return NULL;
+    }
+
     char* str = malloc((code->taille + 1) * sizeof(char));  
+    if (str == NULL) {
+        return NULL;
+    }
+
     for (int i = 0; i < code->taille; ++i) {
         str[i] = (code->bits[i] == BITA0) ? '0' : '1';
     }
