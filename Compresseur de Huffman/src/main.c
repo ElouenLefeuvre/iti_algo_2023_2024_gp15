@@ -1,5 +1,5 @@
 #include "Octet.h"
-#include "Compression.h"
+#include "./Compression.h"
 #include "FileDePriorite.h"
 #include "Octet.h"
 #include <stdio.h>
@@ -13,7 +13,6 @@
 #include "Decompression.h"
 
 int main(int argc, char *argv[]){
-    
     if (argc != 3) {
         fprintf(stderr, "Usage: %s <-c ou -d> <fichier original>\n", argv[0]);
         return 1;
