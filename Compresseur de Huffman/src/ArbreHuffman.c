@@ -105,7 +105,7 @@ void AH_afficherArbre(ArbreHuffman *arbre) {
     int taillePile = 0;
     // Empilement du noeud racine
     StackNode racineNode = {arbre, 0};
-    pile = realloc(pile,capacitePile*sizeof(StackNode));
+    pile = realloc(pile,capacitePile * sizeof(StackNode));
     pile[taillePile++] = racineNode;
     while (taillePile > 0) {
         // Dépilement du noeud
