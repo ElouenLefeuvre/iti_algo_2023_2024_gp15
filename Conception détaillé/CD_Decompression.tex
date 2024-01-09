@@ -6,7 +6,7 @@
 {
     \affecter{stat}{Statistiques.statistique(car, ponderation)}
     \affecter{arbre}{ArbreHuffman.arbreDeHuffman}
-    enfiler(fp,arbre)
+    \instruction{enfiler(fp,arbre)}
     \retourner{fp}
 }
 
@@ -19,11 +19,11 @@
     {\tantque{\champ{fp}{longueur $\ne$ 1}}{
         \affecter{arbre1}{FileDePriorite.obtenirElement(fp, \champ{fp}{longueur})}
         \affecter{arbre2}{FileDePriorite.obtenirElement(fp, \champ{fp}{longueur} - 1)}
-        FileDePriorite.defiler(fp)
-        FileDePriorite.defiler(fp)
+        \instruction{FileDePriorite.defiler(fp)}
+        \instruction{FileDePriorite.defiler(fp)}
         \affecter{arbreFusionne}{ArbreHuffman.fusionner(arbre1, arbre2)}
         \affecter{copie}{ArbreHuffman.copierArbreHuffman(arbreFusionne)}
-        FileDePriorite.enfiler(fp, copie)
+        \instruction{FileDePriorite.enfiler(fp, copie)}
     }
     \retourner{FileDePriorite.obtenirElement(fp, 0)}
     }
@@ -34,14 +34,14 @@
     \fonction{decompresser}{fichier : FichierBinaire}{FichierTexte}
     {}
 {taille, i, statPonderation, bit : \naturel, c : \caractere, fp : FileDePriorite, decompressed : \chaine, decompressedFile : FichierTexte, arbrePrincipal, tmp : ArbreHuffman}
-{ouvrir(fichier)
+{\instruction{ouvrir(fichier)}
     \affecter{taille}{1}
-    lireFichier(taille, taille(\naturel), 1, fichier)
+    \instruction{lireFichier(taille, taille(\naturel), 1, fichier)}
     \affecter{fp}{FileDePriorite.fileDePriorite}
     \affecter{i}{0}
     \tantqu{i < 256}{
         \affecter{c}{obtenirCaractereFichier(fichier)}
-        lireFichier(statPonderation, taille(\naturel), 1, fichier)
+        \instruction{lireFichier(statPonderation, taille(\naturel), 1, fichier)}
         \sialorssinon{statPonderation $\ne$ 0}{
             \affecter{fp}{obtenirFileFichier(fp, c, statPonderation)}
         }{}
@@ -60,11 +60,11 @@
             }{}
         }
         \sialorssinon{ArbreHuffman.estFeuille(tmp)}{
-            ecrireFichier(decompressedFile, ArbreHuffman.obtenirCaracter(*tmp))
+            \instruction{ecrireFichier(decompressedFile, ArbreHuffman.obtenirCaracter(*tmp))}
             \affecter{tmp}{arbrePrincipal}
         }
     }
-    fermerFichier(fichier)
+    \instruction{fermerFichier(fichier)}
     \retourner{NULL}
     }
 

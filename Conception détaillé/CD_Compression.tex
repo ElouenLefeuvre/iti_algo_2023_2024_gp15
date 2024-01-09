@@ -8,7 +8,7 @@
     \affecter{table}{creerTableDeCodage(FileDePriorite.obtenirElement(file))}
     \tantque{non(EOF(fic))}{
         \affecter{temp}{table}
-        ecrireOctet(fc,encoder(obtenirCodeBinaire(temp,lireCaractere(fic))))
+        \instruction{ecrireOctet(fc,encoder(obtenirCodeBinaire(temp,lireCaractere(fic))))}
     }
     \retourner{fic}
     }
@@ -30,10 +30,10 @@
     \affecter{ensS}{creerStatistique(ensC)}
     \affecter{file}{filedePriorite()}
     \pourChaque{Stats}{ensS}{
-        enfiler(file, arbrehuffman(stats))
+        \instruction{enfiler(file, arbrehuffman(stats))}
     }
     \tantque{FileDePriorite.obtenirLongueur(file)$>$1}{  %OucreerFileDePriorite faire avec longueur >1 de FileDePrio
-        nouvelleFile(file)}
+        \instruction{nouvelleFile(file)}}
  
     \retourner{file}
     }
@@ -58,14 +58,14 @@
     {ensStats : Ensemble de Statistiques, nbOcc : \naturel}   				
     {\pourChaque{car}{ensC}{
         \tantque{non(EOF(fic))}{
-        lire(fic,c)
+        \instruction{lire(fic,c)}
         \newline
         
         \sialors{c=car}{
             \affecter{nbOcc}{nbOcc + 1}
 
         
-        Ensemble.ajouter(ensStats,statistique(car, nbOcc))}}}
+        \instruction{Ensemble.ajouter(ensStats,statistique(car, nbOcc))}}}}
     \retourner{ensStats}}
 \end{algorithme}
 
@@ -77,11 +77,11 @@
     {}
     {ens : Ensemble de \caractere}
     {\affecter{ens,ensemble()}
-    ouvrir(fic)
+    \instruction{ouvrir(fic)}
     \tantque{non(eof(fic))}
-        {\lire(fic,car)
+        {\instruction{lire(fic,car)}
         \sialorssinon{not(estPresent(ens,car))}
-            {ajouter(ens,car)}{}}
+            {\instruction{ajouter(ens,car)}}{}}
     \retourner{ens}}
 \end{algorithme}
 
@@ -94,3 +94,4 @@
     {}
     {\retourner{Statistiques.obtenirOccurence(car)}}
 \end{algorithme}
+
