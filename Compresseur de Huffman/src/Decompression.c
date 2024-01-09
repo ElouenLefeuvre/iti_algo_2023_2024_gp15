@@ -9,8 +9,8 @@
 #include "Compression.h"
 #define TAILLE_MAX 1000 
 
-FileDePriorite DECOMP_obtenirFileFichier(FileDePriorite fp,char caracter,int ponderation) {
-    Statistiques stat = S_statistique(caracter, ponderation); 
+FileDePriorite DECOMP_obtenirFileFichier(FileDePriorite fp,char car,int ponderation) {
+    Statistiques stat = S_statistique(car, ponderation); 
     ArbreHuffman* arbre = AH_arbreDeHuffman(stat);
     FDP_enfiler(&fp,arbre);
     return fp;
@@ -37,28 +37,28 @@ ArbreHuffman DECOMP_arbrePrincipal(FileDePriorite fp) {
         ArbreHuffman arbre2 = FDP_obtenirElement(fp, fp.longueur - 1);
         FDP_defiler(&fp);
         FDP_defiler(&fp);
-        ArbreHuffman* arbreFusionne1 = AH_fusionner(&arbre1, &arbre2);
-        ArbreHuffman* copy = copierArbreHuffman(arbreFusionne1);
-        FDP_enfiler(&fp, copy);
+        ArbreHuffman* arbreFusionne = AH_fusionner(&arbre1, &arbre2);
+        ArbreHuffman* copie = copierArbreHuffman(arbreFusionne);
+        FDP_enfiler(&fp, copie);
     }
     return FDP_obtenirElement(fp, 0);
 }
 
 FILE* DECOMP_decompresser(const char* nomFichier) {
-    FILE *file = fopen(nomFichier, "rb");
+    FILE *fichier = fopen(nomFichier, "rb");
     int taille = 1;
-    if (file == NULL) {
+    if (fichier == NULL) {
         perror("Erreur lors de l'ouverture du fichier");
         exit(EXIT_FAILURE);
     }
-    fread(&taille, sizeof(int), 1, file);
+    fread(&taille, sizeof(int), 1, fichier);
     char c;
     FileDePriorite fp= FDP_fileDePriorite();
     int i = 0;
     while(i < 256) {
-        c = fgetc(file);
+        c = fgetc(fichier);
         int statPonderation;
-        fread(&statPonderation, sizeof(int), 1, file);
+        fread(&statPonderation, sizeof(int), 1, fichier);
         if(statPonderation!=0) {
             fp = DECOMP_obtenirFileFichier(fp, c, statPonderation);
         }
@@ -69,7 +69,7 @@ FILE* DECOMP_decompresser(const char* nomFichier) {
     ArbreHuffman arbrePrincipal = DECOMP_arbrePrincipal(fp);
     ArbreHuffman *tmp = &arbrePrincipal;
     int bit;
-    while ((bit = DECOMP_lireBit(file)) != EOF) {
+    while ((bit = DECOMP_lireBit(fichier)) != EOF) {
         if(bit == 0) tmp = tmp->filsGauche;
         else if (bit == 1) tmp  =tmp->filsDroit;   
         if (AH_estFeuille(*tmp)){
@@ -77,7 +77,7 @@ FILE* DECOMP_decompresser(const char* nomFichier) {
             tmp = &arbrePrincipal;
         }
     }
-    fclose(file);
+    fclose(fichier);
     return NULL;
 }
 
