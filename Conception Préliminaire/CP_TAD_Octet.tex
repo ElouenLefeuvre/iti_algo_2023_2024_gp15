@@ -1,54 +1,52 @@
 \section{TAD Octet}
 
 \begin{algorithme}
-    \signatureFonction{obtenirStartPosition}{}{}
+\signatureFonction{obtenirStartPosition}{}{}
     {}
 \end{algorithme}
 
 \begin{algorithme}
-    \signatureFonction{creerOctet}{}{Octet}
+\signatureFonction{creerOctet}{}{Octet}
     {}
-    \end{algorithme}
+\end{algorithme}
     
-    \begin{algorithme}
-        \signatureProcedure{fixerBit}{\paramEntreeSortie{octet : \typePointeur{Octet}}
-        \paramEntree{pos : \entier, valeur : Bit}}{}{}
-        {}
-    \end{algorithme}
+\begin{algorithme}
+\signatureProcedure{fixerBit}{\paramEntreeSortie{octet : \typePointeur{Octet}}\paramEntree{pos : \entier, valeur : Bit}}{}{}
+    {}
+\end{algorithme}
     
-    \begin{algorithme}
-        \signatureFonction{iemeBit}{octet : Octet, i : \entier}{Bit}
-        {}
-    \end{algorithme}
+\begin{algorithme}
+    \signatureFonction{iemeBit}{octet : Octet, i : \entier}{Bit}
+    {}
+\end{algorithme}
         
     
-    \begin{algorithme}
-    \signatureProcedure{decaler}{\paramEntreeSortie{octet : \typePointeur{Octet}}}{}
+\begin{algorithme}
+\signatureProcedure{decaler}{\paramEntreeSortie{octet : \typePointeur{Octet}}}{}
+{}
+\end{algorithme}
+    
+\begin{algorithme}
+\signatureFonction{bitsToStr}{octet : \typePointeur{Octet}}{\chaine}
+{}
+\end{algorithme}
+    
+\begin{algorithme}
+    \signatureFonction{strToBits}{chaine : \chaine}{Octet}
     {}
+\end{algorithme}
     
-    \end{algorithme}
-    
-    \begin{algorithme}
-    \signatureFonction{bitsToStr}{octet : \typePointeur{Octet}}{\chaine}
+\begin{algorithme}
+    \signatureProcedure{encoder}{octet : Octet,cb : CodeBinaire}{Octet}
     {}
-    \end{algorithme}
+\end{algorithme}
     
-    \begin{algorithme}
-        \signatureFonction{strToBits}{chaine : \chaine}{Octet}
-        {}
-    \end{algorithme}
-    
-    \begin{algorithme}
-        \signatureProcedure{encoder}{octet : Octet,cb : CodeBinaire}{Octet}
-        {}
-    \end{algorithme}
-    
-    \begin{algorithme}
-        \signatureFonction{estVide}{\booleen}{octet : \champPointeur{Octet}}
-        {}
-    \end{algorithme}
+\begin{algorithme}
+    \signatureFonction{estVide}{\booleen}{octet : \champPointeur{Octet}}
+    {}
+\end{algorithme}
 
-    \begin{algorithme}
-        \signatureFonction{inverser}{Octet}{octet : Octet}
-        {}
-    \end{algorithme}
+\begin{algorithme}
+    \signatureFonction{inverser}{Octet}{octet : Octet}
+    {}
+\end{algorithme}
