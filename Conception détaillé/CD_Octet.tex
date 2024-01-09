@@ -1,127 +1,101 @@
 \subsubsection{Déclaration du type}
-\begin{algorithme}
-\begin{enregistrement}{Octet}
-    \champEnregistrement{Bit}{\tableau{1..8}{de}{Bit}}
-\end{enregistrement}    
-\end{algorithme}
 
+\begin{algorithme}
+    \begin{enregistrement}{Octet}
+        \champEnregistrement{Bit}{\tableau{1..8}{de}{Bit}}
+    \end{enregistrement}    
+\end{algorithme}
 
 \subsubsection{creerOctet}
 
 \begin{algorithme}
-    \fonction{creerOctet}{}{Octet}
-    {}
-    {res : Octet,
-    i : \naturel}
-    {\affecter{startPosition}{0}
-    \pour{i}{1}{8}{}
-        {\affecter{\champ{res}{bits}[i]}{BITA0}}
-    \retourner{res}}
+    \fonction{creerOctet}{}{Octet}{}
+        {res : Octet, i : \naturel}
+        {\affecter{startPosition}{0}
+        \pour{i}{1}{8}{}
+            {\affecter{\champ{res}{bits}[i]}{BITA0}}
+        \retourner{res}}
 \end{algorithme}
 
 \subsubsection{fixerBit}
 
 \begin{algorithme}
-    \procedure{fixerBit}{\paramEntreeSortie{octet : \typePointeur{Octet}}
-                        \paramEntree{pos : \entier, valeur : Bit}}
-    {position$leq$ 9}{}
-    {
-    \sialors{position $leq$ 9}
-    {
-    \affecter{\champPointeur{octet}{bits}[position]}
-    }
-    }
+    \procedure{fixerBit}{\paramEntreeSortie{octet : \typePointeur{Octet}}\paramEntree{pos : \entier, valeur : Bit}}{position$leq$ 9}
+        {}
+        {\sialors{position $leq$ 9}
+        {\affecter{\champPointeur{octet}{bits}[position]}}}
 \end{algorithme}
 
 \subsubsection{iemeBit}
 
 \begin{algorithme}
-    \fonction{iemeBit}{octet : Octet, i : \entier}{Bit}
-    {}{}
-    {
-    \retourner{\champ{octet}{bits}[i]}
-    }
+    \fonction{iemeBit}{octet : Octet, i : \entier}{Bit}{}
+        {}
+        {\retourner{\champ{octet}{bits}[i]}}
 \end{algorithme}
 
 \subsubsection{decaler}
 
 \begin{algorithme}
-    \procedure{decaler}{\paramEntreeSortie{octet : \typePointeur{Octet}}}
-    {}
-    {i : \naturel}
-    {\pour{i}{1}{8}{}
-        {\affecter{\champPointeur{octet}{bits}[i]}{bits[i+1]}}
-    \affecter{\champPointeur{octet}{bits}[8]}{BITA0}}
+    \procedure{decaler}{\paramEntreeSortie{octet : \typePointeur{Octet}}}{}
+        {i : \naturel}
+        {\pour{i}{1}{8}{}
+            {\affecter{\champPointeur{octet}{bits}[i]}{bits[i+1]}}
+        \affecter{\champPointeur{octet}{bits}[8]}{BITA0}}
 \end{algorithme}
 
 \subsubsection{bitsToStr}
 
 \begin{algorithme}
-    \fonction{bitsToStr}{octet : \typePointeur{Octet}}{\chaine}
-    {}
-    {str : \typePointeur{\chaine},
-    i : \naturel}
-    {
-    \instruction{\allouer{str}}
-    \pour{i}{1}{8}{}
-        {\sialorssinon{\champPointeur{octet}{bits}[0] == BITA0}
-            {\affecter{str[i]}{'0'}}
-            {\affecter{str[i]}{'1'}}}
-            \affecter{str[8]}{'0'}
-            }
-
+    \fonction{bitsToStr}{octet : \typePointeur{Octet}}{\chaine}{}
+        {str : \typePointeur{\chaine}, i : \naturel}
+        {\instruction{\allouer{str}}
+        \pour{i}{1}{8}{}
+            {\sialorssinon{\champPointeur{octet}{bits}[0] == BITA0}
+                {\affecter{str[i]}{'0'}}
+                {\affecter{str[i]}{'1'}}}
+                \affecter{str[8]}{'0'}}
 \end{algorithme}
 
 \subsubsection{strToBits}
 
 \begin{algorithme}
-    \fonction{strToBits}{chaine : \chaine}{Octet}
-    {}
-    {octet : Octet,
-    i : \naturel,
-    longueurChaine : \entier}
-    {
-    \affecter{octet}{creerOctet()}
-    \affecter{longueurChaine}{taille(chaine)}
-    \pour{i}{1}{longueurChaine-1}{}
-    {\sialorssinon{\champPointeur{chaine[i ]== '0'}}
-    {\affecter{\champ{octet}{bits}[i]}{BITA0}
-    \instruction{incrementStartPosition()}}
-    {\affecter{\champ{octet}{bits}[i]}{BITA1}
-    \instruction{incrementStartPosition()}}
-    }}
+    \fonction{strToBits}{chaine : \chaine}{Octet}{}
+        {octet : Octet, i : \naturel, longueurChaine : \entier}
+        {\affecter{octet}{creerOctet()}
+        \affecter{longueurChaine}{taille(chaine)}
+        \pour{i}{1}{longueurChaine-1}{}
+            {\sialorssinon{\champPointeur{chaine[i ]== '0'}}
+                {\affecter{\champ{octet}{bits}[i]}{BITA0}
+                \instruction{incrementStartPosition()}}
+                {\affecter{\champ{octet}{bits}[i]}{BITA1}
+                \instruction{incrementStartPosition()}}}}
 \end{algorithme}
 
 \subsubsection{encoder}
-\fonction{encoder}{octet : Octet,cb : CodeBinaire}{Octet}
-    {}
+
+\fonction{encoder}{octet : Octet,cb : CodeBinaire}{Octet}{}
     {bit : Bit}
-    {
-    
-    }
+    {}
+
 \subsubsection{estVide}
 
 \begin{algorithme}
-    \fonction{estVide}{\booleen}{octet : \champPointeur{Octet}}
-    {}
-    {i : \naturel}
-    {\pour{i}{1}{8}{}
-    {\sialors{\champPointeur{octet}{bits}[i] $neq$ BITA0}
-    {\retourner{Faux}}
-    }
-    \retourner{Vrai}
-    }
+    \fonction{estVide}{\booleen}{octet : \champPointeur{Octet}}{}
+        {i : \naturel}
+        {\pour{i}{1}{8}{}
+            {\sialors{\champPointeur{octet}{bits}[i] $neq$ BITA0}
+                {\retourner{Faux}}}
+        \retourner{Vrai}}
 \end{algorithme}
 
 \subsubsection{inverser}
+
 \begin{algorithme}
-    \fonction{inverser}{Octet}{octet : Octet}
-    {}
-    {res : Octet}
-    {\affecter{res}{creerOctet()}
-    \pour{i}{1}{8}{}{
-        fixerBit(\adresse{res},i,iemeBit(octet,8-i))
-        }
-    \retourner{res}
-    }
+    \fonction{inverser}{Octet}{octet : Octet}{}
+        {res : Octet}
+        {\affecter{res}{creerOctet()}
+        \pour{i}{1}{8}{}
+            {fixerBit(\adresse{res},i,iemeBit(octet,8-i))}
+        \retourner{res}}
 \end{algorithme}
