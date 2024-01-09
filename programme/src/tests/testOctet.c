@@ -24,13 +24,13 @@ void test_encoder() {
     CodeBinaire code = CB_creerCodeBinaire(1);
     CB_remplirCodeBinaire(&code, "1");
     const char* chaineBinaire = "1010";
-    Octet octet = O_strToBits(chaineBinaire);
+    Octet octet = O_strABits(chaineBinaire);
     for(int i = 0; i < 7; i++) {
         octet = O_encoder(octet, code);
     }
-    CU_ASSERT_EQUAL(strcmp(O_bitsToStr(&octet), "10101111"), 0);
+    CU_ASSERT_EQUAL(strcmp(O_bitsAStr(&octet), "10101111"), 0);
     Octet octetRes = O_obtenirBitRestants();
-    CU_ASSERT_EQUAL(strcmp(O_bitsToStr(&octetRes), "00000111"), 0);
+    CU_ASSERT_EQUAL(strcmp(O_bitsAStr(&octetRes), "00000111"), 0);
 }
 
 void test_iemeBit() {
@@ -43,14 +43,14 @@ void test_iemeBit() {
 
 void test_decaler() {
     char* octet = "01011100";
-    Octet octetInBits = O_strToBits(octet);
+    Octet octetInBits = O_strABits(octet);
     O_decaler(&octetInBits);
-    CU_ASSERT_EQUAL(strcmp(O_bitsToStr(&octetInBits), "10111000"), 0);
+    CU_ASSERT_EQUAL(strcmp(O_bitsAStr(&octetInBits), "10111000"), 0);
 }
 
 void test_str_to_bits() {
     char* octetInstr = "11110011";
-    Octet octetInBits= O_strToBits(octetInstr);
+    Octet octetInBits= O_strABits(octetInstr);
     CU_ASSERT_EQUAL(O_iemeBit(octetInBits, 0), BITA1);
     CU_ASSERT_EQUAL(O_iemeBit(octetInBits, 1), BITA1);
     CU_ASSERT_EQUAL(O_iemeBit(octetInBits, 2), BITA1);
@@ -71,7 +71,7 @@ void test_bits_to_str() {
     O_fixerBit(&octet, 5, BITA1);
     O_fixerBit(&octet, 6, BITA1);
     O_fixerBit(&octet, 7, BITA1);
-    char* octetInstr= O_bitsToStr(&octet);
+    char* octetInstr= O_bitsAStr(&octet);
     CU_ASSERT_EQUAL(strcmp(octetInstr, "11111111"), 0);
 }
 

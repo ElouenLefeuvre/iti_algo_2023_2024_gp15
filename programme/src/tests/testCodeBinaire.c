@@ -78,12 +78,12 @@ void test_CB_concatener(void) {
     CB_libererCodeBinaire(&resultat);
 }
 
-// Tests pour CB_codeBinaireToStr
-void test_CB_codeBinaireToStr(void) {
+// Tests pour CB_codeBinaireAStr
+void test_CB_codeBinaireAStr(void) {
     CodeBinaire code = CB_creerCodeBinaire(3);
-    CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(&code), "000");
+    CU_ASSERT_STRING_EQUAL(CB_codeBinaireAStr(&code), "000");
     CB_remplirCodeBinaire(&code, "101");
-    CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(&code), "101");
+    CU_ASSERT_STRING_EQUAL(CB_codeBinaireAStr(&code), "101");
     CB_libererCodeBinaire(&code);
 }
 
@@ -108,8 +108,8 @@ void test_CB_CbFromAH() {
     AH_fixerFilsDroit(arbreA, arbreD);
     AH_fixerFilsGauche(arbreB , arbreE);
     AH_fixerFilsDroit(arbreB, arbreF);
-    CodeBinaire cb = CB_CbFromAH(arbre, 'E');
-    CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(&cb), "10");
+    CodeBinaire cb = CB_CbDeAH(arbre, 'E');
+    CU_ASSERT_STRING_EQUAL(CB_codeBinaireAStr(&cb), "10");
 }
 
 int main() {
@@ -124,7 +124,7 @@ int main() {
     CU_add_test(suite_CB, "Test CB_remplirCodeBinaire", test_CB_remplirCodeBinaire);
     CU_add_test(suite_CB, "Test CB_obtenirIemeBit", test_CB_obtenirIemeBit);
     CU_add_test(suite_CB, "Test CB_concatener", test_CB_concatener);
-    CU_add_test(suite_CB, "Test CB_codeBinaireToStr", test_CB_codeBinaireToStr);
+    CU_add_test(suite_CB, "Test CB_codeBinaireAStr", test_CB_codeBinaireAStr);
     CU_add_test(suite_CB, "Test CB_CbFromAH", test_CB_CbFromAH);
     // Exécution des tests
     CU_basic_run_tests();

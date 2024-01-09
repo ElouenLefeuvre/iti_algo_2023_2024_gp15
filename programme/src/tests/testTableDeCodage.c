@@ -17,7 +17,7 @@ void test_TDC_obtenirCode(void) {
     TDC_ajouter(table, 'A', &cb_A);
     CodeBinaire* res_A = TDC_obtenirCode(*table, 'A');
     CU_ASSERT_PTR_NOT_NULL(res_A);
-    CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(res_A), "001");
+    CU_ASSERT_STRING_EQUAL(CB_codeBinaireAStr(res_A), "001");
     CodeBinaire* res_B = TDC_obtenirCode(*table, 'B');
     CU_ASSERT_PTR_NULL(res_B);
     CB_libererCodeBinaire(&cb_A);
@@ -31,7 +31,7 @@ void test_TDC_ajouter(void) {
     CU_ASSERT_FALSE(TDC_estVide(*table));
     CodeBinaire* res_A = TDC_obtenirCode(*table, 'A');
     CU_ASSERT_PTR_NOT_NULL(res_A);
-    CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(res_A), "001");
+    CU_ASSERT_STRING_EQUAL(CB_codeBinaireAStr(res_A), "001");
     CB_libererCodeBinaire(&cb_A);
 }
 
