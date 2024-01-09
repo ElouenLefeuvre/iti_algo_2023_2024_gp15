@@ -2,6 +2,7 @@
 #include "TableDeCodage.h"
 #include<stdbool.h>
 #include <stdlib.h>
+#include <string.h>
 
 TableDeCodage* TDC_obtenirTableDeCodage() {
     TableDeCodage* table = malloc(sizeof(TableDeCodage));
@@ -50,15 +51,15 @@ void TDC_supprimer(TableDeCodage *tab, char *c, CodeBinaire *code) {
     TableDeCodage temp2;
     TableDeCodage* temp = TDC_obtenirTableDeCodage();
     temp2.ligne = tab->ligne->listeSuivante;
-    if (!(TDC_estVide(temp2))) {
-        if (&temp->ligne->c == c) {
+    
+    if (!TDC_estVide(temp2)) {
+        if (strcmp(&(temp->ligne->c), c) == 0) {
             temp->ligne = temp->ligne->listeSuivante;
             tab->ligne->listeSuivante = temp->ligne;
-        }
-        else {
+        } else {
             temp2.ligne = temp->ligne->listeSuivante;
             TDC_supprimer(&temp2, c, code);
-            tab->ligne->listeSuivante = temp->ligne;
+            tab->ligne->listeSuivante = temp2.ligne;
         }
     }
 }
