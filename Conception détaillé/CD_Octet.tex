@@ -6,6 +6,45 @@
     \end{enregistrement}    
 \end{algorithme}
 
+\subsubsection{Variables Globales}
+
+startPosition : \entier \\
+currentisFull : \booleen \\
+bitRestant : Octet \\
+mostImportantBitRestant : \entier
+
+startPosition = 1 \\
+currentisFull = Faux \\
+mostImportantBitRestant = 9\\
+
+\subsubsection{obtenirBitRestants}
+
+\begin{algorithme}
+    \fonction{obtenirBitRestants}{}{Octet}
+    {}
+    {}
+    {\retourner{bitRestant}}
+\end{algorithme}
+
+
+\subsubsection{obtenirMostImportantBitRestant}
+
+\begin{algorithme}
+            \fonction{obtenirMostImportantBitRestant}{}{\entier}
+            {}
+            {}
+            {\retourner{mostImportantBitRestant}}
+\end{algorithme}
+
+\subsubsection{incrementStartPosition}
+
+\begin{algorithme}
+            \fonction{incrementStartPosition}{}{}
+            {}
+            {}
+            {\affecter{startPosition}{startPosition+1}}
+\end{algorithme}
+
 \subsubsection{creerOctet}
 
 \begin{algorithme}
@@ -73,12 +112,34 @@
 \end{algorithme}
 
 \subsubsection{encoder}
-
-\begin{algorithme}
-    \fonction{encoder}{octet : Octet, cb : CodeBinaire}{Octet}{}
-        {bit : Bit}
-        {\retourner{Vrai}}
-\end{algorithme}
+\fonction{encoder}{octet : Octet,cb : CodeBinaire}{Octet}
+    {}
+    {bit : Bit}
+    {\sialorssinon{mostImportantBitRestant $\le$ 8 et non(currentisFull)}
+        {\pour{i}{mostImportantBitRestant}{9}{}
+            {\affecter{bit}{iemeBit(bitRestant,i)}
+            \instruction{fixerBit(\adresse{octet},startPosition,bit)}
+            \affecter{startPosition}{startPosition+1}
+            \instruction{fixerBit(\adresse{bitRestant},mostImportantBitRestant,BITA0)}
+            \affecter{mostImportantBitRestant}{mostImportantBitRestant+1}}
+        }{}
+    \pour{i}{0}{\champ{cb}{taille}}{}
+        {\affecter{bit}{CB_obtenirIemeBit(cb,i)}
+        \sialorssinon{non(currentisFull)}
+            {\instruction{fixerBit(\adresse{octet}, startPosition,bit)}
+            \affecter{startPosition}{startPosition+1}}
+            
+            {\instruction{decaler(\adresse{bitRestant})}
+            \instruction{fixerBit(\adresse{bitRestant}, 8, bit)}
+            \affecter{mostImportantBitRestant}{mostImportantBitRestant-1}}
+        \sialorssinon{startPosition$>$8}
+        {\affecter{currentisFull}{Vrai}
+        }{}
+        }
+    \sialorssinon{startPosition$>$8}{
+        \affecter{currentisFull}{currentisFull+1}}{}
+    \retourner{octet}
+    }
 
 \subsubsection{estVide}
 
