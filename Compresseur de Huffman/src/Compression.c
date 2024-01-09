@@ -31,8 +31,8 @@ void COMP_ecrireBitsDansFichier(FILE *fichier, const char *bits) {
 }
 
 
-FILE* COMP_initSrcFile(const char* fileName){
-    FILE* file = fopen(fileName,"r");
+FILE* COMP_initFichier(const char* nomFichier){
+    FILE* file = fopen(nomFichier,"r");
     if (file == NULL) {
         perror("Erreur lors de l'ouverture du fichier");
         exit(EXIT_FAILURE);
@@ -58,13 +58,13 @@ ArbreHuffman COMP_FusionnerArbreFDP(FileDePriorite fp){
     return FDP_obtenirElement(fp,0);
 }
 
-FILE* COMP_compresser(const char* fileName){
-    FILE* file = COMP_initSrcFile(fileName);
+FILE* COMP_compresser(const char* nomFichier){
+    FILE* file = COMP_initFichier(nomFichier);
     FileDePriorite fp= FDP_fileDePriorite();
-    const char *filename = "compressedFile.huff";
-    FILE *compressedFile = fopen(filename, "wb");
+    const char *nomFichier = "compressedFile.huff";
+    FILE *compressedFile = fopen(nomFichier, "wb");
     if (compressedFile == NULL) {
-        fprintf(stderr, "Impossible d'ouvrir le fichier %s en écriture.\n", filename);
+        fprintf(stderr, "Impossible d'ouvrir le fichier %s en écriture.\n", nomFichier);
     }
     int occurrences[256] = {0};
     int caracteresSansRepetition[256] = {0};
