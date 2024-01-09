@@ -27,27 +27,6 @@ void test_TDC_obtenirCode(void) {
     CB_libererCodeBinaire(&cb_A);
 }
 
-
-void test_TDC_obtenirCarac(void) {
-    TableDeCodage* table = TDC_obtenirTableDeCodage();
-
-    CodeBinaire cb_A = CB_creerCodeBinaire(3);
-    CB_remplirCodeBinaire(&cb_A, "001");
-    TDC_ajouter(table, 'A', &cb_A);
-
-    CodeBinaire cb_B = CB_creerCodeBinaire(3);
-    CB_remplirCodeBinaire(&cb_B, "010");
-    TDC_ajouter(table, 'B', &cb_B);
-
-    char carac_A = TDC_obtenirCarac(*table, cb_A);
-    CU_ASSERT_EQUAL(carac_A, 'A');
-    char carac_B = TDC_obtenirCarac(*table, cb_B);
-    CU_ASSERT_EQUAL(carac_B, 'B');
-
-    CB_libererCodeBinaire(&cb_A);
-    CB_libererCodeBinaire(&cb_B);
-}
-
 void test_TDC_ajouter(void) {
     TableDeCodage* table = TDC_obtenirTableDeCodage();
 
@@ -62,24 +41,6 @@ void test_TDC_ajouter(void) {
     CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(res_A), "001");
 
     CB_libererCodeBinaire(&cb_A);
-}
-
-void test_TDC_supprimer() {
-    TableDeCodage* table;
-    table=TDC_obtenirTableDeCodage();
-    CodeBinaire cb=CB_creerCodeBinaire(3);
-    CB_remplirCodeBinaire(&cb,"001");
-    TDC_ajouter(table,'A',&cb);
-    CB_remplirCodeBinaire(&cb,"010");
-    TDC_ajouter(table,'B',&cb);
-    CB_remplirCodeBinaire(&cb,"011");
-    TDC_ajouter(table,'C',&cb);
-
-    TDC_supprimer(table,"B",&cb);
-    CU_ASSERT_PTR_NOT_NULL(table->ligne);
-    CU_ASSERT_PTR_NOT_NULL(table->ligne->listeSuivante);
-    CU_ASSERT_EQUAL(table->ligne->listeSuivante->c,'C');
-    CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(&(table->ligne->listeSuivante->code)), CB_codeBinaireToStr(&cb));
 }
 
 void test_TDC_estPresent(void) {
@@ -125,9 +86,7 @@ int main() {
     CU_pSuite suite = CU_add_suite("Suite_de_tests", NULL, NULL);
     CU_add_test(suite, "test_obtenirTableDeCodage", test_obtenirTableDeCodage);
     CU_add_test(suite, "test_TDC_obtenirCode", test_TDC_obtenirCode);
-    CU_add_test(suite, "test_TDC_obtenirCarac", test_TDC_obtenirCarac);
     CU_add_test(suite, "test_TDC_ajouter", test_TDC_ajouter);
-    // CU_add_test(suite, "test_TDC_supprimer", test_TDC_supprimer);
     CU_add_test(suite, "test_TDC_estPresent", test_TDC_estPresent);
     CU_add_test(suite, "test_TDC_estVide", test_TDC_estVide);
     // Exécuter les tests

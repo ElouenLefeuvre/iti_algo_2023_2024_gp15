@@ -23,20 +23,6 @@ CodeBinaire* TDC_obtenirCode(TableDeCodage tab, char c) {
     return NULL;  // Le caractère n'a pas été trouvé dans la table.
 }
 
-char TDC_obtenirCarac(TableDeCodage tab, CodeBinaire code) {
-    if (!(TDC_estVide(tab))) {
-        //Il faut ajouter une methode equlas dans codeBinaire
-        if (CB_codeBinaireToStr(&tab.ligne->code) == CB_codeBinaireToStr(&code)) {
-            return tab.ligne->c;
-        }
-        else {
-            return TDC_obtenirCarac((TableDeCodage){tab.ligne->listeSuivante}, code);
-        }
-
-    }
-    return 'c';
-}
-
 void TDC_ajouter(TableDeCodage *tab, char c, CodeBinaire *code) {
     Ligne* nouvelleLigne = malloc(sizeof(Ligne));
     if (nouvelleLigne != NULL) {
@@ -44,23 +30,6 @@ void TDC_ajouter(TableDeCodage *tab, char c, CodeBinaire *code) {
         nouvelleLigne->c = c;
         nouvelleLigne->listeSuivante = tab->ligne;
         tab->ligne = nouvelleLigne;
-    }
-}
-
-void TDC_supprimer(TableDeCodage *tab, char *c, CodeBinaire *code) {
-    TableDeCodage temp2;
-    TableDeCodage* temp = TDC_obtenirTableDeCodage();
-    temp2.ligne = tab->ligne->listeSuivante;
-    
-    if (!TDC_estVide(temp2)) {
-        if (strcmp(&(temp->ligne->c), c) == 0) {
-            temp->ligne = temp->ligne->listeSuivante;
-            tab->ligne->listeSuivante = temp->ligne;
-        } else {
-            temp2.ligne = temp->ligne->listeSuivante;
-            TDC_supprimer(&temp2, c, code);
-            tab->ligne->listeSuivante = temp2.ligne;
-        }
     }
 }
 
