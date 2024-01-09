@@ -5,58 +5,45 @@
 #include "Statistiques.h"
 
 void test_obtenirTableDeCodage() {
-    ArbreHuffman a;
-    Statistiques stat;
-    CodeBinaire cb=CB_creerCodeBinaire(1);
-    CB_remplirCodeBinaire(&cb,"0");
-    stat = S_statistique('c',5);
-    a = *AH_arbreDeHuffman(stat);
-    TableDeCodage* table = TDC_obtenirTableDeCodage(a);
-    char c = 'c';
-    CU_ASSERT_STRING_EQUAL(table->ligne->c ,c);
-    CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(&table->ligne->code),CB_codeBinaireToStr(&cb));
-    CU_ASSERT_EQUAL(table->ligne->listeSuivante,NULL);
+    TableDeCodage* table = TDC_obtenirTableDeCodage();
+    CU_ASSERT_PTR_NULL(table->ligne);
+
 }
 
 void test_TDC_obtenirCode() {
-    TableDeCodage table1, table2, table3;
+    TableDeCodage* table;
+    table=TDC_obtenirTableDeCodage();
     CodeBinaire cb=CB_creerCodeBinaire(3);
-    table1.ligne->c = 'A';
     CB_remplirCodeBinaire(&cb,"001");
-    table1.ligne->code = cb;
-    table2.ligne->c = 'B';
+    TDC_ajouter(table,'A',&cb);
     CB_remplirCodeBinaire(&cb,"010");
-    table2.ligne->code =  cb;
-    table3.ligne->c = 'C';
+    TDC_ajouter(table,'B',&cb);
     CB_remplirCodeBinaire(&cb,"011");
-    table3.ligne->code = cb;
-    table1.ligne->listeSuivante = table2.ligne;
-    table2.ligne->listeSuivante = table3.ligne;
+    TDC_ajouter(table,'C',&cb);
+    printf("1");
+    CodeBinaire* res = TDC_obtenirCode(*table,'B');
+    printf("1");
 
-    CodeBinaire* res = TDC_obtenirCode(table1,'B');
-
-    CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(&res), "010");
+    CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(res), "010");
     
 }
 
 
 void test_TDC_obtenirCarac() {
-    TableDeCodage table1, table2, table3;
+    TableDeCodage* table;
+    table=TDC_obtenirTableDeCodage();
     CodeBinaire cb=CB_creerCodeBinaire(3);
-    CodeBinaire cbres= CB_creerCodeBinaire(3);
-    table1.ligne->c = 'A';
+    CodeBinaire cbres=CB_creerCodeBinaire(3);
     CB_remplirCodeBinaire(&cb,"001");
-    table1.ligne->code = cb;
-    table2.ligne->c = 'B';
+    TDC_ajouter(table,'A',&cb);
     CB_remplirCodeBinaire(&cb,"010");
-    table2.ligne->code =  cb;
-    table3.ligne->c = 'C';
+    TDC_ajouter(table,'B',&cb);
     CB_remplirCodeBinaire(&cb,"011");
-    table3.ligne->code = cb;
-    table1.ligne->listeSuivante = table2.ligne;
-    table2.ligne->listeSuivante = table3.ligne;
+    TDC_ajouter(table,'C',&cb);
     CB_remplirCodeBinaire(&cbres,"010");
-    char res = TDC_obtenirCarac(table1,cbres);
+
+    char res = TDC_obtenirCarac(*table,cbres);
+
     CU_ASSERT_EQUAL(res, 'B');
 
 }
@@ -98,23 +85,20 @@ void test_TDC_ajouter(){
 // }
 
 void test_TDC_estPresent(){
-
-    TableDeCodage table1, table2, table3;
+    TableDeCodage* table;
+    table=TDC_obtenirTableDeCodage();
     CodeBinaire cb=CB_creerCodeBinaire(3);
-    table1.ligne->c = 'A';
+    CodeBinaire cbres=CB_creerCodeBinaire(3);
     CB_remplirCodeBinaire(&cb,"001");
-    table1.ligne->code = cb;
-    table2.ligne->c = 'B';
+    TDC_ajouter(table,'A',&cb);
     CB_remplirCodeBinaire(&cb,"010");
-    table2.ligne->code =  cb;
-    table3.ligne->c = 'C';
+    TDC_ajouter(table,'B',&cb);
     CB_remplirCodeBinaire(&cb,"011");
-    table3.ligne->code = cb;
-    table1.ligne->listeSuivante = table2.ligne;
-    table2.ligne->listeSuivante = table3.ligne;
+    TDC_ajouter(table,'C',&cb);
+    CB_remplirCodeBinaire(&cbres,"010");
 
-    int res_present = TDC_estPresent(table1, 'B');
-    int res_non_present = TDC_estPresent(table1, 'D');
+    int res_present = TDC_estPresent(*table, 'B');
+    int res_non_present = TDC_estPresent(*table, 'D');
     
     CU_ASSERT_EQUAL(res_present,1);
     CU_ASSERT_EQUAL(res_non_present,0);
