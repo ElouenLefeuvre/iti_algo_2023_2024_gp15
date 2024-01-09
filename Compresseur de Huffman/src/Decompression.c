@@ -71,7 +71,7 @@ FILE* DECOMP_decompresser(const char* fileName){
         }
         i++;
     }
-    const char *decompressed = "decompressedFile.png";
+    const char *decompressed = "decompressedFile.txt";
     FILE* decompresssedFile = fopen(decompressed,"w");
     ArbreHuffman arbrePrincipale = DECOMP_arbrePrincipal(fp);
     ArbreHuffman *tmp = &arbrePrincipale;

@@ -1,6 +1,6 @@
 /**
  * \file Decompression.h
- * \brief Implantation de l'analyse Desvendante Decompression pour le Compresseur d'Huffman
+ * \brief Implantation de l'analyse Descendante Decompression pour le Compresseur d'Huffman
  * \author A. El Faïq, T. Barsot, W. Vilayvong, E. Lefeuvre
  *
  */

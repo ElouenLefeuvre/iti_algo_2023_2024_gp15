@@ -1,3 +1,9 @@
+/**
+ * \file Compression.h
+ * \brief Implantation de l'analyse Descendante Compression pour le Compresseur d'Huffman
+ * \author A. El Faïq, T. Barsot, W. Vilayvong, E. Lefeuvre
+ *
+ */
 #ifndef  __COMPRESSION__
 #define __COMPRESSION__
 

@@ -26,7 +26,7 @@ void COMP_ecrireBitsDansFichier(FILE *fichier, const char *bits) {
     size_t longueur = strlen(bits);
 
     for (size_t i = 0; i < longueur; i++) {
-        ecrireBit(fichier, bits[i]);
+        COMP_ecrireBit(fichier, bits[i]);
     }
 }
 
@@ -61,10 +61,10 @@ ArbreHuffman COMP_FusionnerArbreFDP(FileDePriorite fp){
 FILE* COMP_compresser(const char* nomFichier){
     FILE* file = COMP_initFichier(nomFichier);
     FileDePriorite fp= FDP_fileDePriorite();
-    const char *nomFichier = "compressedFile.huff";
-    FILE *compressedFile = fopen(nomFichier, "wb");
+    const char *nomFichierComp = "compressedFile.huff";
+    FILE *compressedFile = fopen(nomFichierComp, "wb");
     if (compressedFile == NULL) {
-        fprintf(stderr, "Impossible d'ouvrir le fichier %s en écriture.\n", nomFichier);
+        fprintf(stderr, "Impossible d'ouvrir le fichier %s en écriture.\n", nomFichierComp);
     }
     int occurrences[256] = {0};
     int caracteresSansRepetition[256] = {0};
