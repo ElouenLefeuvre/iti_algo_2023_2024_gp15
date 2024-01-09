@@ -22,7 +22,7 @@ void test_TDC_obtenirCode() {
     TDC_ajouter(table,'C',&cb);
     CodeBinaire* res = TDC_obtenirCode(*table,'B');
     CU_ASSERT_STRING_EQUAL(CB_codeBinaireToStr(res), "010");
-    
+            
 }
 
 
@@ -40,7 +40,7 @@ void test_TDC_obtenirCarac() {
     CB_remplirCodeBinaire(&cbres,"010");
 
     char res = TDC_obtenirCarac(*table,cbres);
-
+    
     CU_ASSERT_EQUAL(res, 'B');
 
 }
@@ -93,10 +93,8 @@ void test_TDC_estPresent(){
     CB_remplirCodeBinaire(&cb,"011");
     TDC_ajouter(table,'C',&cb);
     CB_remplirCodeBinaire(&cbres,"010");
-
     int res_present = TDC_estPresent(*table, 'B');
     int res_non_present = TDC_estPresent(*table, 'D');
-    
     CU_ASSERT_EQUAL(res_present,1);
     CU_ASSERT_EQUAL(res_non_present,0);
 }
@@ -106,18 +104,15 @@ void test_TDC_estVide() {
     TableDeCodage table ={NULL};
     CodeBinaire cb=CB_creerCodeBinaire(3);
     CU_ASSERT_TRUE(TDC_estVide(table));
-    table.ligne->c = 'A';
     CB_remplirCodeBinaire(&cb,"001");
-    table.ligne->code = cb;
+    TDC_ajouter(table, 'A', &cb);
     CU_ASSERT_FALSE(TDC_estVide(table));
-
 }
 
 
 int main() {
     // Initialiser le framework CUnit
     CU_initialize_registry();
-
     // Ajouter la suite de tests
     CU_pSuite suite = CU_add_suite("Suite_de_tests", NULL, NULL);
     CU_add_test(suite, "test_obtenirTableDeCodage", test_obtenirTableDeCodage);
@@ -127,12 +122,9 @@ int main() {
     // CU_add_test(suite, "test_TDC_supprimer", test_TDC_supprimer);
     CU_add_test(suite, "test_TDC_estPresent", test_TDC_estPresent);
     CU_add_test(suite, "test_TDC_estVide", test_TDC_estVide);
-
     // Exécuter les tests
     CU_basic_run_tests();
-
     // Nettoyer le framework CUnit
     CU_cleanup_registry();
-
     return CU_get_error();
 }
