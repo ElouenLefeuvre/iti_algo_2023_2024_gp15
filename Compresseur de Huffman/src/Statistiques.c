@@ -3,7 +3,7 @@
 
 Statistiques S_statistique(char c, int n) {
     Statistiques res;
-    res.car = c;
+    res.caractere = c;
     res.ponderation = n ;
     return res;
 }
@@ -13,5 +13,5 @@ int S_obtenirPonderation(Statistiques stat) {
 }
 
 char S_obtenirCaractere(Statistiques stat) {
-    return stat.car;
+    return stat.caractere;
 }

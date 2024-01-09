@@ -59,7 +59,7 @@ CodeBinaire CB_concatener(const CodeBinaire* code1, const CodeBinaire* code2) {
     return resultat;
 }
 
-char* CB_codeBinaireToStr(const CodeBinaire* code) {
+char* CB_codeBinaireAStr(const CodeBinaire* code) {
     if (code == NULL || code->bits == NULL || code->taille < 0) {
         return NULL;
     }
@@ -75,7 +75,7 @@ char* CB_codeBinaireToStr(const CodeBinaire* code) {
 }
 
 
-CodeBinaire CB_CbFromAH(ArbreHuffman *a, char car) {
+CodeBinaire CB_CbDeAH(ArbreHuffman *a, char car) {
     char* result = CB_obtenirCodeBinaire(a, car);
     int taille = strlen(result);
     CodeBinaire CB_result = CB_creerCodeBinaire(taille);

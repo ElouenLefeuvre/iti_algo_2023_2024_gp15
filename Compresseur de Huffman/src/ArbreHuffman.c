@@ -28,13 +28,13 @@ int AH_obtenirPonderation(ArbreHuffman arbre) {
     return S_obtenirPonderation(AH_obtenirStat(arbre));
 }
 
-char AH_obtenirCaracter(ArbreHuffman arbre) {
-    return arbre.statistiques.car;
+char AH_obtenirCaractere(ArbreHuffman arbre) {
+    return arbre.statistiques.caractere;
 }
 
 ArbreHuffman* AH_fusionner(ArbreHuffman* arbre1,  ArbreHuffman* arbre2) {
     Statistiques stat ;
-    stat.car = '\0';
+    stat.caractere = '\0';
     stat.ponderation = S_obtenirPonderation(arbre1->statistiques)+S_obtenirPonderation(arbre2->statistiques);
     ArbreHuffman* res = AH_arbreDeHuffman(stat);
     if (AH_obtenirPonderation(*arbre1)<AH_obtenirPonderation(*arbre2)) {
@@ -79,7 +79,7 @@ bool AH_estFeuille(ArbreHuffman arbre) {
 
 bool AH_estPresent(ArbreHuffman *arbre, char caractere) {
     if (!AH_estVide(arbre)) {
-        if (arbre->statistiques.car == caractere) {
+        if (arbre->statistiques.caractere == caractere) {
             return true;
         }
         else {

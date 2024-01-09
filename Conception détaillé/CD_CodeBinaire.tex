@@ -66,10 +66,10 @@
         \retourner{res}}
 \end{algorithme}
 
-\subsubsection{codeBinaireToStr}
+\subsubsection{codeBinaireAStr}
 
 \begin{algorithme}
-    \fonction{codeBinaireToStr}{code: CodeBinaire}{\chaine}{}
+    \fonction{codeBinaireAStr}{code: CodeBinaire}{\chaine}{}
         {str : \chaine, i : \naturel}
         {\pour{i}{0}{\champ{code}{taille}}{}
             {\affecter{str}{str + \champ{code}{bits}[i]}}
@@ -105,10 +105,10 @@
             \retourner{res}}}
 \end{algorithme}
 
-\subsubsection{CbFromAH}
+\subsubsection{CbDeAH}
 
 \begin{algorithme}
-    \fonction{CbFromAH}{a : ArbreHuffman, car : \caractere}{CodeBinaire}{}
+    \fonction{CbDeAH}{a : ArbreHuffman, car : \caractere}{CodeBinaire}{}
         {res : CodeBinaire, str : \chaine, taille : \naturel}
         {\affecter{str}{obtenirCodeBinaire(a,car)}
         \affecter{taille}{longueur(str)}
@@ -116,12 +116,5 @@
         \retourner{res}}
 \end{algorithme}
 
-\subsubsection{codeBinaireToStr}
 
-\begin{algorithme}
-    \fonction{codeBinaireToStr}{code: CodeBinaire}{\chaine}{}
-        {str : \chaine, i : \naturel}
-        {\pour{i}{0}{\champ{code}{taille}}{}
-            {\affecter{str}{str + \champ{code}{bits}[i]}}
-        \retourner{str}}
-\end{algorithme}
+

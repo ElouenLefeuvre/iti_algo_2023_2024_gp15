@@ -28,28 +28,28 @@
 
 \begin{algorithme}
     \procedure{enfiler}{\paramEntreeSortie{file : FileDePriorite}, \paramEntree{arbre : ArbreHuffman}}{}
-        {noeud,tmp : Noeud, positionToInsert,i : \naturel}
-        {\affecter{noeud}{createNoeud(arbre)}
+        {noeud,tmp : Noeud, positionDinsertion,i : \naturel}
+        {\affecter{noeud}{creerNoeud(arbre)}
         \sialorssinon{estVide(file)}
             {\affecter{\champ{file}{debut}}{noeud}
             \affecter{\champ{noeud}{suivant}}{NIL}
             \affecter{\champ{file}{longueur}}{\champ{file}{longueur}+1}}
-            {\affecter{positionToInsert}{trouverIndicePourInsere(arbre,file)}
-            \sialorssinon{positionToInsert=0}
+            {\affecter{positionDinsertion}{trouverIndicePourInsere(arbre,file)}
+            \sialorssinon{positionDinsertion=0}
                 {\affecter{\champ{noeud}{suivant}}{\champ{file}{debut}}
                 \affecter{\champ{file}{debut}}{noeud}}
                 {\affecter{tmp}{\champ{file}{debut}}
-                \pour{i}{0}{positionToInsert$-$2}{}
+                \pour{i}{0}{positionDinsertion$-$2}{}
                     {\affecter{tmp}{\champ{tmp}{suivant}}}}
             \affecter{\champ{noeud}{suivant}}{\champ{tmp}{suivant}}
             \affecter{\champ{tmp}{suivant}}{noeud}
             \affecter{\champ{file}{longueur}}{\champ{file}{longueur}+1}}}
 \end{algorithme}
 
-\subsubsection{createNoeud}
+\subsubsection{creerNoeud}
 
 \begin{algorithme}
-    \fonction{createNoeud}{arbreOfLCA : ArbreHuffman}{Noeud}{}
+    \fonction{creerNoeud}{arbreOfLCA : ArbreHuffman}{Noeud}{}
         {noeud : Noeud}
         {\affecter{\champ{noeud}{arbre}}{arbreOfLCA}      
         \affecter{\champ{noeud}{suivant}}{NIL}
