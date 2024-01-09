@@ -91,7 +91,6 @@ void FDP_defiler(FileDePriorite *file) {
     }
 }
 
-
 ArbreHuffman FDP_obtenirElement(FileDePriorite file, int i) {
     Noeud* temp;
     temp = file.debut;
