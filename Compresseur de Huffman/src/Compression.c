@@ -92,7 +92,7 @@ FILE* COMP_compresser(const char* nomFichier) {
     TableDeCodage* tableDeCodageFinale = TDC_obtenirTableDeCodage();
     for (int i = 0 ; i < nbCaracteresSansRepetition;i++) {
         char c = caracteresSansRepetition[i];
-        CodeBinaire cb = CB_CbFromAH(&ArbreFinal, c);
+        CodeBinaire cb = CB_CbDeAH(&ArbreFinal, c);
         TDC_ajouter(tableDeCodageFinale, c, &cb);
     }
     fseek(file, 0, SEEK_SET);

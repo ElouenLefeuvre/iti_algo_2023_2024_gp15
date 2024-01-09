@@ -60,7 +60,7 @@ void O_decaler(Octet *octet) {
     octet->bits[7] = BITA0;
 }
 
-char* O_bitsToStr(const Octet* octet) {
+char* O_bitsAStr(const Octet* octet) {
     char* str = malloc(9 * sizeof(char));
     for (int i = 0; i < 8; ++i) {
         str[i] = (octet->bits[i] == BITA0) ? '0' : '1';
@@ -69,7 +69,7 @@ char* O_bitsToStr(const Octet* octet) {
     return str;
 }
 
-Octet O_strToBits(const char* chaine) {
+Octet O_strABits(const char* chaine) {
     Octet octet = O_creerOctet();
     
     int longueurChaine = strlen(chaine);

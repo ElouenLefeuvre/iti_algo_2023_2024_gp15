@@ -8,14 +8,14 @@
 
 \subsubsection{Variables Globales}
 
-startPosition : \entier \\
-currentisFull : \booleen \\
+positionDeDebut : \entier \\
+actuelEstPlein : \booleen \\
 bitRestant : Octet \\
-mostImportantBitRestant : \entier
+indicePlusImportantDeBitRestant : \entier
 
-startPosition = 1 \\
-currentisFull = Faux \\
-mostImportantBitRestant = 9\\
+positionDeDebut = 1 \\
+actuelEstPlein = Faux \\
+indicePlusImportantDeBitRestant = 9\\
 
 \subsubsection{obtenirBitRestants}
 
@@ -27,29 +27,29 @@ mostImportantBitRestant = 9\\
 \end{algorithme}
 
 
-\subsubsection{obtenirMostImportantBitRestant}
+\subsubsection{obtenirIndicePlusImportantDeBitRestant}
 
 \begin{algorithme}
-            \fonction{obtenirMostImportantBitRestant}{}{\entier}
+            \fonction{obtenirIndicePlusImportantDeBitRestant}{}{\entier}
             {}
             {}
-            {\retourner{mostImportantBitRestant}}
+            {\retourner{indicePlusImportantDeBitRestant}}
 \end{algorithme}
 
-\subsubsection{incrementStartPosition}
+\subsubsection{incrementPositionDeDebut}
 
 \begin{algorithme}
-            \fonction{incrementStartPosition}{}{}
+            \fonction{incrementPositionDeDebut}{}{}
             {}
             {}
-            {\affecter{startPosition}{startPosition+1}}
+            {\affecter{positionDeDebut}{positionDeDebut+1}}
 \end{algorithme}
 
 \begin{algorithme}
-    \fonction{obtenirStartPosition}{}{}
+    \fonction{obtenirPositionDeDebut}{}{}
     {}
     {}
-    {\retourner{startPosition}}
+    {\retourner{positionDeDebut}}
 \end{algorithme}
 
 \subsubsection{creerOctet}
@@ -57,7 +57,7 @@ mostImportantBitRestant = 9\\
 \begin{algorithme}
     \fonction{creerOctet}{}{Octet}{}
         {res : Octet, i : \naturel}
-        {\affecter{startPosition}{0}
+        {\affecter{positionDeDebut}{0}
         \pour{i}{1}{8}{}
             {\affecter{\champ{res}{bits}[i]}{BITA0}}
         \retourner{res}}
@@ -93,7 +93,7 @@ mostImportantBitRestant = 9\\
 \subsubsection{bitsToStr}
 
 \begin{algorithme}
-    \fonction{bitsToStr}{octet : \typePointeur{Octet}}{\chaine}{}
+    \fonction{bitsAStr}{octet : \typePointeur{Octet}}{\chaine}{}
         {str : \typePointeur{\chaine}, i : \naturel}
         {\instruction{\allouer{str}}
         \pour{i}{1}{8}{}
@@ -103,10 +103,10 @@ mostImportantBitRestant = 9\\
                 \affecter{str[8]}{'0'}}
 \end{algorithme}
 
-\subsubsection{strToBits}
+\subsubsection{strABits}
 
 \begin{algorithme}
-    \fonction{strToBits}{chaine : \chaine}{Octet}{}
+    \fonction{strABits}{chaine : \chaine}{Octet}{}
         {octet : Octet, i : \naturel, longueurChaine : \entier}
         {\affecter{octet}{creerOctet()}
         \affecter{longueurChaine}{taille(chaine)}
@@ -122,29 +122,29 @@ mostImportantBitRestant = 9\\
 \fonction{encoder}{octet : Octet,cb : CodeBinaire}{Octet}
     {}
     {bit : Bit}
-    {\sialorssinon{mostImportantBitRestant $\le$ 8 et non(currentisFull)}
-        {\pour{i}{mostImportantBitRestant}{9}{}
+    {\sialorssinon{indicePlusImportantDeBitRestant $\le$ 8 et non(actuelEstPlein)}
+        {\pour{i}{indicePlusImportantDeBitRestant}{9}{}
             {\affecter{bit}{iemeBit(bitRestant,i)}
-            \instruction{fixerBit(\adresse{octet},startPosition,bit)}
-            \affecter{startPosition}{startPosition+1}
-            \instruction{fixerBit(\adresse{bitRestant},mostImportantBitRestant,BITA0)}
-            \affecter{mostImportantBitRestant}{mostImportantBitRestant+1}}
+            \instruction{fixerBit(\adresse{octet},positionDeDebut,bit)}
+            \affecter{positionDeDebut}{positionDeDebut+1}
+            \instruction{fixerBit(\adresse{bitRestant},indicePlusImportantDeBitRestant,BITA0)}
+            \affecter{indicePlusImportantDeBitRestant}{indicePlusImportantDeBitRestant+1}}
         }{}
     \pour{i}{0}{\champ{cb}{taille}}{}
         {\affecter{bit}{CB_obtenirIemeBit(cb,i)}
-        \sialorssinon{non(currentisFull)}
-            {\instruction{fixerBit(\adresse{octet}, startPosition,bit)}
-            \affecter{startPosition}{startPosition+1}}
+        \sialorssinon{non(actuelEstPlein)}
+            {\instruction{fixerBit(\adresse{octet}, positionDeDebut,bit)}
+            \affecter{positionDeDebut}{positionDeDebut+1}}
             
             {\instruction{decaler(\adresse{bitRestant})}
             \instruction{fixerBit(\adresse{bitRestant}, 8, bit)}
-            \affecter{mostImportantBitRestant}{mostImportantBitRestant-1}}
-        \sialorssinon{startPosition$>$8}
-        {\affecter{currentisFull}{Vrai}
+            \affecter{indicePlusImportantDeBitRestant}{indicePlusImportantDeBitRestant-1}}
+        \sialorssinon{positionDeDebut$>$8}
+        {\affecter{actuelEstPlein}{Vrai}
         }{}
         }
-    \sialorssinon{startPosition$>$8}{
-        \affecter{currentisFull}{currentisFull+1}}{}
+    \sialorssinon{positionDeDebut$>$8}{
+        \affecter{actuelEstPlein}{actuelEstPlein+1}}{}
     \retourner{octet}
     }
 

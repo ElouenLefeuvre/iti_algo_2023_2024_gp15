@@ -31,16 +31,6 @@
                 {\retourner{obtenirCode(tab.noeud.listeSuivante,c)}}}{}}
 \end{algorithme}
 
-\subsubsection{obtenirCarac}
-
-\begin{algorithme}
-    \fonction{obtenirCarac}{tab: TableDeCodage, code : CodeBinaire}{\caractere}{}
-        {}
-        {\sialorssinon{non(estVide(tab))}
-            {\sialorssinon{tab.noeud.code=code}
-                {\retourner{tab.noeud.c}}
-                {\retourner {obtenirCode(tab.noeud.listeSuivante,code)}}}{}}
-\end{algorithme}
 
 \subsubsection{ajouter}
 
@@ -53,19 +43,6 @@
         \affecter{tab.noeud.listeSuivante}{temp.noeud}}
 \end{algorithme}
 
-\subsubsection{supprimer}
-
-\begin{algorithme}
-    \procedure{supprimer}{\paramEntreeSortie tab : TableDeCodage, \paramEntree c : \caractere, code : CodeBinaire}{non(estVide(tab))}
-        {temp,temp2 : TableDeCodage}
-        {\sialorssinon{non(estVide(tab.noeud.listeSuivante))}
-            {\sialorssinon{temp.noeud.c = c}
-                {\affecter{temp.noeud}{temp.noeud.listeSuivante}
-                \affecter{tab.noeud.listeSuivante}{temp.noeud}}
-                {\affecter{temp2.noeud}{temp.noeud.listeSuivante}
-                supprimer(temp2.listeSuivante,c,code)
-                \affecter{tab.noeud.listeSuivante}{temp.noeud}}}{}}
-\end{algorithme}
 
 \subsubsection{estPresent}
 

@@ -129,7 +129,7 @@ bool AH_estPresent(ArbreHuffman* arbre, char caractere);
  * \param arbre : l'arbre 
  * \return char
  */
-char AH_obtenirCaracter(ArbreHuffman arbre);
+char AH_obtenirCaractere(ArbreHuffman arbre);
 
 /**
  * \fn AH_obtenirPonderation(ArbreHuffman arbre)

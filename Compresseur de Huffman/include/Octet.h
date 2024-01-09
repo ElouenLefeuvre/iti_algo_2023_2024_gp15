@@ -75,7 +75,7 @@ void O_fixerBit(Octet* octet, int position, Bit valeur);
  * \param octet : l'octet
  * \return char*
  */
-char* O_bitsToStr(const Octet* octet);
+char* O_bitsAStr(const Octet* octet);
 
 /**
  * \fn Octet O_strToBits(const char* chaine)
@@ -83,7 +83,7 @@ char* O_bitsToStr(const Octet* octet);
  * \param chaine : la chaine de caractere
  * \return Octet
  */
-Octet O_strToBits(const char* chaine);
+Octet O_strABits(const char* chaine);
 
 /**
  * \fn bool O_estVide(const Octet* octet)

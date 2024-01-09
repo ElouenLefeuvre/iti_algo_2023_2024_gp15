@@ -19,12 +19,12 @@
     
 \end{algorithme}
 
-\subsubsection{creerFileDePriorite}
+\subsubsection{ecrireBit}
 
 \begin{algorithme}
-    \fonction{creerFileDePriorite}{fic :  FichierBinaire}{ArbreHuffman}
+    \fonction{COMP_ecrireBit}{fic :  FichierBinaire, \caractere bit}{}
     {}
-    {file : FileDePriorite; ensC : Ensemble de \caractere; ensS : Ensemble de Statistiques}
+    {octet : FileDePriorite; ensC : Ensemble de \caractere; ensS : Ensemble de Statistiques}
     {
     \affecter{ensC}{obtenirCaracteres(fic)}
     \affecter{ensS}{creerStatistique(ensC)}
@@ -39,14 +39,18 @@
     }
 \end{algorithme}
 
-\subsubsection{creerTableDeCodage}
+\subsubsection{ecrireBitsDansFichier}
 
 \begin{algorithme}
-    \fonction{ creerTableDeCodage}{arbre : ArbreHuffman}{TableDeCodage}{}{}
+    \fonction{ cecrireBitsDansFichier}{fic :  FichierBinaire, bit :Ensemble de \caractere }{TableDeCodage}{}{}{ longueur:\naturel }{
+        \affecter{longueur}{0}
+
+    }
+    
     {\retourner{obtenirTableDeCodage(arbre)}}
 \end{algorithme}
 
-\subsubsection{creerStatistique}
+\subsubsection{initFichier}
 
 \begin{algorithme}
     \fonction{ creerStatistique}{fic : FichierTexte;ensC : Ensemble de \caractere}{Ensemble de Statistiques}
@@ -66,7 +70,7 @@
 \end{algorithme}
 
 
-\subsubsection{obtenirCaracteres}
+\subsubsection{CreerArbreEtEnfiler}
 
 \begin{algorithme}
     \fonction{obtenirCaracteres}{fic : FichierTexte}{Ensemble de \caractere}
@@ -82,29 +86,11 @@
 \end{algorithme}
 
 
-\subsubsection{obtenirOccurences}
+\subsubsection{FusionnerArbreFDP}
 
 \begin{algorithme}
     \fonction{obtenirOccurences}{c : \caractere}{\naturel}
     {}
     {}
     {\retourner{Statistiques.obtenirOccurence(car)}}
-\end{algorithme}
-
-\subsubsection{insererArbre}
-
-\begin{algorithme}
-    \fonction{insererArbre}{file : FileDePriorite, arbre : Arbre Huffman}{FileDePriorite}
-    {}
-    {}
-    {\retourner{FileDePriorité.enfiler(arbre,file)}}
-\end{algorithme}
-
-\subsubsection{creerArbre}
-
-\begin{algorithme}
-    \fonction{creerArbre}{stats : Statistiques}{Arbre Huffman}
-    {}
-    {}
-    {\retourner{ArbreHuffman.arbrehuffman(stats)}}
 \end{algorithme}

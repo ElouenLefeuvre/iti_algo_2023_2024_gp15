@@ -76,7 +76,7 @@ CodeBinaire CB_concatener(const CodeBinaire* code1, const CodeBinaire* code2);
  * \param code : le code
  * \return char*  (la chaîne de caractère)
  */
-char* CB_codeBinaireToStr(const CodeBinaire* code);
+char* CB_codeBinaireAStr(const CodeBinaire* code);
 
 /**
  * \fn void CB_remplirCodeBinaire(CodeBinaire* code, const char* chaine)
@@ -95,7 +95,7 @@ void CB_remplirCodeBinaire(CodeBinaire* code, const char* chaine);
  * \param car : le caractere dont on veut calculer le code
  * \return CodeBinaire
  */
-CodeBinaire CB_CbFromAH(ArbreHuffman *a, char car);
+CodeBinaire CB_CbDeAH(ArbreHuffman *a, char car);
 
 /**
  * \fn char* AH_obtenirCodeBinaire(ArbreHuffman *a, char car)
