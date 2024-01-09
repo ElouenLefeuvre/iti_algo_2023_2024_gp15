@@ -3,24 +3,40 @@
 \tadNom{Code Binaire}
         
 \tadDependances{TableDeCodage, Caractere, Bit}
-\begin{tadOperations}{obtenirCodeBinaire}
-        \tadOperation{obtenirCodeBinaire}{\tadDeuxParams{Arbre Huffman}{\caractere}}{\tadParams{CodeBinaire}}
-        \tadOperationAvecPreconditions{estVide}{\tadParams{CodeBinaire}}{\tadParams{\booleen}}
-        \tadOperationAvecPreconditions{obtenirIemeBit}{\tadParams{CodeBinaire,\naturelNonNul}}{\tadParams{Bit}}
-        \tadOperation{longueur}{\tadParams{CodeBinaire}}{\tadParams{\naturel}}
+\begin{tadOperations}{obtenirCodeBinaireR}
+    \tadOperation{creerCodeBinaire}{\tadParams{\naturel}}{\tadParams{CodeBinaire}}
+    \tadOperationAvecPreconditions{remplirCodeBinaire}{\tadDeuxParams{\chaine}{CodeBinaire}}{\tadParams{CodeBinaire}}
+    \tadOperation{libererCodeBinaire}{\tadParams{CodeBinaire}}{\tadParams{CodeBinaire}}
+    \tadOperation{estVide}{\tadParams{CodeBinaire}}{\tadParams{\booleen}}
+    \tadOperationAvecPreconditions{obtenirIemeBit}{\tadParams{CodeBinaire,\naturelNonNul}}{\tadParams{Bit}}
+    \tadOperation{longueur}{\tadParams{CodeBinaire}}{\tadParams{\naturel}}
+    \tadOperation{concatener}{\tadDeuxParams{CodeBinaire}{CodeBinaire}}{\tadParams{CodeBinaire}}
+    \tadOperation{codeBinaireToStr}{\tadParams{CodeBinaire}}{\tadParams{\chaine}}
+    \tadOperationAvecPreconditions{obtenirCodeBinaire}{\tadDeuxParams{ArbreHuffman}{\caractere}}{\tadParams{\chaine}}
+    \tadOperationAvecPreconditions{obtenirCodeBinaireR}{\tadDeuxParams{ArbreHuffman}{\caractere}}{\tadParams{\chaine}}
+    \tadOperation{CbFromAH}{\tadDeuxParams{ArbreHuffman}{\caractere}}{\tadParams{CodeBinaire}}        
+    \tadOperation{codeBinaireToStr}{\tadParams{CodeBinaire}}{\tadParams{\chaine}}
 \end{tadOperations}
-\begin{tadSemantiques}{obtenirCodeBinaire}
-        \tadSemantique{obtenirCodeBinaire}{Permet d'obtenir un code binaire d'un caractère présent dans l'arbre}
-        \tadSemantique{estVide}{Cherche si un code binaire est vide ou non}
-        \tadSemantique{obtenirIemeBit}{Donne le ième bit d'un code binaire}
-        \tadSemantique{longueur}{Donne la longueur du code binaire}
+\begin{tadSemantiques}{obtenirCodeBinaireR}
+    \tadSemantique{creerCodeBinaire}{Fonction qui creer un code binaire à partir de sa taille}
+    \tadSemantique{remplirCodeBinaire}{Fonction qui permet de remplir un code binaire avec une chaîne de caractère}
+    \tadSemantique{libererCodeBinaire}{Fonction qui libère un code binaire }
+    \tadSemantique{estVide}{Fonction qui permet de savoir si un code est vide ou non}
+    \tadSemantique{obtenirIemeBit}{Fonction qui permet d'obtenir le ieme bit d'un code binaire}
+    \tadSemantique{concatener}{Fonction qui permet de concatener 2 codes binaires}
+    \tadSemantique{codeBinaireToStr}{Fonction qui permet de convertir un code binaire en chaîne de caractères}
+    \tadSemantique{obtenirCodeBinaire}{Fonction qui va permettre d'avoir le code binaire d'un caractere}
+    \tadSemantique{obtenirCodeBinaireR}{Fonction récursive qui va permettre d'avoir le code binaire d'un caractere et qui va être appelé dans obtenirCodeBinaire}
+    \tadSemantique{CbFromAH}{Fonction qui donne un code binaire à partir d'un arbre d'Huffman et d'un caractere }
+    \tadSemantique{codeBinaireToStr}{Fonction qui transforme un code binaire en chaine de caracteres}
 \end{tadSemantiques}
-    \begin{tadPreconditions}{obtenirIemeBit(code, i)}
-            \tadPrecondition{obtenirCodeBinaire(a, car)}{non(estVide(a))}
-            \tadPrecondition{obtenirIemeBit(code, i)}{n $>$ 0 et n $\leq$ longueur(code) }
-        \end{tadPreconditions}
-
-\end{tad}   
+\begin{tadPreconditions}{obtenirCodeBinaireR(a, car)}
+        \tadPrecondition{remplirCodeBinaire(code)}{$longueur(chaine) \ne code.taille$}
+        \tadPrecondition{obtenirIemeBit(code, i)}{$i > 0$ et $i \leq longueur(code)$}
+        \tadPrecondition{obtenirCodeBinaire(a, car)}{non ArbreHuffman.estVide(a)}
+        \tadPrecondition{obtenirCodeBinaireR(a, car)}{non ArbreHuffman.estVide(a)}
+\end{tadPreconditions}
+\end{tad} 
 
 
 \section{TAD Octet}
@@ -40,7 +56,7 @@
     \tadSemantique{obtenirOctet}{Donne la chaine de caractères correspondantes à un octet}
 \end{tadSemantiques}
 \begin{tadPreconditions}{decoder(code, chaine)}
-            \tadPrecondition{encoder(o, code,i)}{non estVide(code), $0 \leq i \leq 7$}
+    \tadPrecondition{encoder(o, code,i)}{non estVide(code), $0 \leq i \leq 7$}
 \end{tadPreconditions}
 \end{tad}
     
@@ -48,110 +64,78 @@
 \begin{tad}
 \tadNom{Statistiques}
 \tadDependances{Caractère, Chaine de caracteres, Naturel}
-
 \begin{tadOperations}{statistiques}
-
-\tadOperation{statistiques}{\tadDeuxParams{\caractere}{\naturel}}{\tadParams{ Statistiques}}
-\tadOperation{obtenirOccurences}{\tadParams{Statistiques}}{\tadParams{\naturel}}
-\tadOperation{obtenirCaractere}{\tadParams{Statistiques}}{\tadParams{\caractere}}
+    \tadOperation{statistiques}{\tadDeuxParams{\caractere}{\naturel}}{\tadParams{ Statistiques}}
+    \tadOperation{obtenirOccurences}{\tadParams{Statistiques}}{\tadParams{\naturel}}
+    \tadOperation{obtenirCaractere}{\tadParams{Statistiques}}{\tadParams{\caractere}}
 \end{tadOperations}
 \begin{tadSemantiques}{}
     \tadSemantique{statistiques}{Créer une statistique à partir d'un caractère et d'un naturel}\newline
     \tadSemantique{obtenirOccurences}{Permet d'obtenir le nombre d'occurences d'une statistique}\newline
     \tadSemantique{obtenirCaractere}{Permet d'obtenir le caractère d'une statistique}\newline
-\end{tadSemantiques}
-
-                          
+\end{tadSemantiques}                     
 \end{tad}
 
 
 
 \subsection{TAD ArbreHuffman}
-
-    \begin{tad}
-        \tadNom{Arbre Huffman}
-        
-        \tadDependances{statistiques,\booleen}
-        
-        \begin{tadOperations}{obtenirPonderation}
-        
-            \tadOperation{arbreDeHuffman}{Statistiques}{\tadParams{Arbre Huffman}}
-
-            \tadOperation{fixerStatistique}{\tadDeuxParams{Arbre Huffman}{Statistiques}}{\tadParams{Arbre Huffman}}
-
-            \tadOperation{obtenirStat}{\tadParams{Arbre Huffman}}{\tadParams{Statistiques}}
-
-            \tadOperation{obtenirCaractere}{Arbre Huffman}{\tadParams{\caractere}}
-            
-            \tadOperationAvecPreconditions{fusionner}{\tadDeuxParams{Arbre Huffman}{Arbre Huffman}}{\tadParams{Arbre Huffman}}
-
-            \tadOperation{obtenirPonderation}{\tadParams{Arbre Huffman}}{\tadParams{\naturel}}
-
-            \tadOperationAvecPreconditions{fixerFilsDroit}{\tadDeuxParams{Arbre Huffman}{Arebre Huffman}}{\tadParams{Arbre Huffman}}
-
-            \tadOperationAvecPreconditions{fixerFilsGauche}{\tadDeuxParams{Arbre Huffman}{Arebre Huffman}}{\tadParams{Arbre Huffman}}
-
-            \tadOperationAvecPreconditions{obtenirFilsGauche}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
-
-            \tadOperationAvecPreconditions{obtenirFilsDroit}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
-
-            \tadOperation{estFeuille}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
-
-            \tadOperation{estVide}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
-
-            \tadOperation{estPresent}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
-
-        \end{tadOperations}
-        
-        \begin{tadSemantiques}{obtenirPonderation}
-            \tadSemantique{arbreDeHuffman}{Crée un arbre de huffman à partir d'une statistique}
-            \tadSemantique{fixerStatistique}{Fixe une statistique à un arbre}
-            \tadSemantique{obtenirStat}{Retourne la valeur de la statistique d'un arbre}
-            \tadSemantique{obtenirCaractere}{Retourne le caractère associé à un arbre}
-            \tadSemantique{fusionner}{Fusionne deux arbres entre eux}
-            \tadSemantique{obtenirPonderation}{Permet d'obtenir la ponderation d'un arbre de huffman}
-            \tadSemantique{fixerFilsDroit}{Affecte la valeur au fils droit de l'arbre}
-            \tadSemantique{fixerFilsGauche}{Affecte la valeur au fils gauche de l'arbre}
-            \tadSemantique{obtenirFilsGauche}{Permet d'obtenir le fils gauche d'un arbre de huffman}
-            \tadSemantique{obtenirFilsDroit}{Permet d'obtenir le fils droit d'un arbre de huffman}
-            \tadSemantique{estFeuille}{Verifie si l'arbre de huffman est une feuille}
-            \tadSemantique{estVide}{Verifie si l'arbre est vide, si son champ caractère est vide}
-            \tadSemantique{estPresent}{Vérifie si un élément est présent dans un arbre}
-            
-        \end{tadSemantiques}
-        
-        \begin{tadPreconditions}{obtenirFilsGauche(A)}
-            \tadPrecondition{fusionner(A)}{estVide(A)}
-            \tadPrecondition{fixerFilsDroit(r,ad)}{non(estVide(r))}
-            \tadPrecondition{fixerFilsGauche(r,ag)}{non(estVide(r))}
-            \tadPrecondition{obtenirFilsGauche(A)}{non estUneFeuille(A)}
-            \tadPrecondition{obtenirFilsDroit(A)}{non estUneFeuille(A)}
-        \end{tadPreconditions}
-           
-        \end{tad}
-
-
-    
+\begin{tad}
+\tadNom{Arbre Huffman}
+\tadDependances{statistiques,\booleen}
+\begin{tadOperations}{obtenirPonderation}
+    \tadOperation{arbreDeHuffman}{Statistiques}{\tadParams{Arbre Huffman}}
+    \tadOperation{fixerStatistique}{\tadDeuxParams{Arbre Huffman}{Statistiques}}{\tadParams{Arbre Huffman}}
+    \tadOperation{obtenirStat}{\tadParams{Arbre Huffman}}{\tadParams{Statistiques}}
+    \tadOperation{obtenirCaractere}{Arbre Huffman}{\tadParams{\caractere}}
+    \tadOperationAvecPreconditions{fusionner}{\tadDeuxParams{Arbre Huffman}{Arbre Huffman}}{\tadParams{Arbre Huffman}}
+    \tadOperation{obtenirPonderation}{\tadParams{Arbre Huffman}}{\tadParams{\naturel}}
+    \tadOperationAvecPreconditions{fixerFilsDroit}{\tadDeuxParams{Arbre Huffman}{Arebre Huffman}}{\tadParams{Arbre Huffman}}
+    \tadOperationAvecPreconditions{fixerFilsGauche}{\tadDeuxParams{Arbre Huffman}{Arebre Huffman}}{\tadParams{Arbre Huffman}}
+    \tadOperationAvecPreconditions{obtenirFilsGauche}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
+    \tadOperationAvecPreconditions{obtenirFilsDroit}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
+    \tadOperation{estFeuille}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
+    \tadOperation{estVide}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
+    \tadOperation{estPresent}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
+\end{tadOperations}
+\begin{tadSemantiques}{obtenirPonderation}
+    \tadSemantique{arbreDeHuffman}{Crée un arbre de huffman à partir d'une statistique}
+    \tadSemantique{fixerStatistique}{Fixe une statistique à un arbre}
+    \tadSemantique{obtenirStat}{Retourne la valeur de la statistique d'un arbre}
+    \tadSemantique{obtenirCaractere}{Retourne le caractère associé à un arbre}
+    \tadSemantique{fusionner}{Fusionne deux arbres entre eux}
+    \tadSemantique{obtenirPonderation}{Permet d'obtenir la ponderation d'un arbre de huffman}
+    \tadSemantique{fixerFilsDroit}{Affecte la valeur au fils droit de l'arbre}
+    \tadSemantique{fixerFilsGauche}{Affecte la valeur au fils gauche de l'arbre}
+    \tadSemantique{obtenirFilsGauche}{Permet d'obtenir le fils gauche d'un arbre de huffman}
+    \tadSemantique{obtenirFilsDroit}{Permet d'obtenir le fils droit d'un arbre de huffman}
+    \tadSemantique{estFeuille}{Verifie si l'arbre de huffman est une feuille}
+    \tadSemantique{estVide}{Verifie si l'arbre est vide, si son champ caractère est vide}
+    \tadSemantique{estPresent}{Vérifie si un élément est présent dans un arbre}
+\end{tadSemantiques}
+\begin{tadPreconditions}{obtenirFilsGauche(A)}
+    \tadPrecondition{fusionner(A)}{estVide(A)}
+    \tadPrecondition{fixerFilsDroit(r,ad)}{non(estVide(r))}
+    \tadPrecondition{fixerFilsGauche(r,ag)}{non(estVide(r))}
+    \tadPrecondition{obtenirFilsGauche(A)}{non estUneFeuille(A)}
+    \tadPrecondition{obtenirFilsDroit(A)}{non estUneFeuille(A)}
+\end{tadPreconditions}
+\end{tad}
 
 
 \section{FileDePriorité}
 \begin{tad}
-
 \tadNom{FileDePriorité} 
-
 \tadDependances{Booleen} 
-
 \begin{tadOperations}{fileDePriorite}
-\tadOperation{fileDePriorite}{}{\tadParams{FileDePriorite}}
-\tadOperation{enfiler}{\tadDeuxParams{FileDePriorite}{Element}}{\tadParams{FileDePriorite}}
-\tadOperation{defiler}{\tadParams{FileDePriorite}}{\tadParams{FileDePriorite}}
-\tadOperation{longueur}{\tadParams{FiledePriorite}}{\tadParams{\naturel}}
-\tadOperation{nouvelleFile}{\tadParams{FiledePriorite}}{\tadParams{FiledePriorite}}
-\tadOperation{estVide}{\tadParams{FileDePriorite}}{\tadParams{\booleen}}
-\tadOperation{estPresent}{\tadDeuxParams{FileDePriorite}{Element}}{\tadParams{\booleen}}
-\tadOperation{obtenirElement}{\tadParams{FileDePriorite}}{\tadParams{Element}}
+    \tadOperation{fileDePriorite}{}{\tadParams{FileDePriorite}}
+    \tadOperation{enfiler}{\tadDeuxParams{FileDePriorite}{Element}}{\tadParams{FileDePriorite}}
+    \tadOperation{defiler}{\tadParams{FileDePriorite}}{\tadParams{FileDePriorite}}
+    \tadOperation{longueur}{\tadParams{FiledePriorite}}{\tadParams{\naturel}}
+    \tadOperation{nouvelleFile}{\tadParams{FiledePriorite}}{\tadParams{FiledePriorite}}
+    \tadOperation{estVide}{\tadParams{FileDePriorite}}{\tadParams{\booleen}}
+    \tadOperation{estPresent}{\tadDeuxParams{FileDePriorite}{Element}}{\tadParams{\booleen}}
+    \tadOperation{obtenirElement}{\tadParams{FileDePriorite}}{\tadParams{Element}}
 \end{tadOperations}
-
 \begin{tadSemantiques}{fileDePriorite}
     \tadSemantique{filedePriorite}{Créer une file de priotité vide}
     \tadSemantique{enfiler}{Enfile un élément en fin de file}
@@ -162,16 +146,12 @@
     \tadSemantique{estPresent}{Cherche si un élément donné est présent dans la file ou non}
     \tadSemantique{obtenirElement}{Donne le dernier élément de la file}
 \end{tadSemantiques}
-    
-
 \end{tad}
 
 \section{TAD TableDeCodage}
-
 \begin{tad}
 \tadNom{TableDeCodage}
 \tadDependances{ArbreHuffmann}
-
 \begin{tadOperations}{obtenirTableDeCodage}
     \tadOperation{obtenirTableDeCodage}{\tadParams{ArbreHuffman}}{\tadParams{TableDeCodage}}
     \tadOperationAvecPreconditions{obtenirCode}{\tadDeuxParams{TableDeCodage}{\caractere}}{\tadParams{CodeBinaire}}
@@ -180,9 +160,7 @@
     \tadOperation{retirer}{\tadDeuxParams{TableDeCodage}{\caractere}}{\tadParams{TableDeCodage}}
     \tadOperation{estPresent}{\tadDeuxParams{TableDeCodage}{\caractere}}{\tadParams{\booleen}}
     \tadOperation{estVide}{\tadParams{TableDeCodage}}{\tadParams{\booleen}}
-
 \end{tadOperations}
-
 \begin{tadSemantiques}{obtenirTableDeCodage}
     \tadSemantique{obtenirTableDeCodage}{Renvoie la table de codage grâce à un arbre de Huffman}\newline
     \tadSemantique{obtenirCode}{Permet d'obtenir le code binaire d'un caractère grâce à la TableDeCodage}\newline
@@ -192,7 +170,6 @@
     \tadSemantique{estPresent}{Permet de savoir si un caractère est présent dans la TableDeCodage}\newline
     \tadSemantique{estVide}{Permet de savoir si la TableDeCodage est vide}\newline
 \end{tadSemantiques}
-    
 \begin{tadPreconditions}{obtenirTableDeCodage(A)}
     \tadPrecondition{obtenirTableDeCodage(A)}{non estVide(A)}
     \tadPrecondition{obtenirCode(t,c)}{estPresent(t,c)}
