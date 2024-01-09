@@ -14,7 +14,7 @@
     \end{enregistrement}
 \end{algorithme}
 
-\subsection{fileDePriorite}
+\subsubsection{fileDePriorite}
 
 \begin{algorithme}
     \fonction{fileDePriorite}{}{FileDePriorite}{}
@@ -24,7 +24,7 @@
         \retourner{file}}
 \end{algorithme}
 
-\subsection{enfiler}
+\subsubsection{enfiler}
 
 \begin{algorithme}
     \procedure{enfiler}{\paramEntreeSortie{file : FileDePriorite}, \paramEntree{arbre : ArbreHuffman}}{}
@@ -46,7 +46,7 @@
             \affecter{\champ{file}{longueur}}{\champ{file}{longueur}+1}}}
 \end{algorithme}
 
-\subsection{createNoeud}
+\subsubsection{createNoeud}
 
 \begin{algorithme}
     \fonction{createNoeud}{arbreOfLCA : ArbreHuffman}{Noeud}{}
@@ -56,7 +56,7 @@
         \retourner{noeud}}
 \end{algorithme}
 
-\subsection{trouverIndicePourInsere}
+\subsubsection{trouverIndicePourInsere}
 
 \begin{algorithme}
     \fonction{trouverIndicePourInsere}{arbre : ArbreHuffman, file : FileDePriorite}{\naturel}{}
@@ -70,7 +70,7 @@
         \retourner{result}}
 \end{algorithme}
 
-\subsection{defiler}
+\subsubsection{defiler}
 
 \begin{algorithme}
     \procedure{defiler}{\paramEntreeSortie{file : FileDePriorite}}{non(estVide(file))}
@@ -87,7 +87,7 @@
         \affecter{\champ{file}{longueur}}{\champ{file}{longueur}-1}}
 \end{algorithme}
 
-\subsection{obtenirElement}
+\subsubsection{obtenirElement}
 
 \begin{algorithme}
     \fonction{obtenirElement}{file : FileDePriorite, i :\naturelNonNul}{ArbreHuffman}{i$<$\champ{file}{longueur}}

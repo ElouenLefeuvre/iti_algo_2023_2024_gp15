@@ -1,4 +1,4 @@
-\subsection{Déclaration du type}
+\subsubsection{Déclaration du type}
 
 \begin{algorithme}
     \type{ArbreHuffman}
@@ -13,7 +13,7 @@
     \end{enregistrement}
 \end{algorithme}
 
-\subsection{arbrehuffman}
+\subsubsection{arbrehuffman}
 
 \begin{algorithme}
     \fonction{arbrehuffman}{stat : Statistiques}{ArbreHuffman}{}
@@ -24,7 +24,7 @@
         \retourner{arbre}}
 \end{algorithme}
 
-\subsection{fusionner}
+\subsubsection{fusionner}
 
 \begin{algorithme}
     \fonction{fusionner}{arbre1 , arbre2 : ArbreHuffman}{ArbreHuffman}{non (estVide(arbre1) et estVide(arbre2))}
@@ -40,7 +40,7 @@
         \retourner{arbre}}
 \end{algorithme}
 
-\subsection{obtenirOccurences}
+\subsubsection{obtenirOccurences}
 
 \begin{algorithme}
     \fonction{obtenirOccurences}{arbre : ArbreHuffman}{\naturel}{}
@@ -48,7 +48,7 @@
         {\retourner{\champ{arbre}\champ{statistique}{ponderation}}}
 \end{algorithme}
 
-\subsection{fixerFilsDroit}
+\subsubsection{fixerFilsDroit}
 
 \begin{algorithme}
     \procedure{fixerFilsDroit}{\paramEntreeSortie{arbre : ArbreHuffman} \paramEntree{droit : ArbreHuffman}}{}
@@ -56,7 +56,7 @@
         {\affecter{\champ{arbre}{filsDroit}}{droit}}
 \end{algorithme}
 
-\subsection{fixerFilsGauche}
+\subsubsection{fixerFilsGauche}
 
 \begin{algorithme}
     \procedure{fixerFilsGauche}{\paramEntreeSortie{arbre : ArbreHuffman} \paramEntree{gauche : ArbreHuffman}}{}
@@ -64,7 +64,7 @@
         {\affecter{\champ{arbre}{filsGauche}}{gauche}}
 \end{algorithme}
 
-\subsection{estVide}
+\subsubsection{estVide}
 
 \begin{algorithme}
     \fonction{estVide}{arbre : ArbreHuffman}{\booleen}{}
@@ -72,7 +72,7 @@
         {\retourner{((\champ{arbre}\champ{statistique}{caractere} = NULL) et (\champ{arbre}\champ{statistique}{ponderation} = 0))}}
 \end{algorithme}
 
-\subsection{estFeuille}
+\subsubsection{estFeuille}
 
 \begin{algorithme}
     \fonction{estFeuille}{arbre : ArbreHuffman}{\booleen}{}
@@ -80,7 +80,7 @@
         {\retourner{(estVide(\champ{arbre}{filsDroit}) et estVide(\champ{arbre}{filsGauche}))}}
 \end{algorithme}
 
-\subsection{obtenirFilsGauche}
+\subsubsection{obtenirFilsGauche}
 
 \begin{algorithme}
     \fonction{obtenirFilsGauche}{arbre : ArbreHuffman}{ArbreHuffman}{non estFeuille(arbre)}
@@ -88,7 +88,7 @@
         {\retourner{\champ{arbre}{filsGauche}}}
 \end{algorithme}
 
-\subsection{obtenirFilsDroit}
+\subsubsection{obtenirFilsDroit}
 
 \begin{algorithme}
     \fonction{obtenirFilsDroit}{arbre : ArbreHuffman}{ArbreHuffman}{non estFeuille(arbre)}
@@ -96,7 +96,7 @@
         {\retourner{\champ{arbre}{filsDroit}}}
 \end{algorithme}
 
-\subsection{estPresent}
+\subsubsection{estPresent}
 
 \begin{algorithme}
     \fonction{estPresent}{arbre : ArbreHuffman, caractere : \caractere}{\booleen}{}{}{

@@ -1,4 +1,4 @@
-\subsection{Déclaration du type}
+\subsubsection{Déclaration du type}
 
 \begin{algorithme}
     \begin{enregistrement}{CodeBinaire}
@@ -7,7 +7,7 @@
     \end{enregistrement}
 \end{algorithme}
 
-\subsection{creerCodeBinaire}
+\subsubsection{creerCodeBinaire}
 
 \begin{algorithme}
     \fonction{creerCodeBinaire}{taille : \naturel}{CodeBinaire}{}
@@ -18,7 +18,7 @@
         \retourner{code}}
 \end{algorithme}
 
-\subsection{remplirCodeBinaire}
+\subsubsection{remplirCodeBinaire}
 
 \begin{algorithme}
     \procedure{remplirCodeBinaire}{\paramEntreeSortie{code : CodeBinaire}, \paramEntree{chaine : \chaine}}{$longueur(chaine) \ne \champ{code}{taille}$}
@@ -27,7 +27,7 @@
             {\affecter{\champ{code}{bits}[i]}{\instruction{obtenirIemeCaractere(chaine,i)}}}}
 \end{algorithme}
 
-\subsection{libererCodeBinaire}
+\subsubsection{libererCodeBinaire}
 
 \begin{algorithme}
 \procedure{libererCodeBinaire}{\paramEntreeSortie{code : CodeBinaire}}{}
@@ -36,7 +36,7 @@
     \affecter{\champ{code}{taille}}{0}}
 \end{algorithme}
 
-\subsection{estVide}
+\subsubsection{estVide}
 
 \begin{algorithme}
     \fonction{estVide}{code : CodeBinaire}{\booleen}{}
@@ -45,7 +45,7 @@
         \retourner{code = ""}}
 \end{algorithme}
 
-\subsection{obtenirIemeBit}
+\subsubsection{obtenirIemeBit}
 
 \begin{algorithme}
     \fonction{obtenirIemeBit}{code : CodeBinaire, i : \naturelNonNul}{Bit}{$i > 0$ et $i \leq longueur(code)$}
@@ -53,7 +53,7 @@
         {\retourner{code[i]}}
 \end{algorithme}
 
-\subsection{concatener}
+\subsubsection{concatener}
 
 \begin{algorithme}
     \fonction{concatener}{code1, code2: CodeBinaire}{CodeBinaire}{}
@@ -66,7 +66,7 @@
         \retourner{res}}
 \end{algorithme}
 
-\subsection{codeBinaireToStr}
+\subsubsection{codeBinaireToStr}
 
 \begin{algorithme}
     \fonction{codeBinaireToStr}{code: CodeBinaire}{\chaine}{}
@@ -76,7 +76,7 @@
         \retourner{str}}
 \end{algorithme}
 
-\subsection{obtenirCodeBinaire}
+\subsubsection{obtenirCodeBinaire}
 
 \begin{algorithme}
     \fonction{obtenirCodeBinaire}{a : ArbreHuffman, car : \caractere}{\chaine}{non ArbreHuffman\champ{estVide(a)}}
@@ -85,7 +85,7 @@
             {\retourner{'0'}}{\instruction{obtenirCodeBinaireR(a,car)}}}
 \end{algorithme}
 
-\subsection{obtenirCodeBinaireR}
+\subsubsection{obtenirCodeBinaireR}
 
 \begin{algorithme}
     \fonction{obtenirCodeBinaireR}{a : ArbreHuffman, car : \caractere}{\chaine}{non(estVide(a))}
@@ -105,7 +105,7 @@
             \retourner{res}}}
 \end{algorithme}
 
-\subsection{CbFromAH}
+\subsubsection{CbFromAH}
 
 \begin{algorithme}
     \fonction{CbFromAH}{a : ArbreHuffman, car : \caractere}{CodeBinaire}{}
@@ -116,7 +116,7 @@
         \retourner{res}}
 \end{algorithme}
 
-\subsection{codeBinaireToStr}
+\subsubsection{codeBinaireToStr}
 
 \begin{algorithme}
     \fonction{codeBinaireToStr}{code: CodeBinaire}{\chaine}{}
