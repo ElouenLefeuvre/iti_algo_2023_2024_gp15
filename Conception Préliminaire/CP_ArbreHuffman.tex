@@ -1,88 +1,65 @@
 \begin{algorithme}
-
 \signatureFonction{arbreDeHuffman}
 	{stat : Statistiques}{\typePointeur{ArbreHuffman}}
 	{}
-
 \end{algorithme}
 
 \begin{algorithme}
-
-\signatureProcedure{fixerStatistique}
-	{\paramEntreeSortie{arbre : \typePointeur{ArbreHuffman}} \paramEntree{stat : Statistiques}}{}
-	{}
-	
+\signatureProcedure{fixerStatistique}{\paramEntreeSortie{arbre : \typePointeur{ArbreHuffman}} \paramEntree{stat : Statistiques}}{}
+	{}	
 \end{algorithme}
 
 \begin{algorithme}
-
-	\signatureFonction{obtenirStat}
-		{arbre : ArbreHuffman}{Statistiques}
-		{}
-		
+	\signatureFonction{obtenirStat}{arbre : ArbreHuffman}{Statistiques}
+	{}		
 \end{algorithme}
 
 \begin{algorithme}
-
-	\signatureFonction{obtenirPonderation}
-		{arbre : ArbreHuffman}{\naturel}
-		{}
-		
+	\signatureFonction{obtenirPonderation}{arbre : ArbreHuffman}{\naturel}
+	{}	
 \end{algorithme}
 
 \begin{algorithme}
-
-	\signatureFonction{obtenirCaracter}
-		{arbre : ArbreHuffman}{\caractere}
-		{}
-		
+	\signatureFonction{obtenirCaracter}{arbre : ArbreHuffman}{\caractere}
+	{}	
 \end{algorithme}
 
 \begin{algorithme}
-
-\signatureFonction{fusionner}
-	{arbre1, arbre2 : \typePointeur{ArbreHuffman}}{\typePointeur{ArbreHuffman}}
+\signatureFonction{fusionner}{arbre1, arbre2 : \typePointeur{ArbreHuffman}}{\typePointeur{ArbreHuffman}}
 	{non estVide(arbre1) ou non estVide(arbre2)}
 \end{algorithme}
 
 \begin{algorithme}
-	\signatureProcedure{fixerFilsGauche}
-		{\paramEntreeSortie{arbre : \typePointeur{ArbreHuffman}}, \paramEntree{gauche : \typePointeur{ArbreHuffman}}}
-		{}
+	\signatureProcedure{fixerFilsGauche}{\paramEntreeSortie{arbre : \typePointeur{ArbreHuffman}}, \paramEntree{gauche : \typePointeur{ArbreHuffman}}}
+	{}
 \end{algorithme}
 		
 \begin{algorithme}
-	\signatureProcedure{fixerFilsDroit}
-		{\paramEntreeSortie{arbre : \typePointeur{ArbreHuffman}}, \paramEntree{droit : \typePointeur{ArbreHuffman}}}
-		{}
-\end{algorithme}
-
-\begin{algorithme}
-\signatureFonction{estFeuille}
-	{arbre : Arbre Huffman}{\booleen}
+	\signatureProcedure{fixerFilsDroit}{\paramEntreeSortie{arbre : \typePointeur{ArbreHuffman}}, \paramEntree{droit : \typePointeur{ArbreHuffman}}}
 	{}
 \end{algorithme}
 
 \begin{algorithme}
-\signatureFonction{estVide}
-	{arbre: \typePointeur{ArbreHuffman}}{\booleen}
+\signatureFonction{estFeuille}{arbre : Arbre Huffman}{\booleen}
 	{}
 \end{algorithme}
 
 \begin{algorithme}
-\signatureFonction{obtenirFilsGauche}
-	{arbre : \typePointeur{ArbreHuffman}}{\typePointeur{ArbreHuffman}}
+\signatureFonction{estVide}{arbre: \typePointeur{ArbreHuffman}}{\booleen}
+	{}
+\end{algorithme}
+
+\begin{algorithme}
+\signatureFonction{obtenirFilsGauche}{arbre : \typePointeur{ArbreHuffman}}{\typePointeur{ArbreHuffman}}
 	{non estFeuille(arbre)}
 \end{algorithme}
 
 \begin{algorithme}
-\signatureFonction{obtenirFilsDroit}
-	{arbre : \typePointeur{ArbreHuffman}}{\typePointeur{ArbreHuffman}}
+\signatureFonction{obtenirFilsDroit}{arbre : \typePointeur{ArbreHuffman}}{\typePointeur{ArbreHuffman}}
 	{non estFeuille(arbre)}
 \end{algorithme}
 
 \begin{algorithme}
-	\signatureFonction{estPresent}
-		{arbre : \typePointeur{ArbreHuffman}, caractere : \caractere}{\booleen}
-		{}
+	\signatureFonction{estPresent}{arbre : \typePointeur{ArbreHuffman}, caractere : \caractere}{\booleen}
+	{}
 \end{algorithme}

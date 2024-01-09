@@ -97,9 +97,12 @@ Fonctions</h2></td></tr>
 <tr class="memitem:a928e34fcf14ec5ee8c69b6efe8db626e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arbre_huffman_8h.html#a928e34fcf14ec5ee8c69b6efe8db626e">AH_arbreDeHuffman</a> (<a class="el" href="struct_statistiques.html">Statistiques</a> stat)</td></tr>
 <tr class="memdesc:a928e34fcf14ec5ee8c69b6efe8db626e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de création d'un arbre d'huffman (vide)  <a href="_arbre_huffman_8h.html#a928e34fcf14ec5ee8c69b6efe8db626e">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a928e34fcf14ec5ee8c69b6efe8db626e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9076e62295e75c4fb72411e6b0142bfb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arbre_huffman_8h.html#a9076e62295e75c4fb72411e6b0142bfb">AH_obtenirOccurences</a> (<a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> arbre)</td></tr>
-<tr class="memdesc:a9076e62295e75c4fb72411e6b0142bfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet d'obtenir le nombre d'occurences de la statistique contenue dans l'arbre.  <a href="_arbre_huffman_8h.html#a9076e62295e75c4fb72411e6b0142bfb">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a9076e62295e75c4fb72411e6b0142bfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0d93ed84883d08bcaf8a0ef72fa2b26"><td class="memItemLeft" align="right" valign="top"><a id="ac0d93ed84883d08bcaf8a0ef72fa2b26"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AH_fixerStatistique</b> (<a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> *arbre, <a class="el" href="struct_statistiques.html">Statistiques</a> stat)</td></tr>
+<tr class="separator:ac0d93ed84883d08bcaf8a0ef72fa2b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4797a70e8723ee33648d210902b40828"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_statistiques.html">Statistiques</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arbre_huffman_8h.html#a4797a70e8723ee33648d210902b40828">AH_obtenirStat</a> (<a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> arbre)</td></tr>
+<tr class="memdesc:a4797a70e8723ee33648d210902b40828"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet d'obtenir la statistique contenue dans l'arbre.  <a href="_arbre_huffman_8h.html#a4797a70e8723ee33648d210902b40828">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4797a70e8723ee33648d210902b40828"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2005cc7822606689713fdd40798a0993"><td class="memItemLeft" align="right" valign="top"><a id="a2005cc7822606689713fdd40798a0993"></a>
 <a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>AH_fusionner</b> (<a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> *ah1, <a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> *ah2)</td></tr>
 <tr class="separator:a2005cc7822606689713fdd40798a0993"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,6 +136,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>AH_estPresent</b> (<a
 <tr class="memitem:a29ac5840f97a4a05b6a71df871935b98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arbre_huffman_8h.html#a29ac5840f97a4a05b6a71df871935b98">AH_afficherArbre</a> (<a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> *arbre)</td></tr>
 <tr class="memdesc:a29ac5840f97a4a05b6a71df871935b98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet d'afficher les éléments d'un arbre.  <a href="_arbre_huffman_8h.html#a29ac5840f97a4a05b6a71df871935b98">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a29ac5840f97a4a05b6a71df871935b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa16042606f8d44021b638da16cd07621"><td class="memItemLeft" align="right" valign="top"><a id="aa16042606f8d44021b638da16cd07621"></a>
+<a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>copierArbreHuffman</b> (<a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a> *arbre)</td></tr>
+<tr class="separator:aa16042606f8d44021b638da16cd07621"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Implantation du TAD Arbre Huffman pour le Compresseur d'Huffman. </p>
@@ -245,33 +251,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>AH_estPresent</b> (<a
 
 </div>
 </div>
-<a id="a9076e62295e75c4fb72411e6b0142bfb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9076e62295e75c4fb72411e6b0142bfb">&#9670;&nbsp;</a></span>AH_obtenirOccurences()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int AH_obtenirOccurences </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a>&#160;</td>
-          <td class="paramname"><em>arbre</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Fonction qui permet d'obtenir le nombre d'occurences de la statistique contenue dans l'arbre. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">arbre</td><td>: L'arbre dont on veut connaître le nombre d'occurences </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>int </dd></dl>
-
-</div>
-</div>
 <a id="a1e5e470e522475fb8b9f1dba1cd87f64"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1e5e470e522475fb8b9f1dba1cd87f64">&#9670;&nbsp;</a></span>AH_obtenirPonderation()</h2>
 
@@ -299,10 +278,37 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>AH_estPresent</b> (<a
 
 </div>
 </div>
+<a id="a4797a70e8723ee33648d210902b40828"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4797a70e8723ee33648d210902b40828">&#9670;&nbsp;</a></span>AH_obtenirStat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_statistiques.html">Statistiques</a> AH_obtenirStat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_arbre_huffman.html">ArbreHuffman</a>&#160;</td>
+          <td class="paramname"><em>arbre</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet d'obtenir la statistique contenue dans l'arbre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arbre</td><td>: L'arbre dont on veut connaître la statistique </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd><a class="el" href="struct_statistiques.html" title="Le type Statistiques permet de donner le nombre d&#39;occurences d&#39;un caractere dans un fichier.">Statistiques</a> </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Samedi 6 Janvier 2024 14:45:17 pour Compresseur de Huffman par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+Généré le Lundi 8 Janvier 2024 19:26:31 pour Compresseur de Huffman par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
 </small></address>
 </body>
 </html>

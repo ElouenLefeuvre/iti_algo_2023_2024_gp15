@@ -1,172 +1,106 @@
-\subsubsection{Déclaration du type}
-\begin{algorithme}
+\subsection{Déclaration du type}
 
-\begin{enregistrement}{ArbreHuffman}
-    \champEnregistrement{statistiques}{Statistiques}
-    \champEnregistrement{filsGauche}{\typePointeur{ArbreHuffman}}
-    \champEnregistrement{filsDroit}{\typePointeur{ArbreHuffman}}
-\end{enregistrement}
+\begin{algorithme}
+    \type{ArbreHuffman}
+        \typePointeur{Racine}
 \end{algorithme}
 
- 
-\subsubsection{arbreDeHuffman}
-
 \begin{algorithme}
-
-    \fonction{arbreDeHuffman}{stat : Statistiques}{\typePointeur{ArbreHuffman}}{}
-        {arbre : \typePointeur{ArbreHuffman}}
-        {
-        \sialors{non(estVide(arbre))}
-        {
-        \affecter{\champPointeur{arbre}{statistiques}}{stat}
-        \affecter{\champPointeur{arbre}{filsGauche}}{NIL}
-        \affecter{\champPointeur{arbre}{filsDroit}}{NIL}
-        }
-        \retourner{arbre}        
-        }
+    \begin{enregistrement}{Racine}
+        \champEnregistrement{filsGauche}{ArbreHuffman}
+        \champEnregistrement{filsDroit}{ArbreHuffman}
+        \champEnregistrement{statistique}{Statistiques}
+    \end{enregistrement}
 \end{algorithme}
 
-\subsubsection{fixerStatistique}
+\subsection{arbrehuffman}
 
 \begin{algorithme}
-
-    \procedure{fixerStatistique}{\paramEntreeSortie{arbre : \typePointeur{ArbreHuffman}}\paramEntree{stat : Statistiques}}{}
-    {}
-    {
-    \affecter{\champPointeur{arbre}{statistiques}}{stat}
-    }
-
-
+    \fonction{arbrehuffman}{stat : Statistiques}{ArbreHuffman}{}
+        {arbre : ArbreHuffman}
+        {\affecter{\champ{arbre}{filsGauche}}{NIL}
+        \affecter{\champ{arbre}{filsDroit}}{NIL}
+        \affecter{\champ{arbre}{statistique}}{stat}
+        \retourner{arbre}}
 \end{algorithme}
 
-\subsubsection{obtenirStat}
+\subsection{fusionner}
 
 \begin{algorithme}
-
-    \fonction{obtenirStat}{arbre : ArbreHuffman}{Statistiques}{}
-    {}
-    {
-    \retourner{\champ{arbre}{statistiques}}
-    }
-
-
+    \fonction{fusionner}{arbre1 , arbre2 : ArbreHuffman}{ArbreHuffman}{non (estVide(arbre1) et estVide(arbre2))}
+        {arbre : ArbreHuffman}
+        {\affecter{arbre}{arbrehuffman()}
+        \affecter{\champ{arbre}\champ{statistique}{caractere}}{NULL}
+        \affecter{\champ{arbre}\champ{statistique}{ponderation}}{obtenirOccurences(arbre1) + obtenirOccurences(arbre2)}
+        \sialorssinon{obtenirOccurences(arbre1)$<$obtenirOccurences(arbre2)}
+            {\affecter{\champ{arbre}{filsGauche}}{arbre1}
+            \affecter{\champ{arbre}{filsDroit}}{arbre2}}
+            {\affecter{\champ{arbre}{filsDroit}}{arbre1}
+            \affecter{\champ{arbre}{filsGauche}}{arbre2}}
+        \retourner{arbre}}
 \end{algorithme}
 
-\subsubsection{obtenirPonderation}
+\subsection{obtenirOccurences}
 
 \begin{algorithme}
-    \fonction{obtenirPonderation}{arbre : ArbreHuffman}{\naturel}{}{}
-    {
-        \retourner{\champ{arbre}\champ{statistiques}{ponderation}}
-
-    }
+    \fonction{obtenirOccurences}{arbre : ArbreHuffman}{\naturel}{}
+        {}
+        {\retourner{\champ{arbre}\champ{statistique}{ponderation}}}
 \end{algorithme}
 
-\subsubsection{obtenirCaracter}
+\subsection{fixerFilsDroit}
 
 \begin{algorithme}
-    \fonction{obtenirCaracter}{arbre : ArbreHuffman}{\caractere}{}{}
-    {
-        \retourner{\champ{arbre}\champ{statistiques}{caractere}}
-
-    }
+    \procedure{fixerFilsDroit}{\paramEntreeSortie{arbre : ArbreHuffman} \paramEntree{droit : ArbreHuffman}}{}
+        {}
+        {\affecter{\champ{arbre}{filsDroit}}{droit}}
 \end{algorithme}
 
-\subsubsection{fusionner}
+\subsection{fixerFilsGauche}
 
 \begin{algorithme}
-
-    \fonction{fusionner}{arbre1 , arbre2 : \typePointeur{ArbreHuffman}}{\typePointeur{ArbreHuffman}}{non (estVide(arbre1) et estVide(arbre2))}
-    {res : \typePointeur{ArbreHuffman}, stat : Statistiques}
-    {   
-        \affecter{\champ{stat}{caractere}}{' '}
-        \affecter{\champ{stat}{ponderation}}{obtenirPonderation(\typePointeur{arbre1})+obtenirPonderation(\typePointeur{arbre2})}
-        \affecter{res}{arbreDeHuffman(stat)}
-        \sialorssinon{obtenirPonderation(\typePointeur{arbre1})$<$obtenirPonderation(\typePointeur{arbre2})}
-        {fixerFilsGauche(res,arbre1)\\
-        fixerFilsDroit(res,arbre2)}
-        {fixerFilsGauche(res,arbre2)\\
-        fixerFilsDroit(res,arbre1)}
-        \retourner{res}
-        
-
-    }
+    \procedure{fixerFilsGauche}{\paramEntreeSortie{arbre : ArbreHuffman} \paramEntree{gauche : ArbreHuffman}}{}
+        {}
+        {\affecter{\champ{arbre}{filsGauche}}{gauche}}
 \end{algorithme}
 
-
-\subsubsection{fixerFilsDroit}
+\subsection{estVide}
 
 \begin{algorithme}
-    \procedure{fixerFilsDroit}{\paramEntreeSortie{arbre : \typePointeur{ArbreHuffman}} \paramEntree{droit : \typePointeur{ArbreHuffman}}}{}{}
-        {
-            \sialors{non(estVide(arbre))}
-            {
-            \affecter{\champPointeur{arbre}{filsDroit}}{droit}
-            }
-        }
-
-    
-
+    \fonction{estVide}{arbre : ArbreHuffman}{\booleen}{}
+        {}
+        {\retourner{((\champ{arbre}\champ{statistique}{caractere} = NULL) et (\champ{arbre}\champ{statistique}{ponderation} = 0))}}
 \end{algorithme}
 
-\subsubsection{fixerFilsGauche}
+\subsection{estFeuille}
 
 \begin{algorithme}
-    \procedure{fixerFilsGauche}{\paramEntreeSortie{arbre : \typePointeur{ArbreHuffman}} \paramEntree{gauche : \typePointeur{ArbreHuffman}}}{}{}
-        {
-            \sialors{non(estVide(arbre))}{
-            \affecter{\champPointeur{arbre}{filsGauche}}{gauche}}
-        }
+    \fonction{estFeuille}{arbre : ArbreHuffman}{\booleen}{}
+        {}
+        {\retourner{(estVide(\champ{arbre}{filsDroit}) et estVide(\champ{arbre}{filsGauche}))}}
 \end{algorithme}
 
-\subsubsection{estVide}
+\subsection{obtenirFilsGauche}
 
 \begin{algorithme}
-    \fonction{estVide}{arbre : \typePointeur{ArbreHuffman}}{\booleen}{}{}
-    {
-        \retourner{((\champPointeur{arbre}\champ{statistiques}{caractere} = NULL) et (\champ{arbre}\champ{statistique}{ponderation} = NULL))}
-    }
+    \fonction{obtenirFilsGauche}{arbre : ArbreHuffman}{ArbreHuffman}{non estFeuille(arbre)}
+        {}
+        {\retourner{\champ{arbre}{filsGauche}}}
 \end{algorithme}
 
-\subsubsection{estFeuille}
+\subsection{obtenirFilsDroit}
 
 \begin{algorithme}
-    \fonction{estFeuille}{arbre : ArbreHuffman}{\booleen}{}{}
-    {
-
-    \retourner{(estVide(obtenirFilsGauche(@arbre)) et estVide(obtenirFilsDroit(&arbre)))}
-    }
+    \fonction{obtenirFilsDroit}{arbre : ArbreHuffman}{ArbreHuffman}{non estFeuille(arbre)}
+        {}
+        {\retourner{\champ{arbre}{filsDroit}}}
 \end{algorithme}
 
-
-\subsubsection{obtenirFilsGauche}
-
-\begin{algorithme}
-    \fonction{obtenirFilsGauche}{arbre : \typePointeur{ArbreHuffman}}{\typePointeur{ArbreHuffman}}{non estFeuille(arbre)}{}
-    {
-    \retourner{\champPointeur{arbre}{filsGauche}}
-    }
-\end{algorithme}
-
-\subsubsection{obtenirFilsDroit}
+\subsection{estPresent}
 
 \begin{algorithme}
-    \fonction{obtenirFilsDroit}{arbre : \typePointeur{ArbreHuffman}}{\typePointeur{ArbreHuffman}}{non estFeuille(arbre)}{}
-    {
-    \retourner{\champPointeur{arbre}{filsDroit}}
-    }
-\end{algorithme}
-
-\subsubsection{estPresent}
-
-\begin{algorithme}
-    \fonction{estPresent}{arbre : \typePointeur{ArbreHuffman}, caractere : \caractere}{\booleen}{}{}
-    {   
-        \sialors(non(estVide(arbre)))
-        {
-        \sialorssinon{\champPointeur{arbre}\champ{statistiques}{caractere} = caractere}
-        {\retourner{Vrai}}
-        {\retourner{estPresent(obtenirFilsDroit(arbre)) ou estPresent(obtenirFilsGauche(arbre))}}
-        }
-        }
+    \fonction{estPresent}{arbre : ArbreHuffman, caractere : \caractere}{\booleen}{}{}{
+        \sialorssinon{arbre.statistiquescaractere = caractere}
+            {\retourner{Vrai}}
+            {\retourner{estPresent(obtenirFilsDroit(arbre)) ou estPresent(obtenirFilsGauche(arbre))}}}
 \end{algorithme}

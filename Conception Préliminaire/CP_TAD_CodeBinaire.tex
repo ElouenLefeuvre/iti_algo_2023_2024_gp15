@@ -1,23 +1,57 @@
-\begin{algorithme}
-\signatureFonction{obtenirCodeBinaire}
-	{a : Arbre Huffman, car : \caractere}{CodeBinaire}
-	{non(estVide(a))}
-\end{algorithme}
+\section{TAD Code Binaire}
 
 \begin{algorithme}
-\signatureFonction{estVide}
-	{code : CodeBinaire}{\booleen}
+\signatureFonction{creerCodeBinaire}{taille : \naturel}{CodeBinaire}
 	{}
 \end{algorithme}
 
 \begin{algorithme}
-	\signatureFonction{obtenirIemeBit}
-		{code : CodeBinaire, i : \naturelNonNul}{Bit}
-		{i > 0 et i <= longueur(code) }
-	\end{algorithme}
+\signatureProcedure{remplirCodeBinaire}{\paramEntreeSortie{code : CodeBinaire}, \paramEntree{chaine : \chaine}}
+    {$longueur(chaine) \ne code.taille$}
+\end{algorithme}
 
 \begin{algorithme}
-	\signatureFonction{longueur}
-		{code : CodeBinaire}{\naturel}
-		{}
-	\end{algorithme}
+\signatureProcedure{libererCodeBinaire}{\paramEntreeSortie{code : CodeBinaire}}
+    {}
+\end{algorithme}
+
+
+\begin{algorithme}
+\signatureFonction{estVide}{code : CodeBinaire}{\booleen}
+	{}
+\end{algorithme}
+
+\begin{algorithme}
+\signatureFonction{obtenirIemeBit}{code : CodeBinaire, i : \naturelNonNul}{Bit}
+	{$i > 0$ et $i \leq longueur(code)$ }
+\end{algorithme}
+
+\begin{algorithme}
+\signatureFonction{concatener}{code1, code2: CodeBinaire}{CodeBinaire}
+    {}
+\end{algorithme}
+
+\begin{algorithme}
+\signatureFonction{codeBinaireToStr}{code: CodeBinaire}{\chaine}
+    {}
+\end{algorithme}
+
+\begin{algorithme}
+\signatureFonction{obtenirCodeBinaire}{a : ArbreHuffman, car : \caractere}{\chaine}
+    {non ArbreHuffman.estVide(a)}
+\end{algorithme}
+
+\begin{algorithme}
+\signatureFonction{obtenirCodeBinaireR}{a : ArbreHuffman, car : \caractere}{\chaine}
+    {non ArbreHuffman.estVide(a)}
+\end{algorithme}
+
+\begin{algorithme}
+\signatureFonction{CbFromAH}{a : ArbreHuffman, car : \caractere}{CodeBinaire}
+    {}
+\end{algorithme}
+
+\begin{algorithme}
+\signatureFonction{codeBinaireToStr}{code: CodeBinaire}{\chaine}
+    {}
+\end{algorithme}

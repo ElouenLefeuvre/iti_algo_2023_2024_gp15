@@ -14,17 +14,14 @@ Implantation de l\textquotesingle{}analyse Desvendante Decompression pour le Com
 \doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-FILE \mbox{\hyperlink{_decompression_8h_a1bdac482016186aabc51e1a8d45a5ca2}{DECOMP\+\_\+decompresser}} (char nom\+Fichier\+Huffman\mbox{[}$\,$\mbox{]})
-\begin{DoxyCompactList}\small\item\em Fonction qui permet de décompresser un fichier compressé \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{_decompression_8h_a7476ae161c1a4a362cc741fb78dfbdad}\label{_decompression_8h_a7476ae161c1a4a362cc741fb78dfbdad}} 
-\mbox{\hyperlink{struct_file_de_priorite}{File\+De\+Priorite}} {\bfseries DECOMP\+\_\+obtenir\+File\+De\+Priorite} (stats \+:\mbox{\hyperlink{struct_ensemble}{Ensemble}} de \mbox{\hyperlink{struct_statistiques}{Statistiques}})
+\mbox{\hyperlink{struct_file_de_priorite}{File\+De\+Priorite}} \mbox{\hyperlink{_decompression_8h_ab6ebf544f812448802bcc4c63ac81edb}{DECOMP\+\_\+file\+From\+FILE}} (\mbox{\hyperlink{struct_file_de_priorite}{File\+De\+Priorite}} fp, char caracter, int ponderation)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet d\textquotesingle{}obtenir la file de priorité à partir des statistiques du fichier compressé \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_decompression_8h_a84246909f8349f274c991a2f08333b76}\label{_decompression_8h_a84246909f8349f274c991a2f08333b76}} 
+FILE $\ast$ {\bfseries DECOMP\+\_\+decompresser} (const char $\ast$file\+Name)
 \item 
-\mbox{\hyperlink{struct_ensemble}{Ensemble}} \mbox{\hyperlink{_decompression_8h_ac66d7ff3f40ddf9650b1a060158b53a6}{DECOMP\+\_\+obtenir\+Statistiques}} (char nomfichier\mbox{[}$\,$\mbox{]})
-\begin{DoxyCompactList}\small\item\em Fonction qui permet de lire les statistiques du fichier compressé \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_arbre_huffman}{Arbre\+Huffman}} \mbox{\hyperlink{_decompression_8h_a358582895229cf38ce38cce021626e7d}{DECOMP\+\_\+creer\+Arbre\+Huffman}} (\mbox{\hyperlink{struct_statistiques}{Statistiques}} stat)
-\begin{DoxyCompactList}\small\item\em Fonction qui crée un arbre à partir de statistiques. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_file_de_priorite}{File\+De\+Priorite}} \mbox{\hyperlink{_decompression_8h_a9db2491e7db209ba773800a552adca77}{DECOMP\+\_\+inserer\+Arbre}} (\mbox{\hyperlink{struct_file_de_priorite}{File\+De\+Priorite}} file, \mbox{\hyperlink{struct_arbre_huffman}{Arbre\+Huffman}} arbre)
-\begin{DoxyCompactList}\small\item\em Fonction qui insère un arbre dans une file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\Hypertarget{_decompression_8h_a06a033d804bb939c9fc20b62072239a4}\label{_decompression_8h_a06a033d804bb939c9fc20b62072239a4}} 
+\mbox{\hyperlink{struct_arbre_huffman}{Arbre\+Huffman}} {\bfseries DECOMP\+\_\+arbre\+Principale} (\mbox{\hyperlink{struct_file_de_priorite}{File\+De\+Priorite}} fp)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Description détaillée}
@@ -36,77 +33,25 @@ A. El Faïq, T. Barsot, W. Vilayvong, E. Lefeuvre
 
 
 \doxysubsection{Documentation des fonctions}
-\mbox{\Hypertarget{_decompression_8h_a358582895229cf38ce38cce021626e7d}\label{_decompression_8h_a358582895229cf38ce38cce021626e7d}} 
-\index{Decompression.h@{Decompression.h}!DECOMP\_creerArbreHuffman@{DECOMP\_creerArbreHuffman}}
-\index{DECOMP\_creerArbreHuffman@{DECOMP\_creerArbreHuffman}!Decompression.h@{Decompression.h}}
-\doxysubsubsection{\texorpdfstring{DECOMP\_creerArbreHuffman()}{DECOMP\_creerArbreHuffman()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_arbre_huffman}{Arbre\+Huffman}} DECOMP\+\_\+creer\+Arbre\+Huffman (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_statistiques}{Statistiques}}}]{stat }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{_decompression_8h_ab6ebf544f812448802bcc4c63ac81edb}\label{_decompression_8h_ab6ebf544f812448802bcc4c63ac81edb}} 
+\index{Decompression.h@{Decompression.h}!DECOMP\_fileFromFILE@{DECOMP\_fileFromFILE}}
+\index{DECOMP\_fileFromFILE@{DECOMP\_fileFromFILE}!Decompression.h@{Decompression.h}}
+\doxysubsubsection{\texorpdfstring{DECOMP\_fileFromFILE()}{DECOMP\_fileFromFILE()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_file_de_priorite}{File\+De\+Priorite}} DECOMP\+\_\+file\+From\+FILE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_file_de_priorite}{File\+De\+Priorite}}}]{fp,  }\item[{char}]{caracter,  }\item[{int}]{ponderation }\end{DoxyParamCaption})}
 
 
 
-Fonction qui crée un arbre à partir de statistiques. 
-
-
-\begin{DoxyParams}{Paramètres}
-{\em stat} & \+: statistiques de l\textquotesingle{}arbre créé \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Renvoie}
-\mbox{\hyperlink{struct_arbre_huffman}{Arbre\+Huffman}} 
-\end{DoxyReturn}
-\mbox{\Hypertarget{_decompression_8h_a1bdac482016186aabc51e1a8d45a5ca2}\label{_decompression_8h_a1bdac482016186aabc51e1a8d45a5ca2}} 
-\index{Decompression.h@{Decompression.h}!DECOMP\_decompresser@{DECOMP\_decompresser}}
-\index{DECOMP\_decompresser@{DECOMP\_decompresser}!Decompression.h@{Decompression.h}}
-\doxysubsubsection{\texorpdfstring{DECOMP\_decompresser()}{DECOMP\_decompresser()}}
-{\footnotesize\ttfamily FILE DECOMP\+\_\+decompresser (\begin{DoxyParamCaption}\item[{char\mbox{[}$\,$\mbox{]}}]{nom\+Fichier\+Huffman }\end{DoxyParamCaption})}
-
-
-
-Fonction qui permet de décompresser un fichier compressé 
+Fonction qui permet d\textquotesingle{}obtenir la file de priorité à partir des statistiques du fichier compressé 
 
 
 \begin{DoxyParams}{Paramètres}
-{\em nom\+Fichier} & \+: fichier à décompresser \\
+{\em fp} & une file de priorite \\
 \hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Renvoie}
-FILE 
-\end{DoxyReturn}
-\mbox{\Hypertarget{_decompression_8h_a9db2491e7db209ba773800a552adca77}\label{_decompression_8h_a9db2491e7db209ba773800a552adca77}} 
-\index{Decompression.h@{Decompression.h}!DECOMP\_insererArbre@{DECOMP\_insererArbre}}
-\index{DECOMP\_insererArbre@{DECOMP\_insererArbre}!Decompression.h@{Decompression.h}}
-\doxysubsubsection{\texorpdfstring{DECOMP\_insererArbre()}{DECOMP\_insererArbre()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_file_de_priorite}{File\+De\+Priorite}} DECOMP\+\_\+inserer\+Arbre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_file_de_priorite}{File\+De\+Priorite}}}]{file,  }\item[{\mbox{\hyperlink{struct_arbre_huffman}{Arbre\+Huffman}}}]{arbre }\end{DoxyParamCaption})}
-
-
-
-Fonction qui insère un arbre dans une file. 
-
-
-\begin{DoxyParams}{Paramètres}
-{\em arbre} & \+: arbre à insérer \\
+{\em caracter} & \+: un caractere \\
 \hline
-{\em file} & \+: file à parcourir \\
+{\em ponderation} & une ponderation \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
 \mbox{\hyperlink{struct_file_de_priorite}{File\+De\+Priorite}} 
-\end{DoxyReturn}
-\mbox{\Hypertarget{_decompression_8h_ac66d7ff3f40ddf9650b1a060158b53a6}\label{_decompression_8h_ac66d7ff3f40ddf9650b1a060158b53a6}} 
-\index{Decompression.h@{Decompression.h}!DECOMP\_obtenirStatistiques@{DECOMP\_obtenirStatistiques}}
-\index{DECOMP\_obtenirStatistiques@{DECOMP\_obtenirStatistiques}!Decompression.h@{Decompression.h}}
-\doxysubsubsection{\texorpdfstring{DECOMP\_obtenirStatistiques()}{DECOMP\_obtenirStatistiques()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_ensemble}{Ensemble}} DECOMP\+\_\+obtenir\+Statistiques (\begin{DoxyParamCaption}\item[{char}]{nomfichier\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
-
-
-
-Fonction qui permet de lire les statistiques du fichier compressé 
-
-
-\begin{DoxyParams}{Paramètres}
-{\em nomfichier} & \+: fichier compressé à lire \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Renvoie}
-\mbox{\hyperlink{struct_ensemble}{Ensemble}} 
 \end{DoxyReturn}

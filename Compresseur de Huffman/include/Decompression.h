@@ -11,7 +11,6 @@
 #include <stdbool.h>
 #include "ArbreHuffman.h"
 #include "FileDePriorite.h"
-#include "Ensemble.h"
 #include "Statistiques.h"
 
 

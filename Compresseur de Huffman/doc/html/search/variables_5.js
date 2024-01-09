@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['filsdroit_184',['filsDroit',['../struct_arbre_huffman.html#a115f772cac4ae406cebac958a6c94feb',1,'ArbreHuffman']]],
-  ['filsgauche_185',['filsGauche',['../struct_arbre_huffman.html#aa421d9400fc55f74747c87ba2da5975c',1,'ArbreHuffman']]]
+  ['ligne_141',['ligne',['../struct_table_de_codage.html#a6c472e19933c84bb7d8fed7690a082a8',1,'TableDeCodage']]],
+  ['listesuivante_142',['listeSuivante',['../struct_ligne.html#aad226ea01cf4c203592a7b4b86e1b131',1,'Ligne']]],
+  ['longueur_143',['longueur',['../struct_file_de_priorite.html#a99c1a2326077453a39e283a1dd9ca73e',1,'FileDePriorite']]]
 ];
