@@ -1,96 +1,106 @@
-\subsubsection[Compresser]
-\begin{algorithme}
-    \fonction{compresser}{fic : FichierTexte}{fichierBinaire}
-    {}
-    {file : FileDePriorite;temp, table : TableDeCodage;  arbreHuffman : ArbreHuffman; fc : FichierBinaire}
-    {
-    \affecter{file}{creerFileDePriorite(fic)}
-    \affecter{table}{creerTableDeCodage(FileDePriorite.obtenirElement(file))}
-    \tantque{non(EOF(fic))}{
-        \affecter{temp}{table}
-        ecrireOctet(fc,encoder(obtenirCodeBinaire(temp,lireCaractere(fic))))
-    }
-    \retourner{fic}
-    }
-    
+\subsubsection{compresser}
 
-    
-    
-    
+\begin{algorithme}
+    \fonction{compresser}{nomFichier : \chaine}{FichierBinaire}{}
+        {file, fp : FileDePriorite, nomFichierComp : \chaine compressedFile : FichierBinaire, occurrences, caracteresSansRepetition : \naturel[256], nbCaracteresSansRepetition, nbCaracAvecRepetition, caractere, i : \naturel, ArbreFinal : ArbreHuffman, tableDeCodageFinale : TableDeCodage, car : \caractere, ent : \naturel, code : CodeBinaire, bitsInstr : CodeBinaire, stat : Statistiques}
+        {\affecter{file}{initFichier(nomFichier)}
+        \affecter{fp}{FileDePriorite.fileDePriorite()}
+        \affecter{nomFichierComp}{"compressedFile.huff"}
+        \affecter{compressedFile}{ouvrirFichier(nomFichierComp, "wb")}
+        \sialorssinon{compressedFile = NULL}{}
+        {\affecter{occurrences}{[0, ..., 0]}
+        \affecter{caracteresSansRepetition}{[0, ..., 0]}
+        \affecter{nbCaracteresSansRepetition}{0}
+        \affecter{nbCaracAvecRepetition}{0}
+        \tantque{(\caractere = obtenirCaractereFichier(file)) $\neq$ \textbf{EOF}}
+            {\affecter{nbCaracAvecRepetition}{nbCaracAvecRepetition + 1}
+            \affecter{occurrences[caractere]}{occurrences[caractere] + 1}
+            \sialorssinon{occurrences[caractere] = 1}{
+                \affecter{caracteresSansRepetition[nbCaracteresSansRepetition]}{caractere}}{}}
+        \affecter{nbCaracAvecRepetition}{nbCaracAvecRepetition - 1}
+        ecrireFichier(nbCaracAvecRepetition, sizeof(\naturel), 1, compressedFile)
+        \pour{\naturel i}{0}{255}
+            {\affecter{stat}{S.statistique(caracteresSansRepetition[i], occurences[caracteresSansRepetition[i]])}
+            \affecter{car}{caracteresSansRepetition[i]}
+            \affecter{ent}{occurrences[car]}
+            ecrireFichier(car, sizeof(\caractere), 1, compressedFile)
+            ecrireFichier(ent, sizeof(\naturel), 1, compressedFile)
+            \sialorssinon{ent $\neq$ 0}
+            {CreerArbreEtEnfiler(stat, fp)}{}}
+        \affecter{ArbreFinal}{FusionnerArbreFDP(fp)}
+        \affecter{tableDeCodageFinale}{TableDeCodage.obtenirTableDeCodage()}
+        \pour{\naturel i}{0}{nbCaracteresSansRepetition}
+            {\affecter{c}{caracteresSansRepetition[i]}
+            \affecter{code}{CB\_CbFromAH(ArbreFinal, c)}
+            TableDeCodage.ajouter(tableDeCodageFinale, c, code)}
+        pointerFichier(file, 0, SEEK_SET)
+        \affecter{car}{obtenirCaractereFichier(file)}
+        \tantque{car $\neq$ \textbf{EOF}}
+            {\affecter{code}{TableDeCodage.obtenirCode(tableDeCodageFinale, car)}
+            \affecter{bitsInstr}{CB.codeBinaireToStr(code)}
+            ecrireBitsDansFichier(compressedFile, bitsInstr)}}
+        fermerFichier(file)
+        \retourner{compressedFile}}
 \end{algorithme}
 
-\subsubsection{ecrireBit}
+\subsubsection{FusionnerArbreFDP}
 
 \begin{algorithme}
-    \fonction{COMP_ecrireBit}{fic :  FichierBinaire, \caractere bit}{}
-    {}
-    {octet : FileDePriorite; ensC : Ensemble de \caractere; ensS : Ensemble de Statistiques}
-    {
-    \affecter{ensC}{obtenirCaracteres(fic)}
-    \affecter{ensS}{creerStatistique(ensC)}
-    \affecter{file}{filedePriorite()}
-    \pourChaque{Stats}{ensS}{
-        enfiler(file, arbrehuffman(stats))
-    }
-    \tantque{FileDePriorite.obtenirLongueur(file)$>$1}{  %OucreerFileDePriorite faire avec longueur >1 de FileDePrio
-        nouvelleFile(file)}
- 
-    \retourner{file}
+    \fonction{FusionnerArbreFDP}{fp :  FileDePriorite}{ArbreHuffman}{}
+        {arbre1, arbre2, arbreFusionne1: ArbreHuffman}
+        {\tantque{fp.longueur$\neq$}
+            {\affecter{arbre1}{FileDePriorite.obtenirElement(fp, fp.longueur)}
+            \affecter{arbre2}{FileDePriorite.obtenirElement(fp, fp.longueur-1)}
+            FileDePriorite.defiler(fp)
+            FileDePriorite.defiler(fp)
+            \affecter{arbreFusionne1}{ArbreHuffman.fusionner(arbre1, arbre2)}
+            FileDePriorite.enfiler(fp, arbreFusionne1)}
+    \retourner{FileDePriorite.obtenirElement(fp,0)}
     }
 \end{algorithme}
 
-\subsubsection{ecrireBitsDansFichier}
+\subsubsection{CreerArbreEtEnfiler}
 
 \begin{algorithme}
-    \fonction{ cecrireBitsDansFichier}{fic :  FichierBinaire, bit :Ensemble de \caractere }{TableDeCodage}{}{}{ longueur:\naturel }{
-        \affecter{longueur}{0}
-
-    }
-    
-    {\retourner{obtenirTableDeCodage(arbre)}}
+    \procedure{CreerArbreEtEnfiler}{\paramEntree stat : Statistiques \paramEntreeSortie fp : FileDePriorite}{}
+        {arbre : ArbreHuffman}
+        {\affecter{arbre}{ArbreHuffman.arbreDeHuffman(stat)}
+        FileDePriorite.enfiler(fp, arbre)}
 \end{algorithme}
 
 \subsubsection{initFichier}
 
 \begin{algorithme}
-    \fonction{ creerStatistique}{fic : FichierTexte;ensC : Ensemble de \caractere}{Ensemble de Statistiques}
-    {}
-    {ensStats : Ensemble de Statistiques, nbOcc : \naturel}   				
-    {\pourChaque{car}{ensC}{
-        \tantque{non(EOF(fic))}{
-        lire(fic,c)
-        \newline
-        
-        \sialors{c=car}{
-            \affecter{nbOcc}{nbOcc + 1}
-
-        
-        Ensemble.ajouter(ensStats,statistique(car, nbOcc))}}}
-    \retourner{ensStats}}
+    \fonction{initFichier}{nomFichier : \chaine}{Fichier Texte}{}
+        {file : Fichier Texte}   				
+        {ouvrirFichier(file)
+        \sialorssinon{file = NULL}{}
+            {\retourner{file}}}
 \end{algorithme}
 
-
-\subsubsection{CreerArbreEtEnfiler}
+\subsubsection{ecrireBitsDansFichier}
 
 \begin{algorithme}
-    \fonction{obtenirCaracteres}{fic : FichierTexte}{Ensemble de \caractere}
-    {}
-    {ens : Ensemble de \caractere}
-    {\affecter{ens,ensemble()}
-    ouvrir(fic)
-    \tantque{non(eof(fic))}
-        {\lire(fic,car)
-        \sialorssinon{not(estPresent(ens,car))}
-            {ajouter(ens,car)}{}}
-    \retourner{ens}}
+    \procedure{ecrireBitsDansFichier}{\paramEntreeSortie file : FichierTexte, \paramEntree bits : \chaine}{}
+        {longueur : \naturel}
+        {\affecter{longueur}{obtenirLongueur(bits)}
+        \pour{\naturel {i}{0}{longueur-1}}
+            {ecrireBit(fichier, bits[i])}}
+    \retourner{ens}
 \end{algorithme}
 
-
-\subsubsection{FusionnerArbreFDP}
+\subsubsection{ecrireBit}
 
 \begin{algorithme}
-    \fonction{obtenirOccurences}{c : \caractere}{\naturel}
-    {}
-    {}
-    {\retourner{Statistiques.obtenirOccurence(car)}}
+    \procedure{ecrireBit}{\paramEntreeSortie file : FichierTexte, \paramEntree bit : \caractere}{}
+        {octet : \caractere, bitsEcrits : \naturel}
+        {\affecter{octet}{0}
+        \affecter{bitsEcrits}{0}
+        \affecter{octet}{octet | (bit - '0') << (7 - bitsEcrits)}
+        \affecter{bitsEcrits}{bitsEcrits + 1}
+        \sialors{bitsEcrits = 8}
+            {ecrireFichier(octet, sizeof(\caractere), 1, fichier)
+            \affecter{octet}{0}
+            \affecter{bitsEcrits}{0}}
+        }
 \end{algorithme}
