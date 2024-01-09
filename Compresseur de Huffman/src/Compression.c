@@ -7,6 +7,7 @@
 #include "ArbreHuffman.h"
 #include "FileDePriorite.h"
 #include "TableDeCodage.h"
+#include "Compression.h"
 #include <string.h>
 
 void COMP_ecrireBit(FILE *fichier, char bit) {
