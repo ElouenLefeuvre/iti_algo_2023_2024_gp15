@@ -99,7 +99,7 @@ FILE* COMP_compresser(const char* nomFichier) {
     char car;
     while ((car = fgetc(file)) != EOF) {
         CodeBinaire* code = TDC_obtenirCode(*tableDeCodageFinale, car);
-        char* bitsInstr = CB_codeBinaireToStr(code);
+        char* bitsInstr = CB_codeBinaireAStr(code);
         COMP_ecrireBitsDansFichier(compressedFile, bitsInstr);
     }
     fclose(file);   

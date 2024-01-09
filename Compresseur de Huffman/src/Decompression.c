@@ -38,7 +38,7 @@ ArbreHuffman DECOMP_arbrePrincipal(FileDePriorite fp) {
         FDP_defiler(&fp);
         FDP_defiler(&fp);
         ArbreHuffman* arbreFusionne = AH_fusionner(&arbre1, &arbre2);
-        ArbreHuffman* copie = copierArbreHuffman(arbreFusionne);
+        ArbreHuffman* copie = AH_copierArbreHuffman(arbreFusionne);
         FDP_enfiler(&fp, copie);
     }
     return FDP_obtenirElement(fp, 0);
@@ -73,7 +73,7 @@ FILE* DECOMP_decompresser(const char* nomFichier) {
         if(bit == 0) tmp = tmp->filsGauche;
         else if (bit == 1) tmp  =tmp->filsDroit;   
         if (AH_estFeuille(*tmp)){
-            fprintf(decompresssedFile, "%c", AH_obtenirCaracter(*tmp));
+            fprintf(decompresssedFile, "%c", AH_obtenirCaractere(*tmp));
             tmp = &arbrePrincipal;
         }
     }

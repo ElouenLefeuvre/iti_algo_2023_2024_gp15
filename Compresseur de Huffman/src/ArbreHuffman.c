@@ -94,10 +94,10 @@ ArbreHuffman* AH_copierArbreHuffman(ArbreHuffman* arbre) {
     if (arbre == NULL) {
         return NULL;
     }
-    Statistiques stat= S_statistique(AH_obtenirCaracter(*arbre), AH_obtenirPonderation(*arbre));
+    Statistiques stat= S_statistique(AH_obtenirCaractere(*arbre), AH_obtenirPonderation(*arbre));
     ArbreHuffman* nouveauNoeud = AH_arbreDeHuffman(stat);
-    nouveauNoeud->filsGauche = copierArbreHuffman(AH_obtenirFilsGauche(arbre));
-    nouveauNoeud->filsDroit = copierArbreHuffman(AH_obtenirFilsDroit(arbre));
+    nouveauNoeud->filsGauche = AH_copierArbreHuffman(AH_obtenirFilsGauche(arbre));
+    nouveauNoeud->filsDroit = AH_copierArbreHuffman(AH_obtenirFilsDroit(arbre));
     return nouveauNoeud;
 }
 
