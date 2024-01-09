@@ -52,7 +52,7 @@ Un programme en C capable de compresser un fichier texte en fichier binaire, et 
 
 ## Évaluation et Performances
 
-Avec un fichier pdf de 78KB, nous obtenons un fichier compressé de 4KB, ce qui correspond à un fichier presque 20 fois moins volumineux.
+Avec un fichier pdf de 203,38Mo, nous obtenons un fichier compressé de 84,8Mo, ce qui correspond à un fichier plus de 2 fois moins volumineux.
 
 ## Limitations et Améliorations Possibles
 

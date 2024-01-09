@@ -26,7 +26,7 @@ int DECOMP_lireBit(FILE *fichier);
  * \return FileDePriorite
  */
 
-FileDePriorite DECOMP_fileFromFILE(FileDePriorite fp,char caracter,int ponderation);
+FileDePriorite DECOMP_obtenirFileFichier(FileDePriorite fp,char caracter,int ponderation);
 
 
 

@@ -11,7 +11,7 @@
 
 
 
-FileDePriorite DECOMP_fileFromFILE(FileDePriorite fp,char caracter,int ponderation){
+FileDePriorite DECOMP_obtenirFileFichier(FileDePriorite fp,char caracter,int ponderation){
     Statistiques stat= S_statistique(caracter,ponderation); 
     ArbreHuffman* arbre= AH_arbreDeHuffman(stat);
     FDP_enfiler(&fp,arbre);
@@ -67,7 +67,7 @@ FILE* DECOMP_decompresser(const char* fileName){
         int statPonderation ;
         fread(&statPonderation,sizeof(int),1,file);
         if(statPonderation!=0){
-            fp = DECOMP_fileFromFILE(fp,c,statPonderation);
+            fp = DECOMP_obtenirFileFichier(fp,c,statPonderation);
         }
         i++;
     }
