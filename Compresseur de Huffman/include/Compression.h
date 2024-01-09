@@ -80,14 +80,11 @@
 // TableDeCodage COMP_creerTableDeCodage(ArbreHuffman arbre);
 
 
-void ecrireBit(FILE *fichier, char bit);
-void ecrireBitsDansFichier(FILE *fichier, const char *bits) ;
-int COMP_obtenirStatNumber();
+void COMP_ecrireBit(FILE *fichier, char bit);
+void COMP_ecrireBitsDansFichier(FILE *fichier, const char *bits) ;
 FILE* COMP_initSrcFile(const char* fileName);
-FILE* COMP_initDestFile(const char* fileName);
-void COMP_createArbreEtEnfiler(Statistiques stat,FileDePriorite* fp);
-ArbreHuffman COMP_fusionArbreDeFP(FileDePriorite fp);
-TableDeCodage* COMP_remplirTDC(char tableau[],ArbreHuffman arbreFinal);
+void COMP_CreerArbreEtEnfiler(Statistiques stat,FileDePriorite* fp);
+ArbreHuffman COMP_FusionnerArbreFDP(FileDePriorite fp);
 
 /**
  * \fn COMP_compresser(char nomFichier[]);

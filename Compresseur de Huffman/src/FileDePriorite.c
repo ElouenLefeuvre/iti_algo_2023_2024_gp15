@@ -99,16 +99,3 @@ ArbreHuffman FDP_obtenirElement(FileDePriorite file, int i) {
      }
     return temp->arbre;
 } 
-
-void FDP_nouvelleFile(FileDePriorite* file) {
-    if (file->longueur < 2) {
-        return;
-    }
-    int i = file->longueur;
-    ArbreHuffman arbre1 = FDP_obtenirElement(*file, i);
-    ArbreHuffman arbre2 = FDP_obtenirElement(*file, i - 1);
-    FDP_defiler(file);
-    FDP_defiler(file);
-    ArbreHuffman arbreFusionne = *AH_fusionner(&arbre1, &arbre2);
-    FDP_enfiler(file, &arbreFusionne);
-}

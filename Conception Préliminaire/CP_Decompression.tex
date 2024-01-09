@@ -1,29 +1,19 @@
 \begin{algorithme}
-    \signatureFonction{ decompresser}{fic : FichierHuffman}{FichierTexte}
+\signatureFonction{DECOMP_fileFromFILE}{fp : FileDePriorite, caracter : \caractere, ponderation : \naturel}{FileDePriorite}
     {}
 \end{algorithme}
-
+    
 \begin{algorithme}
-    \signatureFonction{ creerArbreHuffman}{stat : Statistiques}{Arbre Huffman} 
+\signatureFonction{DECOMP_lireBit}{fichier : Fichier Binaire}{\naturel}
     {}
 \end{algorithme}
-
+    
 \begin{algorithme}
-    \signatureFonction{ obtenirFileDePriorite}{fic :  Fichier Huffman}{FileDePriorite} 
+\signatureFonction{DECOMP_arbrePrincipal}{fp : FileDePriorite}{ArbreHuffman}
     {}
 \end{algorithme}
-
+    
 \begin{algorithme}
-    \signatureFonction{ obtenirStatistiques}{fic :  FichierHuffman}{Ensemble de Statistiques} 
+\signatureFonction{DECOMP_decompresser}{fileName : Fichier Binaire}{Fichier Texte}
     {}
-\end{algorithme}
-
-\begin{algorithme}
-    \signatureProcedure{ insererArbre}{\paramEntreeSortie{file : FileDePriorite}, \paramEntree{arbre : Arbre Huffman}} 
-    {}
-\end{algorithme}
-
-\begin{algorithme}
-    \signatureFonction{ creerArbre}{stats : Statistiques}{Arbre Huffman} 
-    {}
-\end{algorithme}
+ \end{algorithme}

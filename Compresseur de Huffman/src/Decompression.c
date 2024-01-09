@@ -6,7 +6,7 @@
 #include "ArbreHuffman.h"
 #include "FileDePriorite.h"
 #include "TableDeCodage.h"
-#include "compression.h"
+#include "Compression.h"
 #define TAILLE_MAX 1000 
 
 
@@ -35,7 +35,7 @@ int lireBit(FILE *fichier) {
 }
 
 
-ArbreHuffman DECOMP_arbrePrincipale(FileDePriorite fp){
+ArbreHuffman DECOMP_arbrePrincipal(FileDePriorite fp){
     
     while(fp.longueur != 1){
         ArbreHuffman arbre1 = FDP_obtenirElement(fp, fp.longueur);
@@ -53,7 +53,6 @@ ArbreHuffman DECOMP_arbrePrincipale(FileDePriorite fp){
 
 FILE* DECOMP_decompresser(const char* fileName){
     FILE *file = fopen(fileName, "rb");
-    char tailleStr[TAILLE_MAX] = "";
     int taille = 1;
     if (file == NULL) {
         perror("Erreur lors de l'ouverture du fichier");
@@ -74,7 +73,7 @@ FILE* DECOMP_decompresser(const char* fileName){
     }
     const char *decompressed = "decompressedFile.txt";
     FILE* decompresssedFile = fopen(decompressed,"w");
-    ArbreHuffman arbrePrincipale = DECOMP_arbrePrincipale(fp);
+    ArbreHuffman arbrePrincipale = DECOMP_arbrePrincipal(fp);
     ArbreHuffman *tmp = &arbrePrincipale;
     int bit;
     while ((bit = lireBit(file)) != EOF) {

@@ -14,7 +14,7 @@
 #include "Statistiques.h"
 
 
-int lireBit(FILE *fichier);
+int DECOMP_lireBit(FILE *fichier);
 
 /**
  * \fn DECOMP_fileFromFILE(FileDePriorite fp,char caracter,int ponderation)
@@ -46,7 +46,7 @@ FILE* DECOMP_decompresser(const char* fileName);
  * \param stat : statistiques de l'arbre créé
  * \return ArbreHuffman
  */
-ArbreHuffman DECOMP_arbrePrincipale(FileDePriorite fp);
+ArbreHuffman DECOMP_arbrePrincipal(FileDePriorite fp);
 
 
 

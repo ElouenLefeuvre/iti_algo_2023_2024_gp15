@@ -8,7 +8,6 @@
 #include "FileDePriorite.h"
 #include "TableDeCodage.h"
 #include <string.h>
-static int nbreStat = 0;
 
 void ecrireBit(FILE *fichier, char bit) {
     static unsigned char octet = 0;
@@ -40,12 +39,12 @@ FILE* COMP_initSrcFile(const char* fileName){
     return file;
 }
 
-void COMP_createArbreEtEnfiler(Statistiques stat,FileDePriorite* fp){
+void COMP_CreerArbreEtEnfiler(Statistiques stat,FileDePriorite* fp){
     ArbreHuffman* arbre = AH_arbreDeHuffman(stat);
     FDP_enfiler(fp,arbre);
 }
 
-ArbreHuffman COMP_fusionArbreDeFP(FileDePriorite fp){
+ArbreHuffman COMP_FusionnerArbreFDP(FileDePriorite fp){
     while(fp.longueur != 1){
         ArbreHuffman arbre1 = FDP_obtenirElement(fp, fp.longueur);
         ArbreHuffman arbre2 = FDP_obtenirElement(fp, fp.longueur - 1);
@@ -58,8 +57,7 @@ ArbreHuffman COMP_fusionArbreDeFP(FileDePriorite fp){
     return FDP_obtenirElement(fp,0);
 }
 
-FILE* COMP_compresser(const char* fileName,const char* dest){
-    unsigned char back = '\n';
+FILE* COMP_compresser(const char* fileName){
     FILE* file = COMP_initSrcFile(fileName);
     FileDePriorite fp= FDP_fileDePriorite();
     const char *filename = "compressedFile.huff";
@@ -89,10 +87,10 @@ FILE* COMP_compresser(const char* fileName,const char* dest){
         fwrite(&car, sizeof(char), 1, compressedFile);
         fwrite(&ent, sizeof(int), 1, compressedFile);
         if(ent!=0){
-            COMP_createArbreEtEnfiler(stat,&fp);
+            COMP_CreerArbreEtEnfiler(stat,&fp);
         }
     }
-    ArbreHuffman ArbreFinal = COMP_fusionArbreDeFP(fp);
+    ArbreHuffman ArbreFinal = COMP_FusionnerArbreFDP(fp);
     TableDeCodage* tableDeCodageFinale = TDC_obtenirTableDeCodage();
     for (int i=0 ; i<nbCaracteresSansRepetition;i++){
         char c = caracteresSansRepetition[i];

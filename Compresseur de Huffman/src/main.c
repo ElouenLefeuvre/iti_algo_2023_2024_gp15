@@ -18,7 +18,7 @@ int main(int argc, char *argv[]){
         return 1;
     }
     if (strcmp(argv[1],"-c")==0) {
-        compresser(argv[2]);
+        COMP_compresser(argv[2]);
         return 0;
     }
     else {

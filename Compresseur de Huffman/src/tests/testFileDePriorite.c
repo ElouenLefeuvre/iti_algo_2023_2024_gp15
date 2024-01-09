@@ -156,36 +156,6 @@ void test_obtenirIElement_fin() {
     CU_ASSERT_EQUAL(arbre_obtenu.statistiques.ponderation, arbre_theorique.statistiques.ponderation);
 }
 
-void test_nouvellefile() {
-    FileDePriorite file; 
-    FileDePriorite file_f; 
-    Statistiques stat1 = S_statistique('a', 3);
-    Statistiques stat2 = S_statistique('b', 4);
-    Statistiques stat3 = S_statistique('c', 7);
-    Statistiques stat4 = S_statistique(' ', 7);
-    ArbreHuffman arbre1 = *AH_arbreDeHuffman(stat1);
-    ArbreHuffman arbre2 = *AH_arbreDeHuffman(stat2);
-    ArbreHuffman arbre3 = *AH_arbreDeHuffman(stat3);
-    ArbreHuffman arbre_f = *AH_arbreDeHuffman(stat4);
-    AH_fixerFilsGauche(&arbre_f, &arbre1);
-    AH_fixerFilsDroit(&arbre_f, &arbre2);
-    file = FDP_fileDePriorite();
-    FDP_enfiler(&file, &arbre1); 
-    FDP_enfiler(&file, &arbre2);
-    FDP_enfiler(&file, &arbre3);
-    file_f = FDP_fileDePriorite();
-    FDP_enfiler(&file_f, &arbre3);
-    FDP_enfiler(&file_f, &arbre_f);
-    FDP_nouvelleFile(&file);
-    for (int i = 1; i <= file_f.longueur; i++) {
-        ArbreHuffman arbre_file = FDP_obtenirElement(file, i);
-        ArbreHuffman arbre_file_f = FDP_obtenirElement(file_f, i);
-        CU_ASSERT_EQUAL(AH_obtenirPonderation(arbre_file), AH_obtenirPonderation(arbre_file_f));
-        CU_ASSERT_EQUAL(AH_obtenirCaracter(arbre_file), AH_obtenirCaracter(arbre_file_f));
-    }
-    CU_ASSERT_EQUAL(file.longueur, file_f.longueur);
-}
-
 int main (int argc, char** argv) {
     CU_pSuite pSuite = NULL;
     if (CUE_SUCCESS != CU_initialize_registry())
@@ -202,8 +172,7 @@ int main (int argc, char** argv) {
         || (NULL == CU_add_test(pSuite, "Test défiler", testDefiler))
         || (NULL == CU_add_test(pSuite, "Test obtenirElement début", test_obtenirIElement_debut))
         || (NULL == CU_add_test(pSuite, "Test obtenirElement milieu", test_obtenirIElement_milieu))
-        || (NULL == CU_add_test(pSuite, "Test obtenirElement fin", test_obtenirIElement_fin))
-        || (NULL == CU_add_test(pSuite, "Test nouvelleFile", test_nouvellefile)))) {
+        || (NULL == CU_add_test(pSuite, "Test obtenirElement fin", test_obtenirIElement_fin)))) {
         CU_cleanup_registry();
         return CU_get_error();
     }
