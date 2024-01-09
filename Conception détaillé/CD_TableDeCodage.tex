@@ -1,104 +1,89 @@
 \subsubsection{Déclaration du type}
 
 \begin{algorithme}
-\type{TableDeCodage}{\typePointeur{Noeud}}
-\begin{enregistrement}{Noeud}
-    \champEnregistrement{code}{CodeBinaire}
-    \champEnregistrement{c}{\caractere}
-    \champEnregistrement{listeSuivante}{TableDeCodage}
-
-\end{enregistrement}
+    \type{TableDeCodage}{\typePointeur{Noeud}}
+    \begin{enregistrement}{Noeud}
+        \champEnregistrement{code}{CodeBinaire}
+        \champEnregistrement{c}{\caractere}
+        \champEnregistrement{listeSuivante}{TableDeCodage}
+    \end{enregistrement}
 \end{algorithme}
-
 
 \subsubsection{obtenirTableDeCodage}
 
 \begin{algorithme}
-    \fonction{obtenirTableDeCodage}{a : Arbre Huffman}{TableDeCodage}
-    {non estVide(a)}
-    {res : TableDeCodage}
-    {\affecter{res.noeud.c}{obtenirCaractere(a.statistiques)}
-    \affecter{res.noeud.code}{obtenirCodeBinaire(a,res.noeud.c)} 
-    \affecter{res.noeud.listeSuivante}{NIL} 
-    \retourner{res}}
+    \fonction{obtenirTableDeCodage}{a : Arbre Huffman}{TableDeCodage}{non estVide(a)}
+        {res : TableDeCodage}
+        {\affecter{res.noeud.c}{obtenirCaractere(a.statistiques)}
+        \affecter{res.noeud.code}{obtenirCodeBinaire(a,res.noeud.c)} 
+        \affecter{res.noeud.listeSuivante}{NIL}
+        \retourner{res}}
 \end{algorithme}
-
 
 \subsubsection{obtenirCode}
 
 \begin{algorithme}
-    \fonction{obtenirCode}{tab: TableDeCodage, c : \caractere}{CodeBinaire}
-    {estPresent(tab,c)}
-    {}
-    {\sialorssinon{non(estVide(tab))}
-        {\sialorssinon{tab.noeud.c=c}
-            {\retourner{tab.noeud.code}}
-            {\retourner{obtenirCode(tab.noeud.listeSuivante,c)}}}
-        {}}
+    \fonction{obtenirCode}{tab: TableDeCodage, c : \caractere}{CodeBinaire}{estPresent(tab,c)}
+        {}
+        {\sialorssinon{non(estVide(tab))}
+            {\sialorssinon{tab.noeud.c=c}
+                {\retourner{tab.noeud.code}}
+                {\retourner{obtenirCode(tab.noeud.listeSuivante,c)}}}{}}
 \end{algorithme}
 
 \subsubsection{obtenirCarac}
 
 \begin{algorithme}
-    \fonction{obtenirCarac}{tab: TableDeCodage, code : CodeBinaire}{\caractere}
-    {}
-    {}
-    {\sialorssinon{non(estVide(tab))}
-        {\sialorssinon{tab.noeud.code=code }
-            {\retourner{tab.noeud.c}}
-            {\retourner {obtenirCode(tab.noeud.listeSuivante,code)}}}
-        {}}
-
+    \fonction{obtenirCarac}{tab: TableDeCodage, code : CodeBinaire}{\caractere}{}
+        {}
+        {\sialorssinon{non(estVide(tab))}
+            {\sialorssinon{tab.noeud.code=code}
+                {\retourner{tab.noeud.c}}
+                {\retourner {obtenirCode(tab.noeud.listeSuivante,code)}}}{}}
 \end{algorithme}
 
 \subsubsection{ajouter}
 
 \begin{algorithme}
-    \procedure{ajouter}{\paramEntreeSortie tab : TableDeCodage, \paramEntree c : \caractere, code : CodeBinaire}
-    {}
-    {temp : TableDeCodage}
-    {\affecter{temp}{tab} 
-    \affecter{tab.noeud.c}{c} 
-    \affecter{tab.noeud.code}{code}
-    \affecter{tab.noeud.listeSuivante}{temp.noeud}}
+    \procedure{ajouter}{\paramEntreeSortie tab : TableDeCodage, \paramEntree c : \caractere, code : CodeBinaire}{}
+        {temp : TableDeCodage}
+        {\affecter{temp}{tab} 
+        \affecter{tab.noeud.c}{c} 
+        \affecter{tab.noeud.code}{code}
+        \affecter{tab.noeud.listeSuivante}{temp.noeud}}
 \end{algorithme}
 
 \subsubsection{supprimer}
 
 \begin{algorithme}
-    \procedure{supprimer}{\paramEntreeSortie tab : TableDeCodage, \paramEntree c : \caractere, code : CodeBinaire}
-    {non(estVide(tab))}
-    {temp,temp2 : TableDeCodage}
-    {\sialorssinon{non(estVide(tab.noeud.listeSuivante))}
-        {\sialorssinon{temp.noeud.c = c}
-            {\affecter{temp.noeud}{temp.noeud.listeSuivante}
-            \affecter{tab.noeud.listeSuivante}{temp.noeud}}
-            {\affecter{temp2.noeud}{temp.noeud.listeSuivante}
-            supprimer(temp2.listeSuivante,c,code)
-            \affecter{tab.noeud.listeSuivante}{temp.noeud}}}
-        {}}
+    \procedure{supprimer}{\paramEntreeSortie tab : TableDeCodage, \paramEntree c : \caractere, code : CodeBinaire}{non(estVide(tab))}
+        {temp,temp2 : TableDeCodage}
+        {\sialorssinon{non(estVide(tab.noeud.listeSuivante))}
+            {\sialorssinon{temp.noeud.c = c}
+                {\affecter{temp.noeud}{temp.noeud.listeSuivante}
+                \affecter{tab.noeud.listeSuivante}{temp.noeud}}
+                {\affecter{temp2.noeud}{temp.noeud.listeSuivante}
+                supprimer(temp2.listeSuivante,c,code)
+                \affecter{tab.noeud.listeSuivante}{temp.noeud}}}{}}
 \end{algorithme}
 
 \subsubsection{estPresent}
 
 \begin{algorithme}
-    \fonction{estPresent}{tab : TableDeCodage, c : \caractere}{\booleen}
-    {}
-    {}
-    {\sialorssinon{estVide(tab)}
-        {\retourner{FAUX}}{}
-    \sialorssinon{tab.noeud.c = c}
-        {\retourner{VRAI}}
-        {\affecter{temp.noeud}{tab.noeud.listeSuivante}
-        \retourner{estPresent(temp,c)}}
-    }
+    \fonction{estPresent}{tab : TableDeCodage, c : \caractere}{\booleen}{}
+        {}
+        {\sialorssinon{estVide(tab)}
+            {\retourner{FAUX}}{}
+        \sialorssinon{tab.noeud.c = c}
+            {\retourner{VRAI}}
+            {\affecter{temp.noeud}{tab.noeud.listeSuivante}
+            \retourner{estPresent(temp,c)}}}
 \end{algorithme}
 
 \subsubsection{estVide}
 
 \begin{algorithme}
-    \fonction{estVide}{tab : TableDeCodage}{\booleen}
-    {}
-    {}
-    {\retourner{tab.noeud=NIL}}
+    \fonction{estVide}{tab : TableDeCodage}{\booleen}{}
+        {}
+        {\retourner{tab.noeud=NIL}}
 \end{algorithme}

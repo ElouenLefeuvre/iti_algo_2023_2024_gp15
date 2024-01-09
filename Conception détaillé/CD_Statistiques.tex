@@ -1,34 +1,34 @@
 \subsubsection{Déclaration du type}
+
 \begin{algorithme}
-\begin{enregistrement}{Statistiques}
-    \champEnregistrement{caractere}{\caractere}
-    \champEnregistrement{ponderation}{\naturel}
-\end{enregistrement}    
+    \begin{enregistrement}{Statistiques}
+        \champEnregistrement{caractere}{\caractere}
+        \champEnregistrement{ponderation}{\naturel}
+    \end{enregistrement}    
 \end{algorithme}
 
 \subsubsection{statistique}
 
 \begin{algorithme}
-    \fonction{statistique}{c : \caractere, n : \naturel}{Statistiques}
-    {}
-    {stat : Statistiques}
-    {\affecter{stat.caracteres}{c}
-    \affecter{stat.ponderation}{n}
-    \retourner{stat}}
+    \fonction{statistique}{c : \caractere, n : \naturel}{Statistiques}{}
+        {stat : Statistiques}
+        {\affecter{stat.caracteres}{c}
+        \affecter{stat.ponderation}{n}
+        \retourner{stat}}
 \end{algorithme}
 
 \subsubsection{obtenirPonderation}
 
 \begin{algorithme}
-    \fonction{obtenirPonderation}{stat : Statistiques}{\naturel}
-    {}
-    {}
-    {\retourner{stat.ponderation}}
+    \fonction{obtenirPonderation}{stat : Statistiques}{\naturel}{}
+        {}
+        {\retourner{stat.ponderation}}
 \end{algorithme}
 
 \subsubsection{obtenirCaractere}
 
 \begin{algorithme}
-    \fonction{obtenirCaractere}{stat : Statistiques}{\caractere}{}{}
-    {\retourner{stat.caractere}}
+    \fonction{obtenirCaractere}{stat : Statistiques}{\caractere}{}
+        {}
+        {\retourner{stat.caractere}}
 \end{algorithme}
