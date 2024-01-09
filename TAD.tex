@@ -92,22 +92,23 @@
 
 \subsection{TAD ArbreHuffman}
 \begin{tad}
-\tadNom{Arbre Huffman}
+\tadNom{ArbreHuffman}
 \tadDependances{statistiques,\booleen}
 \begin{tadOperations}{obtenirPonderation}
-    \tadOperation{arbreDeHuffman}{Statistiques}{\tadParams{Arbre Huffman}}
-    \tadOperation{fixerStatistique}{\tadDeuxParams{Arbre Huffman}{Statistiques}}{\tadParams{Arbre Huffman}}
-    \tadOperation{obtenirStat}{\tadParams{Arbre Huffman}}{\tadParams{Statistiques}}
-    \tadOperation{obtenirCaractere}{Arbre Huffman}{\tadParams{\caractere}}
-    \tadOperationAvecPreconditions{fusionner}{\tadDeuxParams{Arbre Huffman}{Arbre Huffman}}{\tadParams{Arbre Huffman}}
-    \tadOperation{obtenirPonderation}{\tadParams{Arbre Huffman}}{\tadParams{\naturel}}
-    \tadOperationAvecPreconditions{fixerFilsDroit}{\tadDeuxParams{Arbre Huffman}{Arebre Huffman}}{\tadParams{Arbre Huffman}}
-    \tadOperationAvecPreconditions{fixerFilsGauche}{\tadDeuxParams{Arbre Huffman}{Arebre Huffman}}{\tadParams{Arbre Huffman}}
-    \tadOperationAvecPreconditions{obtenirFilsGauche}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
-    \tadOperationAvecPreconditions{obtenirFilsDroit}{\tadParams{Arbre Huffman}}{\tadParams{Arbre Huffman}}
-    \tadOperation{estFeuille}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
-    \tadOperation{estVide}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
-    \tadOperation{estPresent}{\tadParams{Arbre Huffman}}{\tadParams{\booleen}}
+    \tadOperation{arbreDeHuffman}{Statistiques}{\tadParams{ArbreHuffman}}
+    \tadOperation{fixerStatistique}{\tadDeuxParams{ArbreHuffman}{Statistiques}}{\tadParams{ArbreHuffman}}
+    \tadOperation{obtenirStat}{\tadParams{ArbreHuffman}}{\tadParams{Statistiques}}
+    \tadOperation{obtenirCaractere}{ArbreHuffman}{\tadParams{\caractere}}
+    \tadOperationAvecPreconditions{fusionner}{\tadDeuxParams{ArbreHuffman}{ArbreHuffman}}{\tadParams{ArbreHuffman}}
+    \tadOperation{obtenirPonderation}{\tadParams{ArbreHuffman}}{\tadParams{\naturel}}
+    \tadOperationAvecPreconditions{fixerFilsDroit}{\tadDeuxParams{ArbreHuffman}{Arebre Huffman}}{\tadParams{ArbreHuffman}}
+    \tadOperationAvecPreconditions{fixerFilsGauche}{\tadDeuxParams{ArbreHuffman}{Arebre Huffman}}{\tadParams{ArbreHuffman}}
+    \tadOperationAvecPreconditions{obtenirFilsGauche}{\tadParams{ArbreHuffman}}{\tadParams{ArbreHuffman}}
+    \tadOperationAvecPreconditions{obtenirFilsDroit}{\tadParams{ArbreHuffman}}{\tadParams{ArbreHuffman}}
+    \tadOperation{estFeuille}{\tadParams{ArbreHuffman}}{\tadParams{\booleen}}
+    \tadOperation{estVide}{\tadParams{ArbreHuffman}}{\tadParams{\booleen}}
+    \tadOperation{estPresent}{\tadParams{ArbreHuffman}}{\tadParams{\booleen}}
+    \tadOperationAvecPreconditions{copierArbreHuffman}{\tadParams{ArbreHuffman}}{\tadParams{ArbreHuffman}}
 \end{tadOperations}
 \begin{tadSemantiques}{obtenirPonderation}
     \tadSemantique{arbreDeHuffman}{Crée un arbre de huffman à partir d'une statistique}
@@ -123,6 +124,7 @@
     \tadSemantique{estFeuille}{Verifie si l'arbre de huffman est une feuille}
     \tadSemantique{estVide}{Verifie si l'arbre est vide, si son champ caractère est vide}
     \tadSemantique{estPresent}{Vérifie si un élément est présent dans un arbre}
+    \tadSemantique{copierArbreHuffman}{Fonction qui permet de copier un arbre}
 \end{tadSemantiques}
 \begin{tadPreconditions}{obtenirFilsGauche(A)}
     \tadPrecondition{fusionner(A)}{estVide(A)}
@@ -130,6 +132,7 @@
     \tadPrecondition{fixerFilsGauche(r,ag)}{non(estVide(r))}
     \tadPrecondition{obtenirFilsGauche(A)}{non estUneFeuille(A)}
     \tadPrecondition{obtenirFilsDroit(A)}{non estUneFeuille(A)}
+    \tadPrecondition{copierArbreHuffman(arbre)}{arbre $\ne$ NULL}
 \end{tadPreconditions}
 \end{tad}
 
